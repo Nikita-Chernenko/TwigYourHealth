@@ -1,0 +1,23 @@
+@import "reset";
+@import "bootstrap4/bootstrap";
+
+html {
+  display: flex;
+  min-height: 100%;
+
+}
+
+body {
+  display: flex;
+  flex: 1;
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: "Uni sans", monospace;
+}
+
+
