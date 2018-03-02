@@ -1,0 +1,68 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$vbS9uiRUThdD$J8/jtUfmpztE3qm1AoRliqivoFI+E0aN7hBzWGYMVwI=",
+    "last_login": "2018-03-02T18:41:27.764Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2018-03-02T17:42:34.461Z",
+    "email": "admin@admin.com",
+    "phone": "",
+    "patronymic": "",
+    "is_doctor": false,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$AgHNCzgUI9dy$BABqCSI/SzO/L24R0eQlzTb5Nox5vCZtUu8dq1a8p0g=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "doctor",
+    "first_name": "doctor",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-03-02T18:42:10.503Z",
+    "email": "doctor@doctor.coom",
+    "phone": "+380996646486",
+    "patronymic": "doctor",
+    "is_doctor": true,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$M7dWdKeKYv29$/XRzuIu/xEBicaIcL4goKYrk9xaKJC+4L3tVRIhMhbo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "patient",
+    "first_name": "patient",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-03-02T18:43:10.093Z",
+    "email": "patient@patient.com",
+    "phone": "+380996646487",
+    "patronymic": "patient",
+    "is_doctor": false,
+    "is_patient": true,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

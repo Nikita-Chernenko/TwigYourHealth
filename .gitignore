@@ -43,3 +43,4 @@ tmtagsHistory
 venv
 *all.css
 *all.css.map
+*.sqlite3
