@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.core.exceptions import ImproperlyConfigured
-from django.core.management import BaseCommand, CommandError
+from django.core.management import BaseCommand, CommandError, call_command
 from django.db.models import FileField  # , get_app, get_models, get_model
 from django.apps import apps as django_apps
 from optparse import make_option
@@ -61,8 +61,9 @@ class Command(BaseCommand):
                                                           app_model_name)
                 self.move_files(model)
                 print('saving %s' % model_name)
-                subprocess.call(['python', 'manage.py', 'dumpdata', model_name, '--natural-foreign', '--indent=2'],
-                                stdout=open(fixtures_path, 'w'))
+
+                call_command('dumpdata', model_name, indent=2, natural_foreign=True,stdout=open(fixtures_path,'w'))
+
 
     def move_files(self, model):
         meta = model._meta
