@@ -8,7 +8,7 @@ from utils.validators import comma_separated_field
 
 
 class Symptom(models.Model):
-    name = models.CharField(max_length=255, db_index=True)
+    name = models.CharField(max_length=256, db_index=True)
     aliases = models.TextField(validators=[comma_separated_field], blank=True, null=True)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
@@ -18,14 +18,14 @@ class Symptom(models.Model):
 
 
 class Decease(models.Model):
-    name = models.CharField(max_length=255, db_index=True)
+    name = models.CharField(max_length=256, db_index=True)
     chronic = models.BooleanField(default=False)
     symptoms = models.ManyToManyField(to=Symptom, through='DeceaseSymptom')
     duration = models.PositiveSmallIntegerField()
     contagiousness = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)])
     malignancy = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)])
     first_aid = models.TextField()
-    occurrence = models.PositiveIntegerField(default=100)  # How many times this decease has occurred
+    occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
 
 
 class DeceaseSymptom(models.Model):
@@ -60,8 +60,7 @@ class PatientSymptomDecease(models.Model):
     symptom = models.ForeignKey(Symptom, on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
-        super(PatientSymptomDecease, self).__init__()
-        # store decease to know it in save
+        super(PatientSymptomDecease, self).__init__(*args,**kwargs)
         self.__original_decease = self.decease
 
     def save(self, force_insert=False, force_update=False, using=None,
