@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'phonenumber_field',
 
     'users',
-    'notifications'
+    'notifications',
+    'communication',
+    'deceases',
+    'timetables',
+    'utils'
 
 ]
 

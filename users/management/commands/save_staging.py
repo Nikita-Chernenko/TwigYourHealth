@@ -62,8 +62,7 @@ class Command(BaseCommand):
                 self.move_files(model)
                 print('saving %s' % model_name)
 
-                call_command('dumpdata', model_name, indent=2, natural_foreign=True,stdout=open(fixtures_path,'w'))
-
+                call_command('dumpdata', model_name, indent=2, natural_foreign=True, stdout=open(fixtures_path, 'w'))
 
     def move_files(self, model):
         meta = model._meta

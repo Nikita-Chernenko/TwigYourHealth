@@ -12,10 +12,11 @@ class User(AbstractUser):
 
 
 class Doctor(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     hour_rate = models.DecimalField(max_digits=8, decimal_places=2)
 
 
 class Patient(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField()
+    deceases = models.ManyToManyField(to='deceases.Decease', through='deceases.PatientDecease')
