@@ -3,9 +3,9 @@
 {% block content %}
     <form class="form" method="post">
         {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ doctor_form.as_p }}
-        {{ public_doctor_form.as_p }}
-        <button class="btn btn-success" type="submit">Sign up</button>
+        {{ user_form}}
+        {{ doctor_form}}
+        {{ public_doctor_form}}
+        <button class="waves-effect waves-light btn" type="submit">Sign up</button>
     </form>
 {% endblock %}

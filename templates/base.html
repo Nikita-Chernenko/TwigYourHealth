@@ -11,54 +11,47 @@
 </head>
 <body>
 <script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script>
 <div class="content">
     <header>
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href=""> text</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=""> text</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                        <li>
-                            {% if user.is_doctor %}
-                                {% if user.doctor.is_private %}
-                                    Hi, private doctor {{ user.username }}
-                                {% else %}
-                                    Hi, public doctor {{ user.username }}
-                                {% endif %}
-                            {% elif user.is_patient %}
-                                Hi, patient {{ user.username }}
-                            {% else %}
-                                Hi, OUR GOD ADMIN {{ user.username }}
-                            {% endif %}
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </li>
+        <ul id="slide-out" class="side-nav">
+            {% if user.is_authenticated %}
+                <li>
+                    {% if user.is_doctor %}
+                        {% if user.doctor.is_private %}
+                            Hi, private doctor {{ user.username }}
+                        {% else %}
+                            Hi, public doctor {{ user.username }}
+                        {% endif %}
+                    {% elif user.is_patient %}
+                        Hi, patient {{ user.username }}
                     {% else %}
-                        <li>
-                            <a href="{% url 'login' %}">Login</a>
-                        </li>
+                        Hi, OUR GOD ADMIN {{ user.username }}
                     {% endif %}
-
-
-                </ul>
-            </div>
-        </nav>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+                <li>
+                    <a href="{% url 'sign-up' %}">Sign up</a>
+                </li>
+            {% endif %}
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
     </header>
-    {% block content %} {% endblock %}
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
 </div>
 
-{% block extrajs %} {% endblock %}
+{% block extrajs %}
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+{% endblock %}
 </body>
-</html>
+< /html>

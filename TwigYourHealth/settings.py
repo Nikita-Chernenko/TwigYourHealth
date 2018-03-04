@@ -127,7 +127,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = 'users/login/'
-EXEMPT_URLS = ['admin']
+LOGIN_EXEMPT_URLS = ['admin', 'users/sign-up/']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 AUTH_USER_MODEL = 'users.User'

@@ -8,6 +8,6 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="hidden" name="next" value="{% url 'home' %}"/>
-        <button type="submit">Login</button>
+        <button class="waves-effect waves-light btn" type="submit">Login</button>
     </form>
 {% endblock %}
