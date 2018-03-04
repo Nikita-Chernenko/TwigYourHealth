@@ -1,14 +1,21 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import transaction
+from material import Layout, Row, Column
 
 from users.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor
+
+
+class LoginViewForm(AuthenticationForm):
+    layout = Layout(Row('username', 'password'))
 
 
 class UserSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username','email', 'phone']
+        fields = ['username', 'email', 'phone']
+
+    layout = Layout(Row('username', 'email', 'phone'), Row('password1', 'password2'))
 
 
 class UserPatientSignUpForm(UserSignUpForm):
@@ -21,6 +28,8 @@ class UserPatientSignUpForm(UserSignUpForm):
 
 
 class PatientSignUpForm(forms.ModelForm):
+    bithday = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
+
     class Meta:
         model = Patient
         fields = ['birthday']
@@ -36,12 +45,13 @@ class UserDoctorSignUpForm(UserSignUpForm):
 
 
 class DoctorSignUpForm(forms.ModelForm):
-    hospital = forms.ModelChoiceField(queryset=Hospital.objects.all(), widget=forms.CheckboxSelectMultiple,
-                                      required=False)
+    hospital = forms.ModelChoiceField(queryset=Hospital.objects.all())
 
     class Meta:
         model = Doctor
         fields = ['accept_call', 'accept_chat', 'hospital', 'personal_address', 'description']
+
+    layout = Layout(Row('accept_call', 'accept_chat'),Row('hospital'), Row('personal_address'), Row('description'))
 
 
 class DoctorPublicDoctorSignUpForm(DoctorSignUpForm):
@@ -72,3 +82,4 @@ class PrivateDoctorSignUpForm(forms.ModelForm):
     class Meta:
         model = PrivateDoctor
         fields = ['hour_rate', 'visit_price']
+    layout = Layout(Row('hour_rate','visit_price'))

@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
-
+{% load material_form %}
 {% block content %}
+    <div class="center-align">
+        <a href="{% url 'public-doctor-sign-up' %}" class="waves-effect waves-light btn">Sign up as a public doctor</a>
+        <a href="{% url 'private-doctor-sign-up' %}" class="waves-effect waves-light btn">Sign up as a private
+            doctor</a>
+    </div>
     <form method="post" class="form">
         {% csrf_token %}
-        {{ user_form}}
-        {{ patient_form}}
-        <button class="waves-effect waves-light btn" type="submit">Sign up</button>
+        {% form form=user_form %}{% endform %}
+        {% form form=patient_form %}{% endform %}
+
+        <div class="center-align">
+            <button class="waves-effect waves-light btn btn-large" type="submit">Sign up</button>
+        </div>
     </form>
 {% endblock %}

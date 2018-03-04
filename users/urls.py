@@ -2,6 +2,7 @@ from django.contrib.auth.views import login
 from django.urls import path
 from django.views.generic import TemplateView
 
+from users.forms import LoginViewForm
 from users.views import patient_sign_up, public_doctor_sign_up, private_doctor_sign_up, logout
 
 urlpatterns = [
@@ -10,5 +11,5 @@ urlpatterns = [
     path('sign-up/public-doctor-sign-up/', public_doctor_sign_up, name='public-doctor-sign-up'),
     path('sign-up/private-doctor-sign-up/', private_doctor_sign_up, name='private-doctor-sign-up'),
     path('logout/', logout, name='logout'),
-    path('login/', login, {'template_name': 'users/login.html'}, name='login'),
+    path('login/', login, {'template_name': 'users/login.html', 'authentication_form': LoginViewForm}, name='login'),
 ]

@@ -1,10 +1,12 @@
 from annoying.decorators import render_to
-from django.contrib.auth.views import login, logout as _logout
+from django.contrib.auth.views import logout as _logout
 from django.db.transaction import atomic
 from django.shortcuts import redirect
 
 from users.forms import UserPatientSignUpForm, PatientSignUpForm, UserDoctorSignUpForm, DoctorPublicDoctorSignUpForm, \
     PublicDoctorSignUpForm, DoctorPrivateDoctorSignUpForm, PrivateDoctorSignUpForm
+
+
 # TODO handle clinic creation
 
 @render_to('users/patient_sign_up.html')
@@ -62,6 +64,7 @@ def private_doctor_sign_up(request):
             private_doctor.doctor = doctor
             private_doctor.save()
     return {'user_form': user_form, 'doctor_form': doctor_form, 'private_doctor_form': private_doctor_form}
+
 
 def logout(request):
     _logout(request)
