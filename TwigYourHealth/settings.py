@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'sass_processor',
     'phonenumber_field',
     'annoying',
+    'material',
+    'material.frontend',
 
     'users',
     'notifications',

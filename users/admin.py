@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from users.models import User, Doctor, Patient
+from users.models import User, Doctor, Patient, Hospital
 
 
 @admin.register(User)
@@ -16,3 +16,8 @@ class DoctorAdmin(admin.ModelAdmin):
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
     fields = ['user', 'birthday']
+
+
+@admin.register(Hospital)
+class HospitalAdmin(admin.ModelAdmin):
+    fields = ['name', 'address']
