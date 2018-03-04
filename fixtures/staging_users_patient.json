@@ -8,5 +8,15 @@
     ],
     "birthday": "2018-03-02"
   }
+},
+{
+  "model": "users.patient",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "test"
+    ],
+    "birthday": "1999-05-12"
+  }
 }
 ]

@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -11,6 +12,8 @@ class User(AbstractUser):
     is_patient = models.BooleanField(default=False)
 
 
+
+
 class Hospital(models.Model):
     name = models.CharField('hospital name', max_length=256)
     address = models.CharField('hospital address', max_length=512)
@@ -19,7 +22,10 @@ class Hospital(models.Model):
 class Doctor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     skype = models.CharField('skype username', max_length=256, unique=True, null=True, blank=True)
-    skype_password = models.CharField('skype password', max_length=128)  # TODO handle storing not as a row text
+
+    # TODO handle storing not as a row text
+    skype_password = models.CharField('skype password', max_length=128, null=True, blank=True)
+
     is_private = models.BooleanField(default=True)
     accept_chat = models.BooleanField(default=True)
     accept_call = models.BooleanField(default=True)

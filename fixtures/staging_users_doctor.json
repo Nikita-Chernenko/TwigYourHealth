@@ -1,0 +1,36 @@
+[
+{
+  "model": "users.doctor",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "doctor1"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": false,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": "my address",
+    "description": "I'm a doctor"
+  }
+},
+{
+  "model": "users.doctor",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "private"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "description": "I'm a private doctor"
+  }
+}
+]

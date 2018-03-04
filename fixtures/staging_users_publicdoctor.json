@@ -1,0 +1,9 @@
+[
+{
+  "model": "users.publicdoctor",
+  "pk": 1,
+  "fields": {
+    "doctor": 1
+  }
+}
+]

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.urls import reverse
 from pushbullet import Pushbullet
 
 from TwigYourHealth.private_settings import PUSHBULLEY_KEY, SECRET_KEY
@@ -41,13 +42,14 @@ INSTALLED_APPS = [
 
     'sass_processor',
     'phonenumber_field',
+    'annoying',
 
     'users',
     'notifications',
     'communication',
     'deceases',
     'timetables',
-    'utils'
+    'utils',
 
 ]
 
@@ -59,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'users.middleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'TwigYourHealth.urls'
@@ -109,7 +112,7 @@ DATABASES = {
 #     },
 # ]
 #  DEV
-
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -123,6 +126,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'users/login/'
+EXEMPT_URLS = ['admin']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 AUTH_USER_MODEL = 'users.User'
