@@ -11,7 +11,6 @@ django-sass-processor==0.5.8
 idna==2.6
 libsass==0.13.7
 phonenumberslite==8.9.0
-pkg-resources==0.0.0
 pushbullet.py==0.11.0
 python-magic==0.4.15
 pytz==2018.3

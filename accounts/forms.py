@@ -3,14 +3,14 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import transaction
 from material import Layout, Row, Column
 
-from users.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor
+from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor
 
 
 class LoginViewForm(AuthenticationForm):
     layout = Layout(Row('username', 'password'))
 
 
-class UserSignUpForm(UserCreationForm):
+class UserForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ['username', 'email', 'phone']
@@ -18,7 +18,7 @@ class UserSignUpForm(UserCreationForm):
     layout = Layout(Row('username', 'email', 'phone'), Row('password1', 'password2'))
 
 
-class UserPatientSignUpForm(UserSignUpForm):
+class UserPatientForm(UserForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_patient = True
@@ -27,15 +27,15 @@ class UserPatientSignUpForm(UserSignUpForm):
         return user
 
 
-class PatientSignUpForm(forms.ModelForm):
-    bithday = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
+class PatientForm(forms.ModelForm):
+    birthday = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}),input_formats='%d-%m-%Y')
 
     class Meta:
         model = Patient
         fields = ['birthday']
 
 
-class UserDoctorSignUpForm(UserSignUpForm):
+class UserDoctorForm(UserForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_doctor = True
@@ -44,7 +44,7 @@ class UserDoctorSignUpForm(UserSignUpForm):
         return user
 
 
-class DoctorSignUpForm(forms.ModelForm):
+class DoctorForm(forms.ModelForm):
     hospital = forms.ModelChoiceField(queryset=Hospital.objects.all())
 
     class Meta:
@@ -54,7 +54,7 @@ class DoctorSignUpForm(forms.ModelForm):
     layout = Layout(Row('accept_call', 'accept_chat'),Row('hospital'), Row('personal_address'), Row('description'))
 
 
-class DoctorPublicDoctorSignUpForm(DoctorSignUpForm):
+class DoctorPublicDoctorForm(DoctorForm):
     def save(self, commit=True):
         doctor = super().save(commit=False)
         doctor.is_private = False
@@ -63,7 +63,7 @@ class DoctorPublicDoctorSignUpForm(DoctorSignUpForm):
         return doctor
 
 
-class DoctorPrivateDoctorSignUpForm(DoctorSignUpForm):
+class DoctorPrivateDoctorForm(DoctorForm):
     def save(self, commit=True):
         doctor = super().save(commit=False)
         doctor.is_private = True
@@ -72,13 +72,13 @@ class DoctorPrivateDoctorSignUpForm(DoctorSignUpForm):
         return doctor
 
 
-class PublicDoctorSignUpForm(forms.ModelForm):
+class PublicDoctorForm(forms.ModelForm):
     class Meta:
         model = PublicDoctor
         fields = []
 
 
-class PrivateDoctorSignUpForm(forms.ModelForm):
+class PrivateDoctorForm(forms.ModelForm):
     class Meta:
         model = PrivateDoctor
         fields = ['hour_rate', 'visit_price']

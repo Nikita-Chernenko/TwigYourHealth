@@ -1,6 +1,6 @@
 [
 {
-  "model": "users.publicdoctor",
+  "model": "accounts.publicdoctor",
   "pk": 1,
   "fields": {
     "doctor": 1

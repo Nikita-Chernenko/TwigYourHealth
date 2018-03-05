@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import F
 from django.utils.timezone import now
 
-from users.models import Patient
+from accounts.models import Patient
 from utils.validators import comma_separated_field
 
 

@@ -1,6 +1,6 @@
 [
 {
-  "model": "users.doctor",
+  "model": "accounts.doctor",
   "pk": 1,
   "fields": {
     "user": [
@@ -17,7 +17,7 @@
   }
 },
 {
-  "model": "users.doctor",
+  "model": "accounts.doctor",
   "pk": 2,
   "fields": {
     "user": [

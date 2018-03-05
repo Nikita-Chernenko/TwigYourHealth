@@ -12,6 +12,7 @@
 <body>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/materialize.min.js' %}"></script>
+<script src="{% static 'js/materialize_initialize.js' %}"></script>
 <div class="content">
     <header>
         <ul id="slide-out" class="side-nav">
@@ -31,6 +32,9 @@
                 </li>
                 <li>
                     <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="{% url 'profile' %}">Profile</a>
                 </li>
             {% else %}
                 <li>
@@ -52,16 +56,7 @@
 {% block extrajs %}
     <script>
         $(document).ready(function () {
-            $(".button-collapse").sideNav();
-            $('select').material_select();
-            $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15, // Creates a dropdown of 15 years to control year,
-                today: 'Today',
-                clear: 'Clear',
-                close: 'Ok',
-                closeOnSelect: false // Close upon selecting a date,
-            });
+            materialize_initiailize()
         });
     </script>
 {% endblock %}

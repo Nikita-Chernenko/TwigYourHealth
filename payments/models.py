@@ -5,7 +5,7 @@ from django.db import models
 
 from communication.models import CallEntity, ChatEntity
 from timetables.models import Visit
-from users.models import Patient
+from accounts.models import Patient
 
 interaction_limit = models.Q(app_label='communications', model='CallEntity') | \
                     models.Q(app_label='communications', model='ChatEntity') | \

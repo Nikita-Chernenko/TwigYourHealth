@@ -1,6 +1,6 @@
 from django.contrib.auth.backends import ModelBackend
 from annoying.functions import get_object_or_None
-from users.models import User
+from accounts.models import User
 
 class EmailPhoneUsernameBackend(ModelBackend):
     def get_user(self, user_id):

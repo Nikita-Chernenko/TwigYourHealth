@@ -1,6 +1,6 @@
 [
 {
-  "model": "users.patient",
+  "model": "accounts.patient",
   "pk": 1,
   "fields": {
     "user": [
@@ -10,7 +10,7 @@
   }
 },
 {
-  "model": "users.patient",
+  "model": "accounts.patient",
   "pk": 2,
   "fields": {
     "user": [

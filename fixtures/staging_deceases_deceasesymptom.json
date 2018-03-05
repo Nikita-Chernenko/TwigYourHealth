@@ -1,0 +1,12 @@
+[
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 1,
+  "fields": {
+    "symptom": 1,
+    "decease": 1,
+    "chances": 100,
+    "occurrence": 1
+  }
+}
+]

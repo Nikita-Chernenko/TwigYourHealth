@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 
-from users.models import Doctor, Patient
+from accounts.models import Doctor, Patient
 
 
 class CommunicationEntity(models.Model):

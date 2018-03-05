@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-from users.models import User
+from accounts.models import User
 
 
 class Notification(models.Model):

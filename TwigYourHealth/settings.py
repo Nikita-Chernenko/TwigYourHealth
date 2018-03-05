@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
 
-    'users',
+    'accounts',
     'notifications',
     'communication',
     'deceases',
@@ -63,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'users.middleware.LoginRequiredMiddleware'
+    'accounts.middleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'TwigYourHealth.urls'
@@ -128,11 +128,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL = 'users/login/'
-LOGIN_EXEMPT_URLS = ['admin', 'users/sign-up/']
+LOGIN_URL = '/accounts/login/'
+LOGIN_EXEMPT_URLS = ['admin', 'accounts/sign-up/']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'accounts.User'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [

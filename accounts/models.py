@@ -12,11 +12,10 @@ class User(AbstractUser):
     is_patient = models.BooleanField(default=False)
 
 
-
-
 class Hospital(models.Model):
     name = models.CharField('hospital name', max_length=256)
     address = models.CharField('hospital address', max_length=512)
+    is_private = models.BooleanField(default=True)
 
 
 class Doctor(models.Model):

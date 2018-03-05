@@ -1,10 +1,10 @@
 [
 {
-  "model": "users.user",
+  "model": "accounts.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$100000$vbS9uiRUThdD$J8/jtUfmpztE3qm1AoRliqivoFI+E0aN7hBzWGYMVwI=",
-    "last_login": "2018-03-04T11:15:04.775Z",
+    "last_login": "2018-03-05T15:24:56.899Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -22,7 +22,7 @@
   }
 },
 {
-  "model": "users.user",
+  "model": "accounts.user",
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$100000$pgj9dhjfICc7$ZbtpsMrWzZ7ScLKPf7eiwCmn2h+RUG+ExHA39UiPruY=",
@@ -44,11 +44,11 @@
   }
 },
 {
-  "model": "users.user",
+  "model": "accounts.user",
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$100000$M7dWdKeKYv29$/XRzuIu/xEBicaIcL4goKYrk9xaKJC+4L3tVRIhMhbo=",
-    "last_login": "2018-03-04T10:57:50.461Z",
+    "last_login": "2018-03-05T15:03:16.174Z",
     "is_superuser": false,
     "username": "patient",
     "first_name": "patient",
@@ -66,7 +66,7 @@
   }
 },
 {
-  "model": "users.user",
+  "model": "accounts.user",
   "pk": 4,
   "fields": {
     "password": "pbkdf2_sha256$100000$Wkyc3AAsQfGZ$aoUNyjF3YGJabxH5g/nikx/Rtf9Y9nxsU8BTgAR4W1g=",
@@ -88,7 +88,7 @@
   }
 },
 {
-  "model": "users.user",
+  "model": "accounts.user",
   "pk": 5,
   "fields": {
     "password": "pbkdf2_sha256$100000$9ltZNW02iFwE$c6lPYQphF/HOEafNYTV17aR8fKwEwM+3HkDQv2UW4NU=",
@@ -110,7 +110,7 @@
   }
 },
 {
-  "model": "users.user",
+  "model": "accounts.user",
   "pk": 6,
   "fields": {
     "password": "pbkdf2_sha256$100000$SdMui9FZcPqL$nMmt37RuKFGinzoxVWDN5ymtM0OJUQ+cxJwmklAzzQI=",
