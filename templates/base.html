@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Twig your health{% endblock %}</title>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
     {% block extrahead %} {% endblock %}
 </head>
@@ -30,6 +30,7 @@
                         Hi, OUR GOD ADMIN {{ user.username }}
                     {% endif %}
                 </li>
+                 <div class="divider"></div>
                 <li>
                     <a href="{% url 'logout' %}">Logout</a>
                 </li>
@@ -40,6 +41,7 @@
                 <li>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
+                 <div class="divider"></div>
                 <li>
                     <a href="{% url 'sign-up' %}">Sign up</a>
                 </li>

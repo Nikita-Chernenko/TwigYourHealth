@@ -67,50 +67,6 @@
 },
 {
   "model": "accounts.user",
-  "pk": 4,
-  "fields": {
-    "password": "pbkdf2_sha256$100000$Wkyc3AAsQfGZ$aoUNyjF3YGJabxH5g/nikx/Rtf9Y9nxsU8BTgAR4W1g=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "test",
-    "first_name": "",
-    "last_name": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2018-03-04T10:07:10.025Z",
-    "email": "test@gmail.com",
-    "phone": "+380996646485",
-    "patronymic": "",
-    "is_doctor": false,
-    "is_patient": true,
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "accounts.user",
-  "pk": 5,
-  "fields": {
-    "password": "pbkdf2_sha256$100000$9ltZNW02iFwE$c6lPYQphF/HOEafNYTV17aR8fKwEwM+3HkDQv2UW4NU=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "doctor1",
-    "first_name": "",
-    "last_name": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2018-03-04T10:18:22.029Z",
-    "email": "doctor1@gmail.com",
-    "phone": "+380996646458",
-    "patronymic": "",
-    "is_doctor": true,
-    "is_patient": false,
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "accounts.user",
   "pk": 6,
   "fields": {
     "password": "pbkdf2_sha256$100000$SdMui9FZcPqL$nMmt37RuKFGinzoxVWDN5ymtM0OJUQ+cxJwmklAzzQI=",

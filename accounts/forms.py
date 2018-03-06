@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm as _UserCreationForm, AuthenticationForm
 from django.db import transaction
 from material import Layout, Row, Column
 
@@ -7,18 +7,27 @@ from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, Priva
 
 
 class LoginViewForm(AuthenticationForm):
+    username = forms.CharField(help_text='username or email or phone')
     layout = Layout(Row('username', 'password'))
 
 
-class UserForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'phone']
+
+    layout = Layout(Row('username', 'email', 'phone'))
+
+
+class UserCreationForm(_UserCreationForm):
+    class Meta(_UserCreationForm.Meta):
         model = User
         fields = ['username', 'email', 'phone']
 
     layout = Layout(Row('username', 'email', 'phone'), Row('password1', 'password2'))
 
 
-class UserPatientForm(UserForm):
+class UserPatientForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_patient = True
@@ -28,14 +37,14 @@ class UserPatientForm(UserForm):
 
 
 class PatientForm(forms.ModelForm):
-    birthday = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}),input_formats='%d-%m-%Y')
+    birthday = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
 
     class Meta:
         model = Patient
         fields = ['birthday']
 
 
-class UserDoctorForm(UserForm):
+class UserDoctorForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_doctor = True
@@ -45,13 +54,13 @@ class UserDoctorForm(UserForm):
 
 
 class DoctorForm(forms.ModelForm):
-    hospital = forms.ModelChoiceField(queryset=Hospital.objects.all())
+    hospital = forms.ModelChoiceField(queryset=Hospital.objects.all(), required=False)
 
     class Meta:
         model = Doctor
         fields = ['accept_call', 'accept_chat', 'hospital', 'personal_address', 'description']
 
-    layout = Layout(Row('accept_call', 'accept_chat'),Row('hospital'), Row('personal_address'), Row('description'))
+    layout = Layout(Row('accept_call', 'accept_chat'), Row('hospital'), Row('personal_address'), Row('description'))
 
 
 class DoctorPublicDoctorForm(DoctorForm):
@@ -82,4 +91,5 @@ class PrivateDoctorForm(forms.ModelForm):
     class Meta:
         model = PrivateDoctor
         fields = ['hour_rate', 'visit_price']
-    layout = Layout(Row('hour_rate','visit_price'))
+
+    layout = Layout(Row('hour_rate', 'visit_price'))
