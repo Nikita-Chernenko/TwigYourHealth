@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load material_form %}
+{% block breadcrumbs %}
+    <a href="{% url 'sign-up' %}" class="breadcrumb">Sign up</a>
+    <a href="{% url 'patient-sign-up' %}" class="breadcrumb">Patient sign-up</a>
+{% endblock %}
 {% block content %}
-    <div class="center-align">
-        <a href="{% url 'public-doctor-sign-up' %}" class="waves-effect waves-light btn">Sign up as a public doctor</a>
-        <a href="{% url 'private-doctor-sign-up' %}" class="waves-effect waves-light btn">Sign up as a private
-            doctor</a>
-    </div>
+
     <form method="post" class="form">
         {% csrf_token %}
         {% form form=user_form %}{% endform %}

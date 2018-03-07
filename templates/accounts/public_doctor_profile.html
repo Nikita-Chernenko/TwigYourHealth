@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load material_form %}
-
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
 {% block content %}
     <div class="container">
         <a href="{% url 'change-password' %}" class="btn wave-effects">Change password</a>

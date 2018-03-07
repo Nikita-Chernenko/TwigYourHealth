@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-
+{% block breadcrumbs %}
+    <a href="{% url 'sign-up' %}" class="breadcrumb">Sign up</a>
+{% endblock %}
 {% block content %}
 
     <div class="row">
@@ -10,6 +12,9 @@
                 doctor</a>
             <a href="{% url 'private-doctor-sign-up' %}" class="row btn">Sign up as a private
                 doctor</a>
+        </div>
+        <div class="col s8 offset-s2 center-align">
+            <a class="waves-effect waves-light btn btn-large" href="{% url 'login' %}" type="submit">Login</a>
         </div>
     </div>
 {% endblock %}
