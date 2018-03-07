@@ -8,13 +8,21 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
     {% block extrahead %} {% endblock %}
+
 </head>
 <body>
-<script src="{% static 'js/jquery.js' %}"></script>
-<script src="{% static 'js/materialize.min.js' %}"></script>
-<script src="{% static 'js/materialize_initialize.js' %}"></script>
+
 <div class="content">
     <header>
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    {% block breadcrumbs %}
+                        <a href="{% url 'profile' %}" class="breadcrumb">Profile</a>
+                    {% endblock %}
+                </div>
+            </div>
+        </nav>
         <ul id="slide-out" class="side-nav">
             {% if user.is_authenticated %}
                 <li>
@@ -30,7 +38,7 @@
                         Hi, OUR GOD ADMIN {{ user.username }}
                     {% endif %}
                 </li>
-                 <div class="divider"></div>
+                <div class="divider"></div>
                 <li>
                     <a href="{% url 'logout' %}">Logout</a>
                 </li>
@@ -41,7 +49,7 @@
                 <li>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
-                 <div class="divider"></div>
+                <div class="divider"></div>
                 <li>
                     <a href="{% url 'sign-up' %}">Sign up</a>
                 </li>
@@ -51,16 +59,27 @@
                 class="material-icons">menu</i></a>
     </header>
     <main>
+        {% if messages %}
+            <div class="container-fluid">
+                <ul class="messages list-unstyled">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }} alert-info"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         {% block content %} {% endblock %}
     </main>
-</div>
-
-{% block extrajs %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/materialize_initialize.js' %}"></script>
     <script>
         $(document).ready(function () {
             materialize_initiailize()
         });
     </script>
-{% endblock %}
+    {% block extrajs %}
+    {% endblock %}
+</div>
 </body>
 </html>
