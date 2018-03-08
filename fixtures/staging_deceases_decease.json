@@ -1,15 +1,19 @@
 [
-{
-  "model": "deceases.decease",
-  "pk": 1,
-  "fields": {
-    "name": "\u0413\u0440\u044b\u0436\u0430",
-    "chronic": true,
-    "duration": 1000,
-    "contagiousness": 0,
-    "malignancy": 50,
-    "first_aid": "\u043b\u043e\u0436\u0438\u0442\u0435\u0441\u044c",
-    "occurrence": 1
+  {
+    "model": "deceases.decease",
+    "pk": 1,
+    "fields": {
+      "name": "decease",
+      "chronic": "True",
+      "duration": 10,
+      "contagiousness": 50,
+      "malignancy": 50,
+      "description": "d",
+      "diagnostics": "d",
+      "treatment": "d",
+      "passing": "d",
+      "recommendations": "d",
+      "occurrence": 1
+    }
   }
-}
 ]
