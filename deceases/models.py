@@ -11,13 +11,13 @@ class BodyArea(models.Model):
     name = models.CharField(max_length=256, unique=True)
 
 
-class Bodypart(models.Model):
+class BodyPart(models.Model):
     body_area = models.ForeignKey(BodyArea, on_delete=models.PROTECT)
     name = models.CharField(max_length=256, unique=True)
 
 
 class Symptom(models.Model):
-    body_part = models.ForeignKey(Bodypart, on_delete=models.PROTECT, blank=True, null=True)
+    body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, blank=True, null=True)
     name = models.CharField(max_length=512, db_index=True, unique=True)
     aliases = models.TextField(validators=[comma_separated_field], blank=True, null=True)
 

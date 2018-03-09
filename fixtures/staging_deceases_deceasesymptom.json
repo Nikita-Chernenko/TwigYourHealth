@@ -8,5 +8,9725 @@
     "chances": 100,
     "occurrence": 1
   }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 2,
+  "fields": {
+    "symptom": 2,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 3,
+  "fields": {
+    "symptom": 3,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 4,
+  "fields": {
+    "symptom": 4,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 5,
+  "fields": {
+    "symptom": 5,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 6,
+  "fields": {
+    "symptom": 6,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 7,
+  "fields": {
+    "symptom": 7,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 8,
+  "fields": {
+    "symptom": 8,
+    "decease": 2,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 9,
+  "fields": {
+    "symptom": 9,
+    "decease": 2,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 10,
+  "fields": {
+    "symptom": 10,
+    "decease": 3,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 11,
+  "fields": {
+    "symptom": 11,
+    "decease": 3,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 12,
+  "fields": {
+    "symptom": 12,
+    "decease": 3,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 13,
+  "fields": {
+    "symptom": 13,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 14,
+  "fields": {
+    "symptom": 14,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 15,
+  "fields": {
+    "symptom": 15,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 16,
+  "fields": {
+    "symptom": 16,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 17,
+  "fields": {
+    "symptom": 17,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 18,
+  "fields": {
+    "symptom": 18,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 19,
+  "fields": {
+    "symptom": 19,
+    "decease": 4,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 20,
+  "fields": {
+    "symptom": 20,
+    "decease": 4,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 21,
+  "fields": {
+    "symptom": 9,
+    "decease": 4,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 22,
+  "fields": {
+    "symptom": 21,
+    "decease": 4,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 23,
+  "fields": {
+    "symptom": 22,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 24,
+  "fields": {
+    "symptom": 23,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 25,
+  "fields": {
+    "symptom": 10,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 26,
+  "fields": {
+    "symptom": 24,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 27,
+  "fields": {
+    "symptom": 25,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 28,
+  "fields": {
+    "symptom": 26,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 29,
+  "fields": {
+    "symptom": 11,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 30,
+  "fields": {
+    "symptom": 27,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 31,
+  "fields": {
+    "symptom": 28,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 32,
+  "fields": {
+    "symptom": 29,
+    "decease": 4,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 33,
+  "fields": {
+    "symptom": 30,
+    "decease": 4,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 34,
+  "fields": {
+    "symptom": 31,
+    "decease": 4,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 35,
+  "fields": {
+    "symptom": 32,
+    "decease": 4,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 36,
+  "fields": {
+    "symptom": 33,
+    "decease": 4,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 37,
+  "fields": {
+    "symptom": 34,
+    "decease": 5,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 38,
+  "fields": {
+    "symptom": 35,
+    "decease": 5,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 39,
+  "fields": {
+    "symptom": 36,
+    "decease": 5,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 40,
+  "fields": {
+    "symptom": 37,
+    "decease": 5,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 41,
+  "fields": {
+    "symptom": 38,
+    "decease": 5,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 42,
+  "fields": {
+    "symptom": 22,
+    "decease": 5,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 43,
+  "fields": {
+    "symptom": 27,
+    "decease": 5,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 44,
+  "fields": {
+    "symptom": 39,
+    "decease": 5,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 45,
+  "fields": {
+    "symptom": 40,
+    "decease": 5,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 46,
+  "fields": {
+    "symptom": 41,
+    "decease": 5,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 47,
+  "fields": {
+    "symptom": 28,
+    "decease": 8,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 48,
+  "fields": {
+    "symptom": 42,
+    "decease": 8,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 49,
+  "fields": {
+    "symptom": 43,
+    "decease": 8,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 50,
+  "fields": {
+    "symptom": 30,
+    "decease": 8,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 51,
+  "fields": {
+    "symptom": 44,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 52,
+  "fields": {
+    "symptom": 45,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 53,
+  "fields": {
+    "symptom": 46,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 54,
+  "fields": {
+    "symptom": 47,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 55,
+  "fields": {
+    "symptom": 48,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 56,
+  "fields": {
+    "symptom": 49,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 57,
+  "fields": {
+    "symptom": 50,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 58,
+  "fields": {
+    "symptom": 51,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 59,
+  "fields": {
+    "symptom": 52,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 60,
+  "fields": {
+    "symptom": 53,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 61,
+  "fields": {
+    "symptom": 54,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 62,
+  "fields": {
+    "symptom": 55,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 63,
+  "fields": {
+    "symptom": 56,
+    "decease": 9,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 64,
+  "fields": {
+    "symptom": 57,
+    "decease": 9,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 65,
+  "fields": {
+    "symptom": 58,
+    "decease": 9,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 66,
+  "fields": {
+    "symptom": 59,
+    "decease": 9,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 67,
+  "fields": {
+    "symptom": 60,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 68,
+  "fields": {
+    "symptom": 61,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 69,
+  "fields": {
+    "symptom": 62,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 70,
+  "fields": {
+    "symptom": 63,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 71,
+  "fields": {
+    "symptom": 64,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 72,
+  "fields": {
+    "symptom": 65,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 73,
+  "fields": {
+    "symptom": 9,
+    "decease": 10,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 74,
+  "fields": {
+    "symptom": 66,
+    "decease": 10,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 75,
+  "fields": {
+    "symptom": 21,
+    "decease": 10,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 76,
+  "fields": {
+    "symptom": 67,
+    "decease": 10,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 77,
+  "fields": {
+    "symptom": 22,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 78,
+  "fields": {
+    "symptom": 23,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 79,
+  "fields": {
+    "symptom": 10,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 80,
+  "fields": {
+    "symptom": 20,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 81,
+  "fields": {
+    "symptom": 24,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 82,
+  "fields": {
+    "symptom": 25,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 83,
+  "fields": {
+    "symptom": 26,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 84,
+  "fields": {
+    "symptom": 31,
+    "decease": 10,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 85,
+  "fields": {
+    "symptom": 30,
+    "decease": 10,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 86,
+  "fields": {
+    "symptom": 32,
+    "decease": 10,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 87,
+  "fields": {
+    "symptom": 11,
+    "decease": 10,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 88,
+  "fields": {
+    "symptom": 27,
+    "decease": 10,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 89,
+  "fields": {
+    "symptom": 28,
+    "decease": 10,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 90,
+  "fields": {
+    "symptom": 33,
+    "decease": 10,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 91,
+  "fields": {
+    "symptom": 41,
+    "decease": 11,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 92,
+  "fields": {
+    "symptom": 68,
+    "decease": 11,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 93,
+  "fields": {
+    "symptom": 69,
+    "decease": 11,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 94,
+  "fields": {
+    "symptom": 22,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 95,
+  "fields": {
+    "symptom": 23,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 96,
+  "fields": {
+    "symptom": 10,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 97,
+  "fields": {
+    "symptom": 20,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 98,
+  "fields": {
+    "symptom": 24,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 99,
+  "fields": {
+    "symptom": 25,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 100,
+  "fields": {
+    "symptom": 67,
+    "decease": 11,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 101,
+  "fields": {
+    "symptom": 30,
+    "decease": 11,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 102,
+  "fields": {
+    "symptom": 26,
+    "decease": 11,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 103,
+  "fields": {
+    "symptom": 28,
+    "decease": 11,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 104,
+  "fields": {
+    "symptom": 21,
+    "decease": 11,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 105,
+  "fields": {
+    "symptom": 11,
+    "decease": 11,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 106,
+  "fields": {
+    "symptom": 27,
+    "decease": 11,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 107,
+  "fields": {
+    "symptom": 70,
+    "decease": 11,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 108,
+  "fields": {
+    "symptom": 33,
+    "decease": 11,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 109,
+  "fields": {
+    "symptom": 66,
+    "decease": 11,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 110,
+  "fields": {
+    "symptom": 32,
+    "decease": 11,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 111,
+  "fields": {
+    "symptom": 71,
+    "decease": 11,
+    "chances": 15,
+    "occurrence": 15
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 112,
+  "fields": {
+    "symptom": 72,
+    "decease": 12,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 113,
+  "fields": {
+    "symptom": 73,
+    "decease": 12,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 114,
+  "fields": {
+    "symptom": 74,
+    "decease": 13,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 115,
+  "fields": {
+    "symptom": 22,
+    "decease": 13,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 116,
+  "fields": {
+    "symptom": 27,
+    "decease": 13,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 117,
+  "fields": {
+    "symptom": 75,
+    "decease": 13,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 118,
+  "fields": {
+    "symptom": 23,
+    "decease": 14,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 119,
+  "fields": {
+    "symptom": 76,
+    "decease": 14,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 120,
+  "fields": {
+    "symptom": 77,
+    "decease": 14,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 121,
+  "fields": {
+    "symptom": 26,
+    "decease": 14,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 122,
+  "fields": {
+    "symptom": 78,
+    "decease": 14,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 123,
+  "fields": {
+    "symptom": 79,
+    "decease": 14,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 124,
+  "fields": {
+    "symptom": 80,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 125,
+  "fields": {
+    "symptom": 81,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 126,
+  "fields": {
+    "symptom": 82,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 127,
+  "fields": {
+    "symptom": 83,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 128,
+  "fields": {
+    "symptom": 84,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 129,
+  "fields": {
+    "symptom": 85,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 130,
+  "fields": {
+    "symptom": 86,
+    "decease": 15,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 131,
+  "fields": {
+    "symptom": 69,
+    "decease": 15,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 132,
+  "fields": {
+    "symptom": 87,
+    "decease": 15,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 133,
+  "fields": {
+    "symptom": 23,
+    "decease": 15,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 134,
+  "fields": {
+    "symptom": 88,
+    "decease": 15,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 135,
+  "fields": {
+    "symptom": 89,
+    "decease": 15,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 136,
+  "fields": {
+    "symptom": 90,
+    "decease": 15,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 137,
+  "fields": {
+    "symptom": 68,
+    "decease": 15,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 138,
+  "fields": {
+    "symptom": 91,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 139,
+  "fields": {
+    "symptom": 92,
+    "decease": 15,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 140,
+  "fields": {
+    "symptom": 87,
+    "decease": 16,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 141,
+  "fields": {
+    "symptom": 93,
+    "decease": 16,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 142,
+  "fields": {
+    "symptom": 90,
+    "decease": 16,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 143,
+  "fields": {
+    "symptom": 68,
+    "decease": 16,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 144,
+  "fields": {
+    "symptom": 94,
+    "decease": 17,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 145,
+  "fields": {
+    "symptom": 95,
+    "decease": 17,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 146,
+  "fields": {
+    "symptom": 96,
+    "decease": 17,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 147,
+  "fields": {
+    "symptom": 97,
+    "decease": 18,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 148,
+  "fields": {
+    "symptom": 98,
+    "decease": 18,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 149,
+  "fields": {
+    "symptom": 99,
+    "decease": 18,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 150,
+  "fields": {
+    "symptom": 100,
+    "decease": 18,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 151,
+  "fields": {
+    "symptom": 101,
+    "decease": 18,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 152,
+  "fields": {
+    "symptom": 102,
+    "decease": 18,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 153,
+  "fields": {
+    "symptom": 103,
+    "decease": 18,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 154,
+  "fields": {
+    "symptom": 103,
+    "decease": 19,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 155,
+  "fields": {
+    "symptom": 104,
+    "decease": 19,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 156,
+  "fields": {
+    "symptom": 105,
+    "decease": 20,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 157,
+  "fields": {
+    "symptom": 106,
+    "decease": 20,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 158,
+  "fields": {
+    "symptom": 107,
+    "decease": 21,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 159,
+  "fields": {
+    "symptom": 101,
+    "decease": 21,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 160,
+  "fields": {
+    "symptom": 108,
+    "decease": 21,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 161,
+  "fields": {
+    "symptom": 109,
+    "decease": 22,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 162,
+  "fields": {
+    "symptom": 110,
+    "decease": 23,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 163,
+  "fields": {
+    "symptom": 103,
+    "decease": 23,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 164,
+  "fields": {
+    "symptom": 104,
+    "decease": 23,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 165,
+  "fields": {
+    "symptom": 99,
+    "decease": 23,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 166,
+  "fields": {
+    "symptom": 111,
+    "decease": 23,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 167,
+  "fields": {
+    "symptom": 112,
+    "decease": 24,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 168,
+  "fields": {
+    "symptom": 103,
+    "decease": 24,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 169,
+  "fields": {
+    "symptom": 99,
+    "decease": 24,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 170,
+  "fields": {
+    "symptom": 113,
+    "decease": 24,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 171,
+  "fields": {
+    "symptom": 114,
+    "decease": 25,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 172,
+  "fields": {
+    "symptom": 106,
+    "decease": 25,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 173,
+  "fields": {
+    "symptom": 109,
+    "decease": 25,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 174,
+  "fields": {
+    "symptom": 109,
+    "decease": 26,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 175,
+  "fields": {
+    "symptom": 115,
+    "decease": 26,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 176,
+  "fields": {
+    "symptom": 116,
+    "decease": 27,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 177,
+  "fields": {
+    "symptom": 103,
+    "decease": 27,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 178,
+  "fields": {
+    "symptom": 109,
+    "decease": 27,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 179,
+  "fields": {
+    "symptom": 99,
+    "decease": 28,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 180,
+  "fields": {
+    "symptom": 98,
+    "decease": 28,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 181,
+  "fields": {
+    "symptom": 100,
+    "decease": 28,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 182,
+  "fields": {
+    "symptom": 103,
+    "decease": 28,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 183,
+  "fields": {
+    "symptom": 102,
+    "decease": 28,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 184,
+  "fields": {
+    "symptom": 117,
+    "decease": 29,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 185,
+  "fields": {
+    "symptom": 118,
+    "decease": 29,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 186,
+  "fields": {
+    "symptom": 119,
+    "decease": 29,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 187,
+  "fields": {
+    "symptom": 120,
+    "decease": 29,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 188,
+  "fields": {
+    "symptom": 121,
+    "decease": 30,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 189,
+  "fields": {
+    "symptom": 122,
+    "decease": 30,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 190,
+  "fields": {
+    "symptom": 123,
+    "decease": 30,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 191,
+  "fields": {
+    "symptom": 109,
+    "decease": 30,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 192,
+  "fields": {
+    "symptom": 124,
+    "decease": 30,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 193,
+  "fields": {
+    "symptom": 116,
+    "decease": 32,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 194,
+  "fields": {
+    "symptom": 109,
+    "decease": 32,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 195,
+  "fields": {
+    "symptom": 103,
+    "decease": 32,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 196,
+  "fields": {
+    "symptom": 125,
+    "decease": 32,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 197,
+  "fields": {
+    "symptom": 126,
+    "decease": 32,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 198,
+  "fields": {
+    "symptom": 127,
+    "decease": 32,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 199,
+  "fields": {
+    "symptom": 127,
+    "decease": 33,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 200,
+  "fields": {
+    "symptom": 125,
+    "decease": 33,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 201,
+  "fields": {
+    "symptom": 109,
+    "decease": 33,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 202,
+  "fields": {
+    "symptom": 126,
+    "decease": 33,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 203,
+  "fields": {
+    "symptom": 128,
+    "decease": 34,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 204,
+  "fields": {
+    "symptom": 118,
+    "decease": 34,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 205,
+  "fields": {
+    "symptom": 129,
+    "decease": 34,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 206,
+  "fields": {
+    "symptom": 130,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 207,
+  "fields": {
+    "symptom": 131,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 208,
+  "fields": {
+    "symptom": 132,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 209,
+  "fields": {
+    "symptom": 133,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 210,
+  "fields": {
+    "symptom": 134,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 211,
+  "fields": {
+    "symptom": 135,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 212,
+  "fields": {
+    "symptom": 136,
+    "decease": 35,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 213,
+  "fields": {
+    "symptom": 137,
+    "decease": 35,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 214,
+  "fields": {
+    "symptom": 116,
+    "decease": 35,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 215,
+  "fields": {
+    "symptom": 99,
+    "decease": 35,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 216,
+  "fields": {
+    "symptom": 103,
+    "decease": 35,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 217,
+  "fields": {
+    "symptom": 109,
+    "decease": 35,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 218,
+  "fields": {
+    "symptom": 138,
+    "decease": 36,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 219,
+  "fields": {
+    "symptom": 109,
+    "decease": 36,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 220,
+  "fields": {
+    "symptom": 106,
+    "decease": 36,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 221,
+  "fields": {
+    "symptom": 139,
+    "decease": 37,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 222,
+  "fields": {
+    "symptom": 140,
+    "decease": 37,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 223,
+  "fields": {
+    "symptom": 109,
+    "decease": 38,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 224,
+  "fields": {
+    "symptom": 114,
+    "decease": 38,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 225,
+  "fields": {
+    "symptom": 141,
+    "decease": 38,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 226,
+  "fields": {
+    "symptom": 141,
+    "decease": 39,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 227,
+  "fields": {
+    "symptom": 142,
+    "decease": 39,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 228,
+  "fields": {
+    "symptom": 143,
+    "decease": 39,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 229,
+  "fields": {
+    "symptom": 109,
+    "decease": 40,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 230,
+  "fields": {
+    "symptom": 101,
+    "decease": 40,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 231,
+  "fields": {
+    "symptom": 116,
+    "decease": 40,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 232,
+  "fields": {
+    "symptom": 109,
+    "decease": 41,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 233,
+  "fields": {
+    "symptom": 101,
+    "decease": 41,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 234,
+  "fields": {
+    "symptom": 99,
+    "decease": 41,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 235,
+  "fields": {
+    "symptom": 107,
+    "decease": 42,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 236,
+  "fields": {
+    "symptom": 101,
+    "decease": 42,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 237,
+  "fields": {
+    "symptom": 32,
+    "decease": 42,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 238,
+  "fields": {
+    "symptom": 139,
+    "decease": 42,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 239,
+  "fields": {
+    "symptom": 144,
+    "decease": 42,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 240,
+  "fields": {
+    "symptom": 101,
+    "decease": 43,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 241,
+  "fields": {
+    "symptom": 145,
+    "decease": 43,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 242,
+  "fields": {
+    "symptom": 115,
+    "decease": 43,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 243,
+  "fields": {
+    "symptom": 109,
+    "decease": 43,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 244,
+  "fields": {
+    "symptom": 120,
+    "decease": 45,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 245,
+  "fields": {
+    "symptom": 122,
+    "decease": 45,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 246,
+  "fields": {
+    "symptom": 112,
+    "decease": 47,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 247,
+  "fields": {
+    "symptom": 146,
+    "decease": 47,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 248,
+  "fields": {
+    "symptom": 147,
+    "decease": 47,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 249,
+  "fields": {
+    "symptom": 148,
+    "decease": 47,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 250,
+  "fields": {
+    "symptom": 101,
+    "decease": 47,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 251,
+  "fields": {
+    "symptom": 109,
+    "decease": 47,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 252,
+  "fields": {
+    "symptom": 149,
+    "decease": 47,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 253,
+  "fields": {
+    "symptom": 150,
+    "decease": 47,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 254,
+  "fields": {
+    "symptom": 151,
+    "decease": 48,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 255,
+  "fields": {
+    "symptom": 99,
+    "decease": 48,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 256,
+  "fields": {
+    "symptom": 101,
+    "decease": 48,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 257,
+  "fields": {
+    "symptom": 109,
+    "decease": 48,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 258,
+  "fields": {
+    "symptom": 109,
+    "decease": 49,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 259,
+  "fields": {
+    "symptom": 98,
+    "decease": 49,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 260,
+  "fields": {
+    "symptom": 117,
+    "decease": 49,
+    "chances": 85,
+    "occurrence": 85
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 261,
+  "fields": {
+    "symptom": 120,
+    "decease": 49,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 262,
+  "fields": {
+    "symptom": 118,
+    "decease": 50,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 263,
+  "fields": {
+    "symptom": 152,
+    "decease": 51,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 264,
+  "fields": {
+    "symptom": 153,
+    "decease": 52,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 265,
+  "fields": {
+    "symptom": 144,
+    "decease": 52,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 266,
+  "fields": {
+    "symptom": 109,
+    "decease": 52,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 267,
+  "fields": {
+    "symptom": 119,
+    "decease": 52,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 268,
+  "fields": {
+    "symptom": 112,
+    "decease": 53,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 269,
+  "fields": {
+    "symptom": 103,
+    "decease": 53,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 270,
+  "fields": {
+    "symptom": 109,
+    "decease": 53,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 271,
+  "fields": {
+    "symptom": 154,
+    "decease": 53,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 272,
+  "fields": {
+    "symptom": 114,
+    "decease": 54,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 273,
+  "fields": {
+    "symptom": 126,
+    "decease": 54,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 274,
+  "fields": {
+    "symptom": 151,
+    "decease": 55,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 275,
+  "fields": {
+    "symptom": 102,
+    "decease": 55,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 276,
+  "fields": {
+    "symptom": 103,
+    "decease": 55,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 277,
+  "fields": {
+    "symptom": 155,
+    "decease": 55,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 278,
+  "fields": {
+    "symptom": 156,
+    "decease": 56,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 279,
+  "fields": {
+    "symptom": 109,
+    "decease": 56,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 280,
+  "fields": {
+    "symptom": 117,
+    "decease": 56,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 281,
+  "fields": {
+    "symptom": 157,
+    "decease": 57,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 282,
+  "fields": {
+    "symptom": 104,
+    "decease": 57,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 283,
+  "fields": {
+    "symptom": 158,
+    "decease": 57,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 284,
+  "fields": {
+    "symptom": 102,
+    "decease": 57,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 285,
+  "fields": {
+    "symptom": 116,
+    "decease": 57,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 286,
+  "fields": {
+    "symptom": 111,
+    "decease": 57,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 287,
+  "fields": {
+    "symptom": 99,
+    "decease": 57,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 288,
+  "fields": {
+    "symptom": 103,
+    "decease": 57,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 289,
+  "fields": {
+    "symptom": 156,
+    "decease": 58,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 290,
+  "fields": {
+    "symptom": 109,
+    "decease": 58,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 291,
+  "fields": {
+    "symptom": 159,
+    "decease": 58,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 292,
+  "fields": {
+    "symptom": 122,
+    "decease": 58,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 293,
+  "fields": {
+    "symptom": 119,
+    "decease": 58,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 294,
+  "fields": {
+    "symptom": 112,
+    "decease": 59,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 295,
+  "fields": {
+    "symptom": 146,
+    "decease": 59,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 296,
+  "fields": {
+    "symptom": 147,
+    "decease": 59,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 297,
+  "fields": {
+    "symptom": 109,
+    "decease": 59,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 298,
+  "fields": {
+    "symptom": 116,
+    "decease": 60,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 299,
+  "fields": {
+    "symptom": 160,
+    "decease": 60,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 300,
+  "fields": {
+    "symptom": 109,
+    "decease": 60,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 301,
+  "fields": {
+    "symptom": 102,
+    "decease": 61,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 302,
+  "fields": {
+    "symptom": 101,
+    "decease": 61,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 303,
+  "fields": {
+    "symptom": 109,
+    "decease": 61,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 304,
+  "fields": {
+    "symptom": 149,
+    "decease": 61,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 305,
+  "fields": {
+    "symptom": 103,
+    "decease": 61,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 306,
+  "fields": {
+    "symptom": 102,
+    "decease": 62,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 307,
+  "fields": {
+    "symptom": 104,
+    "decease": 62,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 308,
+  "fields": {
+    "symptom": 101,
+    "decease": 62,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 309,
+  "fields": {
+    "symptom": 161,
+    "decease": 62,
+    "chances": 85,
+    "occurrence": 85
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 310,
+  "fields": {
+    "symptom": 162,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 311,
+  "fields": {
+    "symptom": 163,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 312,
+  "fields": {
+    "symptom": 164,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 313,
+  "fields": {
+    "symptom": 165,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 314,
+  "fields": {
+    "symptom": 166,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 315,
+  "fields": {
+    "symptom": 167,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 316,
+  "fields": {
+    "symptom": 103,
+    "decease": 63,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 317,
+  "fields": {
+    "symptom": 102,
+    "decease": 63,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 318,
+  "fields": {
+    "symptom": 101,
+    "decease": 63,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 319,
+  "fields": {
+    "symptom": 109,
+    "decease": 63,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 320,
+  "fields": {
+    "symptom": 168,
+    "decease": 64,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 321,
+  "fields": {
+    "symptom": 109,
+    "decease": 65,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 322,
+  "fields": {
+    "symptom": 117,
+    "decease": 65,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 323,
+  "fields": {
+    "symptom": 100,
+    "decease": 66,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 324,
+  "fields": {
+    "symptom": 107,
+    "decease": 66,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 325,
+  "fields": {
+    "symptom": 151,
+    "decease": 66,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 326,
+  "fields": {
+    "symptom": 107,
+    "decease": 67,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 327,
+  "fields": {
+    "symptom": 109,
+    "decease": 67,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 328,
+  "fields": {
+    "symptom": 101,
+    "decease": 67,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 329,
+  "fields": {
+    "symptom": 117,
+    "decease": 68,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 330,
+  "fields": {
+    "symptom": 119,
+    "decease": 68,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 331,
+  "fields": {
+    "symptom": 169,
+    "decease": 68,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 332,
+  "fields": {
+    "symptom": 156,
+    "decease": 69,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 333,
+  "fields": {
+    "symptom": 120,
+    "decease": 69,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 334,
+  "fields": {
+    "symptom": 142,
+    "decease": 69,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 335,
+  "fields": {
+    "symptom": 122,
+    "decease": 69,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 336,
+  "fields": {
+    "symptom": 143,
+    "decease": 70,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 337,
+  "fields": {
+    "symptom": 170,
+    "decease": 70,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 338,
+  "fields": {
+    "symptom": 103,
+    "decease": 70,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 339,
+  "fields": {
+    "symptom": 102,
+    "decease": 70,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 340,
+  "fields": {
+    "symptom": 141,
+    "decease": 71,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 341,
+  "fields": {
+    "symptom": 102,
+    "decease": 71,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 342,
+  "fields": {
+    "symptom": 143,
+    "decease": 71,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 343,
+  "fields": {
+    "symptom": 171,
+    "decease": 71,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 344,
+  "fields": {
+    "symptom": 103,
+    "decease": 71,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 345,
+  "fields": {
+    "symptom": 143,
+    "decease": 72,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 346,
+  "fields": {
+    "symptom": 109,
+    "decease": 72,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 347,
+  "fields": {
+    "symptom": 145,
+    "decease": 72,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 348,
+  "fields": {
+    "symptom": 123,
+    "decease": 72,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 349,
+  "fields": {
+    "symptom": 115,
+    "decease": 72,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 350,
+  "fields": {
+    "symptom": 109,
+    "decease": 73,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 351,
+  "fields": {
+    "symptom": 101,
+    "decease": 73,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 352,
+  "fields": {
+    "symptom": 107,
+    "decease": 74,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 353,
+  "fields": {
+    "symptom": 139,
+    "decease": 74,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 354,
+  "fields": {
+    "symptom": 101,
+    "decease": 74,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 355,
+  "fields": {
+    "symptom": 157,
+    "decease": 74,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 356,
+  "fields": {
+    "symptom": 144,
+    "decease": 74,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 357,
+  "fields": {
+    "symptom": 32,
+    "decease": 74,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 358,
+  "fields": {
+    "symptom": 117,
+    "decease": 75,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 359,
+  "fields": {
+    "symptom": 109,
+    "decease": 75,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 360,
+  "fields": {
+    "symptom": 129,
+    "decease": 75,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 361,
+  "fields": {
+    "symptom": 99,
+    "decease": 75,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 362,
+  "fields": {
+    "symptom": 109,
+    "decease": 76,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 363,
+  "fields": {
+    "symptom": 143,
+    "decease": 76,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 364,
+  "fields": {
+    "symptom": 99,
+    "decease": 76,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 365,
+  "fields": {
+    "symptom": 172,
+    "decease": 76,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 366,
+  "fields": {
+    "symptom": 127,
+    "decease": 77,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 367,
+  "fields": {
+    "symptom": 109,
+    "decease": 77,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 368,
+  "fields": {
+    "symptom": 101,
+    "decease": 77,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 369,
+  "fields": {
+    "symptom": 126,
+    "decease": 77,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 370,
+  "fields": {
+    "symptom": 173,
+    "decease": 78,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 371,
+  "fields": {
+    "symptom": 102,
+    "decease": 78,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 372,
+  "fields": {
+    "symptom": 109,
+    "decease": 78,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 373,
+  "fields": {
+    "symptom": 117,
+    "decease": 79,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 374,
+  "fields": {
+    "symptom": 151,
+    "decease": 79,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 375,
+  "fields": {
+    "symptom": 104,
+    "decease": 79,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 376,
+  "fields": {
+    "symptom": 174,
+    "decease": 79,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 377,
+  "fields": {
+    "symptom": 103,
+    "decease": 79,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 378,
+  "fields": {
+    "symptom": 102,
+    "decease": 79,
+    "chances": 65,
+    "occurrence": 65
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 379,
+  "fields": {
+    "symptom": 103,
+    "decease": 80,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 380,
+  "fields": {
+    "symptom": 141,
+    "decease": 80,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 381,
+  "fields": {
+    "symptom": 102,
+    "decease": 80,
+    "chances": 55,
+    "occurrence": 55
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 382,
+  "fields": {
+    "symptom": 117,
+    "decease": 81,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 383,
+  "fields": {
+    "symptom": 106,
+    "decease": 81,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 384,
+  "fields": {
+    "symptom": 123,
+    "decease": 81,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 385,
+  "fields": {
+    "symptom": 109,
+    "decease": 81,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 386,
+  "fields": {
+    "symptom": 109,
+    "decease": 82,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 387,
+  "fields": {
+    "symptom": 122,
+    "decease": 83,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 388,
+  "fields": {
+    "symptom": 120,
+    "decease": 83,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 389,
+  "fields": {
+    "symptom": 117,
+    "decease": 83,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 390,
+  "fields": {
+    "symptom": 109,
+    "decease": 83,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 391,
+  "fields": {
+    "symptom": 102,
+    "decease": 83,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 392,
+  "fields": {
+    "symptom": 119,
+    "decease": 83,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 393,
+  "fields": {
+    "symptom": 122,
+    "decease": 84,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 394,
+  "fields": {
+    "symptom": 123,
+    "decease": 84,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 395,
+  "fields": {
+    "symptom": 109,
+    "decease": 84,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 396,
+  "fields": {
+    "symptom": 143,
+    "decease": 84,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 397,
+  "fields": {
+    "symptom": 144,
+    "decease": 84,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 398,
+  "fields": {
+    "symptom": 109,
+    "decease": 85,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 399,
+  "fields": {
+    "symptom": 118,
+    "decease": 85,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 400,
+  "fields": {
+    "symptom": 117,
+    "decease": 85,
+    "chances": 75,
+    "occurrence": 75
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 401,
+  "fields": {
+    "symptom": 150,
+    "decease": 85,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 402,
+  "fields": {
+    "symptom": 126,
+    "decease": 86,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 403,
+  "fields": {
+    "symptom": 102,
+    "decease": 86,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 404,
+  "fields": {
+    "symptom": 175,
+    "decease": 86,
+    "chances": 35,
+    "occurrence": 35
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 405,
+  "fields": {
+    "symptom": 124,
+    "decease": 86,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 406,
+  "fields": {
+    "symptom": 176,
+    "decease": 87,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 407,
+  "fields": {
+    "symptom": 177,
+    "decease": 87,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 408,
+  "fields": {
+    "symptom": 178,
+    "decease": 87,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 409,
+  "fields": {
+    "symptom": 179,
+    "decease": 87,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 410,
+  "fields": {
+    "symptom": 180,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 411,
+  "fields": {
+    "symptom": 181,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 412,
+  "fields": {
+    "symptom": 182,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 413,
+  "fields": {
+    "symptom": 183,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 414,
+  "fields": {
+    "symptom": 184,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 415,
+  "fields": {
+    "symptom": 185,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 416,
+  "fields": {
+    "symptom": 186,
+    "decease": 88,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 417,
+  "fields": {
+    "symptom": 177,
+    "decease": 88,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 418,
+  "fields": {
+    "symptom": 187,
+    "decease": 88,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 419,
+  "fields": {
+    "symptom": 178,
+    "decease": 88,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 420,
+  "fields": {
+    "symptom": 115,
+    "decease": 88,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 421,
+  "fields": {
+    "symptom": 188,
+    "decease": 88,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 422,
+  "fields": {
+    "symptom": 189,
+    "decease": 88,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 423,
+  "fields": {
+    "symptom": 190,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 424,
+  "fields": {
+    "symptom": 191,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 425,
+  "fields": {
+    "symptom": 192,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 426,
+  "fields": {
+    "symptom": 193,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 427,
+  "fields": {
+    "symptom": 194,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 428,
+  "fields": {
+    "symptom": 195,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 429,
+  "fields": {
+    "symptom": 57,
+    "decease": 89,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 430,
+  "fields": {
+    "symptom": 196,
+    "decease": 89,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 431,
+  "fields": {
+    "symptom": 197,
+    "decease": 89,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 432,
+  "fields": {
+    "symptom": 198,
+    "decease": 89,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 433,
+  "fields": {
+    "symptom": 199,
+    "decease": 89,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 434,
+  "fields": {
+    "symptom": 200,
+    "decease": 89,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 435,
+  "fields": {
+    "symptom": 201,
+    "decease": 89,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 436,
+  "fields": {
+    "symptom": 202,
+    "decease": 90,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 437,
+  "fields": {
+    "symptom": 203,
+    "decease": 90,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 438,
+  "fields": {
+    "symptom": 196,
+    "decease": 90,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 439,
+  "fields": {
+    "symptom": 176,
+    "decease": 90,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 440,
+  "fields": {
+    "symptom": 177,
+    "decease": 90,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 441,
+  "fields": {
+    "symptom": 32,
+    "decease": 90,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 442,
+  "fields": {
+    "symptom": 178,
+    "decease": 90,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 443,
+  "fields": {
+    "symptom": 204,
+    "decease": 91,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 444,
+  "fields": {
+    "symptom": 205,
+    "decease": 91,
+    "chances": 15,
+    "occurrence": 15
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 445,
+  "fields": {
+    "symptom": 206,
+    "decease": 91,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 446,
+  "fields": {
+    "symptom": 207,
+    "decease": 92,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 447,
+  "fields": {
+    "symptom": 208,
+    "decease": 92,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 448,
+  "fields": {
+    "symptom": 209,
+    "decease": 92,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 449,
+  "fields": {
+    "symptom": 210,
+    "decease": 92,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 450,
+  "fields": {
+    "symptom": 211,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 451,
+  "fields": {
+    "symptom": 212,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 452,
+  "fields": {
+    "symptom": 192,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 453,
+  "fields": {
+    "symptom": 213,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 454,
+  "fields": {
+    "symptom": 214,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 455,
+  "fields": {
+    "symptom": 215,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 456,
+  "fields": {
+    "symptom": 216,
+    "decease": 93,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 457,
+  "fields": {
+    "symptom": 217,
+    "decease": 93,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 458,
+  "fields": {
+    "symptom": 218,
+    "decease": 93,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 459,
+  "fields": {
+    "symptom": 199,
+    "decease": 93,
+    "chances": 85,
+    "occurrence": 85
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 460,
+  "fields": {
+    "symptom": 219,
+    "decease": 93,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 461,
+  "fields": {
+    "symptom": 204,
+    "decease": 94,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 462,
+  "fields": {
+    "symptom": 196,
+    "decease": 94,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 463,
+  "fields": {
+    "symptom": 220,
+    "decease": 94,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 464,
+  "fields": {
+    "symptom": 176,
+    "decease": 94,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 465,
+  "fields": {
+    "symptom": 177,
+    "decease": 94,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 466,
+  "fields": {
+    "symptom": 178,
+    "decease": 94,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 467,
+  "fields": {
+    "symptom": 221,
+    "decease": 94,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 468,
+  "fields": {
+    "symptom": 222,
+    "decease": 94,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 469,
+  "fields": {
+    "symptom": 223,
+    "decease": 94,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 470,
+  "fields": {
+    "symptom": 224,
+    "decease": 94,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 471,
+  "fields": {
+    "symptom": 225,
+    "decease": 94,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 472,
+  "fields": {
+    "symptom": 226,
+    "decease": 94,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 473,
+  "fields": {
+    "symptom": 32,
+    "decease": 94,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 474,
+  "fields": {
+    "symptom": 227,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 475,
+  "fields": {
+    "symptom": 228,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 476,
+  "fields": {
+    "symptom": 229,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 477,
+  "fields": {
+    "symptom": 230,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 478,
+  "fields": {
+    "symptom": 231,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 479,
+  "fields": {
+    "symptom": 232,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 480,
+  "fields": {
+    "symptom": 233,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 481,
+  "fields": {
+    "symptom": 234,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 482,
+  "fields": {
+    "symptom": 235,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 483,
+  "fields": {
+    "symptom": 236,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 484,
+  "fields": {
+    "symptom": 237,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 485,
+  "fields": {
+    "symptom": 238,
+    "decease": 95,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 486,
+  "fields": {
+    "symptom": 199,
+    "decease": 95,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 487,
+  "fields": {
+    "symptom": 239,
+    "decease": 95,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 488,
+  "fields": {
+    "symptom": 240,
+    "decease": 95,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 489,
+  "fields": {
+    "symptom": 241,
+    "decease": 95,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 490,
+  "fields": {
+    "symptom": 242,
+    "decease": 95,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 491,
+  "fields": {
+    "symptom": 243,
+    "decease": 95,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 492,
+  "fields": {
+    "symptom": 244,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 493,
+  "fields": {
+    "symptom": 245,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 494,
+  "fields": {
+    "symptom": 246,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 495,
+  "fields": {
+    "symptom": 247,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 496,
+  "fields": {
+    "symptom": 248,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 497,
+  "fields": {
+    "symptom": 228,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 498,
+  "fields": {
+    "symptom": 249,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 499,
+  "fields": {
+    "symptom": 250,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 500,
+  "fields": {
+    "symptom": 238,
+    "decease": 96,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 501,
+  "fields": {
+    "symptom": 251,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 502,
+  "fields": {
+    "symptom": 239,
+    "decease": 96,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 503,
+  "fields": {
+    "symptom": 177,
+    "decease": 96,
+    "chances": 45,
+    "occurrence": 45
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 504,
+  "fields": {
+    "symptom": 252,
+    "decease": 96,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 505,
+  "fields": {
+    "symptom": 200,
+    "decease": 96,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 506,
+  "fields": {
+    "symptom": 253,
+    "decease": 96,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 507,
+  "fields": {
+    "symptom": 254,
+    "decease": 96,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 508,
+  "fields": {
+    "symptom": 199,
+    "decease": 96,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 509,
+  "fields": {
+    "symptom": 255,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 510,
+  "fields": {
+    "symptom": 256,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 511,
+  "fields": {
+    "symptom": 257,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 512,
+  "fields": {
+    "symptom": 258,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 513,
+  "fields": {
+    "symptom": 259,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 514,
+  "fields": {
+    "symptom": 260,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 515,
+  "fields": {
+    "symptom": 261,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 516,
+  "fields": {
+    "symptom": 262,
+    "decease": 97,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 517,
+  "fields": {
+    "symptom": 177,
+    "decease": 97,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 518,
+  "fields": {
+    "symptom": 263,
+    "decease": 97,
+    "chances": 85,
+    "occurrence": 85
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 519,
+  "fields": {
+    "symptom": 179,
+    "decease": 97,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 520,
+  "fields": {
+    "symptom": 178,
+    "decease": 97,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 521,
+  "fields": {
+    "symptom": 264,
+    "decease": 97,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 522,
+  "fields": {
+    "symptom": 265,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 523,
+  "fields": {
+    "symptom": 266,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 524,
+  "fields": {
+    "symptom": 262,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 525,
+  "fields": {
+    "symptom": 267,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 526,
+  "fields": {
+    "symptom": 268,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 527,
+  "fields": {
+    "symptom": 269,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 528,
+  "fields": {
+    "symptom": 195,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 529,
+  "fields": {
+    "symptom": 270,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 530,
+  "fields": {
+    "symptom": 271,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 531,
+  "fields": {
+    "symptom": 272,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 532,
+  "fields": {
+    "symptom": 177,
+    "decease": 98,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 533,
+  "fields": {
+    "symptom": 179,
+    "decease": 98,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 534,
+  "fields": {
+    "symptom": 239,
+    "decease": 98,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 535,
+  "fields": {
+    "symptom": 176,
+    "decease": 98,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 536,
+  "fields": {
+    "symptom": 264,
+    "decease": 98,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 537,
+  "fields": {
+    "symptom": 241,
+    "decease": 98,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 538,
+  "fields": {
+    "symptom": 273,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 539,
+  "fields": {
+    "symptom": 274,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 540,
+  "fields": {
+    "symptom": 275,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 541,
+  "fields": {
+    "symptom": 276,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 542,
+  "fields": {
+    "symptom": 277,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 543,
+  "fields": {
+    "symptom": 278,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 544,
+  "fields": {
+    "symptom": 279,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 545,
+  "fields": {
+    "symptom": 280,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 546,
+  "fields": {
+    "symptom": 281,
+    "decease": 99,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 547,
+  "fields": {
+    "symptom": 282,
+    "decease": 99,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 548,
+  "fields": {
+    "symptom": 283,
+    "decease": 99,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 549,
+  "fields": {
+    "symptom": 284,
+    "decease": 99,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 550,
+  "fields": {
+    "symptom": 285,
+    "decease": 99,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 551,
+  "fields": {
+    "symptom": 204,
+    "decease": 99,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 552,
+  "fields": {
+    "symptom": 179,
+    "decease": 99,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 553,
+  "fields": {
+    "symptom": 286,
+    "decease": 99,
+    "chances": 1,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 554,
+  "fields": {
+    "symptom": 287,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 555,
+  "fields": {
+    "symptom": 288,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 556,
+  "fields": {
+    "symptom": 289,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 557,
+  "fields": {
+    "symptom": 290,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 558,
+  "fields": {
+    "symptom": 291,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 559,
+  "fields": {
+    "symptom": 292,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 560,
+  "fields": {
+    "symptom": 293,
+    "decease": 100,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 561,
+  "fields": {
+    "symptom": 199,
+    "decease": 100,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 562,
+  "fields": {
+    "symptom": 294,
+    "decease": 100,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 563,
+  "fields": {
+    "symptom": 218,
+    "decease": 100,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 564,
+  "fields": {
+    "symptom": 295,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 565,
+  "fields": {
+    "symptom": 195,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 566,
+  "fields": {
+    "symptom": 296,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 567,
+  "fields": {
+    "symptom": 297,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 568,
+  "fields": {
+    "symptom": 298,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 569,
+  "fields": {
+    "symptom": 299,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 570,
+  "fields": {
+    "symptom": 300,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 571,
+  "fields": {
+    "symptom": 155,
+    "decease": 101,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 572,
+  "fields": {
+    "symptom": 301,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 573,
+  "fields": {
+    "symptom": 221,
+    "decease": 101,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 574,
+  "fields": {
+    "symptom": 302,
+    "decease": 101,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 575,
+  "fields": {
+    "symptom": 303,
+    "decease": 101,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 576,
+  "fields": {
+    "symptom": 304,
+    "decease": 101,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 577,
+  "fields": {
+    "symptom": 242,
+    "decease": 102,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 578,
+  "fields": {
+    "symptom": 305,
+    "decease": 102,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 579,
+  "fields": {
+    "symptom": 241,
+    "decease": 102,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 580,
+  "fields": {
+    "symptom": 225,
+    "decease": 102,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 581,
+  "fields": {
+    "symptom": 306,
+    "decease": 102,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 582,
+  "fields": {
+    "symptom": 307,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 583,
+  "fields": {
+    "symptom": 308,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 584,
+  "fields": {
+    "symptom": 309,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 585,
+  "fields": {
+    "symptom": 310,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 586,
+  "fields": {
+    "symptom": 311,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 587,
+  "fields": {
+    "symptom": 272,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 588,
+  "fields": {
+    "symptom": 277,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 589,
+  "fields": {
+    "symptom": 312,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 590,
+  "fields": {
+    "symptom": 279,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 591,
+  "fields": {
+    "symptom": 313,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 592,
+  "fields": {
+    "symptom": 238,
+    "decease": 103,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 593,
+  "fields": {
+    "symptom": 221,
+    "decease": 103,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 594,
+  "fields": {
+    "symptom": 204,
+    "decease": 103,
+    "chances": 75,
+    "occurrence": 75
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 595,
+  "fields": {
+    "symptom": 197,
+    "decease": 103,
+    "chances": 75,
+    "occurrence": 75
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 596,
+  "fields": {
+    "symptom": 225,
+    "decease": 103,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 597,
+  "fields": {
+    "symptom": 314,
+    "decease": 103,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 598,
+  "fields": {
+    "symptom": 241,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 599,
+  "fields": {
+    "symptom": 200,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 600,
+  "fields": {
+    "symptom": 226,
+    "decease": 103,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 601,
+  "fields": {
+    "symptom": 196,
+    "decease": 104,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 602,
+  "fields": {
+    "symptom": 315,
+    "decease": 104,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 603,
+  "fields": {
+    "symptom": 115,
+    "decease": 104,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 604,
+  "fields": {
+    "symptom": 179,
+    "decease": 104,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 605,
+  "fields": {
+    "symptom": 316,
+    "decease": 104,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 606,
+  "fields": {
+    "symptom": 285,
+    "decease": 104,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 607,
+  "fields": {
+    "symptom": 317,
+    "decease": 104,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 608,
+  "fields": {
+    "symptom": 318,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 609,
+  "fields": {
+    "symptom": 319,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 610,
+  "fields": {
+    "symptom": 320,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 611,
+  "fields": {
+    "symptom": 321,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 612,
+  "fields": {
+    "symptom": 322,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 613,
+  "fields": {
+    "symptom": 323,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 614,
+  "fields": {
+    "symptom": 324,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 615,
+  "fields": {
+    "symptom": 300,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 616,
+  "fields": {
+    "symptom": 325,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 617,
+  "fields": {
+    "symptom": 326,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 618,
+  "fields": {
+    "symptom": 327,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 619,
+  "fields": {
+    "symptom": 328,
+    "decease": 105,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 620,
+  "fields": {
+    "symptom": 329,
+    "decease": 105,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 621,
+  "fields": {
+    "symptom": 330,
+    "decease": 105,
+    "chances": 85,
+    "occurrence": 85
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 622,
+  "fields": {
+    "symptom": 177,
+    "decease": 105,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 623,
+  "fields": {
+    "symptom": 331,
+    "decease": 105,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 624,
+  "fields": {
+    "symptom": 199,
+    "decease": 106,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 625,
+  "fields": {
+    "symptom": 332,
+    "decease": 106,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 626,
+  "fields": {
+    "symptom": 282,
+    "decease": 107,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 627,
+  "fields": {
+    "symptom": 240,
+    "decease": 107,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 628,
+  "fields": {
+    "symptom": 254,
+    "decease": 107,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 629,
+  "fields": {
+    "symptom": 333,
+    "decease": 107,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 630,
+  "fields": {
+    "symptom": 238,
+    "decease": 107,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 631,
+  "fields": {
+    "symptom": 283,
+    "decease": 107,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 632,
+  "fields": {
+    "symptom": 334,
+    "decease": 107,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 633,
+  "fields": {
+    "symptom": 205,
+    "decease": 107,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 634,
+  "fields": {
+    "symptom": 335,
+    "decease": 109,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 635,
+  "fields": {
+    "symptom": 336,
+    "decease": 109,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 636,
+  "fields": {
+    "symptom": 337,
+    "decease": 109,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 637,
+  "fields": {
+    "symptom": 338,
+    "decease": 109,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 638,
+  "fields": {
+    "symptom": 339,
+    "decease": 109,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 639,
+  "fields": {
+    "symptom": 340,
+    "decease": 109,
+    "chances": 55,
+    "occurrence": 55
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 640,
+  "fields": {
+    "symptom": 341,
+    "decease": 110,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 641,
+  "fields": {
+    "symptom": 342,
+    "decease": 110,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 642,
+  "fields": {
+    "symptom": 343,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 643,
+  "fields": {
+    "symptom": 344,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 644,
+  "fields": {
+    "symptom": 345,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 645,
+  "fields": {
+    "symptom": 346,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 646,
+  "fields": {
+    "symptom": 347,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 647,
+  "fields": {
+    "symptom": 348,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 648,
+  "fields": {
+    "symptom": 349,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 649,
+  "fields": {
+    "symptom": 350,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 650,
+  "fields": {
+    "symptom": 179,
+    "decease": 111,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 651,
+  "fields": {
+    "symptom": 196,
+    "decease": 111,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 652,
+  "fields": {
+    "symptom": 351,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 653,
+  "fields": {
+    "symptom": 32,
+    "decease": 111,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 654,
+  "fields": {
+    "symptom": 352,
+    "decease": 111,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 655,
+  "fields": {
+    "symptom": 353,
+    "decease": 111,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 656,
+  "fields": {
+    "symptom": 339,
+    "decease": 111,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 657,
+  "fields": {
+    "symptom": 354,
+    "decease": 111,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 658,
+  "fields": {
+    "symptom": 338,
+    "decease": 111,
+    "chances": 15,
+    "occurrence": 15
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 659,
+  "fields": {
+    "symptom": 355,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 660,
+  "fields": {
+    "symptom": 356,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 661,
+  "fields": {
+    "symptom": 357,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 662,
+  "fields": {
+    "symptom": 358,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 663,
+  "fields": {
+    "symptom": 359,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 664,
+  "fields": {
+    "symptom": 360,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 665,
+  "fields": {
+    "symptom": 361,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 666,
+  "fields": {
+    "symptom": 65,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 667,
+  "fields": {
+    "symptom": 362,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 668,
+  "fields": {
+    "symptom": 363,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 669,
+  "fields": {
+    "symptom": 364,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 670,
+  "fields": {
+    "symptom": 196,
+    "decease": 112,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 671,
+  "fields": {
+    "symptom": 365,
+    "decease": 112,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 672,
+  "fields": {
+    "symptom": 366,
+    "decease": 112,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 673,
+  "fields": {
+    "symptom": 338,
+    "decease": 112,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 674,
+  "fields": {
+    "symptom": 367,
+    "decease": 112,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 675,
+  "fields": {
+    "symptom": 32,
+    "decease": 112,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 676,
+  "fields": {
+    "symptom": 351,
+    "decease": 112,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 677,
+  "fields": {
+    "symptom": 353,
+    "decease": 112,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 678,
+  "fields": {
+    "symptom": 368,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 679,
+  "fields": {
+    "symptom": 369,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 680,
+  "fields": {
+    "symptom": 337,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 681,
+  "fields": {
+    "symptom": 370,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 682,
+  "fields": {
+    "symptom": 359,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 683,
+  "fields": {
+    "symptom": 371,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 684,
+  "fields": {
+    "symptom": 351,
+    "decease": 113,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 685,
+  "fields": {
+    "symptom": 32,
+    "decease": 113,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 686,
+  "fields": {
+    "symptom": 253,
+    "decease": 113,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 687,
+  "fields": {
+    "symptom": 372,
+    "decease": 113,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 688,
+  "fields": {
+    "symptom": 373,
+    "decease": 113,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 689,
+  "fields": {
+    "symptom": 374,
+    "decease": 113,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 690,
+  "fields": {
+    "symptom": 204,
+    "decease": 114,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 691,
+  "fields": {
+    "symptom": 253,
+    "decease": 114,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 692,
+  "fields": {
+    "symptom": 375,
+    "decease": 114,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 693,
+  "fields": {
+    "symptom": 376,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 694,
+  "fields": {
+    "symptom": 377,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 695,
+  "fields": {
+    "symptom": 378,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 696,
+  "fields": {
+    "symptom": 379,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 697,
+  "fields": {
+    "symptom": 380,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 698,
+  "fields": {
+    "symptom": 381,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 699,
+  "fields": {
+    "symptom": 382,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 700,
+  "fields": {
+    "symptom": 383,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 701,
+  "fields": {
+    "symptom": 351,
+    "decease": 115,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 702,
+  "fields": {
+    "symptom": 367,
+    "decease": 115,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 703,
+  "fields": {
+    "symptom": 384,
+    "decease": 115,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 704,
+  "fields": {
+    "symptom": 385,
+    "decease": 115,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 705,
+  "fields": {
+    "symptom": 338,
+    "decease": 115,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 706,
+  "fields": {
+    "symptom": 196,
+    "decease": 115,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 707,
+  "fields": {
+    "symptom": 177,
+    "decease": 115,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 708,
+  "fields": {
+    "symptom": 32,
+    "decease": 115,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 709,
+  "fields": {
+    "symptom": 204,
+    "decease": 116,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 710,
+  "fields": {
+    "symptom": 385,
+    "decease": 116,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 711,
+  "fields": {
+    "symptom": 338,
+    "decease": 116,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 712,
+  "fields": {
+    "symptom": 372,
+    "decease": 116,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 713,
+  "fields": {
+    "symptom": 351,
+    "decease": 117,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 714,
+  "fields": {
+    "symptom": 386,
+    "decease": 117,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 715,
+  "fields": {
+    "symptom": 338,
+    "decease": 117,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 716,
+  "fields": {
+    "symptom": 387,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 717,
+  "fields": {
+    "symptom": 388,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 718,
+  "fields": {
+    "symptom": 389,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 719,
+  "fields": {
+    "symptom": 337,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 720,
+  "fields": {
+    "symptom": 390,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 721,
+  "fields": {
+    "symptom": 177,
+    "decease": 118,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 722,
+  "fields": {
+    "symptom": 179,
+    "decease": 118,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 723,
+  "fields": {
+    "symptom": 391,
+    "decease": 118,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 724,
+  "fields": {
+    "symptom": 32,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 725,
+  "fields": {
+    "symptom": 372,
+    "decease": 118,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 726,
+  "fields": {
+    "symptom": 351,
+    "decease": 118,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 727,
+  "fields": {
+    "symptom": 338,
+    "decease": 118,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 728,
+  "fields": {
+    "symptom": 392,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 729,
+  "fields": {
+    "symptom": 393,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 730,
+  "fields": {
+    "symptom": 394,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 731,
+  "fields": {
+    "symptom": 395,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 732,
+  "fields": {
+    "symptom": 396,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 733,
+  "fields": {
+    "symptom": 397,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 734,
+  "fields": {
+    "symptom": 398,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 735,
+  "fields": {
+    "symptom": 337,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 736,
+  "fields": {
+    "symptom": 399,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 737,
+  "fields": {
+    "symptom": 400,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 738,
+  "fields": {
+    "symptom": 401,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 739,
+  "fields": {
+    "symptom": 402,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 740,
+  "fields": {
+    "symptom": 403,
+    "decease": 119,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 741,
+  "fields": {
+    "symptom": 404,
+    "decease": 119,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 742,
+  "fields": {
+    "symptom": 405,
+    "decease": 119,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 743,
+  "fields": {
+    "symptom": 196,
+    "decease": 119,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 744,
+  "fields": {
+    "symptom": 179,
+    "decease": 119,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 745,
+  "fields": {
+    "symptom": 9,
+    "decease": 119,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 746,
+  "fields": {
+    "symptom": 406,
+    "decease": 119,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 747,
+  "fields": {
+    "symptom": 187,
+    "decease": 119,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 748,
+  "fields": {
+    "symptom": 407,
+    "decease": 119,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 749,
+  "fields": {
+    "symptom": 408,
+    "decease": 119,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 750,
+  "fields": {
+    "symptom": 409,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 751,
+  "fields": {
+    "symptom": 410,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 752,
+  "fields": {
+    "symptom": 411,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 753,
+  "fields": {
+    "symptom": 412,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 754,
+  "fields": {
+    "symptom": 413,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 755,
+  "fields": {
+    "symptom": 414,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 756,
+  "fields": {
+    "symptom": 415,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 757,
+  "fields": {
+    "symptom": 416,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 758,
+  "fields": {
+    "symptom": 373,
+    "decease": 120,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 759,
+  "fields": {
+    "symptom": 367,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 760,
+  "fields": {
+    "symptom": 253,
+    "decease": 120,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 761,
+  "fields": {
+    "symptom": 351,
+    "decease": 120,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 762,
+  "fields": {
+    "symptom": 406,
+    "decease": 120,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 763,
+  "fields": {
+    "symptom": 417,
+    "decease": 122,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 764,
+  "fields": {
+    "symptom": 418,
+    "decease": 122,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 765,
+  "fields": {
+    "symptom": 419,
+    "decease": 122,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 766,
+  "fields": {
+    "symptom": 420,
+    "decease": 122,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 767,
+  "fields": {
+    "symptom": 421,
+    "decease": 122,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 768,
+  "fields": {
+    "symptom": 351,
+    "decease": 122,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 769,
+  "fields": {
+    "symptom": 422,
+    "decease": 122,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 770,
+  "fields": {
+    "symptom": 196,
+    "decease": 122,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 771,
+  "fields": {
+    "symptom": 338,
+    "decease": 122,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 772,
+  "fields": {
+    "symptom": 366,
+    "decease": 122,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 773,
+  "fields": {
+    "symptom": 32,
+    "decease": 122,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 774,
+  "fields": {
+    "symptom": 365,
+    "decease": 122,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 775,
+  "fields": {
+    "symptom": 423,
+    "decease": 122,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 776,
+  "fields": {
+    "symptom": 353,
+    "decease": 122,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 777,
+  "fields": {
+    "symptom": 424,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 778,
+  "fields": {
+    "symptom": 425,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 779,
+  "fields": {
+    "symptom": 426,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 780,
+  "fields": {
+    "symptom": 427,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 781,
+  "fields": {
+    "symptom": 428,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 782,
+  "fields": {
+    "symptom": 429,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 783,
+  "fields": {
+    "symptom": 430,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 784,
+  "fields": {
+    "symptom": 423,
+    "decease": 123,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 785,
+  "fields": {
+    "symptom": 32,
+    "decease": 123,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 786,
+  "fields": {
+    "symptom": 367,
+    "decease": 123,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 787,
+  "fields": {
+    "symptom": 353,
+    "decease": 123,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 788,
+  "fields": {
+    "symptom": 431,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 789,
+  "fields": {
+    "symptom": 432,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 790,
+  "fields": {
+    "symptom": 433,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 791,
+  "fields": {
+    "symptom": 434,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 792,
+  "fields": {
+    "symptom": 435,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 793,
+  "fields": {
+    "symptom": 436,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 794,
+  "fields": {
+    "symptom": 437,
+    "decease": 124,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 795,
+  "fields": {
+    "symptom": 365,
+    "decease": 124,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 796,
+  "fields": {
+    "symptom": 367,
+    "decease": 124,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 797,
+  "fields": {
+    "symptom": 32,
+    "decease": 124,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 798,
+  "fields": {
+    "symptom": 196,
+    "decease": 124,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 799,
+  "fields": {
+    "symptom": 177,
+    "decease": 124,
+    "chances": 5,
+    "occurrence": 5
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 800,
+  "fields": {
+    "symptom": 438,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 801,
+  "fields": {
+    "symptom": 439,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 802,
+  "fields": {
+    "symptom": 440,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 803,
+  "fields": {
+    "symptom": 441,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 804,
+  "fields": {
+    "symptom": 442,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 805,
+  "fields": {
+    "symptom": 443,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 806,
+  "fields": {
+    "symptom": 444,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 807,
+  "fields": {
+    "symptom": 327,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 808,
+  "fields": {
+    "symptom": 445,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 809,
+  "fields": {
+    "symptom": 446,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 810,
+  "fields": {
+    "symptom": 447,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 811,
+  "fields": {
+    "symptom": 448,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 812,
+  "fields": {
+    "symptom": 449,
+    "decease": 125,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 813,
+  "fields": {
+    "symptom": 204,
+    "decease": 125,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 814,
+  "fields": {
+    "symptom": 338,
+    "decease": 125,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 815,
+  "fields": {
+    "symptom": 32,
+    "decease": 125,
+    "chances": 15,
+    "occurrence": 15
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 816,
+  "fields": {
+    "symptom": 450,
+    "decease": 126,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 817,
+  "fields": {
+    "symptom": 451,
+    "decease": 126,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 818,
+  "fields": {
+    "symptom": 452,
+    "decease": 126,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 819,
+  "fields": {
+    "symptom": 453,
+    "decease": 126,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 820,
+  "fields": {
+    "symptom": 454,
+    "decease": 126,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 821,
+  "fields": {
+    "symptom": 455,
+    "decease": 126,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 822,
+  "fields": {
+    "symptom": 351,
+    "decease": 126,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 823,
+  "fields": {
+    "symptom": 338,
+    "decease": 126,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 824,
+  "fields": {
+    "symptom": 365,
+    "decease": 126,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 825,
+  "fields": {
+    "symptom": 32,
+    "decease": 126,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 826,
+  "fields": {
+    "symptom": 366,
+    "decease": 126,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 827,
+  "fields": {
+    "symptom": 422,
+    "decease": 126,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 828,
+  "fields": {
+    "symptom": 367,
+    "decease": 126,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 829,
+  "fields": {
+    "symptom": 196,
+    "decease": 126,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 830,
+  "fields": {
+    "symptom": 456,
+    "decease": 127,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 831,
+  "fields": {
+    "symptom": 457,
+    "decease": 127,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 832,
+  "fields": {
+    "symptom": 458,
+    "decease": 127,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 833,
+  "fields": {
+    "symptom": 459,
+    "decease": 127,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 834,
+  "fields": {
+    "symptom": 460,
+    "decease": 127,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 835,
+  "fields": {
+    "symptom": 192,
+    "decease": 127,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 836,
+  "fields": {
+    "symptom": 200,
+    "decease": 127,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 837,
+  "fields": {
+    "symptom": 338,
+    "decease": 127,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 838,
+  "fields": {
+    "symptom": 179,
+    "decease": 127,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 839,
+  "fields": {
+    "symptom": 461,
+    "decease": 127,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 840,
+  "fields": {
+    "symptom": 189,
+    "decease": 127,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 841,
+  "fields": {
+    "symptom": 385,
+    "decease": 127,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 842,
+  "fields": {
+    "symptom": 462,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 843,
+  "fields": {
+    "symptom": 463,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 844,
+  "fields": {
+    "symptom": 464,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 845,
+  "fields": {
+    "symptom": 465,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 846,
+  "fields": {
+    "symptom": 466,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 847,
+  "fields": {
+    "symptom": 467,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 848,
+  "fields": {
+    "symptom": 468,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 849,
+  "fields": {
+    "symptom": 469,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 850,
+  "fields": {
+    "symptom": 470,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 851,
+  "fields": {
+    "symptom": 471,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 852,
+  "fields": {
+    "symptom": 472,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 853,
+  "fields": {
+    "symptom": 473,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 854,
+  "fields": {
+    "symptom": 474,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 855,
+  "fields": {
+    "symptom": 475,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 856,
+  "fields": {
+    "symptom": 476,
+    "decease": 128,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 857,
+  "fields": {
+    "symptom": 365,
+    "decease": 128,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 858,
+  "fields": {
+    "symptom": 338,
+    "decease": 128,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 859,
+  "fields": {
+    "symptom": 385,
+    "decease": 128,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 860,
+  "fields": {
+    "symptom": 367,
+    "decease": 128,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 861,
+  "fields": {
+    "symptom": 32,
+    "decease": 128,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 862,
+  "fields": {
+    "symptom": 177,
+    "decease": 128,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 863,
+  "fields": {
+    "symptom": 477,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 864,
+  "fields": {
+    "symptom": 478,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 865,
+  "fields": {
+    "symptom": 479,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 866,
+  "fields": {
+    "symptom": 480,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 867,
+  "fields": {
+    "symptom": 481,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 868,
+  "fields": {
+    "symptom": 482,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 869,
+  "fields": {
+    "symptom": 483,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 870,
+  "fields": {
+    "symptom": 484,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 871,
+  "fields": {
+    "symptom": 485,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 872,
+  "fields": {
+    "symptom": 366,
+    "decease": 129,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 873,
+  "fields": {
+    "symptom": 351,
+    "decease": 129,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 874,
+  "fields": {
+    "symptom": 423,
+    "decease": 129,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 875,
+  "fields": {
+    "symptom": 353,
+    "decease": 129,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 876,
+  "fields": {
+    "symptom": 365,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 877,
+  "fields": {
+    "symptom": 338,
+    "decease": 129,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 878,
+  "fields": {
+    "symptom": 367,
+    "decease": 129,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 879,
+  "fields": {
+    "symptom": 32,
+    "decease": 129,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 880,
+  "fields": {
+    "symptom": 486,
+    "decease": 130,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 881,
+  "fields": {
+    "symptom": 487,
+    "decease": 130,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 882,
+  "fields": {
+    "symptom": 488,
+    "decease": 130,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 883,
+  "fields": {
+    "symptom": 489,
+    "decease": 130,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 884,
+  "fields": {
+    "symptom": 490,
+    "decease": 130,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 885,
+  "fields": {
+    "symptom": 491,
+    "decease": 130,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 886,
+  "fields": {
+    "symptom": 492,
+    "decease": 130,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 887,
+  "fields": {
+    "symptom": 493,
+    "decease": 130,
+    "chances": 85,
+    "occurrence": 85
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 888,
+  "fields": {
+    "symptom": 406,
+    "decease": 130,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 889,
+  "fields": {
+    "symptom": 494,
+    "decease": 131,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 890,
+  "fields": {
+    "symptom": 495,
+    "decease": 131,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 891,
+  "fields": {
+    "symptom": 496,
+    "decease": 131,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 892,
+  "fields": {
+    "symptom": 497,
+    "decease": 131,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 893,
+  "fields": {
+    "symptom": 498,
+    "decease": 131,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 894,
+  "fields": {
+    "symptom": 492,
+    "decease": 131,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 895,
+  "fields": {
+    "symptom": 491,
+    "decease": 131,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 896,
+  "fields": {
+    "symptom": 406,
+    "decease": 131,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 897,
+  "fields": {
+    "symptom": 499,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 898,
+  "fields": {
+    "symptom": 500,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 899,
+  "fields": {
+    "symptom": 501,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 900,
+  "fields": {
+    "symptom": 502,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 901,
+  "fields": {
+    "symptom": 503,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 902,
+  "fields": {
+    "symptom": 504,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 903,
+  "fields": {
+    "symptom": 505,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 904,
+  "fields": {
+    "symptom": 506,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 905,
+  "fields": {
+    "symptom": 507,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 906,
+  "fields": {
+    "symptom": 367,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 907,
+  "fields": {
+    "symptom": 32,
+    "decease": 132,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 908,
+  "fields": {
+    "symptom": 179,
+    "decease": 132,
+    "chances": 40,
+    "occurrence": 40
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 909,
+  "fields": {
+    "symptom": 351,
+    "decease": 132,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 910,
+  "fields": {
+    "symptom": 338,
+    "decease": 132,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 911,
+  "fields": {
+    "symptom": 353,
+    "decease": 132,
+    "chances": 10,
+    "occurrence": 10
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 912,
+  "fields": {
+    "symptom": 508,
+    "decease": 132,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 913,
+  "fields": {
+    "symptom": 351,
+    "decease": 133,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 914,
+  "fields": {
+    "symptom": 32,
+    "decease": 133,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 915,
+  "fields": {
+    "symptom": 367,
+    "decease": 133,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 916,
+  "fields": {
+    "symptom": 422,
+    "decease": 133,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 917,
+  "fields": {
+    "symptom": 373,
+    "decease": 133,
+    "chances": 70,
+    "occurrence": 70
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 918,
+  "fields": {
+    "symptom": 353,
+    "decease": 133,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 919,
+  "fields": {
+    "symptom": 372,
+    "decease": 133,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 920,
+  "fields": {
+    "symptom": 509,
+    "decease": 133,
+    "chances": 0,
+    "occurrence": 0
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 921,
+  "fields": {
+    "symptom": 510,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 922,
+  "fields": {
+    "symptom": 511,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 923,
+  "fields": {
+    "symptom": 512,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 924,
+  "fields": {
+    "symptom": 513,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 925,
+  "fields": {
+    "symptom": 514,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 926,
+  "fields": {
+    "symptom": 515,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 927,
+  "fields": {
+    "symptom": 516,
+    "decease": 134,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 928,
+  "fields": {
+    "symptom": 517,
+    "decease": 134,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 929,
+  "fields": {
+    "symptom": 91,
+    "decease": 134,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 930,
+  "fields": {
+    "symptom": 518,
+    "decease": 134,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 931,
+  "fields": {
+    "symptom": 67,
+    "decease": 134,
+    "chances": 60,
+    "occurrence": 60
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 932,
+  "fields": {
+    "symptom": 519,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 933,
+  "fields": {
+    "symptom": 520,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 934,
+  "fields": {
+    "symptom": 521,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 935,
+  "fields": {
+    "symptom": 522,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 936,
+  "fields": {
+    "symptom": 523,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 937,
+  "fields": {
+    "symptom": 524,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 938,
+  "fields": {
+    "symptom": 525,
+    "decease": 135,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 939,
+  "fields": {
+    "symptom": 526,
+    "decease": 135,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 940,
+  "fields": {
+    "symptom": 527,
+    "decease": 135,
+    "chances": 20,
+    "occurrence": 20
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 941,
+  "fields": {
+    "symptom": 528,
+    "decease": 136,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 942,
+  "fields": {
+    "symptom": 73,
+    "decease": 136,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 943,
+  "fields": {
+    "symptom": 529,
+    "decease": 136,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 944,
+  "fields": {
+    "symptom": 530,
+    "decease": 136,
+    "chances": 50,
+    "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 945,
+  "fields": {
+    "symptom": 32,
+    "decease": 136,
+    "chances": 30,
+    "occurrence": 30
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 946,
+  "fields": {
+    "symptom": 531,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 947,
+  "fields": {
+    "symptom": 532,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 948,
+  "fields": {
+    "symptom": 533,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 949,
+  "fields": {
+    "symptom": 534,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 950,
+  "fields": {
+    "symptom": 535,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 951,
+  "fields": {
+    "symptom": 536,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 952,
+  "fields": {
+    "symptom": 537,
+    "decease": 137,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 953,
+  "fields": {
+    "symptom": 538,
+    "decease": 137,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 954,
+  "fields": {
+    "symptom": 88,
+    "decease": 137,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 955,
+  "fields": {
+    "symptom": 93,
+    "decease": 137,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 956,
+  "fields": {
+    "symptom": 87,
+    "decease": 137,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 957,
+  "fields": {
+    "symptom": 539,
+    "decease": 138,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 958,
+  "fields": {
+    "symptom": 540,
+    "decease": 138,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 959,
+  "fields": {
+    "symptom": 541,
+    "decease": 139,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 960,
+  "fields": {
+    "symptom": 542,
+    "decease": 139,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 961,
+  "fields": {
+    "symptom": 543,
+    "decease": 139,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 962,
+  "fields": {
+    "symptom": 544,
+    "decease": 139,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 963,
+  "fields": {
+    "symptom": 545,
+    "decease": 139,
+    "chances": 50,
+    "occurrence": 1
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 964,
+  "fields": {
+    "symptom": 525,
+    "decease": 139,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 965,
+  "fields": {
+    "symptom": 546,
+    "decease": 139,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 966,
+  "fields": {
+    "symptom": 547,
+    "decease": 140,
+    "chances": 95,
+    "occurrence": 95
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 967,
+  "fields": {
+    "symptom": 32,
+    "decease": 140,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 968,
+  "fields": {
+    "symptom": 27,
+    "decease": 140,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 969,
+  "fields": {
+    "symptom": 28,
+    "decease": 140,
+    "chances": 80,
+    "occurrence": 80
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 970,
+  "fields": {
+    "symptom": 548,
+    "decease": 141,
+    "chances": 100,
+    "occurrence": 100
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 971,
+  "fields": {
+    "symptom": 549,
+    "decease": 141,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 972,
+  "fields": {
+    "symptom": 91,
+    "decease": 141,
+    "chances": 90,
+    "occurrence": 90
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 973,
+  "fields": {
+    "symptom": 550,
+    "decease": 141,
+    "chances": 80,
+    "occurrence": 80
+  }
 }
 ]
