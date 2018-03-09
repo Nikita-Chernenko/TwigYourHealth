@@ -1,0 +1,11 @@
+[
+{
+  "model": "accounts.privatedoctor",
+  "pk": 1,
+  "fields": {
+    "doctor": 2,
+    "hour_rate": "200.00",
+    "visit_price": "150.00"
+  }
+}
+]

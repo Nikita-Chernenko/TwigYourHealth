@@ -1,0 +1,12 @@
+[
+  {
+    "model": "accounts.patient",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "patient"
+      ],
+      "birthday": "2018-03-02"
+    }
+  }
+]

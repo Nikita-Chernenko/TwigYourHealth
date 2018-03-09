@@ -1,0 +1,90 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$vbS9uiRUThdD$J8/jtUfmpztE3qm1AoRliqivoFI+E0aN7hBzWGYMVwI=",
+    "last_login": "2018-03-05T15:24:56.899Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2018-03-02T17:42:34.461Z",
+    "email": "admin@admin.com",
+    "phone": "",
+    "patronymic": "",
+    "is_doctor": false,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$pgj9dhjfICc7$ZbtpsMrWzZ7ScLKPf7eiwCmn2h+RUG+ExHA39UiPruY=",
+    "last_login": "2018-03-04T10:57:40.214Z",
+    "is_superuser": false,
+    "username": "public",
+    "first_name": "doctor",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-03-02T18:42:10.503Z",
+    "email": "public@public.com",
+    "phone": "+380996646486",
+    "patronymic": "doctor",
+    "is_doctor": true,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$M7dWdKeKYv29$/XRzuIu/xEBicaIcL4goKYrk9xaKJC+4L3tVRIhMhbo=",
+    "last_login": "2018-03-05T15:03:16.174Z",
+    "is_superuser": false,
+    "username": "patient",
+    "first_name": "patient",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-03-02T18:43:10.093Z",
+    "email": "patient@patient.com",
+    "phone": "+380996646487",
+    "patronymic": "patient",
+    "is_doctor": false,
+    "is_patient": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$SdMui9FZcPqL$nMmt37RuKFGinzoxVWDN5ymtM0OJUQ+cxJwmklAzzQI=",
+    "last_login": "2018-03-04T10:57:32.490Z",
+    "is_superuser": false,
+    "username": "private",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-03-04T10:23:55.425Z",
+    "email": "private@private.com",
+    "phone": "+380996646489",
+    "patronymic": "",
+    "is_doctor": true,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
