@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 C:\\.virtualenv\\TwigYourHealth\\Scripts\\activate
 git pull origin master
 pip install -r requirements.txt
