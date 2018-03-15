@@ -4,7 +4,6 @@ from django.db import models
 from django.db.models import Q
 
 from accounts.models import Doctor, Patient
-from payments.models import Order
 
 
 class CommunicationEntity(models.Model):
@@ -12,7 +11,7 @@ class CommunicationEntity(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
     start = models.DateTimeField('start')
     end = models.DateTimeField('end')
-    orders = GenericRelation(Order, on_delete=models.CASCADE)
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
