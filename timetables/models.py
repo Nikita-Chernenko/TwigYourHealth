@@ -6,7 +6,6 @@ from django.db import models
 from django.db.models import Q
 
 from accounts.models import Doctor, Patient
-from payments.models import Order
 
 
 class TimeTable(models.Model):
@@ -38,7 +37,7 @@ class Visit(models.Model):
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     start = models.TimeField('start of the visit')
     end = models.TimeField('end of the visit')
-    orders = GenericRelation(Order, on_delete=models.CASCADE)
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
         super(Visit, self).__init__(*args, **kwargs)

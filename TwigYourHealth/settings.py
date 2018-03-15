@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'communication',
     'deceases',
     'timetables',
+    'payments',
     'utils',
 
 ]
