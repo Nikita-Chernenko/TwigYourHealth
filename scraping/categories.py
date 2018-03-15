@@ -1,16 +1,11 @@
+import os
+import sys
+from collections import defaultdict
 from time import sleep
 
-from collections import defaultdict
-
-import sys
-
-import os
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome import service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 sys.path.append(os.path.dirname(os.path.abspath('.')))
 # Do not forget the change iCrawler part based on your project name
@@ -51,6 +46,8 @@ except NoSuchElementException:
     pass
 try:
     js = "var aa=document.getElementById('static_footer_sponsor');aa.parentNode.removeChild(aa)"
+    driver.execute_script(js)
+    js = "var aa=document.getElementById('header_wrap');aa.parentNode.removeChild(aa)"
     driver.execute_script(js)
     sleep(1)
     weight_element = driver.find_element_by_id('weight_patient')
@@ -111,23 +108,42 @@ indexes = {}
 body_parts_names = defaultdict(lambda: {})
 
 
+def save_symptoms(symptom_text):
+    global indexes
+    global body_parts_names
+    body_area = body_parts_names[0][indexes[0]]
+    try:
+        body_part = body_parts_names[1][indexes[1]]
+    except (KeyError, IndexError):
+        body_part = body_area
+    body_area, _ = BodyArea.objects.get_or_create(name=body_area)
+    body_part, _ = BodyPart.objects.get_or_create(name=body_part, body_area=body_area)
+    symptom, _ = Symptom.objects.get_or_create(name=symptom_text)
+    symptom.body_part = body_part
+    symptom.save()
+
+
+def recursive_symptoms(symp):
+    try:
+        children = './parent::div/parent::div[contains(@class,"p_wrapp")]//div[contains(@class,"sub_children")]'
+        print(symp.text)
+        symp.find_element_by_xpath(children)
+        perform_click(symp)
+        sleep(1)
+        for s in symp.find_elements_by_xpath(f'{children}//div[contains(@class,"name_sympt")]'):
+            recursive_symptoms(s)
+    except NoSuchElementException:
+        if symp.text:
+            save_symptoms(symp.text)
+
+
 def recursion_body_menu(depth=0):
     global indexes
     global body_parts_names
     sleep(1)
     if (driver.find_element_by_id('screen_basket').is_displayed()):
         for symptom in driver.find_elements_by_xpath('//div[@class="btn_symptome pointer"]//div[@class="name_sympt"]'):
-            if symptom.text:
-                body_area = body_parts_names[0][indexes[0]]
-                try:
-                    body_part = body_parts_names[1][indexes[1]]
-                except (KeyError, IndexError):
-                    body_part = body_area
-                body_area, _ = BodyArea.objects.get_or_create(name=body_area)
-                body_part, _ = BodyPart.objects.get_or_create(name=body_part, body_area=body_area)
-                symptom, _ = Symptom.objects.get_or_create(name=symptom.text)
-                symptom.body_part = body_part
-                symptom.save()
+            recursive_symptoms(symptom)
         return
     body_elements = driver.find_elements_by_xpath('//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')
     if depth < 2:
@@ -162,4 +178,3 @@ sleep(1)
 body_rtn_btn = driver.find_element_by_id('bcd_loc')
 perform_click(body_rtn_btn)
 recursion_body_menu()
-
