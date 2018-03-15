@@ -11,13 +11,15 @@ class SymptomSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-            'https://online-diagnos.ru/illness/c/bolezni-kostey-i-sustavov',
-            'https://online-diagnos.ru/illness/c/bolezni-organov-dihaniya',
-            'https://online-diagnos.ru/illness/c/endokrinnie-bolezni-i-narushenie-obmena-veschestv',
-            'https://online-diagnos.ru/illness/c/bolezni-glaz'
+            'https://online-diagnos.ru/illness',
         ]
         for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+            yield scrapy.Request(url=url, callback=self.get_urls)
+
+    def get_urls(self, response):
+        urls = response.css('#list_folclore_main').xpath('./li/a/@href').extract()
+        for url in urls:
+            yield scrapy.Request(url=f'https://online-diagnos.ru{url}', callback=self.parse)
 
     def parse(self, response):
         deceases = response.css('.category_illness_list').xpath('.//li/a/@href').extract()
