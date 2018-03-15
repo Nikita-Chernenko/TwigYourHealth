@@ -3,7 +3,7 @@ from itertools import groupby
 
 from annoying.decorators import render_to
 from django.core import serializers
-from django.db.models import Q, Sum, Count, Func, FloatField
+from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
 from django.db.models.functions import Cast
 from django.http import JsonResponse
 
@@ -38,8 +38,8 @@ class Round(Func):
 
 
 def deceases_by_symptoms(request):
-    # symptoms_ids = request.GET.getlist('symptoms[]')
-    symptoms_ids = [109, 32, 103]
+    symptoms_ids = request.GET.getlist('symptoms[]')
+    # symptoms_ids = [109, 32, 103]
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids)
     whole_chance = Sum('deceasesymptom__chances')
     current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=symptoms_ids))
@@ -47,7 +47,8 @@ def deceases_by_symptoms(request):
     deceases = Decease.objects.annotate(
         symptom_count=Count('deceasesymptom', filter=Q(deceasesymptom__symptom__in=symptoms_ids))) \
                    .filter(symptom_count__gte=2) \
-                   .annotate(chance=chance).filter(~Q(chance=None)).order_by('-chance')[:5].values('name','chance')
+                   .annotate(chance=chance).annotate(chance=ExpressionWrapper(
+                    F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())).filter(~Q(chance=None)).order_by('-chance')[:5].values('name','chance')
     data = json.dumps(list(deceases))
 
     return JsonResponse(data=data, safe=False)
