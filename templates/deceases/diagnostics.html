@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'diagnostics' %}" class="breadcrumb">Symptom pick</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form id="symptoms-search">
+            {% csrf_token %}
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="autocomplete" id="multiple">
+                            <div class="ac-users"></div>
+                            <div class="ac-input">
+                                <input type="text" id="symptoms" placeholder="Please input some letters"
+                                       data-activates="multipleDropdown" data-beloworigin="true" autocomplete="off">
+                            </div>
+                            <ul id="multipleDropdown" class="dropdown-content ac-dropdown"></ul>
+                            <input type="hidden" name="multipleHidden"/>
+                        </div>
+                        <label class="active" for="multipleInput">Выбранные симптомы: </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        {% for body_area, symptoms in body_symptoms.items %}
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">{{ body_area.name }}</i>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <ul class="collapsible popout" data-collapsible="accordion">
+                                                {% for body_part, symptoms in symptoms.items %}
+                                                    <li>
+                                                        <div class="collapsible-header">
+                                                            <i class="material-icons">{{ body_part.name }}</i>
+
+                                                        </div>
+                                                        <div class="collapsible-body">
+                                                            <ul>
+                                                                {% for symptom in symptoms %}
+                                                                    <li class="body-symptom"
+                                                                        data-id="{{ symptom.id }}">  {{ symptom.name }} </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- end snippet -->
+
+
+                </div>
+            </div>
+            <button class="btn waves-effect">Get deceases</button>
+        </form>
+        <div style="height: 1000px; width: 1000px; border: solid 1px black" id="deceases">
+            <ul class="collection">
+
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+
+            $(document).ready(function () {
+                $('.collapsible').collapsible();
+            });
+            var multiple = $('#symptoms').materialize_autocomplete({
+                multiple: {
+                    enable: true
+                },
+                appender: {
+                    el: '.ac-users'
+                },
+                dropdown: {
+                    el: '#multipleDropdown'
+                },
+                getData: function (value, callback) {
+                    console.log(value)
+                    data = [];
+                    if (value.length < 3) {
+                        return data
+                    }
+                    $.ajax({
+                        "type": "GET",
+                        "dataType": "json",
+                        "url": "{% url 'symptoms-autocomplete' %}",
+                        "data": {'name': value},
+                        "success": function (result) {
+
+                            for (var i = 0; i < result.length; i++) {
+                                data[i] = {'id': result[i]['id'], 'text': result[i]['name']}
+                            }
+                            console.log(data);
+                            callback(value, data);
+                        },
+                        "error": function (error) {
+                            console.log(error);
+                            callback(value, data);
+                        }
+                    });
+
+                }
+            });
+            $('.body-symptom').on('click', function (e) {
+                el = $(e.target);
+                console.log(el.text());
+                multiple.append({'id': el.data('id'), 'text': el.text()})
+
+            });
+            $('#symptoms-search').on('submit', function (e) {
+                console.log(multiple.value);
+                values = [];
+                for (i = 0; i < multiple.value.length; i++) {
+                    values.push(multiple.value[i].id)
+                }
+                $.ajax({
+                    "type": "GET",
+                    "dataType": "json",
+                    "url": "{% url 'deceases-by-symptoms' %}",
+                    "data": {'symptoms': values},
+                    "success": function (result) {
+
+                        res = JSON.parse(result);
+                        console.log(res);
+                        div = $('#deceases .collection');
+                        div.html("");
+                        for (var i = 0; i < res.length; i++) {
+                            el = res[i];
+
+                            div.append('<li class="collection-item avatar">\n' +
+                                '                    <i class="circle red">'+el.chance+'</i>\n' +
+                                '                    <p>'+el.name+'</Line>\n' +
+                                '                    </p>\n' +
+                                '                </li>')
+                        }
+                        materialize_initiailize();
+                    },
+                    "error": function (error) {
+                        console.log(error);
+                    }
+                });
+                e.preventDefault();
+            })
+        });
+    </script>
+{% endblock %}
