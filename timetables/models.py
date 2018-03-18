@@ -1,5 +1,6 @@
 from datetime import date, datetime
 
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
@@ -13,6 +14,9 @@ class TimeTable(models.Model):
     end = models.TimeField('end of the shift')
     gap = models.DurationField('time of a visit', null=True, blank=True)
 
+    def __str__(self):
+        return f'{self.doctor} {self.start} {self.end} {self.gap}'
+
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         self.gap = (self.gap // 60) * 60
@@ -24,17 +28,24 @@ class Shift(models.Model):
     timetable = models.ForeignKey(TimeTable, verbose_name='timetable', on_delete=models.CASCADE)
     day = models.DateField('day of the shift')
 
+    def __str__(self):
+        return f'{self.timetable} - {self.day}'
+
 
 class Visit(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     start = models.TimeField('start of the visit')
     end = models.TimeField('end of the visit')
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
         super(Visit, self).__init__(*args, **kwargs)
         self.__original_start = self.start
         self.__original_end = self.end
+
+    def __str__(self):
+        return f'{self.start}-{self.end} {self.patient} - {self.shift}'
 
     def clean(self):
         start, end = self.start, self.end

@@ -108,5 +108,49 @@
     "end_date": null,
     "cured": true
   }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 11,
+  "fields": {
+    "patient": 1,
+    "decease": 9,
+    "start_date": "2018-03-20",
+    "end_date": null,
+    "cured": true
+  }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 12,
+  "fields": {
+    "patient": 1,
+    "decease": 9,
+    "start_date": "2018-03-20",
+    "end_date": null,
+    "cured": true
+  }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 13,
+  "fields": {
+    "patient": 1,
+    "decease": 9,
+    "start_date": "2018-03-20",
+    "end_date": null,
+    "cured": true
+  }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 14,
+  "fields": {
+    "patient": 1,
+    "decease": 9,
+    "start_date": "2018-03-20",
+    "end_date": null,
+    "cured": true
+  }
 }
 ]

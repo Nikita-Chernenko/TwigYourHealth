@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
@@ -10,6 +11,7 @@ class CommunicationEntity(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
     start = models.DateTimeField('start')
     end = models.DateTimeField('end')
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
@@ -18,6 +20,8 @@ class CommunicationEntity(models.Model):
         super(CommunicationEntity, self).__init__(*args, **kwargs)
         self.__original_start = self.start
         self.__original_end = self.end
+    def __str__(self):
+        return  f'{self.doctor} {self.patient} {self.start} {self.end}'
 
     def clean(self):
         if self.start and self.end:
@@ -43,7 +47,12 @@ class Chat(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT)
     doctor = models.ForeignKey(Doctor, on_delete=models.PROTECT)
 
+    def __str__(self):
+         return f'{self.patient} {self.doctor}'
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     text = models.TextField('text')
+
+    def __str__(self):
+        return f'{self.chat} {self.text}'

@@ -10,10 +10,16 @@ from utils.validators import comma_separated_field
 class BodyArea(models.Model):
     name = models.CharField(max_length=256, unique=True)
 
+    def __str__(self):
+        return self.name
+
 
 class BodyPart(models.Model):
     body_area = models.ForeignKey(BodyArea, on_delete=models.PROTECT)
     name = models.CharField(max_length=256, unique=True)
+
+    def __str__(self):
+        return f'{self.body_area} - {self.name}'
 
 
 class Symptom(models.Model):
@@ -25,6 +31,9 @@ class Symptom(models.Model):
         if not self.pk and not self.aliases:
             self.aliases = self.name
         super(Symptom, self).save(force_insert, force_update, using, update_fields)
+
+    def __str__(self):
+        return self.name
 
 
 class Decease(models.Model):
@@ -40,6 +49,9 @@ class Decease(models.Model):
     passing = models.TextField(blank=True, null=True)
     recommendations = models.TextField(blank=True, null=True)
     occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
+
+    def __str__(self):
+        return self.name
 
 
 class DeceaseSymptom(models.Model):
@@ -58,8 +70,8 @@ class DeceaseSymptom(models.Model):
 
     occurrence = models.PositiveIntegerField(default=1)  # How many times this symptom has occurred for the decease
 
-    class Meta:
-        unique_together = [['symptom', 'decease']]
+    def __str__(self):
+        return f'{self.symptom} - {self.decease}'
 
 
 class PatientDecease(models.Model):
@@ -68,6 +80,9 @@ class PatientDecease(models.Model):
     start_date = models.DateField(default=now)
     end_date = models.DateField(null=True, blank=True)
     cured = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.patient} {self.decease}'
 
 
 class PatientSymptomDecease(models.Model):
@@ -78,6 +93,9 @@ class PatientSymptomDecease(models.Model):
     def __init__(self, *args, **kwargs):
         super(PatientSymptomDecease, self).__init__(*args, **kwargs)
         self.__original_decease = self.decease
+
+    def __str__(self):
+        return f'{self.patient} - {self.decease} - {self.symptom}'
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
