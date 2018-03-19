@@ -36,7 +36,12 @@ class Symptom(models.Model):
         return self.name
 
 
+class Sphere(models.Model):
+    name = models.CharField('name', max_length=256, unique=True)
+
+
 class Decease(models.Model):
+    sphere = models.ForeignKey(Sphere, on_delete=models.CASCADE)
     name = models.CharField(max_length=256, db_index=True, unique=True)
     chronic = models.BooleanField(default=False)
     symptoms = models.ManyToManyField(to=Symptom, through='DeceaseSymptom')

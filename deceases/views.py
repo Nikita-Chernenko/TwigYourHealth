@@ -1,12 +1,13 @@
 import json
+import random
 from itertools import groupby
 
 from annoying.decorators import render_to
-from django.core import serializers
 from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
 from django.db.models.functions import Cast
 from django.http import JsonResponse
 
+from accounts.models import Doctor
 from deceases.models import Symptom, Decease
 
 
@@ -44,11 +45,20 @@ def deceases_by_symptoms(request):
     whole_chance = Sum('deceasesymptom__chances')
     current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=symptoms_ids))
     chance = Round(Cast(current_chance, FloatField()) / Cast(whole_chance, FloatField())) * 100
-    deceases = Decease.objects.annotate(
+    deceases = list(Decease.objects.annotate(
         symptom_count=Count('deceasesymptom', filter=Q(deceasesymptom__symptom__in=symptoms_ids))) \
-                   .filter(symptom_count__gte=2) \
-                   .annotate(chance=chance).annotate(chance=ExpressionWrapper(
-                    F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())).filter(~Q(chance=None)).order_by('-chance')[:5].values('name','chance')
+                    .filter(symptom_count__gte=2) \
+                    .annotate(chance=chance).annotate(chance=ExpressionWrapper(
+        F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())).filter(
+        ~Q(chance=None)).order_by('-chance')[:5].values('id', 'name', 'chance', 'sphere'))
+    spheres = [d.sphere for d in deceases]
+    for d in deceases:
+        sphere = d.sphere
+        doctors = list(Doctor.objects.filter(sphere=sphere).order_by('?')[:1000])
+        doctors = list(sorted(doctors, key=lambda x: -x.rating))[:20]
+        random.shuffle(doctors)
+        doctors = doctors[:3]
+    # TODO group deceases by sphere. Get best doctors in theses spheres and append them
     data = json.dumps(list(deceases))
 
     return JsonResponse(data=data, safe=False)
