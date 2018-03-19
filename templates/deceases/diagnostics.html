@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load mptt_tags %}
 
 {% block breadcrumbs %}
     <a href="{% url 'diagnostics' %}" class="breadcrumb">Symptom pick</a>
@@ -42,10 +43,16 @@
                                                         </div>
                                                         <div class="collapsible-body">
                                                             <ul>
-                                                                {% for symptom in symptoms %}
-                                                                    <li class="body-symptom"
-                                                                        data-id="{{ symptom.id }}">  {{ symptom.name }} </li>
-                                                                {% endfor %}
+                                                                {% recursetree symptoms  %}
+                                                                    <li>
+                                                                        {{ node.name }}
+                                                                        {% if not node.is_leaf_node %}
+                                                                            <ul class="children" style="padding: 10px">
+                                                                                {{ children }}
+                                                                            </ul>
+                                                                        {% endif %}
+                                                                    </li>
+                                                                {% endrecursetree %}
                                                             </ul>
                                                         </div>
                                                     </li>
@@ -64,6 +71,21 @@
                 </div>
             </div>
             <button class="btn waves-effect">Get deceases</button>
+            {#            {% for a in body_areas %}#}
+            {#                {% for p in a.bodypart_set.all %}#}
+            {#                    {% recursetree p.symptom_set.all %}#}
+            {#                        <li>#}
+            {#                            {{ node.name }}#}
+            {#                            {% if not node.is_leaf_node %}#}
+            {#                                <ul class="children" style="padding: 10px">#}
+            {#                                    {{ children }}#}
+            {#                                </ul>#}
+            {#                            {% endif %}#}
+            {#                        </li>#}
+            {#                    {% endrecursetree %}#}
+            {#                {% endfor %}#}
+            {#            {% endfor %}#}
+
         </form>
         <div style="height: 1000px; width: 1000px; border: solid 1px black" id="deceases">
             <ul class="collection">
@@ -73,7 +95,6 @@
         </div>
     </div>
 {% endblock %}
-
 {% block extrajs %}
     <script>
         $(document).ready(function () {
@@ -145,8 +166,8 @@
                             el = res[i];
 
                             div.append('<li class="collection-item avatar">\n' +
-                                '                    <i class="circle red">'+el.chance+'</i>\n' +
-                                '                    <p>'+el.name+'</Line>\n' +
+                                '                    <i class="circle red">' + el.chance + '</i>\n' +
+                                '                    <p>' + el.name + '</Line>\n' +
                                 '                    </p>\n' +
                                 '                </li>')
                         }

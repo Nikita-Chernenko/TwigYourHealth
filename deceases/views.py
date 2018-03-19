@@ -8,17 +8,21 @@ from django.db.models.functions import Cast
 from django.http import JsonResponse
 
 from accounts.models import Doctor
-from deceases.models import Symptom, Decease
+from deceases.models import Symptom, Decease, BodyArea
 
 
 @render_to('deceases/diagnostics.html')
 def diagnostics(request):
     body_symptoms = Symptom.objects.filter(~Q(body_part=None)) \
         .select_related('body_part', 'body_part__body_area').order_by('body_part__body_area', 'body_part')
-    body_symptoms = {key: {key: list(symptoms) for key, symptoms in groupby(symptoms, key=lambda s: s.body_part)} for
-                     key, symptoms in groupby(body_symptoms, key=lambda s: s.body_part.body_area)}
+    body_symptoms = {
+        key: {key: Symptom.objects.filter(pk__in=[s.id for s in symptoms]) for key, symptoms in
+            groupby(symptoms, key=lambda s: s.body_part)} for
+        key, symptoms in groupby(body_symptoms, key=lambda s: s.body_part.body_area)}
+    body_areas = BodyArea.objects.all().prefetch_related('bodypart_set', 'bodypart_set__symptom_set')
 
-    return {'body_symptoms': body_symptoms}
+    return {'body_symptoms': body_symptoms, 'symptoms': Symptom.objects.filter(~Q(body_part=None)),
+            'body_areas': body_areas}
 
 
 def symptoms_autocomplete(request):
