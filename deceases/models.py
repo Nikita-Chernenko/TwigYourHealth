@@ -19,7 +19,7 @@ class BodyPart(models.Model):
 
 
 class Symptom(MPTTModel):
-    body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, blank=True, null=True)
+    body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, null=True, blank=True)
     name = models.CharField(max_length=512, db_index=True, unique=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
                             on_delete=models.CASCADE)

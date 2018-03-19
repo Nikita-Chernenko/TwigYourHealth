@@ -70,45 +70,12 @@ except NoSuchElementException:
     print('no weight form')
     pass
 
-# for ind_a, b_a in enumerate(body_areas):
-#     sleep(1)
-#     body_area = driver.find_elements_by_xpath('//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')[ind_a]
-#
-#     webdriver.ActionChains(driver).move_to_element(body_area).click(body_area).perform()
-#     sleep(1)
-#     body_parts = driver.find_elements_by_xpath('//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')
-#     return_btn = driver.find_element_by_xpath('//div[@id="nano-scroll"]//div[@class="zoomout"]')
-#     webdriver.ActionChains(driver).move_to_element(return_btn).click(return_btn).perform()
-#     for ind_p, b_p in enumerate(body_parts):
-#         sleep(1)
-#
-#         body_area = driver.find_elements_by_xpath('//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')[
-#             ind_a]
-#         body_area_name = body_area.text
-#         if ind_p == 0:
-#             print(body_area_name)
-#         webdriver.ActionChains(driver).move_to_element(body_area).click(body_area).perform()
-#         sleep(1)
-#         body_part = driver.find_elements_by_xpath('//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')[
-#             ind_p]
-#         body_part_name = body_part.find_element_by_class_name('name_sympt').text
-#         print(body_part_name)
-#         webdriver.ActionChains(driver).move_to_element(body_part).click(body_part).perform()
-#         sleep(1)
-#         symptoms = driver.find_elements_by_xpath('//div[@class="btn_symptome pointer"]//div[@class="name_sympt"]')
-#         for symptom in symptoms:
-#             print(symptom.text)
-#         btn = driver.find_element_by_id('bcd_loc')
-#         btn.click()
-#     print('part')
-
-
 indexes = {}
 
 body_parts_names = defaultdict(lambda: {})
 
 
-def save_symptoms(symptom_text):
+def save_symptoms(symptom_text, parent_text):
     global indexes
     global body_parts_names
     body_area = body_parts_names[0][indexes[0]]
@@ -116,25 +83,36 @@ def save_symptoms(symptom_text):
         body_part = body_parts_names[1][indexes[1]]
     except (KeyError, IndexError):
         body_part = body_area
+
+    # the same parent and child
+    if symptom_text.strip() == "Навязчивые действия" and parent_text.strip() != "Разные навязчивые действия":
+        symptom_text = "Разные навязчивые действия"
+    elif symptom_text.strip() == "Навязчивые действия" and parent_text.strip() == "Навязчивые действия":
+        parent_text = "Разные навязчивые действия"
+
     body_area, _ = BodyArea.objects.get_or_create(name=body_area)
     body_part, _ = BodyPart.objects.get_or_create(name=body_part, body_area=body_area)
     symptom, _ = Symptom.objects.get_or_create(name=symptom_text)
+    if parent_text:
+        parent = Symptom.objects.get(name=parent_text)
+        symptom.parent = parent
     symptom.body_part = body_part
     symptom.save()
 
 
-def recursive_symptoms(symp):
+
+def recursive_symptoms(symp, parent_text=None):
     try:
         children = './parent::div/parent::div[contains(@class,"p_wrapp")]//div[contains(@class,"sub_children")]'
-        print(symp.text)
         symp.find_element_by_xpath(children)
         perform_click(symp)
-        sleep(1)
+        sleep(1.5)
+        save_symptoms(symp.text, parent_text)
         for s in symp.find_elements_by_xpath(f'{children}//div[contains(@class,"name_sympt")]'):
-            recursive_symptoms(s)
+            recursive_symptoms(s, symp.text)
     except NoSuchElementException:
         if symp.text:
-            save_symptoms(symp.text)
+            save_symptoms(symp.text, parent_text)
 
 
 def recursion_body_menu(depth=0):
@@ -162,7 +140,6 @@ def recursion_body_menu(depth=0):
 
         for depth_ind in range(depth + 1):
             sleep(1.5)
-            print([indexes[depth_ind]])
             body_element = \
                 driver.find_elements_by_xpath(
                     '//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')[indexes[depth_ind]]
