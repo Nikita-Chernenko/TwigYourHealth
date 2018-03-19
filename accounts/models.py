@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -18,6 +18,9 @@ class Hospital(models.Model):
     is_private = models.BooleanField(default=True)
 
 
+
+
+
 class Doctor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     skype = models.CharField('skype username', max_length=256, unique=True, null=True, blank=True)
@@ -31,6 +34,15 @@ class Doctor(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.SET_NULL, verbose_name='hospital', null=True, blank=True)
     personal_address = models.CharField("address if you don't work in clinic", max_length=512, null=True, blank=True)
     description = models.TextField('info about yourself')
+
+
+class DoctorSphere(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    sphere = models.ForeignKey('deceases.Sphere', on_delete=models.CASCADE)
+
+    # calculated as gathering of all reviews
+    rating = models.DecimalField('sphere rating', validators=[MinValueValidator(0), MaxValueValidator(100)],
+                                 max_digits=5, decimal_places=2, default=0)
 
 
 class PrivateDoctor(models.Model):
