@@ -20,3 +20,4 @@ rjsmin==1.0.12
 six==1.11.0
 urllib3==1.22
 websocket-client==0.47.0
+django-mptt==0.9.0

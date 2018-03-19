@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'annoying',
     'material',
     'material.frontend',
+    'mptt',
 
     'accounts',
     'notifications',
