@@ -2,6 +2,8 @@ from django.core.validators import MaxValueValidator
 from django.db import models
 from django.db.models import F
 from django.utils.timezone import now
+from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 
 from accounts.models import Patient
 from utils.validators import comma_separated_field
@@ -22,10 +24,15 @@ class BodyPart(models.Model):
         return f'{self.body_area} - {self.name}'
 
 
-class Symptom(models.Model):
+class Symptom(MPTTModel):
     body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, blank=True, null=True)
     name = models.CharField(max_length=512, db_index=True, unique=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
+                            on_delete=models.CASCADE)
     aliases = models.TextField(validators=[comma_separated_field], blank=True, null=True)
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if not self.pk and not self.aliases:
