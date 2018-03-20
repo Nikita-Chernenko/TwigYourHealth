@@ -24,67 +24,79 @@
                         <label class="active" for="multipleInput">Выбранные симптомы: </label>
                     </div>
                 </div>
-                <div class="col">
-                    <ul class="collapsible" data-collapsible="accordion">
-                        {% for body_area, symptoms in body_symptoms.items %}
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">{{ body_area.name }}</i>
-                                </div>
-                                <div class="collapsible-body">
-                                    <div class="row">
-                                        <div class="col s12 m12">
-                                            <ul class="collapsible popout" data-collapsible="accordion">
-                                                {% for body_part, symptoms in symptoms.items %}
-                                                    <li>
-                                                        <div class="collapsible-header">
-                                                            <i class="material-icons">{{ body_part.name }}</i>
-
-                                                        </div>
-                                                        <div class="collapsible-body">
-                                                            <ul>
-                                                                {% recursetree symptoms  %}
-                                                                    <li>
-                                                                        {{ node.name }}
-                                                                        {% if not node.is_leaf_node %}
-                                                                            <ul class="children" style="padding: 10px">
-                                                                                {{ children }}
-                                                                            </ul>
-                                                                        {% endif %}
-                                                                    </li>
-                                                                {% endrecursetree %}
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                    <!-- end snippet -->
-
-
-                </div>
+                {#                <div class="col">#}
+                {#                    <ul class="collapsible" data-collapsible="accordion">#}
+                {#                        {% for body_area, symptoms in body_symptoms.items %}#}
+                {#                            <li>#}
+                {#                                <div class="collapsible-header">#}
+                {#                                    <i class="material-icons">{{ body_area.name }}</i>#}
+                {#                                </div>#}
+                {#                                <div class="collapsible-body">#}
+                {#                                    <div class="row">#}
+                {#                                        <div class="col s12 m12">#}
+                {#                                            <ul class="collapsible popout" data-collapsible="accordion">#}
+                {#                                                {% for body_part, symptoms in symptoms.items %}#}
+                {#                                                    <li>#}
+                {#                                                        <div class="collapsible-header">#}
+                {#                                                            <i class="material-icons">{{ body_part.name }}</i>#}
+                {##}
+                {#                                                        </div>#}
+                {#                                                        <div class="collapsible-body">#}
+                {#                                                            <ul>#}
+                {#                                                                {% recursetree symptoms %}#}
+                {#                                                                    <li>#}
+                {#                                                                        {{ node.name }}#}
+                {#                                                                        {% if not node.is_leaf_node %}#}
+                {#                                                                            <ul class="children" style="padding: 10px">#}
+                {#                                                                                {{ children }}#}
+                {#                                                                            </ul>#}
+                {#                                                                        {% endif %}#}
+                {#                                                                    </li>#}
+                {#                                                                {% endrecursetree %}#}
+                {#                                                            </ul>#}
+                {#                                                        </div>#}
+                {#                                                    </li>#}
+                {#                                                {% endfor %}#}
+                {#                                            </ul>#}
+                {#                                        </div>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </li>#}
+                {#                        {% endfor %}#}
+                {#                    </ul>#}
+                {##}
+                {#                    <!-- end snippet -->#}
+                {##}
+                {##}
+                {#                </div>#}
             </div>
             <button class="btn waves-effect">Get deceases</button>
-            {#            {% for a in body_areas %}#}
-            {#                {% for p in a.bodypart_set.all %}#}
-            {#                    {% recursetree p.symptom_set.all %}#}
-            {#                        <li>#}
-            {#                            {{ node.name }}#}
-            {#                            {% if not node.is_leaf_node %}#}
-            {#                                <ul class="children" style="padding: 10px">#}
-            {#                                    {{ children }}#}
-            {#                                </ul>#}
-            {#                            {% endif %}#}
-            {#                        </li>#}
-            {#                    {% endrecursetree %}#}
-            {#                {% endfor %}#}
-            {#            {% endfor %}#}
+            {% recursetree body_symptoms %}
+                <li>
+                    {{ node.name }}
+                    {% if not node.is_leaf_node %}
+                        <ul class="children" style="padding: 10px">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+                    {% if node.is_leaf_node %}
+                        root
+                        {% recursetree node.symptom_set.all %}
+                            <li>
+                                {{ node.name }}
+                                {% if not node.is_leaf_node %}
+                                    <ul class="children" style="padding: 10px">
+                                        {{ children }}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endrecursetree %}
+                {% else %}
+                not root
+                {% endif %}
+                </li>
+            {% endrecursetree %}
+
 
         </form>
         <div style="height: 1000px; width: 1000px; border: solid 1px black" id="deceases">
@@ -94,6 +106,7 @@
 
         </div>
     </div>
+
 {% endblock %}
 {% block extrajs %}
     <script>
