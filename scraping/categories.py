@@ -86,7 +86,9 @@ def save_symptoms(symptom_text, body_part, parent=None):
     elif symptom_text.strip() == "Навязчивые действия" and parent.strip() == "Навязчивые действия":
         parent_text = "Разные навязчивые действия"
 
-    symptom, _ = Symptom.objects.get_or_create(name=symptom_text)
+    symptom, created = Symptom.objects.get_or_create(name=symptom_text)
+    if not created and symptom.body_part:
+        return
     if parent:
         parent = Symptom.objects.get(name=parent)
     body_part  = BodyPart.objects.get(name=body_part)
