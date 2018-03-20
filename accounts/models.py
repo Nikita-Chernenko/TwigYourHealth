@@ -11,11 +11,17 @@ class User(AbstractUser):
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.username
+
 
 class Hospital(models.Model):
     name = models.CharField('hospital name', max_length=256)
     address = models.CharField('hospital address', max_length=512)
     is_private = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
 
 
 
@@ -35,6 +41,9 @@ class Doctor(models.Model):
     personal_address = models.CharField("address if you don't work in clinic", max_length=512, null=True, blank=True)
     description = models.TextField('info about yourself')
 
+    def __str__(self):
+        return f'doctor {self.user}'
+
 
 class DoctorSphere(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -50,12 +59,19 @@ class PrivateDoctor(models.Model):
     hour_rate = models.DecimalField('hour rate', max_digits=8, decimal_places=2)
     visit_price = models.DecimalField('visit price', max_digits=8, decimal_places=2)
 
+    def __str__(self):
+        return f'private {self.doctor} '
 
 class PublicDoctor(models.Model):
     doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return  f'public {self.doctor}'
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField()
     deceases = models.ManyToManyField(to='deceases.Decease', through='deceases.PatientDecease')
+
+    def __str__(self):
+        return f'patient {self.user}'

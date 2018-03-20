@@ -43,6 +43,8 @@ class Round(Func):
 
 
 def deceases_by_symptoms(request):
+    # TODO test it
+
     symptoms_ids = request.GET.getlist('symptoms[]')
     # symptoms_ids = [109, 32, 103]
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids)
@@ -55,14 +57,15 @@ def deceases_by_symptoms(request):
                     .annotate(chance=chance).annotate(chance=ExpressionWrapper(
         F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())).filter(
         ~Q(chance=None)).order_by('-chance')[:5].values('id', 'name', 'chance', 'sphere'))
-    spheres = [d.sphere for d in deceases]
+    deceases_with_doctors = []
     for d in deceases:
         sphere = d.sphere
         doctors = list(Doctor.objects.filter(sphere=sphere).order_by('?')[:1000])
         doctors = list(sorted(doctors, key=lambda x: -x.rating))[:20]
         random.shuffle(doctors)
         doctors = doctors[:3]
-    # TODO group deceases by sphere. Get best doctors in theses spheres and append them
-    data = json.dumps(list(deceases))
+        deceases_with_doctors.append({"decease": d, "doctors": doctors})
+
+    data = json.dumps(deceases_with_doctors)
 
     return JsonResponse(data=data, safe=False)
