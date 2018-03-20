@@ -17,6 +17,9 @@ class BodyPart(models.Model):
     body_area = models.ForeignKey(BodyArea, on_delete=models.PROTECT)
     name = models.CharField(max_length=256, unique=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Symptom(MPTTModel):
     body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, null=True, blank=True)
@@ -33,6 +36,8 @@ class Symptom(MPTTModel):
             self.aliases = self.name
         super(Symptom, self).save(force_insert, force_update, using, update_fields)
 
+    def __str__(self):
+        return f"{self.name} {self.body_part}"
 
 class Sphere(models.Model):
     name = models.CharField('name', max_length=256, unique=True)
@@ -70,8 +75,6 @@ class DeceaseSymptom(models.Model):
 
     occurrence = models.PositiveIntegerField(default=1)  # How many times this symptom has occurred for the decease
 
-    class Meta:
-        unique_together = [['symptom', 'decease']]
 
 
 class PatientDecease(models.Model):

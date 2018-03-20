@@ -49,6 +49,9 @@ try:
     driver.execute_script(js)
     js = "var aa=document.getElementById('header_wrap');aa.parentNode.removeChild(aa)"
     driver.execute_script(js)
+except NoSuchElementException:
+    print("no banner")
+try:
     sleep(1)
     weight_element = driver.find_element_by_id('weight_patient')
 
@@ -96,8 +99,11 @@ def save_symptoms(symptom_text, parent_text):
     if parent_text:
         parent = Symptom.objects.get(name=parent_text)
         symptom.parent = parent
+    else:
+        symptom.parent = None
     symptom.body_part = body_part
     symptom.save()
+
 
 
 
