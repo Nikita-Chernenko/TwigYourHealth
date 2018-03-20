@@ -17,7 +17,7 @@ import django
 
 django.setup()
 # Scrapy settings
-from deceases.models import  BodyPart, Symptom
+from deceases.models import BodyPart, Symptom
 
 webdriver_service = service.Service('/home/nikita/web_drivers/operadriver')
 webdriver_service.start()
@@ -88,15 +88,14 @@ def save_symptoms(symptom_text, body_part, parent=None):
 
     symptom, created = Symptom.objects.get_or_create(name=symptom_text)
     if not created and symptom.body_part:
-        return
+        return False
     if parent:
         parent = Symptom.objects.get(name=parent)
-    body_part  = BodyPart.objects.get(name=body_part)
+    body_part = BodyPart.objects.get(name=body_part)
     symptom.parent = parent
     symptom.body_part = body_part
     symptom.save()
-
-
+    return True
 
 
 def recursive_symptoms(symp, body_part, parent_text=None):
@@ -105,15 +104,21 @@ def recursive_symptoms(symp, body_part, parent_text=None):
         symp.find_element_by_xpath(children)
         perform_click(symp)
         sleep(1.5)
-        save_symptoms(symp.text, body_part, parent_text)
+        res = save_symptoms(symp.text, body_part, parent_text)
+        if not res:
+            return
         for s in symp.find_elements_by_xpath(f'{children}//div[contains(@class,"name_sympt")]'):
             recursive_symptoms(s, body_part, symp.text)
     except NoSuchElementException:
         if symp.text:
             save_symptoms(symp.text, body_part, parent_text)
+
+
+
 @transaction.atomic
 def call_rec():
     recursion_body_menu()
+
 
 def recursion_body_menu(depth=0, body_part_parent=None):
     global indexes
@@ -126,7 +131,7 @@ def recursion_body_menu(depth=0, body_part_parent=None):
     body_part_names = [el.text for el in body_elements]
     sleep(1)
     for ind in range(len(body_elements)):
-        body_part,_ = BodyPart.objects.get_or_create(name=body_part_names[ind])
+        body_part, _ = BodyPart.objects.get_or_create(name=body_part_names[ind])
         if body_part_parent:
             body_part_parent = BodyPart.objects.get(name=body_part_parent)
         body_part.parent = body_part_parent
