@@ -3,6 +3,7 @@ import sys
 from collections import defaultdict
 from time import sleep
 
+from django.db import transaction
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome import service
@@ -16,7 +17,7 @@ import django
 
 django.setup()
 # Scrapy settings
-from deceases.models import BodyArea, BodyPart, Symptom
+from deceases.models import  BodyPart, Symptom
 
 webdriver_service = service.Service('/home/nikita/web_drivers/operadriver')
 webdriver_service.start()
@@ -75,66 +76,59 @@ except NoSuchElementException:
 
 indexes = {}
 
-body_parts_names = defaultdict(lambda: {})
+body_parts_names = defaultdict(dict)
 
 
-def save_symptoms(symptom_text, parent_text):
-    global indexes
-    global body_parts_names
-    body_area = body_parts_names[0][indexes[0]]
-    try:
-        body_part = body_parts_names[1][indexes[1]]
-    except (KeyError, IndexError):
-        body_part = body_area
-
+def save_symptoms(symptom_text, body_part, parent=None):
     # the same parent and child
-    if symptom_text.strip() == "Навязчивые действия" and parent_text.strip() != "Разные навязчивые действия":
+    if symptom_text.strip() == "Навязчивые действия" and parent.strip() != "Разные навязчивые действия":
         symptom_text = "Разные навязчивые действия"
-    elif symptom_text.strip() == "Навязчивые действия" and parent_text.strip() == "Навязчивые действия":
+    elif symptom_text.strip() == "Навязчивые действия" and parent.strip() == "Навязчивые действия":
         parent_text = "Разные навязчивые действия"
 
-    body_area, _ = BodyArea.objects.get_or_create(name=body_area)
-    body_part, _ = BodyPart.objects.get_or_create(name=body_part, body_area=body_area)
     symptom, _ = Symptom.objects.get_or_create(name=symptom_text)
-    if parent_text:
-        parent = Symptom.objects.get(name=parent_text)
-        symptom.parent = parent
-    else:
-        symptom.parent = None
+    if parent:
+        parent = Symptom.objects.get(name=parent)
+    body_part  = BodyPart.objects.get(name=body_part)
+    symptom.parent = parent
     symptom.body_part = body_part
     symptom.save()
 
 
 
 
-def recursive_symptoms(symp, parent_text=None):
+def recursive_symptoms(symp, body_part, parent_text=None):
     try:
         children = './parent::div/parent::div[contains(@class,"p_wrapp")]//div[contains(@class,"sub_children")]'
         symp.find_element_by_xpath(children)
         perform_click(symp)
         sleep(1.5)
-        save_symptoms(symp.text, parent_text)
+        save_symptoms(symp.text, body_part, parent_text)
         for s in symp.find_elements_by_xpath(f'{children}//div[contains(@class,"name_sympt")]'):
-            recursive_symptoms(s, symp.text)
+            recursive_symptoms(s, body_part, symp.text)
     except NoSuchElementException:
         if symp.text:
-            save_symptoms(symp.text, parent_text)
+            save_symptoms(symp.text, body_part, parent_text)
+@transaction.atomic
+def call_rec():
+    recursion_body_menu()
 
-
-def recursion_body_menu(depth=0):
+def recursion_body_menu(depth=0, body_part_parent=None):
     global indexes
-    global body_parts_names
     sleep(1)
     if (driver.find_element_by_id('screen_basket').is_displayed()):
         for symptom in driver.find_elements_by_xpath('//div[@class="btn_symptome pointer"]//div[@class="name_sympt"]'):
-            recursive_symptoms(symptom)
+            recursive_symptoms(symptom, body_part_parent)
         return
     body_elements = driver.find_elements_by_xpath('//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')
-    if depth < 2:
-        for ind, el in enumerate(body_elements):
-            body_parts_names[depth][ind] = el.text
+    body_part_names = [el.text for el in body_elements]
     sleep(1)
     for ind in range(len(body_elements)):
+        body_part,_ = BodyPart.objects.get_or_create(name=body_part_names[ind])
+        if body_part_parent:
+            body_part_parent = BodyPart.objects.get(name=body_part_parent)
+        body_part.parent = body_part_parent
+        body_part.save()
         if depth == 0:
             indexes = {}
         indexes[depth] = ind
@@ -151,7 +145,7 @@ def recursion_body_menu(depth=0):
                     '//div[@id="nano-scroll"]//div[contains(@class,"btn_symptome")]')[indexes[depth_ind]]
             perform_click(body_element)
 
-        recursion_body_menu(depth + 1)
+        recursion_body_menu(depth + 1, body_part.name)
 
 
 sleep(2)
@@ -160,4 +154,4 @@ perform_click(body_area)
 sleep(1)
 body_rtn_btn = driver.find_element_by_id('bcd_loc')
 perform_click(body_rtn_btn)
-recursion_body_menu()
+call_rec()
