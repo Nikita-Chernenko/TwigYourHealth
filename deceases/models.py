@@ -9,20 +9,17 @@ from accounts.models import Patient
 from utils.validators import comma_separated_field
 
 
-class BodyArea(models.Model):
+
+class BodyPart(MPTTModel):
     name = models.CharField(max_length=256, unique=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
+                            on_delete=models.CASCADE)
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     def __str__(self):
         return self.name
-
-
-class BodyPart(models.Model):
-    body_area = models.ForeignKey(BodyArea, on_delete=models.PROTECT)
-    name = models.CharField(max_length=256, unique=True)
-
-    def __str__(self):
-        return f'{self.body_area} - {self.name}'
-
 
 class Symptom(MPTTModel):
     body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, blank=True, null=True)
@@ -40,8 +37,7 @@ class Symptom(MPTTModel):
         super(Symptom, self).save(force_insert, force_update, using, update_fields)
 
     def __str__(self):
-        return self.name
-
+        return f"{self.name} {self.body_part}"
 
 class Sphere(models.Model):
     name = models.CharField('name', max_length=256, unique=True)
