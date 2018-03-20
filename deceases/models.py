@@ -9,13 +9,13 @@ from accounts.models import Patient
 from utils.validators import comma_separated_field
 
 
-class BodyArea(models.Model):
+class BodyPart(MPTTModel):
     name = models.CharField(max_length=256, unique=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
+                            on_delete=models.CASCADE)
 
-
-class BodyPart(models.Model):
-    body_area = models.ForeignKey(BodyArea, on_delete=models.PROTECT)
-    name = models.CharField(max_length=256, unique=True)
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     def __str__(self):
         return self.name
