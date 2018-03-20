@@ -20,9 +20,7 @@ def diagnostics(request):
     #         groupby(symptoms, key=lambda s: s.body_part)} for
     #     key, symptoms in groupby(body_symptoms, key=lambda s: s.body_part.body_area)}
     # body_areas = BodyArea.objects.all().prefetch_related('bodypart_set', 'bodypart_set__symptom_set')
-    body_symptoms = BodyPart.objects.\
-        filter(pk__in=Symptom.objects.all().values_list('body_part',flat=True).distinct()).\
-        prefetch_related('symptom_set')
+    body_symptoms = BodyPart.objects.prefetch_related('symptom_set')
 
     return {'body_symptoms': body_symptoms}
 

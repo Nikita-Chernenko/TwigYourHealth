@@ -75,36 +75,35 @@
                 <li>
                     {{ node.name }}
                     {% if not node.is_leaf_node %}
-                        <ul class="children" style="padding: 10px">
+                        <ul class="children" style="color: green;">
                             {{ children }}
                         </ul>
                     {% endif %}
                     {% if node.is_leaf_node %}
-                        root
                         {% recursetree node.symptom_set.all %}
-                            <li>
+                            <li style="color: red">
                                 {{ node.name }}
                                 {% if not node.is_leaf_node %}
-                                    <ul class="children" style="padding: 10px">
+                                    <ul class="children list-card" style="padding: 10px; color: green">
                                         {{ children }}
                                     </ul>
                                 {% endif %}
                             </li>
                         {% endrecursetree %}
-                {% else %}
-                not root
-                {% endif %}
+                    {% else %}
+                        not root
+                    {% endif %}
                 </li>
             {% endrecursetree %}
 
 
         </form>
-        <div style="height: 1000px; width: 1000px; border: solid 1px black" id="deceases">
-            <ul class="collection">
-
-            </ul>
-
-        </div>
+{#        <div style="height: 1000px; width: 1000px; border: solid 1px black" id="deceases">#}
+{#            <ul class="collection">#}
+{##}
+{#            </ul>#}
+{##}
+{#        </div>#}
     </div>
 
 {% endblock %}
