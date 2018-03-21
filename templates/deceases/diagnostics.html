@@ -24,86 +24,43 @@
                         <label class="active" for="multipleInput">Выбранные симптомы: </label>
                     </div>
                 </div>
-                {#                <div class="col">#}
-                {#                    <ul class="collapsible" data-collapsible="accordion">#}
-                {#                        {% for body_area, symptoms in body_symptoms.items %}#}
-                {#                            <li>#}
-                {#                                <div class="collapsible-header">#}
-                {#                                    <i class="material-icons">{{ body_area.name }}</i>#}
-                {#                                </div>#}
-                {#                                <div class="collapsible-body">#}
-                {#                                    <div class="row">#}
-                {#                                        <div class="col s12 m12">#}
-                {#                                            <ul class="collapsible popout" data-collapsible="accordion">#}
-                {#                                                {% for body_part, symptoms in symptoms.items %}#}
-                {#                                                    <li>#}
-                {#                                                        <div class="collapsible-header">#}
-                {#                                                            <i class="material-icons">{{ body_part.name }}</i>#}
-                {##}
-                {#                                                        </div>#}
-                {#                                                        <div class="collapsible-body">#}
-                {#                                                            <ul>#}
-                {#                                                                {% recursetree symptoms %}#}
-                {#                                                                    <li>#}
-                {#                                                                        {{ node.name }}#}
-                {#                                                                        {% if not node.is_leaf_node %}#}
-                {#                                                                            <ul class="children" style="padding: 10px">#}
-                {#                                                                                {{ children }}#}
-                {#                                                                            </ul>#}
-                {#                                                                        {% endif %}#}
-                {#                                                                    </li>#}
-                {#                                                                {% endrecursetree %}#}
-                {#                                                            </ul>#}
-                {#                                                        </div>#}
-                {#                                                    </li>#}
-                {#                                                {% endfor %}#}
-                {#                                            </ul>#}
-                {#                                        </div>#}
-                {#                                    </div>#}
-                {#                                </div>#}
-                {#                            </li>#}
-                {#                        {% endfor %}#}
-                {#                    </ul>#}
-                {##}
-                {#                    <!-- end snippet -->#}
-                {##}
-                {##}
-                {#                </div>#}
             </div>
             <button class="btn waves-effect">Get deceases</button>
-            {% recursetree body_symptoms %}
-                <li>
-                    {{ node.name }}
-                    {% if not node.is_leaf_node %}
-                        <ul class="children" style="color: green;">
-                            {{ children }}
-                        </ul>
-                    {% endif %}
-                    {% if node.is_leaf_node %}
-                        {% recursetree node.symptom_set.all %}
-                            <li style="color: red">
-                                {{ node.name }}
+            <div class="col s12">
+                <ul id="tabs-swipe-demo" class="tabs">
+                    <li class="tab col s6" style="width: 50%"><a class="active" href="#body-part">Часть тела</a></li>
+                    <li class="tab col s6" style="width: 50%"><a href="#symptom">Симптом</a></li>
+                </ul>
+
+                <div id="body-part" class="tabs content" style="width: 100%; height: 1000px;">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        {% recursetree body_symptoms %}
+                            <li>
                                 {% if not node.is_leaf_node %}
-                                    <ul class="children list-card" style="padding: 10px; color: green">
-                                        {{ children }}
-                                    </ul>
+                                    <div class="collapsible-header">{{ node.name }}
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <ul class="children collapsible" data-collapsible="accordion">
+                                            <li>{{ children }}</li>
+                                        </ul>
+                                    </div>
+                                {% else %}
+                                    <div class="collapsible-header">
+                                        <a class="symptom-trigger button waves-effect"
+                                           data-id="{{ node.id }}">{{ node.name }}</a>
+                                    </div>
+
                                 {% endif %}
                             </li>
                         {% endrecursetree %}
-                    {% else %}
-                        not root
-                    {% endif %}
-                </li>
-            {% endrecursetree %}
+                    </ul>
+                </div>
+                <div id="symptom" class="card" style="width: 100%; height: 1000px;">Симптом</div>
+            </div>
 
 
         </form>
-{#        <div style="height: 1000px; width: 1000px; border: solid 1px black" id="deceases">#}
-{#            <ul class="collection">#}
-{##}
-{#            </ul>#}
-{##}
-{#        </div>#}
+        <div id="deceases" style="height: 1000px; width: 1000px; border: 1px gainsboro solid;"></div>
     </div>
 
 {% endblock %}
@@ -125,7 +82,7 @@
                     el: '#multipleDropdown'
                 },
                 getData: function (value, callback) {
-                    console.log(value)
+                    console.log(value);
                     data = [];
                     if (value.length < 3) {
                         return data
@@ -151,11 +108,28 @@
 
                 }
             });
-            $('.body-symptom').on('click', function (e) {
+            $('.symptom-trigger').on('click', function (e) {
                 el = $(e.target);
-                console.log(el.text());
-                multiple.append({'id': el.data('id'), 'text': el.text()})
+                $('ul.tabs').tabs('select_tab', 'symptom');
+                $.ajax({
+                    "type": "GET",
+                    "url": "{% url 'symptom-tree' %}",
+                    "data": {'body_part_id': el.data('id')},
+                    "success": function (result) {
+                        console.log(result);
+                        $('#symptom').html(result);
+                        $('.collapsible').collapsible();
+                        $('.symptom-leaf').on('click', function (e) {
+                            el = $(e.target);
+                            console.log(el.text());
+                            multiple.append({'id': el.data('id'), 'text': el.text()})
 
+                        });
+                    },
+                    "error": function (result) {
+                        console.log(result);
+                    }
+                })
             });
             $('#symptoms-search').on('submit', function (e) {
                 console.log(multiple.value);
@@ -165,24 +139,12 @@
                 }
                 $.ajax({
                     "type": "GET",
-                    "dataType": "json",
                     "url": "{% url 'deceases-by-symptoms' %}",
                     "data": {'symptoms': values},
                     "success": function (result) {
+                        console.log(result);
+                        $('#deceases').html(result);
 
-                        res = JSON.parse(result);
-                        console.log(res);
-                        div = $('#deceases .collection');
-                        div.html("");
-                        for (var i = 0; i < res.length; i++) {
-                            el = res[i];
-
-                            div.append('<li class="collection-item avatar">\n' +
-                                '                    <i class="circle red">' + el.chance + '</i>\n' +
-                                '                    <p>' + el.name + '</Line>\n' +
-                                '                    </p>\n' +
-                                '                </li>')
-                        }
                         materialize_initiailize();
                     },
                     "error": function (error) {
