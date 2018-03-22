@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.db.models import F
@@ -5,9 +6,8 @@ from django.utils.timezone import now
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from accounts.models import Patient
+from accounts.models import Patient, User, PatientDoctor
 from utils.validators import comma_separated_field
-
 
 
 class BodyPart(MPTTModel):
@@ -20,6 +20,7 @@ class BodyPart(MPTTModel):
 
     def __str__(self):
         return self.name
+
 
 class Symptom(MPTTModel):
     body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, blank=True, null=True)
@@ -38,6 +39,7 @@ class Symptom(MPTTModel):
 
     def __str__(self):
         return f"{self.name} {self.body_part}"
+
 
 class Sphere(models.Model):
     name = models.CharField('name', max_length=256, unique=True)
@@ -88,39 +90,53 @@ class PatientDecease(models.Model):
     start_date = models.DateField(default=now)
     end_date = models.DateField(null=True, blank=True)
     cured = models.BooleanField(default=False)
+    author = models.ForeignKey(User, on_delete=models.PROTECT, blank=True)
 
     def __str__(self):
         return f'{self.patient} {self.decease}'
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if not self.author and self.patient:
+            self.author = self.patient
+        super(PatientDecease, self).save(force_insert, force_update, using, update_fields)
+
+    def clean(self):
+        if self.author and self.patient and self.author != self.patient:
+            if not PatientDoctor.objects.filter(patient=self.patient, doctor=self.author):
+                raise ValidationError(f'{self.author} is not able to add medical records for{self.patient}'
+                                      f'request the access from the patient')
+
 
 class PatientSymptomDecease(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    decease = models.ForeignKey(Decease, on_delete=models.CASCADE, null=True, blank=True)
+    patient_decease = models.ForeignKey(PatientDecease, on_delete=models.PROTECT)
     symptom = models.ForeignKey(Symptom, on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
         super(PatientSymptomDecease, self).__init__(*args, **kwargs)
-        self.__original_decease = self.decease
+        self.__original_decease = self.patient_decease and self.patient_decease.decease
 
     def __str__(self):
-        return f'{self.patient} - {self.decease} - {self.symptom}'
+        return f'{self.patient_decease} - {self.symptom}'
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if self.decease and self.symptom:
+        if self.patient_decease and self.patient_decease.decease and self.symptom:
+            # TODO recheck the algo
             # create new symptom of decease because it occurred and doesn't exist
-            if not self.symptom in self.decease.symptoms.all():
-                DeceaseSymptom.objects.create(decease=self.decease, symptom=self.symptom)
+            decease = self.patient_decease.decease
+            if self.symptom not in decease.symptoms.all():
+                DeceaseSymptom.objects.create(decease=decease, symptom=self.symptom)
             # update the existing decease symptom
             else:
-                DeceaseSymptom.objects.filter(decease=self.decease, symptom=self.symptom).update(
+                DeceaseSymptom.objects.filter(decease=decease, symptom=self.symptom).update(
                     occurrence=F('occurrence') + 1)
             # decease has been either set or changed
-            if not self.__original_decease == self.decease:
+            if not self.__original_decease == decease:
                 # if decease has been changed, minus occurrence of the previous one
                 if self.__original_decease:
                     self.__original_decease.occurrence = F('occurrence') - 1
                     self.__original_decease.save()
                 # update occurrence of new decease
-                DeceaseSymptom.objects.filter(decease=self.decease, symptom=self.symptom).update(
+                DeceaseSymptom.objects.filter(decease=decease, symptom=self.symptom).update(
                     occurrence=F('occurrence') + 1)

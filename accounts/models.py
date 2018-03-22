@@ -24,9 +24,6 @@ class Hospital(models.Model):
         return self.name
 
 
-
-
-
 class Doctor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     skype = models.CharField('skype username', max_length=256, unique=True, null=True, blank=True)
@@ -62,11 +59,13 @@ class PrivateDoctor(models.Model):
     def __str__(self):
         return f'private {self.doctor} '
 
+
 class PublicDoctor(models.Model):
     doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)
 
     def __str__(self):
-        return  f'public {self.doctor}'
+        return f'public {self.doctor}'
+
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -75,3 +74,14 @@ class Patient(models.Model):
 
     def __str__(self):
         return f'patient {self.user}'
+
+
+class PatientDoctor(models.Model):
+    patient = models.ForeignKey('Patient', on_delete=models.PROTECT)
+    doctor = models.ForeignKey('Doctor', on_delete=models.PROTECT)
+
+    class Meta:
+        unique_together = [['patient', 'doctor']]
+
+    def __str__(self):
+        return f'relations {self.patient} {self.doctor}'
