@@ -12,9 +12,9 @@ urlpatterns = [
     path('sign-up/private-doctor-sign-up/', private_doctor_sign_up, name='private-doctor-sign-up'),
     path('logout/', logout, name='logout'),
     path('login/', login, {'template_name': 'accounts/login.html', 'authentication_form': LoginViewForm}, name='login'),
-    path('profile/', profile, name='profile'),
-    path('profile/change-password/', password_change, {'template_name': 'accounts/change_password.html',
-                                                       'post_change_redirect': reverse_lazy('profile')},
+    path('profile/<int:pk>', profile, name='profile'),
+    path('profile/<int:pk>/change-password/', password_change, {'template_name': 'accounts/change_password.html',
+                                                               'post_change_redirect': reverse_lazy('profile')},
          name='change-password'),
     path('profile/update/', update, name='update-profile')
 ]

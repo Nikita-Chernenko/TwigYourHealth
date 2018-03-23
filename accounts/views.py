@@ -1,11 +1,13 @@
 from annoying.decorators import render_to
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout as _logout
 from django.db.transaction import atomic
 from django.forms import formset_factory
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
     PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm
+from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 
 user_prefix = 'user'
@@ -69,19 +71,37 @@ def logout(request):
     return redirect(request.META.get("HTTP_REFERER"))
 
 
-def profile(request):
-    user = request.user
-    if user.is_patient:
-        return patient_profile(request)
-    elif user.is_doctor and user.doctor.is_private:
-        return private_doctor_profile(request)
-    elif user.is_doctor:
-        return public_doctor_profile(request)
+def private_doctor_public_profile(request, user, request_user):
+    pass
+
+
+def public_doctor_public_profile(request, user, request_user):
+    pass
+
+
+@login_required
+def profile(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    request_user = request.user
+    self = request_user == user
+    if self:
+        if request_user.is_patient:
+            return patient_profile(request, request_user)
+        elif request_user.is_doctor and request_user.doctor.is_private:
+            return private_doctor_profile(request, request_user)
+        elif request_user.is_doctor:
+            return public_doctor_profile(request, request_user)
+    if request_user.is_patient:
+        return patient_public_profile(request, user, request_user)
+    elif request_user.is_doctor and request_user.doctor.is_private:
+        return private_doctor_public_profile(request, user, request_user)
+    elif request_user.is_doctor:
+        return public_doctor_public_profile(request, user, request_user)
 
 
 @render_to('accounts/patient_profile.html')
-def patient_profile(request):
-    patient = request.user.patient
+def patient_profile(request, user):
+    patient = user.patient
     medical_records = patient.patientdecease_set.all()
     PatientDeceaseFormSet = formset_factory(PatientDeceaseForm)
     patient_decease_formset = PatientDeceaseFormSet(request.POST or None)
@@ -103,6 +123,10 @@ def public_doctor_profile(request):
 @render_to('accounts/private_doctor_profile.html')
 def private_doctor_profile(request):
     return {}
+
+
+def patient_public_profile(request, user, request_user):
+    pass
 
 
 def update(request):
