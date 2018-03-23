@@ -2,6 +2,7 @@
 {% load mptt_tags %}
 
 {% block breadcrumbs %}
+    <a href="{% url 'profile' user.id %}" class="breadcrumb">Profile</a>
     <a href="{% url 'diagnostics' %}" class="breadcrumb">Symptom pick</a>
 {% endblock %}
 

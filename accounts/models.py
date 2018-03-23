@@ -10,6 +10,8 @@ class User(AbstractUser):
     patronymic = models.CharField(max_length=64)
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
+    city = models.CharField(max_length=256, blank=True, null=True)
+    avatar = models.ImageField(upload_to='user_avatars', blank=True, null=True)
 
     def __str__(self):
         return self.username
@@ -76,12 +78,14 @@ class Patient(models.Model):
         return f'patient {self.user}'
 
 
-class PatientDoctor(models.Model):
+class Relationships(models.Model):
     patient = models.ForeignKey('Patient', on_delete=models.PROTECT)
     doctor = models.ForeignKey('Doctor', on_delete=models.PROTECT)
+    patient_accept = models.BooleanField(default=False)
+    doctor_accept = models.BooleanField(default=False)
 
     class Meta:
         unique_together = [['patient', 'doctor']]
 
     def __str__(self):
-        return f'relations {self.patient} {self.doctor}'
+        return f'relations {self.patient} {self.doctor} {self.patient_accept} {self.doctor_accept}'

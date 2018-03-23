@@ -5,7 +5,7 @@
     <a href="{% url 'update-profile' %}" class="breadcrumb">Update profile</a>
 {% endblock %}
 {% block content %}
-    <form method="post" class="form">
+    <form method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
         {% form form=user_form %}{% endform %}
         {% form form=patient_form %}{% endform %}

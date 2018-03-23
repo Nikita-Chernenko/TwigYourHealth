@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block breadcrumbs %}
+    <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">Patient profile</a>
+{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    <div>
+        {{ patient.user.username }}
+        {{ patient.user.avatar }}
+
+        {% thumbnail patient.user.avatar "100x100" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+        {% endthumbnail %}
+        {% if not relationships.patient_accept %}
+            {% if relationships.doctor_accept %}
+                <button class="btn" id="require-access" data-doctor-accept="false">
+                    Вы запросили доступ,
+                    Закрыть данные для этого пользователя
+                </button>
+            {% else %}
+                <button class="btn" id="require-access" data-doctor-accept="true">Запросить доступ и открыть свои
+                    данные
+                </button>
+            {% endif %}
+        {% endif %}
+        {% if relationships.patient_accept %}
+            {% if medical_records %}
+                <h3>Medical records</h3>
+                <table class="responsive-table table-of-contents">
+                    <tr>
+                        <th>Decease</th>
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Cured</th>
+                    </tr>
+                    {{ medical_records.count }}
+                    {% for record in medical_records %}
+                        <tr>
+                            <td>{{ record.decease }}</td>
+                            <td>{{ record.start_date }}</td>
+                            <td>{{ record.end_date|default:"-" }}</td>
+                            <td>
+                                {% if record.cured %}
+                                    <i class="material-icons green">check</i>
+                                {% else %}
+                                    <i class="material-icons red">close</i>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+            {% else %}
+                <h3>There are no medical records, please, fill it in</h3>
+            {% endif %}
+
+        {% endif %}
+    </div>
+{% endblock %}
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            $('#require-access').on('click', function () {
+                el = $(this);
+                $.ajax({
+                    "type": "POST",
+                    "url": "{% url 'update-relationships' pk=relationships.id %}",
+                    "data": {"doctor_accept": el.data('doctor-accept')},
+                    "success": function (result) {
+                        console.log(result);
+                        doctor_accept = result.doctor_accept;
+                        console.log(doctor_accept);
+                        el.data('doctor-accept', !doctor_accept);
+                        if (doctor_accept) {
+                            el.html(' Вы запросили доступ,\n' +
+                                '                    Закрыть данные для этого пользователя')
+                        }
+                        else {
+                            el.html('Запросить доступ и открыть свои данные')
+                        }
+                    },
+                    "error": function (result) {
+                        console.log(result)
+                    }
+                })
+            })
+        });
+    </script>
+{% endblock %}

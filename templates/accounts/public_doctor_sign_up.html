@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
 
-    <form class="form" method="post">
+    <form class="form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% form form=user_form %}{% endform %}
         {% form form=doctor_form %}

@@ -1,13 +1,16 @@
+import json
+
 from annoying.decorators import render_to
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout as _logout
 from django.db.transaction import atomic
-from django.forms import formset_factory
+from django.forms import formset_factory, model_to_dict
+from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, get_object_or_404
+from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
     PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm
-from accounts.models import User
+from accounts.models import User, Relationships
 from deceases.forms import PatientDeceaseForm
 
 user_prefix = 'user'
@@ -71,15 +74,10 @@ def logout(request):
     return redirect(request.META.get("HTTP_REFERER"))
 
 
-def private_doctor_public_profile(request, user, request_user):
-    pass
+def self_profile(request):
+    return redirect('profile', request.user.id)
 
 
-def public_doctor_public_profile(request, user, request_user):
-    pass
-
-
-@login_required
 def profile(request, pk):
     user = get_object_or_404(User, pk=pk)
     request_user = request.user
@@ -91,12 +89,13 @@ def profile(request, pk):
             return private_doctor_profile(request, request_user)
         elif request_user.is_doctor:
             return public_doctor_profile(request, request_user)
-    if request_user.is_patient:
+    if user.is_patient and request_user.is_doctor:
         return patient_public_profile(request, user, request_user)
-    elif request_user.is_doctor and request_user.doctor.is_private:
+    elif user.is_doctor and user.doctor.is_private and request_user.is_patient:
         return private_doctor_public_profile(request, user, request_user)
-    elif request_user.is_doctor:
+    elif user.is_doctor and request_user.is_patient:
         return public_doctor_public_profile(request, user, request_user)
+    raise Http404('You are not allowed to view this page')
 
 
 @render_to('accounts/patient_profile.html')
@@ -116,16 +115,32 @@ def patient_profile(request, user):
 
 
 @render_to('accounts/public_doctor_profile.html')
-def public_doctor_profile(request):
+def public_doctor_profile(request, user):
     return {}
 
 
 @render_to('accounts/private_doctor_profile.html')
-def private_doctor_profile(request):
+def private_doctor_profile(request, user):
     return {}
 
 
+@render_to('accounts/patient_public_profile.html')
 def patient_public_profile(request, user, request_user):
+    patient = user.patient
+    doctor = request_user.doctor
+    relationships, _ = Relationships.objects.get_or_create(patient=patient, doctor=doctor)
+    medical_records = None
+    if relationships.patient_accept:
+        medical_records = patient.patientdecease_set.all()
+
+    return {'patient': patient, 'doctor': doctor, 'medical_records': medical_records, 'relationships': relationships}
+
+
+def private_doctor_public_profile(request, user, request_user):
+    pass
+
+
+def public_doctor_public_profile(request, user, request_user):
     pass
 
 
@@ -143,13 +158,13 @@ def update(request):
 def update_patient(request):
     patient = request.user
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user, prefix=user_prefix)
+        user_form = UserForm(request.POST, request.FILES, instance=request.user, prefix=user_prefix)
         patient_form = PatientForm(request.POST, instance=request.user.patient, prefix=patient_prefix)
         if user_form.is_valid() and patient_form.is_valid():
             patient = patient_form.save(commit=False)
             patient.user = user_form.save()
             patient.save()
-            return redirect('profile')
+            return redirect('self-profile')
     else:
         user_form = UserForm(instance=patient, prefix=user_prefix)
         patient_form = PatientForm(instance=patient.patient, prefix=patient_prefix)
@@ -160,7 +175,7 @@ def update_patient(request):
 def update_public_doctor(request):
     doctor = request.user
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=doctor, prefix=user_prefix)
+        user_form = UserForm(request.POST, request.FILES, instance=doctor, prefix=user_prefix)
         doctor_form = DoctorPublicDoctorForm(request.POST, instance=doctor.doctor, prefix=doctor_prefix)
         public_doctor_form = PublicDoctorForm(request.POST, instance=doctor.doctor.publicdoctor,
                                               prefix=public_doctor_prefix)
@@ -172,7 +187,7 @@ def update_public_doctor(request):
             public_doctor = public_doctor_form.save(commit=False)
             public_doctor.doctor = doctor
             public_doctor.save()
-            return redirect('profile')
+            return redirect('self-profile')
     else:
         user_form = UserForm(instance=doctor, prefix=user_prefix)
         doctor_form = DoctorPublicDoctorForm(instance=doctor.doctor, prefix=doctor_prefix)
@@ -185,7 +200,7 @@ def update_public_doctor(request):
 def update_private_doctor(request):
     doctor = request.user
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=doctor, prefix=user_prefix)
+        user_form = UserForm(request.POST, request.FILES, instance=doctor, prefix=user_prefix)
         doctor_form = DoctorPrivateDoctorForm(request.POST, instance=doctor.doctor, prefix=doctor_prefix)
         private_doctor_form = PrivateDoctorForm(request.POST, instance=doctor.doctor.privatedoctor,
                                                 prefix=private_doctor_prefix)
@@ -197,10 +212,35 @@ def update_private_doctor(request):
             private_doctor = private_doctor_form.save(commit=False)
             private_doctor.doctor = doctor
             private_doctor.save()
-            return redirect('profile')
+            return redirect('self-profile')
     else:
         user_form = UserForm(instance=doctor, prefix=user_prefix)
         doctor_form = DoctorPrivateDoctorForm(instance=doctor.doctor, prefix=doctor_prefix)
         private_doctor_form = PrivateDoctorForm(instance=doctor.doctor.privatedoctor,
                                                 prefix=private_doctor_prefix)
     return {'user_form': user_form, 'doctor_form': doctor_form, 'private_doctor_form': private_doctor_form}
+
+@require_http_methods(["POST"])
+def update_relationships(request, pk):
+    patient = None
+    doctor = None
+    if request.user.is_patient:
+        patient = request.user.patient
+    else:
+        doctor = request.user.doctor
+    if doctor:
+        relationships = get_object_or_404(Relationships, pk=pk, doctor=doctor)
+        doctor_accept = request.POST.get('doctor_accept')
+        if not doctor_accept:
+            raise Http404('no doctor_accept param')
+        doctor_accept = json.loads(doctor_accept)
+        relationships.doctor_accept = doctor_accept
+    else:
+        relationships = get_object_or_404(Relationships, pk=pk, patient=patient)
+        patient_accept = request.POST.get('patient_accept')
+        if not patient_accept:
+            raise Http404('no patient_accept param')
+        patient_accept = json.loads(patient_accept)
+        relationships.patient_accept = patient_accept
+    relationships.save()
+    return JsonResponse(data=model_to_dict(relationships))

@@ -18,7 +18,7 @@
             <div class="nav-wrapper">
                 <div class="container">
                     {% block breadcrumbs %}
-                        <a href="{% url 'profile' %}" class="breadcrumb">Profile</a>
+                        <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
                     {% endblock %}
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     <a href="{% url 'logout' %}">Logout</a>
                 </li>
                 <li>
-                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'profile' pk=user.id %}">Profile</a>
                 </li>
             {% else %}
                 <li>

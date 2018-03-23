@@ -6,7 +6,7 @@ from django.utils.timezone import now
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from accounts.models import Patient, User, PatientDoctor
+from accounts.models import Patient, User, Relationships
 from utils.validators import comma_separated_field
 
 
@@ -103,7 +103,7 @@ class PatientDecease(models.Model):
 
     def clean(self):
         if self.author and self.patient and self.author != self.patient:
-            if not PatientDoctor.objects.filter(patient=self.patient, doctor=self.author):
+            if not Relationships.objects.filter(patient=self.patient, doctor=self.author):
                 raise ValidationError(f'{self.author} is not able to add medical records for{self.patient}'
                                       f'request the access from the patient')
 
