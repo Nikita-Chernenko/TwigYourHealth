@@ -10,6 +10,8 @@ html {
 body {
   display: flex;
   flex: 1;
+  min-height: 100vh;
+  flex-direction: column;
 
 }
 
@@ -20,4 +22,6 @@ body {
   font-family: "Uni sans", monospace;
 }
 
-
+  main {
+    flex: 1 0 auto;
+  }
