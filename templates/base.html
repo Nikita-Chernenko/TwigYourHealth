@@ -15,14 +15,24 @@
 <div class="content">
     <header>
         <nav>
-            <div class="nav-wrapper teal lighten-5">
+            <div class="nav-wrapper teal lighten-2">
                 <div class="container">
                     {% block breadcrumbs %}
                         <a href="{% url 'profile' %}" class="breadcrumb">Profile</a>
                     {% endblock %}
+
+                    <a href="#" class="brand-logo">Logo</a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a href="base.html">Home</a></li>
+                            <li><a href="base.html">Medical record</a></li>
+                            <li><a href="base.html">Diagnostics</a></li>
+                            <li><a href="base.html">Account</a></li>
+                            <li><a href="base.html">Exit</a></li>
+                        </ul>
                 </div>
             </div>
         </nav>
+
         <ul id="slide-out" class="side-nav">
             {% if user.is_authenticated %}
                 <li>
