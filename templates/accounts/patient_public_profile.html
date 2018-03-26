@@ -115,6 +115,12 @@
                     }
                 })
             }
+            $('.record-toggle').on('click',function (e) {
+                console.log('here');
+                id = $(this).data('id');
+                $('#record-table-'+id).toggle();
+                $('#record-edit-form-'+id).toggle();
+            })
 
 
         });

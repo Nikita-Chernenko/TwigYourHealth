@@ -50,7 +50,7 @@ def doctor_create_update_decease(request):
         form.save()
         form = PatientDeceaseForm(initial={'patient': form.patient})
         status_code = 204 if hasattr(form, "id") else 201
-    return {'add_decease_form': form, 'status_code': status_code}
+    return {'decease_form': form, 'status_code': status_code}
 
 
 @render_to('deceases/_medical_records.html')
@@ -62,7 +62,11 @@ def medical_records(request, patient_id):
         access = Relationships.objects.filter(doctor=request.user.doctor, patient__pk=patient_id).exists()
     if not access:
         return HttpResponseForbidden('You are neither the patient or no relationships between doctor and user')
-    return {'medical_records': PatientDecease.objects.filter(patient__pk=patient_id)}
+    medical_records = PatientDecease.objects.filter(patient__pk=patient_id).prefetch_related('symptoms',
+                                                                                             'symptoms__symptom')
+    for record in medical_records:
+        record.form = PatientDeceaseForm(instance=record)
+    return {'medical_records': medical_records}
 
 
 # WARNING tested only in sqlite

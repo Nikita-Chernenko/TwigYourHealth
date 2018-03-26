@@ -113,12 +113,12 @@ class PatientDecease(models.Model):
 
 
 class PatientSymptomDecease(models.Model):
-    patient_decease = models.ForeignKey(PatientDecease, on_delete=models.PROTECT)
+    patient_decease = models.ForeignKey(PatientDecease, on_delete=models.PROTECT, related_name='symptoms')
     symptom = models.ForeignKey(Symptom, on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
         super(PatientSymptomDecease, self).__init__(*args, **kwargs)
-        self.__original_decease = self.patient_decease and self.patient_decease.decease
+        self.__original_decease = hasattr(self, "patient_decease") and self.patient_decease.decease
 
     def __str__(self):
         return f'{self.patient_decease} - {self.symptom}'
@@ -144,3 +144,4 @@ class PatientSymptomDecease(models.Model):
                 # update occurrence of new decease
                 DeceaseSymptom.objects.filter(decease=decease, symptom=self.symptom).update(
                     occurrence=F('occurrence') + 1)
+        super(PatientSymptomDecease, self).save(force_insert, force_update, using, update_fields)

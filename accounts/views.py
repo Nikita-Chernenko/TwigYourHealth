@@ -135,8 +135,10 @@ def patient_public_profile(request, user, request_user):
             'doctor': doctor, 'relationships': relationships}
     if relationships.patient_accept:
         medical_records = patient.patientdecease_set.all()
-        add_decease_form = PatientDeceaseForm(initial={'patient': patient.id})
-        dict.update({'medical_records': medical_records, 'add_decease_form': add_decease_form})
+        for record in medical_records:
+            record.form = PatientDeceaseForm(instance=record)
+        decease_form = PatientDeceaseForm(initial={'patient': patient.id})
+        dict.update({'medical_records': medical_records, 'decease_form': decease_form})
 
     return dict
 

@@ -1151,16 +1151,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 6042,
-  "fields": {
-    "symptom": 2356,
-    "decease": 315,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 6043,
   "fields": {
     "symptom": 2357,
@@ -5871,16 +5861,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 6514,
-  "fields": {
-    "symptom": 2356,
-    "decease": 127,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 6515,
   "fields": {
     "symptom": 2656,
@@ -5924,16 +5904,6 @@
   "pk": 6519,
   "fields": {
     "symptom": 2660,
-    "decease": 127,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 6520,
-  "fields": {
-    "symptom": 2661,
     "decease": 127,
     "chances": 50,
     "occurrence": 1
@@ -6301,16 +6271,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 6557,
-  "fields": {
-    "symptom": 2356,
-    "decease": 131,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 6558,
   "fields": {
     "symptom": 2679,
@@ -6371,16 +6331,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 6564,
-  "fields": {
-    "symptom": 2661,
-    "decease": 131,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 6565,
   "fields": {
     "symptom": 2506,
@@ -6407,16 +6357,6 @@
     "decease": 140,
     "chances": 100,
     "occurrence": 100
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 6568,
-  "fields": {
-    "symptom": 2685,
-    "decease": 136,
-    "chances": 50,
-    "occurrence": 1
   }
 },
 {
@@ -6454,16 +6394,6 @@
   "pk": 6572,
   "fields": {
     "symptom": 2689,
-    "decease": 136,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 6573,
-  "fields": {
-    "symptom": 2356,
     "decease": 136,
     "chances": 50,
     "occurrence": 1
@@ -6931,26 +6861,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 6620,
-  "fields": {
-    "symptom": 2714,
-    "decease": 309,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 6621,
-  "fields": {
-    "symptom": 2356,
-    "decease": 309,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 6622,
   "fields": {
     "symptom": 2715,
@@ -7034,26 +6944,6 @@
   "pk": 6630,
   "fields": {
     "symptom": 2723,
-    "decease": 309,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 6631,
-  "fields": {
-    "symptom": 2724,
-    "decease": 309,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 6632,
-  "fields": {
-    "symptom": 2725,
     "decease": 309,
     "chances": 50,
     "occurrence": 1
@@ -9641,16 +9531,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 6891,
-  "fields": {
-    "symptom": 2847,
-    "decease": 71,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 6892,
   "fields": {
     "symptom": 2848,
@@ -10847,36 +10727,6 @@
     "decease": 414,
     "chances": 50,
     "occurrence": 50
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 7012,
-  "fields": {
-    "symptom": 2923,
-    "decease": 417,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 7013,
-  "fields": {
-    "symptom": 2924,
-    "decease": 417,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 7014,
-  "fields": {
-    "symptom": 2925,
-    "decease": 417,
-    "chances": 50,
-    "occurrence": 1
   }
 },
 {
@@ -44611,26 +44461,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 10388,
-  "fields": {
-    "symptom": 4137,
-    "decease": 718,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 10389,
-  "fields": {
-    "symptom": 2356,
-    "decease": 718,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 10390,
   "fields": {
     "symptom": 4138,
@@ -46051,16 +45881,6 @@
 },
 {
   "model": "deceases.deceasesymptom",
-  "pk": 10532,
-  "fields": {
-    "symptom": 4178,
-    "decease": 950,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
   "pk": 10533,
   "fields": {
     "symptom": 4179,
@@ -46074,56 +45894,6 @@
   "pk": 10534,
   "fields": {
     "symptom": 4180,
-    "decease": 950,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 10535,
-  "fields": {
-    "symptom": 4181,
-    "decease": 950,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 10536,
-  "fields": {
-    "symptom": 4182,
-    "decease": 950,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 10537,
-  "fields": {
-    "symptom": 4183,
-    "decease": 950,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 10538,
-  "fields": {
-    "symptom": 4184,
-    "decease": 950,
-    "chances": 50,
-    "occurrence": 1
-  }
-},
-{
-  "model": "deceases.deceasesymptom",
-  "pk": 10539,
-  "fields": {
-    "symptom": 4185,
     "decease": 950,
     "chances": 50,
     "occurrence": 1
@@ -51097,6 +50867,26 @@
     "decease": 686,
     "chances": 50,
     "occurrence": 50
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 11040,
+  "fields": {
+    "symptom": 3908,
+    "decease": 1,
+    "chances": 50,
+    "occurrence": 2
+  }
+},
+{
+  "model": "deceases.deceasesymptom",
+  "pk": 11041,
+  "fields": {
+    "symptom": 3237,
+    "decease": 1,
+    "chances": 50,
+    "occurrence": 2
   }
 }
 ]
