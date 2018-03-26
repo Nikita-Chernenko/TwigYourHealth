@@ -1,0 +1,12 @@
+{% load material_form %}
+<form method="post" action="{% url 'doctor-create-update-decease' %}"
+      style="display: flex; flex-direction: row; align-items: center!important;"
+      class="create-update-decease">
+    {% csrf_token %}
+    {% form form=add_decease_form %}
+        {% part form.cured label %}<label for="{{ form.cured.auto_id }}">Cured</label>
+        {% endpart %}
+    {% endform %}
+    <button class="btn waves-effect" type="submit">Добавить</button>
+</form>
+<div id="decease-status-code">{{ status_code }}</div>

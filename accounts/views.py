@@ -103,14 +103,16 @@ def patient_profile(request, user):
     patient = user.patient
     medical_records = patient.patientdecease_set.all()
     PatientDeceaseFormSet = formset_factory(PatientDeceaseForm)
-    patient_decease_formset = PatientDeceaseFormSet(request.POST or None)
     if request.method == 'POST':
+        patient_decease_formset = PatientDeceaseFormSet(request.POST)
         if patient_decease_formset.is_valid():
             for decease in patient_decease_formset:
                 decease = decease.save(commit=False)
                 decease.patient = patient
                 decease.save()
             patient_decease_formset = PatientDeceaseFormSet()
+    else:
+        patient_decease_formset = PatientDeceaseFormSet()
     return {'medical_records': medical_records, 'patient_decease_formset': patient_decease_formset}
 
 
@@ -129,11 +131,14 @@ def patient_public_profile(request, user, request_user):
     patient = user.patient
     doctor = request_user.doctor
     relationships, _ = Relationships.objects.get_or_create(patient=patient, doctor=doctor)
-    medical_records = None
+    dict = {'patient': patient,
+            'doctor': doctor, 'relationships': relationships}
     if relationships.patient_accept:
         medical_records = patient.patientdecease_set.all()
+        add_decease_form = PatientDeceaseForm(initial={'patient': patient.id})
+        dict.update({'medical_records': medical_records, 'add_decease_form': add_decease_form})
 
-    return {'patient': patient, 'doctor': doctor, 'medical_records': medical_records, 'relationships': relationships}
+    return dict
 
 
 def private_doctor_public_profile(request, user, request_user):
@@ -220,6 +225,7 @@ def update_private_doctor(request):
                                                 prefix=private_doctor_prefix)
     return {'user_form': user_form, 'doctor_form': doctor_form, 'private_doctor_form': private_doctor_form}
 
+
 @require_http_methods(["POST"])
 def update_relationships(request, pk):
     patient = None
@@ -235,6 +241,7 @@ def update_relationships(request, pk):
             raise Http404('no doctor_accept param')
         doctor_accept = json.loads(doctor_accept)
         relationships.doctor_accept = doctor_accept
+        relationships.patient_accept = True
     else:
         relationships = get_object_or_404(Relationships, pk=pk, patient=patient)
         patient_accept = request.POST.get('patient_accept')

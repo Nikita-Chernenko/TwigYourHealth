@@ -1,0 +1,24 @@
+<h3>Medical records</h3>
+<table class="responsive-table table-of-contents">
+    <tr>
+        <th>Decease</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Cured</th>
+    </tr>
+    {% for record in medical_records %}
+        <tr>
+            <td>{{ record.decease }}</td>
+            <td>{{ record.start_date }}</td>
+            <td>{{ record.end_date|default:"-" }}</td>
+            <td>
+                {% if record.cured %}
+                    <i class="material-icons green">check</i>
+                {% else %}
+                    <i class="material-icons red">close</i>
+                {% endif %}
+            </td>
+        </tr>
+
+    {% endfor %}
+</table>

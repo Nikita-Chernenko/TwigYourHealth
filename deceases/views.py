@@ -1,13 +1,15 @@
-import json
 import random
 
 from annoying.decorators import render_to
+from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
 from django.db.models.functions import Cast
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
+from django.views.decorators.http import require_http_methods
 
-from accounts.models import Doctor
-from deceases.models import Symptom, Decease, BodyPart
+from accounts.models import Doctor, Relationships
+from deceases.forms import PatientDeceaseForm
+from deceases.models import Symptom, Decease, BodyPart, PatientDecease
 
 
 @render_to('deceases/diagnostics.html')
@@ -34,10 +36,40 @@ def symptoms_autocomplete(request):
     return JsonResponse(data=symptoms, safe=False)
 
 
+@require_http_methods(["POST"])
+@user_passes_test(lambda user: user.is_doctor)
+@render_to('deceases/_doctor_create_update_decease.html')
+def doctor_create_update_decease(request):
+    form = PatientDeceaseForm(request.POST)
+    status_code = 409
+    if form.is_valid():
+        form = form.save(commit=False)
+        if not Relationships.objects.filter(doctor=request.user.doctor, patient=form.patient).exists():
+            return HttpResponseForbidden('No relation ship between doctor and user')
+        form.author = request.user
+        form.save()
+        form = PatientDeceaseForm(initial={'patient': form.patient})
+        status_code = 204 if hasattr(form, "id") else 201
+    return {'add_decease_form': form, 'status_code': status_code}
+
+
+@render_to('deceases/_medical_records.html')
+def medical_records(request, patient_id):
+    access = False
+    if request.user.is_patient:
+        access = request.user.patient.id == patient_id
+    elif request.user.is_doctor:
+        access = Relationships.objects.filter(doctor=request.user.doctor, patient__pk=patient_id).exists()
+    if not access:
+        return HttpResponseForbidden('You are neither the patient or no relationships between doctor and user')
+    return {'medical_records': PatientDecease.objects.filter(patient__pk=patient_id)}
+
+
 # WARNING tested only in sqlite
 class Round(Func):
     function = 'ROUND'
     template = '%(function)s(%(expressions)s, 2)'
+
 
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
@@ -62,7 +94,4 @@ def deceases_by_symptoms(request):
         doctors = doctors[:3]
         deceases_with_doctors.append({"decease": d, "doctors": doctors})
 
-    # data = json.dumps(deceases_with_doctors)
-    #
-    # return JsonResponse(data=data, safe=False)
-    return {'deceases_with_doctors':deceases_with_doctors}
+    return {'deceases_with_doctors': deceases_with_doctors}

@@ -70,9 +70,16 @@ class PublicDoctor(models.Model):
 
 
 class Patient(models.Model):
+    MAN, WOMAN, ANOTHER = 'man', 'woman', 'another'
+    GENDER_CHOICES = (
+        (MAN, 'Man'),
+        (WOMAN, 'Woman'),
+        (ANOTHER, 'Another')
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField()
     deceases = models.ManyToManyField(to='deceases.Decease', through='deceases.PatientDecease')
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=256, default=ANOTHER)
 
     def __str__(self):
         return f'patient {self.user}'

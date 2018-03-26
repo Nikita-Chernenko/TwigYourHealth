@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load thumbnail %}
+{% load material_form %}
 {% block breadcrumbs %}
     <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">Patient profile</a>
 {% endblock %}
@@ -11,6 +13,14 @@
 
         {% thumbnail patient.user.avatar "100x100" crop="center" as im %}
             <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+        {% empty %}
+            {% if patient.gender == 'man' %}
+                <img src="{% static 'images/male-avatar.png' %}" width="100px" height="100px">
+            {% elif patient.gender == 'woman' %}
+                <img src="{% static 'images/female-avatar.png' %}" width="100px" height="100px">
+            {% else %}
+                <img src="{% static 'images/another-avatar.png' %}" width="100px" height="100px">
+            {% endif %}
         {% endthumbnail %}
         {% if not relationships.patient_accept %}
             {% if relationships.doctor_accept %}
@@ -25,36 +35,19 @@
             {% endif %}
         {% endif %}
         {% if relationships.patient_accept %}
-            {% if medical_records %}
-                <h3>Medical records</h3>
-                <table class="responsive-table table-of-contents">
-                    <tr>
-                        <th>Decease</th>
-                        <th>Start date</th>
-                        <th>End date</th>
-                        <th>Cured</th>
-                    </tr>
-                    {{ medical_records.count }}
-                    {% for record in medical_records %}
-                        <tr>
-                            <td>{{ record.decease }}</td>
-                            <td>{{ record.start_date }}</td>
-                            <td>{{ record.end_date|default:"-" }}</td>
-                            <td>
-                                {% if record.cured %}
-                                    <i class="material-icons green">check</i>
-                                {% else %}
-                                    <i class="material-icons red">close</i>
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                    {% endfor %}
-                </table>
-            {% else %}
-                <h3>There are no medical records, please, fill it in</h3>
-            {% endif %}
-
+            <div class="container">
+                <div class="card-panel teal lighten-2">Это ваш пациент</div>
+                {% if medical_records %}
+                    <div id="medical_records">
+                        {% include 'deceases/_medical_records.html' %}
+                    </div>
+                    <div>
+                        {% include 'deceases/_doctor_create_update_decease.html' %}
+                    </div>
+                {% else %}
+                    <h3>There are no medical records, please, fill it in</h3>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}
@@ -79,12 +72,51 @@
                         else {
                             el.html('Запросить доступ и открыть свои данные')
                         }
+                        location.reload();
                     },
                     "error": function (result) {
                         console.log(result)
                     }
                 })
-            })
+            });
+
+            function sumbit_init() {
+                $('.create-update-decease').submit(function () {
+                    form = $(this);
+                    console.log('got');
+                    div = form.parent();
+                    $.ajax({
+                        data: form.serialize(),
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        success: function (response) {
+                            div.html(response);
+                            var status_code = parseInt($("#decease-status-code").html());
+                            if (status_code === 201) {
+                                render_medical_card();
+                            }
+                            materialize_initiailize();
+                            sumbit_init();
+                        }
+                    });
+                    return false;
+                })
+            }
+
+            sumbit_init();
+
+            function render_medical_card() {
+                console.log('got')
+                $.ajax({
+                    type: "GET",
+                    url: "{% url 'medical-records' patient_id=patient.id %}",
+                    success: function (response) {
+                        $("#medical_records").html(response)
+                    }
+                })
+            }
+
+
         });
     </script>
 {% endblock %}

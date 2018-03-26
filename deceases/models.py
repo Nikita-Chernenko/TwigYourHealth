@@ -60,6 +60,9 @@ class Decease(models.Model):
     recommendations = models.TextField(blank=True, null=True)
     occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
@@ -97,15 +100,16 @@ class PatientDecease(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if not self.author and self.patient:
-            self.author = self.patient
+        if not hasattr(self, "author") and hasattr(self, "patient"):
+            self.author = self.patient.user
         super(PatientDecease, self).save(force_insert, force_update, using, update_fields)
 
     def clean(self):
-        if self.author and self.patient and self.author != self.patient:
-            if not Relationships.objects.filter(patient=self.patient, doctor=self.author):
+        if hasattr(self, "author") and hasattr(self, "patient") and self.author != self.patient:
+            if not Relationships.objects.filter(patient=self.patient, doctor=self.author).exists():
                 raise ValidationError(f'{self.author} is not able to add medical records for{self.patient}'
                                       f'request the access from the patient')
+        super(PatientDecease, self).clean()
 
 
 class PatientSymptomDecease(models.Model):

@@ -40,7 +40,7 @@ class PatientForm(forms.ModelForm):
 
     class Meta:
         model = Patient
-        fields = ['birthday']
+        fields = ['birthday','gender']
 
 
 class UserDoctorForm(UserCreationForm):
