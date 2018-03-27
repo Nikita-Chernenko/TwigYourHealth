@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
 from django.db.models.functions import Cast
 from django.http import JsonResponse, HttpResponseForbidden
+from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
 
 from accounts.models import Doctor, Relationships
@@ -39,8 +40,9 @@ def symptoms_autocomplete(request):
 @require_http_methods(["POST"])
 @user_passes_test(lambda user: user.is_doctor)
 @render_to('deceases/_doctor_create_update_decease.html')
-def doctor_create_update_decease(request):
-    form = PatientDeceaseForm(request.POST)
+def doctor_create_update_decease(request, patient_decease_id=None):
+    decease = get_object_or_404(PatientDecease, pk=patient_decease_id) if patient_decease_id else None
+    form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(patient_decease_id)+'_%s')
     status_code = 409
     if form.is_valid():
         form = form.save(commit=False)
@@ -48,9 +50,12 @@ def doctor_create_update_decease(request):
             return HttpResponseForbidden('No relation ship between doctor and user')
         form.author = request.user
         form.save()
-        form = PatientDeceaseForm(initial={'patient': form.patient})
-        status_code = 204 if hasattr(form, "id") else 201
-    return {'decease_form': form, 'status_code': status_code}
+
+        status_code = 204 if patient_decease_id else 201
+        form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(patient_decease_id)+'_%s')
+
+    return {'decease_form': form, 'status_code': status_code,
+            'action': "Изменить" if patient_decease_id else "Добавить"}
 
 
 @render_to('deceases/_medical_records.html')

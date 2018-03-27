@@ -105,8 +105,8 @@ class PatientDecease(models.Model):
         super(PatientDecease, self).save(force_insert, force_update, using, update_fields)
 
     def clean(self):
-        if hasattr(self, "author") and hasattr(self, "patient") and self.author != self.patient:
-            if not Relationships.objects.filter(patient=self.patient, doctor=self.author).exists():
+        if hasattr(self, "author") and hasattr(self, "patient") and hasattr(self.author,'patient') and self.author.patient != self.patient:
+            if not Relationships.objects.filter(patient=self.patient, doctor=self.author.doctor).exists():
                 raise ValidationError(f'{self.author} is not able to add medical records for{self.patient}'
                                       f'request the access from the patient')
         super(PatientDecease, self).clean()

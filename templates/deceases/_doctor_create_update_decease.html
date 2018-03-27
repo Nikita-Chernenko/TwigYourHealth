@@ -1,12 +1,20 @@
 {% load material_form %}
-<form method="post" action="{% url 'doctor-create-update-decease' %}"
+
+<form method="post" action="
+{% if patient_decease_id %}
+{% url 'doctor-create-update-decease' patient_decease_id=patient_decease_id %}
+{% else %}
+{% url 'doctor-create-update-decease' %}
+{% endif %}
+"
       style="display: flex; flex-direction: row; align-items: center!important;"
       class="create-update-decease">
     {% csrf_token %}
     {% form form=decease_form %}
+        {% attr form.cured 'widget' id%}{{ form.cured.auto_id }}{% endattr %}
         {% part form.cured label %}<label for="{{ form.cured.auto_id }}">Cured</label>
         {% endpart %}
     {% endform %}
-    <button class="btn waves-effect" type="submit">Добавить</button>
+    <button class="btn waves-effect" type="submit">{{ action }}</button>
 </form>
-<div id="decease-status-code">{{ status_code }}</div>
+<div id="decease-status-code" style="display: none">{{ status_code }}</div>
