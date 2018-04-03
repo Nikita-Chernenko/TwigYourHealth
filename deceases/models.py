@@ -1,3 +1,5 @@
+from math import ceil
+
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator
 from django.db import models
@@ -86,6 +88,13 @@ class DeceaseSymptom(models.Model):
     def __str__(self):
         return f'{self.symptom} - {self.decease}'
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        # handled in save for now for simplicity
+        if hasattr(self, 'decease') and self.occurrence:
+            self.chances = ceil(self.occurrence / self.decease.occurrence * 100)
+        super(DeceaseSymptom, self).save(force_insert, force_update, using, update_fields)
+
 
 class PatientDecease(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT)
@@ -98,14 +107,25 @@ class PatientDecease(models.Model):
     def __str__(self):
         return f'{self.patient} {self.decease}'
 
+    def update_occurence(self):
+        if not self.pk and hasattr(self, 'decease') and self.symptoms.exists():
+            Decease.objects.filter(pk=self.decease.id).update(occurrence=F('occurrence') + 1)
+
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         if not hasattr(self, "author") and hasattr(self, "patient"):
             self.author = self.patient.user
+        self.update_occurence()
         super(PatientDecease, self).save(force_insert, force_update, using, update_fields)
 
+    def delete(self, using=None, keep_parents=False):
+        if self.symptoms.exists():
+            Decease.objects.filter(pk=self.decease.id).update(occurrence=F('occurrence') - 1)
+        super(PatientDecease, self).delete(using, keep_parents)
+
     def clean(self):
-        if hasattr(self, "author") and hasattr(self, "patient") and hasattr(self.author,'patient') and self.author.patient != self.patient:
+        if hasattr(self, "author") and hasattr(self, "patient") and hasattr(self.author,
+                                                                            'patient') and self.author.patient != self.patient:
             if not Relationships.objects.filter(patient=self.patient, doctor=self.author.doctor).exists():
                 raise ValidationError(f'{self.author} is not able to add medical records for{self.patient}'
                                       f'request the access from the patient')
@@ -125,7 +145,7 @@ class PatientSymptomDecease(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if self.patient_decease and self.patient_decease.decease and self.symptom:
+        if hasattr(self, 'patient_decease') and hasattr(self, 'symptom'):
             # TODO recheck the algo
             # create new symptom of decease because it occurred and doesn't exist
             decease = self.patient_decease.decease
@@ -145,3 +165,6 @@ class PatientSymptomDecease(models.Model):
                 DeceaseSymptom.objects.filter(decease=decease, symptom=self.symptom).update(
                     occurrence=F('occurrence') + 1)
         super(PatientSymptomDecease, self).save(force_insert, force_update, using, update_fields)
+        # Update occurence of the decease
+        if hasattr(self, 'patient_decease'):
+            self.patient_decease.update_occurence()
