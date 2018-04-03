@@ -10,7 +10,7 @@ from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
     PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm
-from accounts.models import User, Relationships
+from accounts.models import User, Relationships, DoctorSphere
 from deceases.forms import PatientDeceaseForm
 
 user_prefix = 'user'
@@ -118,12 +118,18 @@ def patient_profile(request, user):
 
 @render_to('accounts/public_doctor_profile.html')
 def public_doctor_profile(request, user):
-    return {}
+    return doctor_profile(request, user)
 
 
 @render_to('accounts/private_doctor_profile.html')
 def private_doctor_profile(request, user):
-    return {}
+    return doctor_profile(request, user)
+
+
+def doctor_profile(request, user):
+    doctor = user.doctor
+    doctor_spheres = DoctorSphere.objects.filter(doctor=doctor).prefetch_related('review_set')
+    return {'doctor': doctor, 'doctor_spheres': doctor_spheres}
 
 
 @render_to('accounts/patient_public_profile.html')
@@ -136,7 +142,7 @@ def patient_public_profile(request, user, request_user):
     if relationships.patient_accept:
         medical_records = patient.patientdecease_set.all()
         for record in medical_records:
-            record.form = PatientDeceaseForm(instance=record, auto_id=str(record.id)+'_%s')
+            record.form = PatientDeceaseForm(instance=record, auto_id=str(record.id) + '_%s')
         decease_form = PatientDeceaseForm(initial={'patient': patient.id})
         dict.update({'medical_records': medical_records, 'decease_form': decease_form})
 

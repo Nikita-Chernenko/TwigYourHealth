@@ -37,6 +37,7 @@
         {% if relationships.patient_accept %}
             <div class="container">
                 <div class="card-panel teal lighten-2">Это ваш пациент</div>
+                <button class="btn waves-effect">Написать</button> {# TODO add chat pop up here #}
                 {% if medical_records %}
                     <div id="medical_records">
                         {% include 'deceases/_medical_records.html' %}
@@ -109,7 +110,7 @@
             sumbit_init();
 
             function render_medical_card() {
-                console.log('got')
+                console.log('got');
                 $.ajax({
                     type: "GET",
                     url: "{% url 'medical-records' patient_id=patient.id %}",

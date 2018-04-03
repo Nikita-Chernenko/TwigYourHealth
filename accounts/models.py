@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator
 from django.db import models
+from django.db.models import Sum, Avg
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -49,8 +51,24 @@ class DoctorSphere(models.Model):
     sphere = models.ForeignKey('deceases.Sphere', on_delete=models.CASCADE)
 
     # calculated as gathering of all reviews
-    rating = models.DecimalField('sphere rating', validators=[MinValueValidator(0), MaxValueValidator(100)],
-                                 max_digits=5, decimal_places=2, default=0)
+    # rating = models.DecimalField('sphere rating', validators=[MinValueValidator(0), MaxValueValidator(100)],
+    #                              max_digits=5, decimal_places=2, default=0)
+
+    @property
+    def rating(self):
+        return self.review_set.all().aggregate(rating=Avg('mark'))['rating']
+
+
+class Review(models.Model):
+    doctor_sphere = models.ForeignKey(DoctorSphere, on_delete=models.PROTECT)
+    comment = models.TextField('comment')
+    mark = models.PositiveSmallIntegerField('mark', validators=[MaxValueValidator(100)])
+    patient = models.ForeignKey('Patient', on_delete=models.PROTECT)
+
+    def clean(self):
+        if hasattr(self, 'doctor_sphere') and hasattr(self, 'patient') and not Relationships.objects.filter(
+                doctor=self.doctor_sphere.doctor, patient=self.patient).exists():
+            raise ValidationError('No relationships between the patient and the doctor from the sphere')
 
 
 class PrivateDoctor(models.Model):
