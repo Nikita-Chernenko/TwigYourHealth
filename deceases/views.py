@@ -10,7 +10,7 @@ from django.views.decorators.http import require_http_methods
 
 from accounts.models import Doctor, Relationships
 from deceases.forms import PatientDeceaseForm
-from deceases.models import Symptom, Decease, BodyPart, PatientDecease
+from deceases.models import Symptom, Decease, BodyPart, PatientDecease, Sphere
 
 
 @render_to('deceases/diagnostics.html')
@@ -42,7 +42,7 @@ def symptoms_autocomplete(request):
 @render_to('deceases/_doctor_create_update_decease.html')
 def doctor_create_update_decease(request, patient_decease_id=None):
     decease = get_object_or_404(PatientDecease, pk=patient_decease_id) if patient_decease_id else None
-    form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(patient_decease_id)+'_%s')
+    form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(patient_decease_id) + '_%s')
     status_code = 409
     if form.is_valid():
         form = form.save(commit=False)
@@ -52,7 +52,7 @@ def doctor_create_update_decease(request, patient_decease_id=None):
         form.save()
 
         status_code = 204 if patient_decease_id else 201
-        form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(patient_decease_id)+'_%s')
+        form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(patient_decease_id) + '_%s')
 
     return {'decease_form': form, 'status_code': status_code,
             'action': "Изменить" if patient_decease_id else "Добавить"}
@@ -104,3 +104,14 @@ def deceases_by_symptoms(request):
         deceases_with_doctors.append({"decease": d, "doctors": doctors})
 
     return {'deceases_with_doctors': deceases_with_doctors}
+
+
+@render_to('deceases/detail.html')
+def decease_detail(request, decease_id):
+    decease = get_object_or_404(Decease, pk=decease_id)
+    return {'decease': decease}
+
+@render_to('deceases/list.html')
+def decease_list(request):
+    spheres = Sphere.objects.all().prefetch_related('decease_set')
+    return {'spheres': spheres}

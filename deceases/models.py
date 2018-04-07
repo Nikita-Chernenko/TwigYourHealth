@@ -46,6 +46,9 @@ class Symptom(MPTTModel):
 class Sphere(models.Model):
     name = models.CharField('name', max_length=256, unique=True)
 
+    class Meta:
+        ordering = ['name']
+
 
 class Decease(models.Model):
     sphere = models.ForeignKey(Sphere, on_delete=models.CASCADE)
