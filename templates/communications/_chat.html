@@ -1,0 +1,22 @@
+<div class="col-4 col" id="chat-block">
+    {% for chat in chats %}
+        <div class="row chat-short">
+            {#        TODO add photo#}
+            <div>
+                {% if user.is_patient %}
+                    {{ chat.doctor.user.username }}
+                {% elif user.is_doctor %}
+                    {{ chat.patient.user.username }}
+                {% endif %}
+            </div>
+            <div>{{ chat.last_message }}</div>
+            <button class="start-chat" data-with-id="{% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
+                Start chat
+            </button>
+            <button class="send-sms">
+                send sms {{ user.id }}
+            </button>
+            <div class="messages"></div>
+        </div>
+    {% endfor %}
+</div>
