@@ -1,0 +1,43 @@
+<div>
+    <div class="col s12">
+        <ul class="tabs">
+            {% for s in doctor_spheres %}
+                <li class="tab s3"><a class="{% if active_sphere == s %}active{% endif %}"
+                                      href="#sphere{{ forloop.counter }}">{{ s.sphere.name|truncatewords:3 }}
+                    <div class="btn-floating btn-large waves-effect waves-light red"><i
+                            class="circle">{{ s.rating }}</i></div>
+                </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    {% for s in doctor_spheres %}
+        <div id="sphere{{ forloop.counter }}" class="col s12">
+            {% for review in s.review_set.all %}
+                <div class="review row">
+                    <div class="col">
+                        {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}
+                    </div>
+                    <div class="col center-align">comment:{{ review.comment }} mark:{{ review.mark }}</div>
+                    {% if review.form %}
+                        <div class="col center-align" style="display: none">
+                            <form method="post" action="{% url 'create-update-review' %}">
+                                {{ review.form }}
+                                <button type="submit">Изменить отзыв</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if s.form %}
+                <div class="review-form-crete">
+                    <form method="post" action="{% url 'create-update-review' %}">
+                        {{ s.form }}
+                        <button type="submit">Добавить отзыв</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

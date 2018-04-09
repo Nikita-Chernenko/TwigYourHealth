@@ -9,8 +9,8 @@ from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
-    PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm
-from accounts.models import User, Relationships, DoctorSphere
+    PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm
+from accounts.models import User, Relationships, DoctorSphere, Review
 from deceases.forms import PatientDeceaseForm
 
 user_prefix = 'user'
@@ -116,6 +116,12 @@ def patient_profile(request, user):
     return {'medical_records': medical_records, 'patient_decease_formset': patient_decease_formset}
 
 
+def doctor_profile(request, user):
+    doctor = user.doctor
+    doctor_spheres = DoctorSphere.objects.filter(doctor=doctor).prefetch_related('review_set')
+    return {'doctor': doctor, 'doctor_spheres': doctor_spheres}
+
+
 @render_to('accounts/public_doctor_profile.html')
 def public_doctor_profile(request, user):
     return doctor_profile(request, user)
@@ -124,12 +130,6 @@ def public_doctor_profile(request, user):
 @render_to('accounts/private_doctor_profile.html')
 def private_doctor_profile(request, user):
     return doctor_profile(request, user)
-
-
-def doctor_profile(request, user):
-    doctor = user.doctor
-    doctor_spheres = DoctorSphere.objects.filter(doctor=doctor).prefetch_related('review_set')
-    return {'doctor': doctor, 'doctor_spheres': doctor_spheres}
 
 
 @render_to('accounts/patient_public_profile.html')
@@ -148,9 +148,19 @@ def patient_public_profile(request, user, request_user):
 
     return dict
 
-
+@render_to('accounts/private_doctor_public_profile.html')
 def private_doctor_public_profile(request, user, request_user):
-    pass
+    doctor = user.doctor
+    patient = request_user.patient
+    relationships, _ = Relationships.objects.get_or_create(patient=patient, doctor=doctor)
+    doctor_spheres = list(DoctorSphere.objects.filter(doctor=doctor).prefetch_related('review_set'))
+    for sphere in doctor_spheres:
+        if not Review.objects.filter(patient=patient, doctor_sphere=sphere).exists():
+            sphere.form = ReviewForm()
+        else:
+            for review in sphere.review_set.filter(patient=patient):
+                review.form = ReviewForm(instance=review)
+    return {'doctor': doctor, 'doctor_spheres': doctor_spheres, 'relationships': relationships}
 
 
 def public_doctor_public_profile(request, user, request_user):
@@ -168,6 +178,7 @@ def update(request):
 
 
 @render_to('accounts/patient_update.html')
+@atomic
 def update_patient(request):
     patient = request.user
     if request.method == 'POST':
@@ -185,6 +196,7 @@ def update_patient(request):
 
 
 @render_to('accounts/public_doctor_update.html')
+@atomic
 def update_public_doctor(request):
     doctor = request.user
     if request.method == 'POST':
@@ -210,6 +222,7 @@ def update_public_doctor(request):
 
 
 @render_to('accounts/private_doctor_update.html')
+@atomic
 def update_private_doctor(request):
     doctor = request.user
     if request.method == 'POST':
@@ -240,8 +253,10 @@ def update_relationships(request, pk):
     doctor = None
     if request.user.is_patient:
         patient = request.user.patient
-    else:
+    elif request.user.is_doctor:
         doctor = request.user.doctor
+    else:
+        return JsonResponse(status=403, data='Only for doctors and patients')
     if doctor:
         relationships = get_object_or_404(Relationships, pk=pk, doctor=doctor)
         doctor_accept = request.POST.get('doctor_accept')
@@ -249,7 +264,7 @@ def update_relationships(request, pk):
             raise Http404('no doctor_accept param')
         doctor_accept = json.loads(doctor_accept)
         relationships.doctor_accept = doctor_accept
-        relationships.patient_accept = True
+        relationships.patient_accept = True  # change in prod
     else:
         relationships = get_object_or_404(Relationships, pk=pk, patient=patient)
         patient_accept = request.POST.get('patient_accept')

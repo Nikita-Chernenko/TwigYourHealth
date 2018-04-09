@@ -9,14 +9,8 @@
         <a href="{% url 'update-profile' %}" class="btn wave-effects">Update profile</a>
     </div>
     {% if doctor_spheres %}
-        {% for s in doctor_spheres %}
-
-            <h1>{{ s.sphere.name }}</h1>
-            {% for review in s.review_set.all %}
-
-                {{ r }}
-            {% endfor %}
-
-        {% endfor %}
+        <div class="row container">
+            {% include 'accounts/_reviews.html' %}
+        </div>
     {% endif %}
 {% endblock %}

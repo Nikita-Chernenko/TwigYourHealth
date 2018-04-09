@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm as _UserCreationForm, AuthenticationForm
 from material import Layout, Row
 
-from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor
+from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review
 
 
 class LoginViewForm(AuthenticationForm):
@@ -40,7 +40,7 @@ class PatientForm(forms.ModelForm):
 
     class Meta:
         model = Patient
-        fields = ['birthday','gender']
+        fields = ['birthday', 'gender']
 
 
 class UserDoctorForm(UserCreationForm):
@@ -92,3 +92,9 @@ class PrivateDoctorForm(forms.ModelForm):
         fields = ['hour_rate', 'visit_price']
 
     layout = Layout(Row('hour_rate', 'visit_price'))
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['comment', 'mark']

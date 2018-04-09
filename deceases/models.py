@@ -49,6 +49,9 @@ class Sphere(models.Model):
     class Meta:
         ordering = ['name']
 
+    def __str__(self):
+        return self.name
+
 
 class Decease(models.Model):
     sphere = models.ForeignKey(Sphere, on_delete=models.CASCADE)

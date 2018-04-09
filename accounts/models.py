@@ -58,6 +58,9 @@ class DoctorSphere(models.Model):
     def rating(self):
         return self.review_set.all().aggregate(rating=Avg('mark'))['rating']
 
+    def __str__(self):
+        return f'{self.doctor}-{self.sphere}'
+
 
 class Review(models.Model):
     doctor_sphere = models.ForeignKey(DoctorSphere, on_delete=models.PROTECT)
@@ -65,10 +68,16 @@ class Review(models.Model):
     mark = models.PositiveSmallIntegerField('mark', validators=[MaxValueValidator(100)])
     patient = models.ForeignKey('Patient', on_delete=models.PROTECT)
 
+    class Meta:
+        unique_together = [['doctor_sphere', 'patient']]
+
     def clean(self):
         if hasattr(self, 'doctor_sphere') and hasattr(self, 'patient') and not Relationships.objects.filter(
                 doctor=self.doctor_sphere.doctor, patient=self.patient).exists():
             raise ValidationError('No relationships between the patient and the doctor from the sphere')
+
+    def __str__(self):
+        return f'{self.doctor_sphere}-{self.patient}-{self.mark}'
 
 
 class PrivateDoctor(models.Model):
