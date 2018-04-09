@@ -9,19 +9,8 @@
     {% csrf_token %}
     <div>
         {{ patient.user.username }}
-        {{ patient.user.avatar }}
 
-        {% thumbnail patient.user.avatar "100x100" crop="center" as im %}
-            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-        {% empty %}
-            {% if patient.gender == 'man' %}
-                <img src="{% static 'images/male-avatar.png' %}" width="100px" height="100px">
-            {% elif patient.gender == 'woman' %}
-                <img src="{% static 'images/female-avatar.png' %}" width="100px" height="100px">
-            {% else %}
-                <img src="{% static 'images/another-avatar.png' %}" width="100px" height="100px">
-            {% endif %}
-        {% endthumbnail %}
+        {% include 'accounts/_avatar.html' with height="100" width="100" user=patient.user  img_class="circle" %}
         {% if not relationships.patient_accept %}
             {% if relationships.doctor_accept %}
                 <button class="btn" id="require-access" data-doctor-accept="false">
@@ -37,7 +26,8 @@
         {% if relationships.patient_accept %}
             <div class="container">
                 <div class="card-panel teal lighten-2">Это ваш пациент</div>
-                <button class="btn waves-effect">Написать</button> {# TODO add chat pop up here #}
+                <button class="btn waves-effect">Написать</button>
+                {# TODO add chat pop up here #}
                 {% if medical_records %}
                     <div id="medical_records">
                         {% include 'deceases/_medical_records.html' %}
@@ -91,12 +81,11 @@
                         type: form.attr('method'),
                         url: form.attr('action'),
                         success: function (response) {
-                            div.html(response);
-                            var status_code = parseInt($("#decease-status-code").html());
-                            if (status_code === 201 || status_code === 204) {
+                            if (response.length === 0) {
                                 render_medical_card();
                             }
                             else {
+                                div.html(response);
                                 materialize_initiailize();
                                 sumbit_init();
 

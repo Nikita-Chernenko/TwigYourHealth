@@ -4,8 +4,8 @@ from annoying.decorators import render_to
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
 from django.db.models.functions import Cast
-from django.http import JsonResponse, HttpResponseForbidden
-from django.shortcuts import get_object_or_404
+from django.http import JsonResponse, HttpResponseForbidden, HttpResponse
+from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
 
 from accounts.models import Doctor, Relationships
@@ -39,23 +39,20 @@ def symptoms_autocomplete(request):
 
 @require_http_methods(["POST"])
 @user_passes_test(lambda user: user.is_doctor)
-@render_to('deceases/_doctor_create_update_decease.html')
 def doctor_create_update_decease(request, patient_decease_id=None):
     decease = get_object_or_404(PatientDecease, pk=patient_decease_id) if patient_decease_id else None
     form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(patient_decease_id) + '_%s')
-    status_code = 409
     if form.is_valid():
         form = form.save(commit=False)
         if not Relationships.objects.filter(doctor=request.user.doctor, patient=form.patient).exists():
             return HttpResponseForbidden('No relation ship between doctor and user')
         form.author = request.user
         form.save()
-
-        status_code = 204 if patient_decease_id else 201
         form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(patient_decease_id) + '_%s')
-
-    return {'decease_form': form, 'status_code': status_code,
-            'action': "Изменить" if patient_decease_id else "Добавить"}
+        return HttpResponse('')
+    return render_to_response('deceases/_doctor_create_update_decease.html',
+                              {'decease_form': form,
+                               'action': "Изменить" if patient_decease_id else "Добавить"})
 
 
 @render_to('deceases/_medical_records.html')
@@ -70,7 +67,7 @@ def medical_records(request, patient_id):
     medical_records = PatientDecease.objects.filter(patient__pk=patient_id).prefetch_related('symptoms',
                                                                                              'symptoms__symptom')
     for record in medical_records:
-        record.form = PatientDeceaseForm(instance=record)
+        record.form = PatientDeceaseForm(instance=record, auto_id=str(record.id) + '_%s')
     return {'medical_records': medical_records}
 
 
@@ -110,6 +107,7 @@ def deceases_by_symptoms(request):
 def decease_detail(request, decease_id):
     decease = get_object_or_404(Decease, pk=decease_id)
     return {'decease': decease}
+
 
 @render_to('deceases/list.html')
 def decease_list(request):
