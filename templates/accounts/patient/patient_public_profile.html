@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
     {% csrf_token %}
-    <div>
+    <div class="container">
         {{ patient.user.username }}
 
         {% include 'accounts/_avatar.html' with height="100" width="100" user=patient.user  img_class="circle" %}
@@ -22,18 +22,22 @@
                     данные
                 </button>
             {% endif %}
-        {% endif %}
-        {% if relationships.patient_accept %}
-            <div class="container">
-                <div class="card-panel teal lighten-2">Это ваш пациент</div>
-                <button class="btn waves-effect">Написать</button>
+        {% else %}
+            <div>
+                {% if relationships.doctor_accept %}
+                    <div class="card-panel teal lighten-2">Это ваш пациент</div>
+                    <button class="btn waves-effect">Написать</button>
+                    <button class="btn" id="require-access" data-doctor-accept="false">Закрыть доступ</button>
+                {% else %}
+                    <button class="btn" id="require-access" data-doctor-accept="true">Дать доступ</button>
+                {% endif %}
                 {# TODO add chat pop up here #}
                 {% if medical_records %}
                     <div id="medical_records">
                         {% include 'deceases/_medical_records.html' %}
                     </div>
                     <div>
-                        {% include 'deceases/_doctor_create_update_decease.html' with action="Добавить" %}
+                        {% include 'deceases/_doctor_create_update_patient_decease_form.html' %}
                     </div>
                 {% else %}
                     <h3>There are no medical records, please, fill it in</h3>
@@ -49,7 +53,7 @@
                 el = $(this);
                 $.ajax({
                     "type": "POST",
-                    "url": "{% url 'update-relationships' pk=relationships.id %}",
+                    "url": "{% url 'relationships-update' pk=relationships.id %}",
                     "data": {"doctor_accept": el.data('doctor-accept')},
                     "success": function (result) {
                         console.log(result);

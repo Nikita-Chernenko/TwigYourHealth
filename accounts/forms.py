@@ -98,3 +98,5 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['comment', 'mark']
+
+    layout = Layout(Row('comment'), Row('mark'))

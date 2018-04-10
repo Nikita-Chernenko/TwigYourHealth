@@ -1,10 +1,10 @@
 {% load material_form %}
 
 <form method="post" action="
-{% if patient_decease_id %}
-{% url 'doctor-create-update-decease' patient_decease_id=patient_decease_id %}
+{% if pk %}
+{% url 'doctor-update-patient-decease' pk=pk %}
 {% else %}
-{% url 'doctor-create-update-decease' %}
+{% url 'doctor-create-patient-decease' %}
 {% endif %}
 "
       style="display: flex; flex-direction: row; align-items: center!important;"
@@ -15,5 +15,5 @@
         {% part form.cured label %}<label for="{{ form.cured.auto_id }}">Cured</label>
         {% endpart %}
     {% endform %}
-    <button class="btn waves-effect" type="submit">{{ action }}</button>
+    <button class="btn waves-effect" type="submit">{% if pk %}Изменить{% else %}Добавить{% endif %}</button>
 </form>

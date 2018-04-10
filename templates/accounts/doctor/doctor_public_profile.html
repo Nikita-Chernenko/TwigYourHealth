@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load material_form %}
+{% block breadcrumbs %}
+
+    <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">Doctor profile</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+
+    {% include 'accounts/_avatar.html' with height="100" width="100" user=doctor.user  img_class="circle" %}
+    <div>{{ doctor.user.name|default:"Имя" }} {{ doctor.user.surname|default:"Фамилия" }}</div>
+    <div>{{ doctor.is_private|yesno:"Частный,Госудасртвенный" }} врач</div>
+    <div>{{ doctor.description }} </div>
+    {% if relationships.doctor_accept %}
+        {% if doctor.accept_call %}
+            <div>{{ doctor.skype|default:"Нет скайпа" }}</div>
+        {% endif %}
+        {% if  doctor.hospital %}
+            <div>{{ doctor.hospital }} </div>
+        {% else %}
+            <div>{{ doctor.personal_address }} </div>
+        {% endif %}
+        {% if relationships.patient_accept %}
+            {#            TODO add timetable#}
+            <button class="btn waves-effect">Записаться на прием</button>
+        {% endif %}
+        {% if doctor.is_private %}
+            {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}
+
+        {% else %}
+            {% include 'accounts/doctor/public_doctor/_public_doctor_private_info.html' %}
+
+        {% endif %}
+
+    {% endif %}
+    {% if not relationships.doctor_accept %}
+        {% if relationships.patient_accept %}
+            <button class="btn" id="require-access" data-patient-accept="false">
+                Вы запросили доступ,
+                Закрыть данные для этого пользователя
+            </button>
+        {% else %}
+            <button class="btn" id="require-access" data-patient-accept="true">Запросить доступ и открыть свои
+                данные
+            </button>
+        {% endif %}
+
+    {% else %}
+
+        <div>
+            {% if relationships.patient_accept %}
+                <div class="card-panel teal lighten-2">Это ваш доктор</div>
+                {% if doctor.accept_chat %}
+                    <button class="btn waves-effect">Написать</button>
+                {% endif %}
+                <button class="btn" id="require-access" data-patient-accept="false">Закрыть доступ</button>
+            {% else %}
+                <button class="btn" id="require-access" data-patient-accept="true">Дать доступ</button>
+            {% endif %}
+        </div>
+
+    {% endif %}
+    {% if doctor_spheres %}
+        <div class="row">
+            {% include 'accounts/_reviews.html' %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            $('#require-access').on('click', function () {
+                el = $(this);
+                $.ajax({
+                    "type": "POST",
+                    "url": "{% url 'relationships-update' pk=relationships.id %}",
+                    "data": {"patient_accept": el.data('patient-accept')},
+                    "success": function (result) {
+                        console.log(result);
+                        var patient_accept = result.patient_accept;
+                        console.log(patient_accept);
+                        el.data('doctor-accept', !patient_accept);
+                        if (patient_accept) {
+                            el.html(' Вы запросили доступ,\n' +
+                                '                    Закрыть данные для этого пользователя')
+                        }
+                        else {
+                            el.html('Запросить доступ и открыть свои данные')
+                        }
+                        location.reload();
+                    },
+                    "error": function (result) {
+                        console.log(result)
+                    }
+                })
+            });
+
+            function sumbit_init() {
+                $('.review-form form').submit(function () {
+                    form = $(this);
+                    console.log('got');
+                    div = form.parent();
+                    $.ajax({
+                        data: form.serialize(),
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        success: function (response) {
+                            if (response.length === 0) {
+                                location.reload();
+                            }
+                            else {
+                                div.html(response);
+                                materialize_initiailize();
+                                sumbit_init();
+
+                            }
+                        }
+                    });
+                    return false;
+                })
+            }
+
+            sumbit_init();
+
+            function record_toggle_init() {
+                $('.record-toggle').on('click', function () {
+                    review_block = $(this).parents('.review');
+                    review_block.find('.review-item').toggle();
+                    review_block.find('.review-form').toggle();
+                })
+            }
+
+            record_toggle_init();
+
+            function record_delete() {
+                $('.record-delete').on('click', function () {
+                    review_id = $(this).data('review-id');
+                    review_block = $(this).parents('.review')
+                    $.ajax({
+                        data: {'review_id': review_id},
+                        type: "POST",
+                        url: "{% url 'review-delete' %}",
+                        success: function (response) {
+                            if (response.length === 0) {
+                                review_block.remove()
+                            }
+                            else {
+                                review_block.append(response);
+
+                            }
+                        }
+                    });
+                })
+            }
+
+            record_delete();
+        })
+    </script>
+
+{% endblock %}

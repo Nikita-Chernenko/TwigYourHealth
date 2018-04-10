@@ -39,20 +39,19 @@ def symptoms_autocomplete(request):
 
 @require_http_methods(["POST"])
 @user_passes_test(lambda user: user.is_doctor)
-def doctor_create_update_decease(request, patient_decease_id=None):
-    decease = get_object_or_404(PatientDecease, pk=patient_decease_id) if patient_decease_id else None
-    form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(patient_decease_id) + '_%s')
+def doctor_create_update_decease(request, pk=None):
+    decease = get_object_or_404(PatientDecease, pk=pk) if pk else None
+    form = PatientDeceaseForm(request.POS, instance=decease, auto_id=str(pk) + '_%s')
     if form.is_valid():
         form = form.save(commit=False)
         if not Relationships.objects.filter(doctor=request.user.doctor, patient=form.patient).exists():
             return HttpResponseForbidden('No relation ship between doctor and user')
         form.author = request.user
         form.save()
-        form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(patient_decease_id) + '_%s')
+        form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(pk) + '_%s')
         return HttpResponse('')
-    return render_to_response('deceases/_doctor_create_update_decease.html',
-                              {'decease_form': form,
-                               'action': "Изменить" if patient_decease_id else "Добавить"})
+    return render_to_response('deceases/_doctor_create_update_patient_decease_form.html',
+                              {'decease_form': form, 'pk': pk})
 
 
 @render_to('deceases/_medical_records.html')
@@ -104,8 +103,8 @@ def deceases_by_symptoms(request):
 
 
 @render_to('deceases/detail.html')
-def decease_detail(request, decease_id):
-    decease = get_object_or_404(Decease, pk=decease_id)
+def decease_detail(request, pk):
+    decease = get_object_or_404(Decease, pk=pk)
     return {'decease': decease}
 
 

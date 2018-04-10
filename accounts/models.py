@@ -79,6 +79,11 @@ class Review(models.Model):
     def __str__(self):
         return f'{self.doctor_sphere}-{self.patient}-{self.mark}'
 
+    @property
+    def get_form(self):
+        from .forms import ReviewForm
+        return ReviewForm(instance=self)
+
 
 class PrivateDoctor(models.Model):
     doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)

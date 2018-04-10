@@ -1,11 +1,12 @@
 import json
 
 from annoying.decorators import render_to
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout as _logout
 from django.db.transaction import atomic
 from django.forms import formset_factory, model_to_dict
-from django.http import Http404, JsonResponse
-from django.shortcuts import redirect, get_object_or_404
+from django.http import Http404, JsonResponse, HttpResponseForbidden, HttpResponse
+from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
@@ -20,7 +21,7 @@ public_doctor_prefix = 'public_doctor'
 private_doctor_prefix = 'private_doctor'
 
 
-@render_to('accounts/patient_sign_up.html')
+@render_to('accounts/patient/patient_sign_up.html')
 @atomic
 def patient_sign_up(request):
     user_form = UserPatientForm(request.POST or None, prefix=user_prefix)
@@ -33,7 +34,7 @@ def patient_sign_up(request):
     return {'user_form': user_form, 'patient_form': patient_form}
 
 
-@render_to('accounts/public_doctor_sign_up.html')
+@render_to('accounts/doctor/public_doctor/public_doctor_sign_up.html')
 @atomic
 def public_doctor_sign_up(request):
     user_form = UserDoctorForm(request.POST or None, prefix=user_prefix)
@@ -51,7 +52,7 @@ def public_doctor_sign_up(request):
     return {'user_form': user_form, 'doctor_form': doctor_form, 'public_doctor_form': public_doctor_form}
 
 
-@render_to('accounts/private_doctor_sign_up.html')
+@render_to('accounts/doctor/private_doctor/private_doctor_sign_up.html')
 @atomic
 def private_doctor_sign_up(request):
     user_form = UserDoctorForm(request.POST or None, prefix=user_prefix)
@@ -98,7 +99,7 @@ def profile(request, pk):
     raise Http404('You are not allowed to view this page')
 
 
-@render_to('accounts/patient_profile.html')
+@render_to('accounts/patient/patient_profile.html')
 def patient_profile(request, user):
     patient = user.patient
     medical_records = patient.patientdecease_set.all()
@@ -122,17 +123,17 @@ def doctor_profile(request, user):
     return {'doctor': doctor, 'doctor_spheres': doctor_spheres}
 
 
-@render_to('accounts/public_doctor_profile.html')
+@render_to('accounts/doctor/public_doctor/public_doctor_profile.html')
 def public_doctor_profile(request, user):
     return doctor_profile(request, user)
 
 
-@render_to('accounts/private_doctor_profile.html')
+@render_to('accounts/doctor/private_doctor/private_doctor_profile.html')
 def private_doctor_profile(request, user):
     return doctor_profile(request, user)
 
 
-@render_to('accounts/patient_public_profile.html')
+@render_to('accounts/patient/patient_public_profile.html')
 def patient_public_profile(request, user, request_user):
     patient = user.patient
     doctor = request_user.doctor
@@ -148,8 +149,9 @@ def patient_public_profile(request, user, request_user):
 
     return dict
 
-@render_to('accounts/private_doctor_public_profile.html')
-def private_doctor_public_profile(request, user, request_user):
+
+@render_to('accounts/doctor/doctor_public_profile.html')
+def doctor_public_profile(request, user, request_user):
     doctor = user.doctor
     patient = request_user.patient
     relationships, _ = Relationships.objects.get_or_create(patient=patient, doctor=doctor)
@@ -157,14 +159,15 @@ def private_doctor_public_profile(request, user, request_user):
     for sphere in doctor_spheres:
         if not Review.objects.filter(patient=patient, doctor_sphere=sphere).exists():
             sphere.form = ReviewForm()
-        else:
-            for review in sphere.review_set.filter(patient=patient):
-                review.form = ReviewForm(instance=review)
-    return {'doctor': doctor, 'doctor_spheres': doctor_spheres, 'relationships': relationships}
+    return {'doctor': doctor, 'patient': patient, 'doctor_spheres': doctor_spheres, 'relationships': relationships}
+
+
+def private_doctor_public_profile(request, user, request_user):
+    return doctor_public_profile(request, user, request_user)
 
 
 def public_doctor_public_profile(request, user, request_user):
-    pass
+    return doctor_public_profile(request, user, request_user)
 
 
 def update(request):
@@ -177,7 +180,7 @@ def update(request):
         return update_public_doctor(request)
 
 
-@render_to('accounts/patient_update.html')
+@render_to('accounts/patient/patient_update.html')
 @atomic
 def update_patient(request):
     patient = request.user
@@ -195,7 +198,7 @@ def update_patient(request):
     return {'user_form': user_form, 'patient_form': patient_form}
 
 
-@render_to('accounts/public_doctor_update.html')
+@render_to('accounts/doctor/public_doctor/public_doctor_update.html')
 @atomic
 def update_public_doctor(request):
     doctor = request.user
@@ -221,7 +224,7 @@ def update_public_doctor(request):
     return {'user_form': user_form, 'doctor_form': doctor_form, 'public_doctor_form': public_doctor_form}
 
 
-@render_to('accounts/private_doctor_update.html')
+@render_to('accounts/doctor/private_doctor/private_doctor_update.html')
 @atomic
 def update_private_doctor(request):
     doctor = request.user
@@ -248,7 +251,7 @@ def update_private_doctor(request):
 
 
 @require_http_methods(["POST"])
-def update_relationships(request, pk):
+def relationships_update(request, pk):
     patient = None
     doctor = None
     if request.user.is_patient:
@@ -274,3 +277,35 @@ def update_relationships(request, pk):
         relationships.patient_accept = patient_accept
     relationships.save()
     return JsonResponse(data=model_to_dict(relationships))
+
+
+@require_http_methods(["POST"])
+@user_passes_test(lambda user: user.is_patient)
+def review_create_update(request, doctor_sphere_id, pk=None):
+    doctor_sphere = get_object_or_404(DoctorSphere, pk=doctor_sphere_id)
+    patient = request.user.patient
+    if not Relationships.objects.filter(patient=patient, doctor=doctor_sphere.doctor).exists():
+        return HttpResponseForbidden('No relation ship between the doctor and the user')
+    instance = Review.objects.get(pk=pk) if pk else None
+    review_form = ReviewForm(request.POST, instance=instance)
+    if review_form.is_valid():
+        review = review_form.save(commit=False)
+        review.patient = request.user.patient
+        review.doctor_sphere = doctor_sphere
+        review.save()
+        return HttpResponse('')
+    return render_to_response('accounts/_review_create_update_form.html',
+                              {'pk': pk, 'review_form': review_form, 'doctor_sphere_id': doctor_sphere_id})
+
+
+@require_http_methods(["POST"])
+@user_passes_test(lambda user: user.is_patient)
+def review_delete(request):
+    pk = request.POST.get('review_id')
+    if not pk:
+        raise Http404('no review_id')
+    review = get_object_or_404(Review, pk=pk)
+    if not review.patient == request.user.patient:
+        return HttpResponseForbidden('The user is not the owner of the review')
+    review.delete()
+    return HttpResponse('')
