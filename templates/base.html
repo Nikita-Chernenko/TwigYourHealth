@@ -14,7 +14,7 @@
 <div class="content">
     <header>
 
-    <nav>
+        <nav>
             <div class="nav-wrapper teal lighten-2">
                 <div class="container">
 
@@ -24,58 +24,67 @@
             </div>
         </nav>
 
-    <div class="nav-wrapper teal lighten-3">
-                <div class="container">
-                    {% block breadcrumbs %}
-                        <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
-                    {% endblock %}
-                </div>
+        <div class="nav-wrapper teal lighten-3">
+            <div class="container">
+                {% block breadcrumbs %}
+                    <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
+                {% endblock %}
             </div>
+        </div>
 
-     <ul id="slide-out" class="side-nav">
-         <li><a class="waves-effect" href="base.html"><i class="material-icons left">home</i>Home</a></li>
-         <li><a class="waves-effect" href="base.html"><i class="material-icons left">group</i>About us</a></li>
-         <li><a class="waves-effect" href="base.html"><i class="material-icons left">contact_phone</i>Contact us</a></li>
-         <li><div class="divider"></div></li>
+        <ul id="slide-out" class="side-nav">
+            <li><a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
+            <li><a class="waves-effect" href="#"><i class="material-icons left">group</i>About us</a></li>
+            <li><a class="waves-effect" href="#"><i class="material-icons left">contact_phone</i>Contact us</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
 
-         {% if user.is_authenticated %}
-            <li><div class="user-view">
-                    {% if user.is_doctor %}
-                        {% if user.doctor.is_private %}
-                            Hi, private doctor {{ user.username }}
-                            <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
-                            <a href="#name"><span class="black-text name">John Doe</span></a>
-                            <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
+            {% if user.is_authenticated %}
+                <li>
+                    <div class="user-view">
+                        {% include 'accounts/_avatar.html' with user=user %}
+                        <a href="{%  url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
+                        <a href=""><span class="black-text email">jdandturk@gmail.com</span></a>
+                        {% if user.is_doctor %}
+                            {% if user.doctor.is_private %}
+                                Hi, private doctor {{ user.username }}
+
+                            {% else %}
+                                Hi, public doctor {{ user.username }}
+
+                            {% endif %}
+
+                        {% elif user.is_patient %}
+                            Hi, patient {{ user.username }}
+
+
                         {% else %}
-                            Hi, public doctor {{ user.username }}
-                            <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
-                            <a href="#name"><span class="black-text name">John Doe</span></a>
-                            <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
+                            Hi, OUR GOD ADMIN {{ user.username }}
                         {% endif %}
+                    </div>
+                </li>
 
-                    {% elif user.is_patient %}
-                        Hi, patient {{ user.username }}
-                        <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
-                        <a href="#name"><span class="black-text name">John Doe</span></a>
-                        <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
-
-                    {% else %}
-                        Hi, OUR GOD ADMIN {{ user.username }}
-                    {% endif %}
-            </div></li>
-
-                <li><a class="waves-effect" href="{% url 'profile' %}"><i class="material-icons left">account_box</i>Profile</a></li>
-                <li><a class="waves-effect" href="base.html"><i class="material-icons left">payment</i>Medical record</a></li>
-                <li><a class="waves-effect" href="base.html"><i class="material-icons left">healing</i>Diagnostics</a></li>
-                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i class="material-icons left">account_box</i>Profile</a>
+                </li>
+                <li><a class="waves-effect" href="base.html"><i class="material-icons left">payment</i>Medical
+                    record</a></li>
+                <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
+                </li>
+                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
+                </li>
 
             {% else %}
-                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a></li>
-                <li><a class="waves-effect" href="{% url 'sign-up' %}"><i class="material-icons left">person_add</i>Sign up</a></li>
+                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
+                </li>
+                <li><a class="waves-effect" href="{% url 'sign-up' %}"><i class="material-icons left">person_add</i>Sign
+                    up</a></li>
             {% endif %}
-  </ul>
+        </ul>
 
-        <a href="#" data-activates="slide-out" class="button-collapse btn-floating  red"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="slide-out" class="button-collapse btn-floating  red"><i
+                class="material-icons">menu</i></a>
 
     </header>
 
@@ -107,29 +116,29 @@
     {% block extrajs %}
     {% endblock %}
 
-     <footer class="page-footer grey lighten-3">
-          <div class="container">
+    <footer class="page-footer grey lighten-3">
+        <div class="container">
             <div class="row">
-              <div class="col l6 s12">
+                <div class="col l6 s12">
 
-                  <ul>
+                    <ul>
 
-                      <li><a class="black-text text-lighten-3" href="#!">Home</a></li>
-                      <li><a class="black-text text-lighten-3" href="#!">About us</a></li>
-                      <li><a class="black-text text-lighten-3" href="#!">Contact us</a></li>
-                </ul>
-              </div>
+                        <li><a class="black-text text-lighten-3" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="black-text text-lighten-3" href="#">About us</a></li>
+                        <li><a class="black-text text-lighten-3" href="#">Contact us</a></li>
+                    </ul>
+                </div>
                 <div class="col l4 offset-12 s12">
-                    <li><a class="black-text text-lighten-3" href="#!">Log in</a></li>
-                     <li><a class="black-text text-lighten-3" href="#!">Log out</a></li>
+                    <li><a class="black-text text-lighten-3" href="{% url 'login' %}">Log in</a></li>
+                    <li><a class="black-text text-lighten-3" href="{% url 'logout' %}">Log out</a></li>
                 </div>
             </div>
-          </div>
+        </div>
 
-          <div class="footer-copyright">
+        <div class="footer-copyright">
             <div class="container black-text center-align">Copyright © 2018 TwigYourHealth</div>
-          </div>
-        </footer>
+        </div>
+    </footer>
 
 </div>
 </body>
