@@ -17,6 +17,8 @@
     "patronymic": "",
     "is_doctor": false,
     "is_patient": false,
+    "city": null,
+    "avatar": "",
     "groups": [],
     "user_permissions": []
   }
@@ -26,7 +28,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$100000$pgj9dhjfICc7$ZbtpsMrWzZ7ScLKPf7eiwCmn2h+RUG+ExHA39UiPruY=",
-    "last_login": "2018-03-04T10:57:40.214Z",
+    "last_login": "2018-04-09T10:16:04.374Z",
     "is_superuser": false,
     "username": "public",
     "first_name": "doctor",
@@ -39,6 +41,8 @@
     "patronymic": "doctor",
     "is_doctor": true,
     "is_patient": false,
+    "city": null,
+    "avatar": "",
     "groups": [],
     "user_permissions": []
   }
@@ -48,7 +52,7 @@
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$100000$M7dWdKeKYv29$/XRzuIu/xEBicaIcL4goKYrk9xaKJC+4L3tVRIhMhbo=",
-    "last_login": "2018-03-05T15:03:16.174Z",
+    "last_login": "2018-04-09T10:38:31.002Z",
     "is_superuser": false,
     "username": "patient",
     "first_name": "patient",
@@ -61,6 +65,8 @@
     "patronymic": "patient",
     "is_doctor": false,
     "is_patient": true,
+    "city": null,
+    "avatar": "staging/accounts/user/default-programmer_avatar.png",
     "groups": [],
     "user_permissions": []
   }
@@ -70,7 +76,7 @@
   "pk": 6,
   "fields": {
     "password": "pbkdf2_sha256$100000$SdMui9FZcPqL$nMmt37RuKFGinzoxVWDN5ymtM0OJUQ+cxJwmklAzzQI=",
-    "last_login": "2018-03-04T10:57:32.490Z",
+    "last_login": "2018-04-09T10:21:54.634Z",
     "is_superuser": false,
     "username": "private",
     "first_name": "",
@@ -83,6 +89,8 @@
     "patronymic": "",
     "is_doctor": true,
     "is_patient": false,
+    "city": null,
+    "avatar": "",
     "groups": [],
     "user_permissions": []
   }

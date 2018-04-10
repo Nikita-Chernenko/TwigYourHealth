@@ -1,0 +1,52 @@
+<h3>Medical records</h3>
+<table class="responsive-table table-of-contents collapsible">
+    <tr>
+        <th>Decease</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Cured</th>
+    </tr>
+</table>
+{% for record in medical_records %}
+    <ul class="collapsible" data-collapsible="accordion">
+        <li>
+            <div style="display: flex;flex-direction: row">
+                <div id="record-table-{{ forloop.counter }}" class="record-table" style="display: block">
+                    <table class="responsive-table table-of-contents collapsible">
+                        <tr>
+                            <td>{{ record.decease }}</td>
+                            <td>{{ record.start_date }}</td>
+                            <td>{{ record.end_date|default:"-" }}</td>
+                            <td>
+                                {% if record.cured %}
+                                    <i class="material-icons green">check</i>
+                                {% else %}
+                                    <i class="material-icons red">close</i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="record-edit-form-{{ forloop.counter }}" class="record-edit-form" style="display: none">
+                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' with decease_form=record.form action="Изменить" patient_decease_id=record.id%}
+                </div>
+                <div data-id="{{ forloop.counter }}" class="record-toggle">
+                    <i class="material-icons">edit</i>
+                </div>
+            </div>
+            <div class="collapsible-header row">
+                <p>symptoms</p>
+            </div>
+            <div class="collapsible-body">
+                <ul>
+                    {% for symptom in record.symptoms.all %}
+                        <li>{{ symptom.symptom.name }} a</li>3
+                    {% endfor %}
+                </ul>
+            </div>
+{#        TODO add symptoms CRUD#}
+        </li>
+    </ul>
+
+
+{% endfor %}

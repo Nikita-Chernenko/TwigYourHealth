@@ -1,9 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm as _UserCreationForm, AuthenticationForm
-from django.db import transaction
-from material import Layout, Row, Column
+from material import Layout, Row
 
-from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor
+from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review
 
 
 class LoginViewForm(AuthenticationForm):
@@ -14,9 +13,9 @@ class LoginViewForm(AuthenticationForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'phone']
+        fields = ['username', 'email', 'phone', 'avatar']
 
-    layout = Layout(Row('username', 'email', 'phone'))
+    layout = Layout(Row('username', 'email', 'phone', 'avatar'))
 
 
 class UserCreationForm(_UserCreationForm):
@@ -41,7 +40,7 @@ class PatientForm(forms.ModelForm):
 
     class Meta:
         model = Patient
-        fields = ['birthday']
+        fields = ['birthday', 'gender']
 
 
 class UserDoctorForm(UserCreationForm):
@@ -93,3 +92,11 @@ class PrivateDoctorForm(forms.ModelForm):
         fields = ['hour_rate', 'visit_price']
 
     layout = Layout(Row('hour_rate', 'visit_price'))
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['comment', 'mark']
+
+    layout = Layout(Row('comment'), Row('mark'))

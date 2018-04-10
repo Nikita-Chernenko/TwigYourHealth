@@ -18,7 +18,12 @@ from pushbullet import Pushbullet
 
 from TwigYourHealth.private_settings import PUSHBULLEY_KEY, SECRET_KEY
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def rel(*x):
+    return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
+
+
+BASE_DIR = rel('.')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -28,7 +33,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -46,6 +51,7 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
     'mptt',
+    'sorl.thumbnail',
 
     'accounts',
     'notifications',
@@ -94,7 +100,7 @@ WSGI_APPLICATION = 'TwigYourHealth.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': rel('database.sqlite'),
     }
 }
 
@@ -135,18 +141,21 @@ LOGIN_EXEMPT_URLS = ['admin', 'accounts/sign-up/']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 AUTH_USER_MODEL = 'accounts.User'
-STATIC_URL = '/static/'
+MEDIA_ROOT = rel('..', 'files', 'media')
+MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = rel('..', 'files', 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    rel('..', 'static'),
+)
 
 SASS_PROCESSOR_INCLUDE_DIRS = [
-    os.path.join(BASE_DIR, 'static/scss'),
+    rel('..', 'static', 'scss'),
 ]
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+SASS_PROCESSOR_ROOT = rel('..', 'static')
 
-FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures')]
+FIXTURE_DIRS = [rel('..', 'fixtures')]
 
 # CMS
 pb = Pushbullet(PUSHBULLEY_KEY)
