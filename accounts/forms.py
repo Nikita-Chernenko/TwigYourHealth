@@ -7,7 +7,7 @@ from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, Priva
 
 class LoginViewForm(AuthenticationForm):
     username = forms.CharField(help_text='username or email or phone')
-    layout = Layout(Row('username', 'password'))
+    layout = Layout(Row('username'), Row('password'))
 
 
 class UserForm(forms.ModelForm):

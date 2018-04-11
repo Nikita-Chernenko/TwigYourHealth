@@ -45,7 +45,7 @@
                 <li>
                     <div class="user-view">
                         {% include 'accounts/_avatar.html' with user=user %}
-                        <a href="{%  url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
+                        <a href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
                         <a href=""><span class="black-text email">jdandturk@gmail.com</span></a>
                         {% if user.is_doctor %}
                             {% if user.doctor.is_private %}
@@ -89,16 +89,28 @@
     </header>
 
     <main>
-        {% if messages %}
-            <div class="container-fluid">
-                <ul class="messages list-unstyled">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }} alert-info"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
+        <div class="row">
+            {% if messages %}
+                <div class="container-fluid">
+                    <ul class="messages list-unstyled">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }} alert-info"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l2 center-align" style="border:3px solid grey;border-radius: 5px; padding: 5px">
+                <div class="row"> Домой</div>
+                <div class="row"> Домой</div>
+                <div class="row"> Домой</div>
+                <div class="row"> Домой</div>
             </div>
-        {% endif %}
-        {% block content %} {% endblock %}
+            <div class="col s12 m8 l10">
+               {% block content %} {% endblock %}
+            </div>
+        </div>
     </main>
 
     <script src="{% static 'js/jquery.js' %}"></script>

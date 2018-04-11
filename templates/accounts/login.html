@@ -7,15 +7,20 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            {% form form=form %}{% endform %}
-            <input type="hidden" name="next" value="{% url 'self-profile' %}"/>
-            <div class="center-align">
-                <button class="waves-effect waves-light btn btn-large" type="submit">Login</button>
-                <a class="waves-effect waves-light btn btn-large" href="{% url 'sign-up' %}" type="submit">Sign up</a>
+        <div class="row">
+            <div class="col s6 offset-s3">
+                <h2>Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% form form=form %}{% endform %}
+                    <input type="hidden" name="next" value="{% url 'self-profile' %}"/>
+                    <div class="center-align">
+                        <button class="waves-effect waves-light btn btn-large" type="submit">Login</button>
+                        <a class="waves-effect waves-light btn btn-large" href="{% url 'sign-up' %}" type="submit">Sign
+                            up</a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 {% endblock %}
