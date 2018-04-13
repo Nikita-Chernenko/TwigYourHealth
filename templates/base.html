@@ -14,7 +14,7 @@
 <div class="content">
     <header>
 
-    <nav>
+        <nav>
             <div class="nav-wrapper teal lighten-2">
                 <div class="container">
 
@@ -24,72 +24,89 @@
             </div>
         </nav>
 
-    <div class="nav-wrapper teal lighten-3">
-                <div class="container">
-                    {% block breadcrumbs %}
-                        <a href="{% url 'profile' %}" class="breadcrumb ">Profile</a>
-                    {% endblock %}
-                </div>
+        <div class="nav-wrapper teal lighten-3">
+            <div class="container">
+                {% block breadcrumbs %}
+                    <a href="{% url 'profile' %}" class="breadcrumb ">Profile</a>
+                {% endblock %}
             </div>
+        </div>
 
-     <ul id="slide-out" class="side-nav">
-         <li><a class="waves-effect" href="base.html"><i class="material-icons left">home</i>Home</a></li>
-         <li><a class="waves-effect" href="base.html"><i class="material-icons left">group</i>About us</a></li>
-         <li><a class="waves-effect" href="base.html"><i class="material-icons left">contact_phone</i>Contact us</a></li>
-         <li><div class="divider"></div></li>
+        <ul id="slide-out" class="side-nav">
+            <li><a class="waves-effect" href="base.html"><i class="material-icons left">home</i>Home</a></li>
+            <li><a class="waves-effect" href="base.html"><i class="material-icons left">group</i>About us</a></li>
+            <li><a class="waves-effect" href="base.html"><i class="material-icons left">contact_phone</i>Contact us</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
 
-         {% if user.is_authenticated %}
-            <li><div class="user-view">
-                    {% if user.is_doctor %}
-                        {% if user.doctor.is_private %}
-                            Hi, private doctor {{ user.username }}
+            {% if user.is_authenticated %}
+                <li>
+                    <div class="user-view">
+                        {% if user.is_doctor %}
+                            {% if user.doctor.is_private %}
+                                Hi, private doctor {{ user.username }}
+                                <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
+                                <a href="#name"><span class="black-text name">John Doe</span></a>
+                                <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
+                            {% else %}
+                                Hi, public doctor {{ user.username }}
+                                <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
+                                <a href="#name"><span class="black-text name">John Doe</span></a>
+                                <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
+                            {% endif %}
+
+                        {% elif user.is_patient %}
+                            Hi, patient {{ user.username }}
                             <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
                             <a href="#name"><span class="black-text name">John Doe</span></a>
                             <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
+
                         {% else %}
-                            Hi, public doctor {{ user.username }}
-                            <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
-                            <a href="#name"><span class="black-text name">John Doe</span></a>
-                            <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
+                            Hi, OUR GOD ADMIN {{ user.username }}
                         {% endif %}
+                    </div>
+                </li>
 
-                    {% elif user.is_patient %}
-                        Hi, patient {{ user.username }}
-                        <a href="#user"><img class="circle" src="TwigYourHealth\static\images\user.jpg"></a>
-                        <a href="#name"><span class="black-text name">John Doe</span></a>
-                        <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
-
-                    {% else %}
-                        Hi, OUR GOD ADMIN {{ user.username }}
-                    {% endif %}
-            </div></li>
-
-                <li><a class="waves-effect" href="{% url 'profile' %}"><i class="material-icons left">account_box</i>Profile</a></li>
-                <li><a class="waves-effect" href="base.html"><i class="material-icons left">payment</i>Medical record</a></li>
-                <li><a class="waves-effect" href="base.html"><i class="material-icons left">healing</i>Diagnostics</a></li>
-                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+                <li><a class="waves-effect" href="{% url 'profile' %}"><i class="material-icons left">account_box</i>Profile</a>
+                </li>
+                <li><a class="waves-effect" href="base.html"><i class="material-icons left">payment</i>Medical
+                    record</a></li>
+                <li><a class="waves-effect" href="base.html"><i class="material-icons left">healing</i>Diagnostics</a>
+                </li>
+                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
+                </li>
 
             {% else %}
-                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a></li>
-                <li><a class="waves-effect" href="{% url 'sign-up' %}"><i class="material-icons left">person_add</i>Sign up</a></li>
+                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
+                </li>
+                <li><a class="waves-effect" href="{% url 'sign-up' %}"><i class="material-icons left">person_add</i>Sign
+                    up</a></li>
             {% endif %}
-  </ul>
+        </ul>
 
-        <a href="#" data-activates="slide-out" class="button-collapse btn-floating  red"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="slide-out" class="button-collapse btn-floating  lighten-2"><i
+                class="material-icons">menu</i></a>
 
     </header>
 
     <main>
-        {% if messages %}
-            <div class="container-fluid">
-                <ul class="messages list-unstyled">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }} alert-info"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-        {% block content %} {% endblock %}
+        <div class="row">
+            {% if messages %}
+                <div class="container-fluid">
+                    <ul class="messages list-unstyled">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }} alert-info"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% block content %} {% endblock %}
+            {% if user.is_authenticated %}
+                {% include 'communications/_chat.html' %}
+            {% endif %}
+        </div>
     </main>
 
     <script src="{% static 'js/jquery.js' %}"></script>
@@ -100,36 +117,69 @@
 
     <script>
         $(document).ready(function () {
-            materialize_initiailize()
+            materialize_initiailize();
+            var chatSocket;
+            $('.chat-short .start-chat  ').on('click', function () {
+                var with_id = $(this).data('with-id');
+
+                chatSocket = new WebSocket(
+                    'ws://' + window.location.host +
+                    '/chat/' + with_id + '/');
+                chatSocket.onmessage = function (e) {
+                    var data = JSON.parse(e.data);
+                    var message = data['message'];
+                    console.log(message);
+                    $('.messages').append(message)
+                };
+
+                chatSocket.onclose = function (e) {
+                    console.error('Chat socket closed unexpectedly');
+                };
+                chatSocket.onopen = function () {
+                    console.log("Соединение установлено.");
+                };
+
+                chatSocket.onerror = function (error) {
+                    console.log("Ошибка " + error.message);
+                };
+                console.log(chatSocket)
+            })
+            $('.send-sms').on('click', function () {
+                console.log(chatSocket);
+                chatSocket.send(JSON.stringify({'text': 'test'}))
+            })
         });
     </script>
 
     {% block extrajs %}
     {% endblock %}
 
-     <footer class="page-footer grey lighten-3">
-          <div class="container">
+    <footer class="page-footer teal lighten-2">
+
+        <div class="container">
             <div class="row">
-              <div class="col l6 s12">
-
-                  <ul>
-
-                      <li><a class="black-text text-lighten-3" href="#!">Home</a></li>
-                      <li><a class="black-text text-lighten-3" href="#!">About us</a></li>
-                      <li><a class="black-text text-lighten-3" href="#!">Contact us</a></li>
-                </ul>
-              </div>
-                <div class="col l4 offset-12 s12">
-                    <li><a class="black-text text-lighten-3" href="#!">Log in</a></li>
-                     <li><a class="black-text text-lighten-3" href="#!">Log out</a></li>
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                        content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Contact us</a></li>
+                    </ul>
                 </div>
             </div>
-          </div>
-
-          <div class="footer-copyright">
-            <div class="container black-text center-align">Copyright © 2018 TwigYourHealth</div>
-          </div>
-        </footer>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 Copyright TwigYourHealth
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
 
 </div>
 </body>
