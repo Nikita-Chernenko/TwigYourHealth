@@ -50,7 +50,7 @@
                 </div>
 
             {% endfor %}
-            {% if s.form %}
+            {% if relationships.doctor_accept and s.form %}
                 <div class="review-form">
                     {% include 'accounts/_review_create_update_form.html' with doctor_sphere_id=s.id review_form=s.form %}
                 </div>
