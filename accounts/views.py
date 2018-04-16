@@ -1,11 +1,14 @@
 from annoying.decorators import render_to
 from django.contrib.auth.views import logout as _logout
+from django.core.serializers import serialize
 from django.db.transaction import atomic
 from django.forms import formset_factory
-from django.shortcuts import redirect
+from django.http import JsonResponse
+from django.shortcuts import redirect, get_object_or_404
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
     PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm
+from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 
 user_prefix = 'user'
@@ -180,3 +183,11 @@ def update_private_doctor(request):
         private_doctor_form = PrivateDoctorForm(instance=doctor.doctor.privatedoctor,
                                                 prefix=private_doctor_prefix)
     return {'user_form': user_form, 'doctor_form': doctor_form, 'private_doctor_form': private_doctor_form}
+
+
+# ------------------ API part
+
+def user_retrieve(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    user = serialize(queryset=[user], format='json')
+    return JsonResponse(user,safe=False)

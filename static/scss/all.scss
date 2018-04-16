@@ -1,18 +1,15 @@
 @import "reset";
 @import "materialize/materialize";
-
-html {
-  display: flex;
-  min-height: 100%;
-
-}
+@import "chat";
 
 body {
   display: flex;
-  flex: 1;
   min-height: 100vh;
   flex-direction: column;
+}
 
+main {
+  flex: 1 0 auto;
 }
 
 .content {
@@ -21,7 +18,6 @@ body {
   flex: 1;
   font-family: "Uni sans", monospace;
 }
-
-  main {
-    flex: 1 0 auto;
-  }
+i.icon-red {
+    color: red;
+}

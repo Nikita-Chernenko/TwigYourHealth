@@ -3,7 +3,8 @@ from django.urls import path, reverse_lazy
 from django.views.generic import TemplateView
 
 from accounts.forms import LoginViewForm
-from accounts.views import patient_sign_up, public_doctor_sign_up, private_doctor_sign_up, logout, profile, update
+from accounts.views import patient_sign_up, public_doctor_sign_up, private_doctor_sign_up, logout, profile, update, \
+    user_retrieve
 
 urlpatterns = [
     path('sign-up/', TemplateView.as_view(template_name='accounts/sign_up.html'), name='sign-up'),
@@ -16,5 +17,6 @@ urlpatterns = [
     path('profile/change-password/', password_change, {'template_name': 'accounts/change_password.html',
                                                        'post_change_redirect': reverse_lazy('profile')},
          name='change-password'),
-    path('profile/update/', update, name='update-profile')
+    path('profile/update/', update, name='update-profile'),
+    path('user/<int:pk>/', user_retrieve, name='user-retrieve'),
 ]

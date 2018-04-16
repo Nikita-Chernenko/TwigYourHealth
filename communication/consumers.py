@@ -15,11 +15,11 @@ class ChatConsumer(JsonWebsocketConsumer):
             self.close()
             return
         self.accept()
-
+        pk = self.scope['url_route']['kwargs']['user_id']
         if user.is_doctor:
-            patient_user, doctor_user = get_object_or_404(User, pk=self.scope['url_route']['kwargs']['user_id']), user
+            patient_user, doctor_user = get_object_or_404(User, pk=pk), user
         else:
-            doctor_user, patient_user = get_object_or_404(User, pk=self.scope['url_route']['kwargs']['user_id']), user
+            doctor_user, patient_user = get_object_or_404(User, pk=pk), user
 
         chat, _ = Chat.objects.get_or_create(patient=patient_user.patient, doctor=doctor_user.doctor)
         self.patient_user = patient_user
@@ -27,21 +27,34 @@ class ChatConsumer(JsonWebsocketConsumer):
         self.chat_id = chat.id
         async_to_sync(self.channel_layer.group_add)(f"chat-{chat.id}", self.channel_name)
 
-    def receive_json(self, content, **kwargs):
-        chat_id = self.chat_id
-        user_id = self.user.id
-        async_to_sync(self.channel_layer.group_send)(
-            f'chat-{chat_id}',
-            {
-                "type": "chat.message",
-                "chat_id": chat_id,
-                "user_id": user_id,
-                "message": content['text'],
-            }
-        )
-        super(ChatConsumer, self).receive_json(content, **kwargs)
+    # def receive_json(self, content, **kwargs):
+    #     chat_id = self.chat_id
+    #     user_id = self.user.id
+    #     async_to_sync(self.channel_layer.group_send)(
+    #         f'chat-{chat_id}',
+    #         {
+    #             "type": "chat.message",
+    #             "chat_id": chat_id,
+    #             "user_id": user_id,
+    #             "message": content['text'],
+    #         }
+    #     )
+    #     super(ChatConsumer, self).receive_json(content, **kwargs)
 
     def chat_message(self, event):
         self.send_json(
             event
         )
+
+    def chat_message_update(self, event):
+        self.send_json(
+            event
+        )
+
+    def chat_message_delete(self, event):
+        self.send_json(
+            event
+        )
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(f"chat-{self.chat_id}", self.channel_name)

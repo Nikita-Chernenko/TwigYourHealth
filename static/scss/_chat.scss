@@ -1,0 +1,127 @@
+.chat-block {
+  position: fixed;
+  display: flex;
+  right: 20px !important;
+  bottom: 10px;
+  height: 500px;
+  overflow-y: scroll;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 2;
+  background: white;
+  .chat-close {
+    color: black;
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+  }
+
+  .chat-avatar {
+    height: 50px;
+    width: 50px;
+  }
+  &#chat-icon {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    box-shadow: none;
+    background: none;
+  }
+}
+
+#chat-block-short {
+  .chat-short-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .message-search {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  .chat-short-chats {
+    .chat-short {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      margin: 5px;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid lightgray;
+      }
+      .username-last-message {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .last-message {
+          display: flex;
+          flex-direction: row;
+          .last-message-time {
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#chat-block-full {
+  .chat-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .chat-back {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .chat-messages {
+    overflow-y: scroll;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    .message-text-block {
+      display: flex;
+      flex-direction: row;
+      &.other {
+        justify-content: end;
+        .message-text {
+          background: lightblue;
+          text-align: right;
+        }
+      }
+      &.self {
+        justify-content: start;
+        .message-text {
+          background: lightgray;
+          text-align: left;
+        }
+      }
+      .message-text {
+        height: 20px;
+        border-radius: 5px;
+        margin: 5px;
+        margin-left: initial;
+      }
+
+    }
+
+  }
+  .message-input-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+  }
+}
+
+
+

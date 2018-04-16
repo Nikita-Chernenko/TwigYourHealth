@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 
-from accounts.models import Doctor, Patient
+from accounts.models import Doctor, Patient, User
 
 
 class CommunicationEntity(models.Model):
@@ -61,7 +61,10 @@ class Chat(models.Model):
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField('timestamp')
+    timestamp = models.DateTimeField('timestamp', auto_now=True)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    doctor_read = models.BooleanField(default=False)
+    patient_read = models.BooleanField(default=False)
     text = models.TextField('text')
 
     class Meta:
@@ -70,3 +73,18 @@ class Message(models.Model):
 
     def __str__(self):
         return f'{self.chat} {self.text}'
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if self.author:
+            if self.author.is_patient:
+                self.patient_read = True
+            elif self.author.is_doctor:
+                self.doctor_read = True
+        super(Message, self).save(force_insert, force_update, using, update_fields)
+
+    def clean(self):
+        if hasattr(self, 'author') and hasattr(self, 'chat') \
+                and (self.author.is_patient and self.author.patient != self.chat.patient or
+                     self.author.is_doctor and self.author.doctor != self.chat.doctor):
+            raise ValidationError("User doesn't belong to chat")
