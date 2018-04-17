@@ -90,25 +90,37 @@
     .message-text-block {
       display: flex;
       flex-direction: row;
+      margin: 12px;
       &.other {
         justify-content: end;
-        .message-text {
+        .message {
           background: lightblue;
           text-align: right;
+          justify-content: start;
         }
       }
       &.self {
         justify-content: start;
-        .message-text {
+        .message {
           background: lightgray;
-          text-align: left;
+          justify-content: end;
         }
       }
-      .message-text {
+      .message {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         height: 20px;
         border-radius: 5px;
         margin: 5px;
         margin-left: initial;
+
+        .message-time {
+          padding-top: 5px;
+          margin-left: 5px;
+          font-size: 10px;
+          color: gray;
+        }
       }
 
     }

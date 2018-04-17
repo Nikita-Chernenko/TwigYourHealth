@@ -194,7 +194,8 @@
                     else {
                         message_template.addClass('unread');
                     }
-                    message_template.find('.message-text.text').html(message['text']);
+                    message_template.find('.message-text').html(message['text']);
+                    message_template.find('.message-time').html(message['timestamp']);
                     message_block.append(message_template);
                 };
 
@@ -242,7 +243,8 @@
                             else {
                                 message_template.addClass('unread');
                             }
-                            message_template.find('.message-text.text').html(message['text']);
+                            message_template.find('.message-text').html(message['text']);
+                            message_template.find('.message-time').html(message['timestamp']);
                             message_block.append(message_template);
                         }
                     }

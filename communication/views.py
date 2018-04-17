@@ -1,8 +1,12 @@
+import datetime
+import json
+
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from django.core.serializers import serialize
 from django.http import JsonResponse, Http404
 from django.shortcuts import render, get_object_or_404
+from django.utils.dateparse import parse_date, parse_datetime
 from django.views.decorators.http import require_http_methods
 
 from communication.forms import MessageForm
@@ -25,7 +29,10 @@ def chat_retrieve(request, pk):
 def message_list(request, chat_id):
     chat = get_object_or_404(Chat, pk=chat_id)
     messages = chat.message_set.all()
-    messages = serialize(queryset=messages, format='json')
+    messages = json.loads(serialize(queryset=messages, format='json'))
+    for m in messages:
+        m['fields']['timestamp'] = parse_datetime(m['fields']['timestamp']).strftime('%H:%M')
+    messages = json.dumps(messages)
     return JsonResponse(data=messages, safe=False)
 
 
@@ -43,9 +50,10 @@ def message_create_update(request, pk=None):
                 "type": "chat.message.update" if pk else "chat.message",
                 "chat_id": message.chat.id,
                 "user_id": request.user.id,
-                "patient_read":message.patient_read,
-                "doctor_read":message.doctor_read,
+                "patient_read": message.patient_read,
+                "doctor_read": message.doctor_read,
                 "text": message.text,
+                "timestamp": message.timestamp.strftime('%H:%M'),
                 "action": MESSAGE_CREATE if pk else MESSAGE_CREATE,
                 "message_id": message.id
             }
