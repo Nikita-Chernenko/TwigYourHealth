@@ -1,4 +1,4 @@
-<div class="s12 m4 l2 col chat-block" id="chat-block-short">
+<div class="s12 m6 l3 col chat-block" id="chat-block-short" style="display: none">
     <div class="chat-short-header">
         <div class="message-search">
             <i class="small material-icons">search</i>
@@ -9,11 +9,15 @@
     <div class="chat-short-chats">
         {% for chat in chats %}
             <div class="chat-short" data-chat-id="{{ chat.id }}"
-                 data-user-id="{% if user.is_patient %}{{ chat.doctor.user.id }} {% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}"
-                 data-with-id="{% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
-
-                {#        TODO add photo#}
-                <img class="circle chat-avatar" src="http://materializecss.com/images/yuna.jpg">
+                 data-user-id="
+                         {% if user.is_patient %}{{ chat.doctor.user.id }} {% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}"
+                 data-with-id="
+                         {% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
+                {% if user.is_patient %}
+                    {% include 'accounts/_avatar.html' with user=chat.doctor.user height='50' width='50' img_class='circle chat-avatar' %}
+                {% elif user.is_doctor %}
+                    {% include 'accounts/_avatar.html' with user=chat.patient.user height='50' width='50' img_class='circle chat-avatar' %}
+                {% endif %}
                 <div class="username-last-message">
                     <div>
                         {% if user.is_patient %}
@@ -24,7 +28,7 @@
                     </div>
                     <div class="last-message">
                         <div class="last-message-text">{{ chat.last_message.text }}t</div>
-                        <div class="last-message-time">11:11:11</div>
+                        <div class="last-message-time">{{ chat.last_message.timestamp|date:"H:i" }}</div>
                     </div>
                 </div>
             </div>
@@ -32,12 +36,12 @@
         {% endfor %}
     </div>
 </div>
-<div class="s12 m4 l2 col chat-block" id="chat-block-full" style="display: none">
+<div class="s12 m6 l3 col chat-block" id="chat-block-full" style="display: none">
     <div>
         <div class="chat-header">
             <a class="chat-back"><i class="small material-icons">arrow_back</i> </a>
             <div class="chat-interlocutor">
-                <img class="circle chat-avatar" src="http://materializecss.com/images/yuna.jpg">
+                <div class="interlocutor-avatar"></div>
                 <div class="interlocutor-name"></div>
             </div>
             <a class="chat-close"><i class="small material-icons">close</i></a>
@@ -49,11 +53,11 @@
     </div>
     <div id="invisible-text-message-block" style="display: none">
         <div class="message-text-block">
-            <div class="message col s12">
+            <div class="message">
                 <div class="message-text"></div>
                 <div class="message-time"></div>
             </div>
-{#            <div class="message-text time"></div>#}
+            {#            <div class="message-text time"></div>#}
         </div>
     </div>
     <div>
@@ -64,5 +68,5 @@
         </div>
     </div>
 </div>
-<div class="chat-block" id="chat-icon" style="display: none"><a id="open-chat"><i
-        class="medium material-icons icon-red">chat</i></a></div>
+<div class="chat-block" id="chat-icon"><a id="open-chat" class="beige btn-floating btn-large"><i
+        class="medium material-icons">chat</i></a></div>

@@ -1,7 +1,8 @@
 .chat-block {
+  padding-right: 5px;
   position: fixed;
   display: flex;
-  right: 20px !important;
+  right: 0px !important;
   bottom: 10px;
   height: 500px;
   overflow-y: scroll;
@@ -10,6 +11,7 @@
   z-index: 2;
   background: white;
   .chat-close {
+    overflow: visible;
     color: black;
     &:hover {
       cursor: pointer;
@@ -90,36 +92,44 @@
     .message-text-block {
       display: flex;
       flex-direction: row;
-      margin: 12px;
+      margin: 2px;
       &.other {
-        justify-content: end;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
         .message {
           background: lightblue;
-          text-align: right;
-          justify-content: start;
-        }
-      }
-      &.self {
-        justify-content: start;
-        .message {
-          background: lightgray;
           justify-content: end;
         }
       }
+      &.self {
+        display: flex;
+        justify-content: flex-start;
+        .message {
+          background: lightgray;
+          justify-content: start;
+        }
+      }
       .message {
+        box-sizing: border-box;
         display: flex;
         flex-direction: row;
         align-items: center;
-        height: 20px;
+        min-height: 20px;
+        padding: 3px;
         border-radius: 5px;
-        margin: 5px;
         margin-left: initial;
 
         .message-time {
+          display: flex;
           padding-top: 5px;
           margin-left: 5px;
           font-size: 10px;
           color: gray;
+        }
+        .message-text {
+          display: flex;
+          max-width: 80%;
         }
       }
 
@@ -135,5 +145,7 @@
   }
 }
 
-
+#chat-icon {
+  overflow: hidden;
+}
 

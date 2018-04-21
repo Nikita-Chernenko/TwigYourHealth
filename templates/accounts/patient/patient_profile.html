@@ -10,14 +10,13 @@
         <a href="{% url 'diagnostics' %}" class="btn wave-effects">Diagnostics</a>
         {% if medical_records %}
             <h3>Medical records</h3>
-            <table class="responsive-table table-of-contents">
+            <table class="table-of-contents">
                 <tr>
                     <th>Decease</th>
                     <th>Start date</th>
                     <th>End date</th>
                     <th>Cured</th>
                 </tr>
-                {{ medical_records.count }}
                 {% for record in medical_records %}
                     <tr>
                         <td>{{ record.decease }}</td>

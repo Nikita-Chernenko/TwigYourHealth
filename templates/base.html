@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Twig your health{% endblock %}</title>
+    <title>{% block title %}Twig your health {% endblock %}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
 
@@ -22,10 +22,10 @@
 
         <nav>
             <div class="nav-wrapper teal lighten-2">
-                <div class="container">
+                <div class="container center-align">
 
 
-                    <a href="#" class="brand-logo center">Twig Your Health</a>
+                    <a href="#" class="brand-logo center-align">Twig Your Health </a>
                 </div>
             </div>
         </nav>
@@ -74,7 +74,8 @@
 
                 <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i class="material-icons left">account_box</i>Profile</a>
                 </li>
-                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i class="material-icons left">payment</i>Medical
+                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                        class="material-icons left">payment</i>Medical
                     record</a></li>
                 <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
                 </li>
@@ -90,7 +91,7 @@
         </ul>
 
         <a href="#" data-target="slide-menu"
-           class="sidenav-trigger button-collapse btn-floating beige hide-on-large-only">
+           class="sidenav-trigger button-collapse btn-floating btn-large beige hide-on-large-only">
             <i class="material-icons">menu</i></a>
 
     </header>
@@ -179,7 +180,7 @@
                     var message = JSON.parse(e.data);
                     console.log(message)
                     var message_template = $($('#invisible-text-message-block').html());
-                    console.log(message['user_id'],user_id)
+                    console.log(message['user_id'], user_id)
                     if (message['user_id'] === user_id) {
                         message_template.addClass('other')
                     }
@@ -216,6 +217,7 @@
                         chat.find('.interlocutor-name').html(data.username);
                     }
                 });
+                $('.interlocutor-avatar').html($(this).find('.chat-avatar').clone());
                 $('#chat-block-full').find('.chat-messages').html('');
                 $.ajax({
                     method: "get",
