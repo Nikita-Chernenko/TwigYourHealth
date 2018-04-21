@@ -212,7 +212,6 @@
                     method: "get",
                     url: "/accounts/user/" + user_id,
                     success: function (response) {
-                        {#TODO photo#}
                         var data = JSON.parse(response)[0]['fields'];
                         chat.find('.interlocutor-name').html(data.username);
                     }
