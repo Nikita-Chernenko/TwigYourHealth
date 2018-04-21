@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
     'mptt',
+    'channels',
     'sorl.thumbnail',
 
     'accounts',
@@ -87,6 +88,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'communication.context_processors.chats'
             ],
         },
     },
@@ -159,3 +161,15 @@ FIXTURE_DIRS = [rel('..', 'fixtures')]
 
 # CMS
 pb = Pushbullet(PUSHBULLEY_KEY)
+
+# Chat
+ASGI_APPLICATION = "communication.routing.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
+}

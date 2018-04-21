@@ -3,15 +3,21 @@ import json
 from annoying.decorators import render_to
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout as _logout
+from django.core.serializers import serialize
 from django.db.transaction import atomic
 from django.forms import formset_factory, model_to_dict
 from django.http import Http404, JsonResponse, HttpResponseForbidden, HttpResponse
 from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
+from django.forms import formset_factory
+from django.http import JsonResponse
+from django.shortcuts import redirect, get_object_or_404
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
     PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm
 from accounts.models import User, Relationships, DoctorSphere, Review
+
+from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 
 user_prefix = 'user'
@@ -309,3 +315,11 @@ def review_delete(request):
         return HttpResponseForbidden('The user is not the owner of the review')
     review.delete()
     return HttpResponse('')
+
+
+# ------------------ API part
+
+def user_retrieve(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    user = serialize(queryset=[user], format='json')
+    return JsonResponse(user,safe=False)

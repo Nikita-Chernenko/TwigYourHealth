@@ -74,7 +74,7 @@
 
                 <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i class="material-icons left">account_box</i>Profile</a>
                 </li>
-                <li><a class="waves-effect" href="base.html"><i class="material-icons left">payment</i>Medical
+                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i class="material-icons left">payment</i>Medical
                     record</a></li>
                 <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
                 </li>
@@ -106,50 +106,199 @@
                     </ul>
                 </div>
             {% endif %}
-        </div>
-        <div class="row">
-            {#            <div class="col s12 m4 l2 center-align" style="border:3px solid grey;border-radius: 5px; padding: 5px">#}
-            {#                <div class="row"> Домой</div>#}
-            {#                <div class="row"> Домой</div>#}
-            {#                <div class="row"> Домой</div>#}
-            {#                <div class="row"> Домой</div>#}
-            {#            </div>#}
-            <div class="col s12 m8 l10">
-                {% block content %} {% endblock %}
-            </div>
+            {% block content %} {% endblock %}
+            {% if user.is_authenticated %}
+                {% include 'communications/_chat.html' %}
+            {% endif %}
         </div>
     </main>
 
     <script>
         $(document).ready(function () {
-            materialize_initiailize()
+            materialize_initiailize();
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie != '') {
+                            var cookies = document.cookie.split(';');
+                            for (var i = 0; i < cookies.length; i++) {
+                                var cookie = jQuery.trim(cookies[i]);
+                                // Does this cookie string begin with the name we want?
+                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                }
+            });
+            var chatSocket;
+            var is_patient = '{{ user.is_patient }}' === 'True';
+            var is_doctor = '{{ user.is_doctor }}' === 'True';
+            $('.chat-short .start-chat  ').on('click', function () {
+                var with_id = $(this).data('with-id');
+
+
+                console.log(chatSocket)
+            });
+            $('.send-sms').on('click', function () {
+                console.log(chatSocket);
+                chatSocket.send(JSON.stringify({'text': 'test'}))
+            });
+            $('#open-chat').on('click', function () {
+                $(this).parents('.chat-block').hide();
+                $('#chat-block-short').show();
+
+            });
+            $('.chat-close').on('click', function () {
+                $(this).parents('.chat-block').hide();
+                $('#chat-icon').show();
+            });
+            $('.chat-short').on('click', function () {
+                var el = $(this);
+                el.parents('.chat-block').hide();
+                var chat = $('#chat-block-full');
+                chat.show();
+                var chat_id = el.data('chat-id');
+                chat.data('chat-id', chat_id);
+                var user_id = parseInt(el.data('user-id'));
+                var with_id = parseInt(el.data('with-id'));
+                var message_block = $('#chat-block-full').find('.chat-messages');
+                chatSocket = new WebSocket(
+                    'ws://' + window.location.host +
+                    '/chat/' + with_id + '/');
+                chatSocket.onmessage = function (e) {
+                    var message = JSON.parse(e.data);
+                    console.log(message)
+                    var message_template = $($('#invisible-text-message-block').html());
+                    console.log(message['user_id'],user_id)
+                    if (message['user_id'] === user_id) {
+                        message_template.addClass('other')
+                    }
+                    else {
+                        message_template.addClass('self')
+                    }
+                    if (is_patient && message['patient_read'] || is_doctor && message['doctor_read']) {
+                        message_template.addClass('read')
+                    }
+                    else {
+                        message_template.addClass('unread');
+                    }
+                    message_template.find('.message-text').html(message['text']);
+                    message_template.find('.message-time').html(message['timestamp']);
+                    message_block.append(message_template);
+                };
+
+                chatSocket.onclose = function (e) {
+                    console.error('Chat socket closed unexpectedly');
+                };
+                chatSocket.onopen = function () {
+                    console.log("Соединение установлено.");
+                };
+
+                chatSocket.onerror = function (error) {
+                    console.log("Ошибка " + error.message);
+                };
+                $.ajax({
+                    method: "get",
+                    url: "/accounts/user/" + user_id,
+                    success: function (response) {
+                        {#TODO photo#}
+                        var data = JSON.parse(response)[0]['fields'];
+                        chat.find('.interlocutor-name').html(data.username);
+                    }
+                });
+                $('#chat-block-full').find('.chat-messages').html('');
+                $.ajax({
+                    method: "get",
+                    url: "/communication/chat/" + chat_id + '/message-list/',
+                    success: function (response) {
+                        var messages = JSON.parse(response);
+                        {#$('#chat-block-full').find('.chat-messages').html('');#}
+                        for (var i = 0; i < messages.length; i++) {
+                            var message_template = $($('#invisible-text-message-block').html());
+                            message = messages[i]['fields'];
+                            message_id = messages[i]['pk'];
+                            message_template.data('message-id', message_id);
+
+                            if (message['author'] + '' === user_id + '') {
+                                message_template.addClass('other')
+                            }
+                            else {
+                                message_template.addClass('self')
+                            }
+                            if (is_patient && message['patient_read'] || is_doctor && message['doctor_read']) {
+                                message_template.addClass('read')
+                            }
+                            else {
+                                message_template.addClass('unread');
+                            }
+                            message_template.find('.message-text').html(message['text']);
+                            message_template.find('.message-time').html(message['timestamp']);
+                            message_block.append(message_template);
+                        }
+                    }
+                })
+            });
+            $('.chat-back').on('click', function () {
+                $(this).parents('.chat-block').hide();
+                $('#chat-block-short').show()
+            });
+            $('#send-message').on('click', function () {
+                var text = $('#message-input').val();
+                var chat_id = $('#chat-block-full').data('chat-id');
+                if (text.length > 0) {
+                    $.ajax({
+                        method: "post",
+                        data: {'text': text, 'chat': chat_id},
+                        url: "{% url 'message-create' %}",
+                        success: function (response) {
+                            console.log(JSON.parse(response));
+                        }
+
+
+                    })
+                }
+            })
         });
+
     </script>
 
     {% block extrajs %}
     {% endblock %}
 
-    <footer class="page-footer grey lighten-3">
+    <footer class="page-footer teal lighten-2">
+
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-
-                    <ul>
-
-                        <li><a class="black-text text-lighten-3" href="{% url 'home' %}">Home</a></li>
-                        <li><a class="black-text text-lighten-3" href="#">About us</a></li>
-                        <li><a class="black-text text-lighten-3" href="#">Contact us</a></li>
-                    </ul>
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                        content.</p>
                 </div>
-                <div class="col l4 offset-12 s12">
-                    <li><a class="black-text text-lighten-3" href="{% url 'login' %}">Log in</a></li>
-                    <li><a class="black-text text-lighten-3" href="{% url 'logout' %}">Log out</a></li>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Contact us</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-
         <div class="footer-copyright">
-            <div class="container black-text center-align">Copyright © 2018 TwigYourHealth</div>
+            <div class="container">
+                © 2018 Copyright TwigYourHealth
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
         </div>
     </footer>
 

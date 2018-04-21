@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from accounts.forms import LoginViewForm
 from accounts.views import patient_sign_up, public_doctor_sign_up, private_doctor_sign_up, logout, profile, update, \
-    self_profile, relationships_update, review_create_update, review_delete
+    self_profile, relationships_update, review_create_update, review_delete, user_retrieve
 
 urlpatterns = [
     path('relationships/<int:pk>/update', relationships_update, name='relationships-update'),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('profile/change-password/', password_change, {'template_name': 'accounts/change_password.html',
                                                        'post_change_redirect': reverse_lazy('self-profile')},
          name='change-password'),
+    path('user/<int:pk>/', user_retrieve, name='user-retrieve'),
 ]

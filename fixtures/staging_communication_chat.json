@@ -1,0 +1,18 @@
+[
+{
+  "model": "communication.chat",
+  "pk": 1,
+  "fields": {
+    "patient": 1,
+    "doctor": 1
+  }
+},
+{
+  "model": "communication.chat",
+  "pk": 2,
+  "fields": {
+    "patient": 1,
+    "doctor": 2
+  }
+}
+]
