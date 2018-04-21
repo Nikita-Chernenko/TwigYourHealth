@@ -28,7 +28,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$100000$pgj9dhjfICc7$ZbtpsMrWzZ7ScLKPf7eiwCmn2h+RUG+ExHA39UiPruY=",
-    "last_login": "2018-04-09T10:16:04.374Z",
+    "last_login": "2018-04-18T17:36:34.259Z",
     "is_superuser": false,
     "username": "public",
     "first_name": "doctor",
@@ -52,7 +52,7 @@
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$100000$M7dWdKeKYv29$/XRzuIu/xEBicaIcL4goKYrk9xaKJC+4L3tVRIhMhbo=",
-    "last_login": "2018-04-09T10:38:31.002Z",
+    "last_login": "2018-04-18T17:36:25.213Z",
     "is_superuser": false,
     "username": "patient",
     "first_name": "patient",
@@ -66,7 +66,7 @@
     "is_doctor": false,
     "is_patient": true,
     "city": null,
-    "avatar": "staging/accounts/user/default-programmer_avatar.png",
+    "avatar": "staging/accounts/user/avatar.jpg",
     "groups": [],
     "user_permissions": []
   }

@@ -12,8 +12,6 @@
     {% csrf_token %}
     {% form form=decease_form %}
         {% attr form.cured 'widget' id%}{{ form.cured.auto_id }}{% endattr %}
-        {% part form.cured label %}<label for="{{ form.cured.auto_id }}">Cured</label>
-        {% endpart %}
     {% endform %}
     <button class="btn waves-effect" type="submit">{% if pk %}Изменить{% else %}Добавить{% endif %}</button>
 </form>

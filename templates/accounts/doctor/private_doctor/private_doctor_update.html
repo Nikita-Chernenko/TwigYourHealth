@@ -9,11 +9,6 @@
         {% csrf_token %}
         {% form form=user_form %}{% endform %}
         {% form form=doctor_form %}
-            {% part form.accept_call label %}<label for="{{ form.accept_call.auto_id }}">Accept call</label>
-            {% endpart %}
-            {% part form.accept_chat label %}<label for="{{ form.accept_chat.auto_id }}">Accept chat</label>
-            {% endpart %}
-
         {% endform %}
         {% form form=private_doctor_form %}
         {% endform %}

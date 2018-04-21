@@ -45,8 +45,6 @@
                 {% for form in patient_decease_formset.forms %}
                     <table class='no_error'>
                         {% form form=form %}
-                            {% part form.cured label %}<label for="{{ form.cured.auto_id }}">Cured</label>
-                            {% endpart %}
                         {% endform %}
                     </table>
                 {% endfor %}
@@ -58,8 +56,6 @@
         </div>
         <div id="empty_form" style="display:none">
             {% form form=patient_decease_formset.empty_form %}
-                {% part form.cured label %}<label for="{{ form.cured.auto_id }}">Cured</label>
-                {% endpart %}
             {% endform %}
 
         </div>

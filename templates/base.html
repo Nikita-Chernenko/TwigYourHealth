@@ -7,6 +7,12 @@
     <title>{% block title %}Twig your health{% endblock %}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
+    <script src="{% static 'js/materialize_initialize.js' %}"></script>
     {% block extrahead %} {% endblock %}
 </head>
 <body>
@@ -24,15 +30,15 @@
             </div>
         </nav>
 
-        <div class="nav-wrapper teal lighten-3">
-            <div class="container">
+        <div class="nav-wrapper beige">
+            <div class="container breadcrumbs">
                 {% block breadcrumbs %}
                     <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
                 {% endblock %}
             </div>
         </div>
 
-        <ul id="slide-out" class="side-nav">
+        <ul id="slide-menu" class="sidenav sidenav-fixed">
             <li><a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
             <li><a class="waves-effect" href="#"><i class="material-icons left">group</i>About us</a></li>
             <li><a class="waves-effect" href="#"><i class="material-icons left">contact_phone</i>Contact us</a>
@@ -44,7 +50,7 @@
             {% if user.is_authenticated %}
                 <li>
                     <div class="user-view">
-                        {% include 'accounts/_avatar.html' with user=user %}
+                        {% include 'accounts/_avatar.html' with user=user width='150' height='150' img_class='menu-avatar' %}
                         <a href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
                         <a href=""><span class="black-text email">jdandturk@gmail.com</span></a>
                         {% if user.is_doctor %}
@@ -83,8 +89,9 @@
             {% endif %}
         </ul>
 
-        <a href="#" data-activates="slide-out" class="button-collapse btn-floating  red"><i
-                class="material-icons">menu</i></a>
+        <a href="#" data-target="slide-menu"
+           class="sidenav-trigger button-collapse btn-floating beige hide-on-large-only">
+            <i class="material-icons">menu</i></a>
 
     </header>
 
@@ -101,23 +108,17 @@
             {% endif %}
         </div>
         <div class="row">
-            <div class="col s12 m4 l2 center-align" style="border:3px solid grey;border-radius: 5px; padding: 5px">
-                <div class="row"> Домой</div>
-                <div class="row"> Домой</div>
-                <div class="row"> Домой</div>
-                <div class="row"> Домой</div>
-            </div>
+            {#            <div class="col s12 m4 l2 center-align" style="border:3px solid grey;border-radius: 5px; padding: 5px">#}
+            {#                <div class="row"> Домой</div>#}
+            {#                <div class="row"> Домой</div>#}
+            {#                <div class="row"> Домой</div>#}
+            {#                <div class="row"> Домой</div>#}
+            {#            </div>#}
             <div class="col s12 m8 l10">
-               {% block content %} {% endblock %}
+                {% block content %} {% endblock %}
             </div>
         </div>
     </main>
-
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/csrf.js' %}"></script>
-    <script src="{% static 'js/materialize.min.js' %}"></script>
-    <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
-    <script src="{% static 'js/materialize_initialize.js' %}"></script>
 
     <script>
         $(document).ready(function () {

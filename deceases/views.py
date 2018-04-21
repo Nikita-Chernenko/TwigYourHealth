@@ -8,7 +8,7 @@ from django.http import JsonResponse, HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
 
-from accounts.models import Doctor, Relationships
+from accounts.models import Doctor, Relationships, DoctorSphere
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Symptom, Decease, BodyPart, PatientDecease, Sphere
 
@@ -41,7 +41,7 @@ def symptoms_autocomplete(request):
 @user_passes_test(lambda user: user.is_doctor)
 def doctor_create_update_decease(request, pk=None):
     decease = get_object_or_404(PatientDecease, pk=pk) if pk else None
-    form = PatientDeceaseForm(request.POS, instance=decease, auto_id=str(pk) + '_%s')
+    form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(pk) + '_%s')
     if form.is_valid():
         form = form.save(commit=False)
         if not Relationships.objects.filter(doctor=request.user.doctor, patient=form.patient).exists():
@@ -93,8 +93,9 @@ def deceases_by_symptoms(request):
     deceases_with_doctors = []
     for d in deceases:
         sphere = d['sphere']
-        doctors = list(Doctor.objects.filter(doctorsphere__sphere__pk=sphere).order_by('?')[:1000])
-        doctors = list(sorted(doctors, key=lambda x: -x.rating))[:20]
+        doctors_sphere = (DoctorSphere.objects.filter(sphere__pk=sphere).select_related('doctor').order_by('?')[:1000])
+        doctors_sphere = list(sorted(doctors_sphere, key=lambda x: x.rating))[:20]
+        doctors = [ds.doctor for ds in doctors_sphere]
         random.shuffle(doctors)
         doctors = doctors[:3]
         deceases_with_doctors.append({"decease": d, "doctors": doctors})

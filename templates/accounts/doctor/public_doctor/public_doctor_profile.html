@@ -8,4 +8,9 @@
         <a href="{% url 'change-password' %}" class="btn wave-effects">Change password</a>
         <a href="{% url 'update-profile' %}" class="btn wave-effects">Update profile</a>
     </div>
+    {% if doctor_spheres %}
+        <div class="container">
+            {% include 'accounts/_reviews.html' %}
+        </div>
+    {% endif %}
 {% endblock %}

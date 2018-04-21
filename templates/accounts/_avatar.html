@@ -1,12 +1,15 @@
 {% load thumbnail static %}
 {% thumbnail user.avatar width|add:'x'|add:height crop="center" as im %}
-    <img  class="{{ img_class }}" src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px">
+    <img class="{{ img_class }}" src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px">
 {% empty %}
-    {% if patient.gender == 'man' %}
-        <img  class="{{ img_class }}" src="{% static 'images/male-avatar.png' %}" width="{{ width|add:"px" }}" height="{{ height|add:"px" }}">
-    {% elif patient.gender == 'woman' %}
-        <img  class="{{ img_class }}" src="{% static 'images/female-avatar.png' %}" width="{{ width|add:"px" }}" height="{{ height|add:"px" }}">
+    {% if user.patient and user.patient.gender or user.doctor and user.doctor.gender == 'man' %}
+        <img class="{{ img_class }}" src="{% static 'images/male-avatar.png' %}" width="{{ width|add:"px" }}"
+             height="{{ height|add:"px" }}">
+    {% elif user.patient and user.patient.gender or user.doctor and user.doctor.gender == 'woman' %}
+        <img class="{{ img_class }}" src="{% static 'images/female-avatar.png' %}" width="{{ width|add:"px" }}"
+             height="{{ height|add:"px" }}">
     {% else %}
-        <img class="{{ img_class }}" src="{% static 'images/another-avatar.png' %}" width="{{ width|add:"px" }}" height="{{ height|add:"px" }}">
+        <img class="{{ img_class }}" src="{% static 'images/another-avatar.png' %}" width="{{ width|add:"px" }}"
+             height="{{ height|add:"px" }}">
     {% endif %}
 {% endthumbnail %}

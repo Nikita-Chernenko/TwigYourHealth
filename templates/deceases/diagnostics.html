@@ -46,7 +46,7 @@
                                         </ul>
                                     </div>
                                 {% else %}
-                                    <div class="collapsible-header">
+                                    <div class="h3">
                                         <a class="symptom-trigger button waves-effect"
                                            data-id="{{ node.id }}">{{ node.name }}</a>
                                     </div>
@@ -68,61 +68,21 @@
 {% block extrajs %}
     <script>
         $(document).ready(function () {
-
-            $(document).ready(function () {
-                $('.collapsible').collapsible();
-            });
-            var multiple = $('#symptoms').materialize_autocomplete({
-                multiple: {
-                    enable: true
-                },
-                appender: {
-                    el: '.ac-users'
-                },
-                dropdown: {
-                    el: '#multipleDropdown'
-                },
-                getData: function (value, callback) {
-                    console.log(value);
-                    data = [];
-                    if (value.length < 3) {
-                        return data
-                    }
-                    $.ajax({
-                        "type": "GET",
-                        "dataType": "json",
-                        "url": "{% url 'symptoms-autocomplete' %}",
-                        "data": {'name': value},
-                        "success": function (result) {
-
-                            for (var i = 0; i < result.length; i++) {
-                                data[i] = {'id': result[i]['id'], 'text': result[i]['name']}
-                            }
-                            console.log(data);
-                            callback(value, data);
-                        },
-                        "error": function (error) {
-                            console.log(error);
-                            callback(value, data);
-                        }
-                    });
-
-                }
-            });
+            var multiple;
             $('.symptom-trigger').on('click', function (e) {
                 el = $(e.target);
-                $('ul.tabs').tabs('select_tab', 'symptom');
+                $('ul.tabs').tabs('select', 'symptom');
                 $.ajax({
                     "type": "GET",
                     "url": "{% url 'symptom-tree' %}",
                     "data": {'body_part_id': el.data('id')},
                     "success": function (result) {
-                        console.log(result);
                         $('#symptom').html(result);
                         $('.collapsible').collapsible();
                         $('.symptom-leaf').on('click', function (e) {
                             el = $(e.target);
-                            console.log(el.text());
+                            console.log(el.text(), el.data('id'));
+                            console.log(multiple)
                             multiple.append({'id': el.data('id'), 'text': el.text()})
 
                         });
@@ -153,7 +113,41 @@
                     }
                 });
                 e.preventDefault();
-            })
+            });
+            multiple = $('#symptoms').materialize_autocomplete({
+                multiple: {
+                    enable: true
+                },
+                appender: {
+                    el: '.ac-users'
+                },
+                getData: function (value, callback) {
+                    console.log(value);
+                    data = [];
+                    if (value.length < 3) {
+                        return data
+                    }
+                    $.ajax({
+                        "type": "GET",
+                        "dataType": "json",
+                        "url": "{% url 'symptoms-autocomplete' %}",
+                        "data": {'name': value},
+                        "success": function (result) {
+
+                            for (var i = 0; i < result.length; i++) {
+                                data[i] = {'id': result[i]['id'], 'text': result[i]['name']}
+                            }
+                            console.log(data);
+                            callback(value, data);
+                        },
+                        "error": function (error) {
+                            console.log(error);
+                            callback(value, data);
+                        }
+                    });
+
+                }
+            });
         });
     </script>
 {% endblock %}
