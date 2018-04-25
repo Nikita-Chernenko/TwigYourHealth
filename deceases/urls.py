@@ -1,7 +1,7 @@
 from django.urls import path
 
 from deceases.views import symptoms_autocomplete, diagnostics, deceases_by_symptoms, symptom_tree, \
-    doctor_create_update_decease, medical_records, decease_detail, decease_list
+    doctor_create_update_decease, medical_records, decease_detail, decease_list, decease_autocomplete
 
 urlpatterns = [
     path('symptoms-autocomplete/', symptoms_autocomplete, name='symptoms-autocomplete'),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('diagnostics/', diagnostics, name='diagnostics'),
     path('detail/<int:pk>/', decease_detail, name='decease-detail'),
     path('list/', decease_list, name='decease-list'),
+    path('autocomplete/', decease_autocomplete, name='decease-autocomplete')
 ]

@@ -19,6 +19,7 @@ from accounts.models import User, Relationships, DoctorSphere, Review
 
 from accounts.models import User
 from deceases.forms import PatientDeceaseForm
+from deceases.models import Decease
 
 user_prefix = 'user'
 patient_prefix = 'patient'
@@ -114,9 +115,10 @@ def patient_profile(request, user):
         patient_decease_formset = PatientDeceaseFormSet(request.POST)
         if patient_decease_formset.is_valid():
             for decease in patient_decease_formset:
-                decease = decease.save(commit=False)
-                decease.patient = patient
-                decease.save()
+                d = decease.save(commit=False)
+                d.decease = Decease.objects.get(name=decease.cleaned_data['decease'])
+                d.patient = patient
+                d.save()
             patient_decease_formset = PatientDeceaseFormSet()
     else:
         patient_decease_formset = PatientDeceaseFormSet()
@@ -149,7 +151,8 @@ def patient_public_profile(request, user, request_user):
     if relationships.patient_accept:
         medical_records = patient.patientdecease_set.all()
         for record in medical_records:
-            record.form = PatientDeceaseForm(instance=record, auto_id=str(record.id) + '_%s')
+            record.form = PatientDeceaseForm(instance=record, initial={'decease': record.decease.name},
+                                             auto_id=str(record.id) + '_%s')
         decease_form = PatientDeceaseForm(initial={'patient': patient.id})
         dict.update({'medical_records': medical_records, 'decease_form': decease_form})
 
@@ -322,4 +325,4 @@ def review_delete(request):
 def user_retrieve(request, pk):
     user = get_object_or_404(User, pk=pk)
     user = serialize(queryset=[user], format='json')
-    return JsonResponse(user,safe=False)
+    return JsonResponse(user, safe=False)

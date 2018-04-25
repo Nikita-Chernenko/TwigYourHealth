@@ -28,7 +28,7 @@
                     </table>
                 </div>
                 <div id="record-edit-form-{{ forloop.counter }}" class="record-edit-form" style="display: none">
-                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' with decease_form=record.form action="Изменить" patient_decease_id=record.id%}
+                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' with  decease_form=record.form action="Изменить" pk=record.id%}
                 </div>
                 <div data-id="{{ forloop.counter }}" class="record-toggle">
                     <i class="material-icons">edit</i>

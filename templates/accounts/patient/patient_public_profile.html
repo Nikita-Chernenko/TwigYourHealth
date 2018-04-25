@@ -37,7 +37,7 @@
                         {% include 'deceases/_medical_records.html' %}
                     </div>
                     <div>
-                        {% include 'deceases/_doctor_create_update_patient_decease_form.html' %}
+                        {% include 'deceases/_doctor_create_update_patient_decease_form.html'  %}
                     </div>
                 {% else %}
                     <h3>There are no medical records, please, fill it in</h3>
@@ -112,6 +112,7 @@
                         record_toggle_init();
                         materialize_initiailize();
                         sumbit_init();
+                        autocomplete();
                     }
                 })
             }
@@ -128,6 +129,15 @@
 
             record_toggle_init();
 
+            function autocomplete() {
+                $('.decease-input').each(function () {
+                    $(this).devbridgeAutocomplete({
+                        serviceUrl: '/deceases/autocomplete/',
+                    });
+                })
+            }
+
+            autocomplete();
         });
     </script>
 {% endblock %}

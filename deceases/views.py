@@ -1,9 +1,10 @@
+import json
 import random
 
 from annoying.decorators import render_to
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
-from django.db.models.functions import Cast
+from django.db.models.functions import Cast, Length
 from django.http import JsonResponse, HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
@@ -40,15 +41,16 @@ def symptoms_autocomplete(request):
 @require_http_methods(["POST"])
 @user_passes_test(lambda user: user.is_doctor)
 def doctor_create_update_decease(request, pk=None):
-    decease = get_object_or_404(PatientDecease, pk=pk) if pk else None
-    form = PatientDeceaseForm(request.POST, instance=decease, auto_id=str(pk) + '_%s')
+    d = get_object_or_404(PatientDecease, pk=pk) if pk else None
+    form = PatientDeceaseForm(request.POST, instance=d, auto_id=str(pk) + '_%s')
     if form.is_valid():
-        form = form.save(commit=False)
-        if not Relationships.objects.filter(doctor=request.user.doctor, patient=form.patient).exists():
+        decease = form.save(commit=False)
+        if not Relationships.objects.filter(doctor=request.user.doctor, patient=decease.patient).exists():
             return HttpResponseForbidden('No relation ship between doctor and user')
-        form.author = request.user
-        form.save()
-        form = PatientDeceaseForm(initial={'patient': form.patient}, auto_id=str(pk) + '_%s')
+        decease.author = request.user
+        decease.decease = Decease.objects.get(name=form.cleaned_data['decease'])
+        decease.save()
+        form = PatientDeceaseForm(initial={'patient': decease.patient}, auto_id=str(pk) + '_%s')
         return HttpResponse('')
     return render_to_response('deceases/_doctor_create_update_patient_decease_form.html',
                               {'decease_form': form, 'pk': pk})
@@ -66,7 +68,8 @@ def medical_records(request, patient_id):
     medical_records = PatientDecease.objects.filter(patient__pk=patient_id).prefetch_related('symptoms',
                                                                                              'symptoms__symptom')
     for record in medical_records:
-        record.form = PatientDeceaseForm(instance=record, auto_id=str(record.id) + '_%s')
+        record.form = PatientDeceaseForm(instance=record, initial={'decease': record.decease.name},
+                                         auto_id=str(record.id) + '_%s')
     return {'medical_records': medical_records}
 
 
@@ -113,3 +116,10 @@ def decease_detail(request, pk):
 def decease_list(request):
     spheres = Sphere.objects.all().prefetch_related('decease_set')
     return {'spheres': spheres}
+
+
+def decease_autocomplete(request):
+    query = request.GET.get('query')
+    decease = list(Decease.objects.filter(name__icontains=query).order_by(Length('name'))[:30])
+    decease = [{"value": d.name, "data": d.id} for d in decease]
+    return JsonResponse({"suggestions": decease})
