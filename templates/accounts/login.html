@@ -3,7 +3,7 @@
 
 {% block title %}{{ block.super }}Login{% endblock %}
 {% block breadcrumbs %}
-    <a href="{% url 'login' %}" class="breadcrumb">Login</a>
+    {#    <a href="{% url 'login' %}" class="breadcrumb">Login</a>#}
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -16,7 +16,8 @@
                     <input type="hidden" name="next" value="{% url 'self-profile' %}"/>
                     <div class="center-align">
                         <button class="waves-effect waves-light btn btn-large" type="submit">Login</button>
-                        <a class="waves-effect waves-light btn btn-large" href="{% url 'sign-up' %}" type="submit">Sign
+                        <a class="waves-effect waves-light btn btn-large" href="{% url 'patient-sign-up' %}"
+                           type="submit">Sign
                             up</a>
                     </div>
                 </form>

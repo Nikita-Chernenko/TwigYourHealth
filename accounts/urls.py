@@ -8,7 +8,6 @@ from accounts.views import patient_sign_up, public_doctor_sign_up, private_docto
 
 urlpatterns = [
     path('relationships/<int:pk>/update', relationships_update, name='relationships-update'),
-    path('sign-up/', TemplateView.as_view(template_name='accounts/sign_up.html'), name='sign-up'),
     path('sign-up/patient-sign-up/', patient_sign_up, name='patient-sign-up'),
     path('sign-up/public-doctor-sign-up/', public_doctor_sign_up, name='public-doctor-sign-up'),
     path('sign-up/private-doctor-sign-up/', private_doctor_sign_up, name='private-doctor-sign-up'),

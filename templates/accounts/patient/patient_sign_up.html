@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 {% load material_form %}
 {% block breadcrumbs %}
-    <a href="{% url 'sign-up' %}" class="breadcrumb">Sign up</a>
-    <a href="{% url 'patient-sign-up' %}" class="breadcrumb">Patient sign-up</a>
 {% endblock %}
 {% block content %}
-
+    {% include 'accounts/_registration tabs.html' %}
     <form method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
         {% form form=user_form %}{% endform %}

@@ -88,7 +88,7 @@
             {% else %}
                 <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
                 </li>
-                <li><a class="waves-effect" href="{% url 'sign-up' %}"><i class="material-icons left">person_add</i>Sign
+                <li><a class="waves-effect" href="{% url 'patient-sign-up' %}"><i class="material-icons left">person_add</i>Sign
                     up</a></li>
             {% endif %}
         </ul>
@@ -120,35 +120,11 @@
     <script>
         $(document).ready(function () {
             materialize_initiailize();
-            $.ajaxSetup({
-                beforeSend: function (xhr, settings) {
-                    function getCookie(name) {
-                        var cookieValue = null;
-                        if (document.cookie && document.cookie != '') {
-                            var cookies = document.cookie.split(';');
-                            for (var i = 0; i < cookies.length; i++) {
-                                var cookie = jQuery.trim(cookies[i]);
-                                // Does this cookie string begin with the name we want?
-                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                    break;
-                                }
-                            }
-                        }
-                        return cookieValue;
-                    }
-
-                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                        // Only send the token to relative URLs i.e. locally.
-                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                    }
-                }
-            });
             var MESSAGE_CREATE = "{% url 'message-create' %}";
             var USER_RETRIEVE = "{% url 'user-retrieve' pk=0 %}";
             var MESSAGE_LIST = "{% url 'message-list' chat_id=0 %}";
-            var IS_PATIENT = {{ user.is_patient|json }};
-            var IS_DOCTOR = {{ user.is_doctor|json }};
+            var IS_PATIENT = {% if user.is_authenticated %}{{ user.is_patient |json }}{% else %}false{% endif %};
+            var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
             chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR);
 
         });
