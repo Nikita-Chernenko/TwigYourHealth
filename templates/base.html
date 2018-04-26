@@ -104,11 +104,16 @@
         <div class="row">
             {% if messages %}
                 <div class="container-fluid">
-                    <ul class="messages list-unstyled">
+                    <div class="card-panel">
                         {% for message in messages %}
-                            <li{% if message.tags %} class="{{ message.tags }} alert-info"{% endif %}>{{ message }}</li>
+                            <div class="
+                            {% if message.level_tag == "info" %}teal lighten-2
+                            {% elif message.level_tag == "warning" %} orange
+                            {% elif message.level_tag == "error" %} red
+                            {% endif %}" style="padding: 5px">
+                                {{ message }}</div>
                         {% endfor %}
-                    </ul>
+                    </div>
                 </div>
             {% endif %}
             {% block content %} {% endblock %}

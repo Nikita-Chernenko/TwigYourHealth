@@ -1,7 +1,8 @@
 import json
 
 from annoying.decorators import render_to
-from django.contrib.auth import update_session_auth_hash, login
+from django.contrib import messages
+from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout as _logout
 from django.core.serializers import serialize
@@ -206,6 +207,7 @@ def update_patient(request):
             patient = patient_form.save(commit=False)
             patient.user = user_form.save()
             patient.save()
+            messages.add_message(request, messages.INFO, "Успешное обновление аккаунта")
             return redirect('self-profile')
     else:
         user_form = UserForm(instance=patient, prefix=user_prefix)
@@ -230,12 +232,14 @@ def update_public_doctor(request):
             public_doctor = public_doctor_form.save(commit=False)
             public_doctor.doctor = doctor
             public_doctor.save()
+            messages.add_message(request, messages.INFO, "Успешное обновление аккаунта")
+
             return redirect('self-profile')
     else:
         user_form = UserForm(instance=doctor, prefix=user_prefix)
         doctor_form = DoctorPublicDoctorForm(instance=doctor.doctor, prefix=doctor_prefix)
         public_doctor_form = PublicDoctorForm(instance=doctor.doctor.publicdoctor,
-                                              prefix=public_doctor_prefix)
+                                            prefix=public_doctor_prefix)
     return {'user_form': user_form, 'doctor_form': doctor_form, 'public_doctor_form': public_doctor_form}
 
 
@@ -256,6 +260,7 @@ def update_private_doctor(request):
             private_doctor = private_doctor_form.save(commit=False)
             private_doctor.doctor = doctor
             private_doctor.save()
+            messages.add_message(request, messages.INFO, "Успешное обновление аккаунта")
             return redirect('self-profile')
     else:
         user_form = UserForm(instance=doctor, prefix=user_prefix)
@@ -332,3 +337,7 @@ def user_retrieve(request, pk):
     user = get_object_or_404(User, pk=pk)
     user = serialize(queryset=[user], format='json')
     return JsonResponse(user, safe=False)
+
+def _success_change_password(request):
+    messages.add_message(request, messages.INFO, "Пароль успешно изменен")
+    return redirect('self-profile')
