@@ -103,8 +103,16 @@ function chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR
         $(this).parents('.chat-block').hide();
         $('#chat-block-short').show()
     });
+
+    $('#message-input').on('keypress', function (e) {
+        if (e.which === 13) {
+            $('#send-message').click();
+            return false;
+        }
+    });
     $('#send-message').on('click', function () {
-        var text = $('#message-input').val();
+        var input = $('#message-input');
+        var text = input.val();
         var chat_id = $('#chat-block-full').data('chat-id');
         if (text.length > 0) {
             $.ajax({
@@ -112,10 +120,9 @@ function chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR
                 data: {'text': text, 'chat': chat_id},
                 url: MESSAGE_CREATE,
                 success: function (response) {
+                    input.val('');
                     console.log(response);
                 }
-
-
             })
         }
     });
