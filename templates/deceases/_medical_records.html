@@ -12,23 +12,25 @@
         <li>
             <div style="display: flex;flex-direction: row">
                 <div id="record-table-{{ forloop.counter }}" class="record-table" style="display: block">
-                    <table class="responsive-table table-of-contents collapsible">
+                    <table class=" table-of-contents ">
                         <tr>
                             <td>{{ record.decease }}</td>
                             <td>{{ record.start_date }}</td>
                             <td>{{ record.end_date|default:"-" }}</td>
                             <td>
                                 {% if record.cured %}
-                                    <i class="material-icons green">check</i>
+                                    <div class="green btn-floating btn-small"><i
+                                            class="small material-icons">check</i></div>
                                 {% else %}
-                                    <i class="material-icons red">close</i>
+                                   <div class="red btn-floating btn-small"><i
+                                            class="small material-icons">close</i></div>
                                 {% endif %}
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div id="record-edit-form-{{ forloop.counter }}" class="record-edit-form" style="display: none">
-                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' with  decease_form=record.form action="Изменить" pk=record.id%}
+                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' with  decease_form=record.form action="Изменить" pk=record.id %}
                 </div>
                 <div data-id="{{ forloop.counter }}" class="record-toggle">
                     <i class="material-icons">edit</i>
@@ -44,7 +46,7 @@
                     {% endfor %}
                 </ul>
             </div>
-{#        TODO add symptoms CRUD#}
+            {#        TODO add symptoms CRUD#}
         </li>
     </ul>
 

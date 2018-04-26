@@ -1,8 +1,9 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from material import Layout, Row
 
 from accounts.models import Patient
-from deceases.models import PatientDecease
+from deceases.models import PatientDecease, Decease
 
 
 class PatientDeceaseForm(forms.ModelForm):
@@ -14,3 +15,9 @@ class PatientDeceaseForm(forms.ModelForm):
         fields = ['patient', 'start_date', 'cured']
 
     layout = Layout(Row('decease', 'start_date', 'cured'))
+
+    def clean_decease(self):
+        decease_name = self.data['decease']
+        if not Decease.objects.filter(name=decease_name).exists():
+            raise ValidationError('no such decease')
+        return decease_name

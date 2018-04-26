@@ -24,9 +24,11 @@
                         <td>{{ record.end_date|default:"-" }}</td>
                         <td>
                             {% if record.cured %}
-                                <i class="material-icons green">check</i>
+                                <div class="green btn-floating btn-small"><i
+                                        class="small material-icons">check</i></div>
                             {% else %}
-                                <i class="material-icons red">close</i>
+                                <div class="red btn-floating btn-small"><i
+                                        class="small material-icons">close</i></div>
                             {% endif %}
                         </td>
                     </tr>
@@ -70,6 +72,7 @@
                 });
             })
         }
+
         autocomplete();
         $('#add_more').click(function () {
             var form_idx = $('#id_form-TOTAL_FORMS').val();
