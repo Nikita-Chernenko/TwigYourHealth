@@ -1,22 +1,22 @@
 import json
 
 from annoying.decorators import render_to
+from django.contrib.auth import update_session_auth_hash, login
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout as _logout
 from django.core.serializers import serialize
 from django.db.transaction import atomic
-from django.forms import formset_factory, model_to_dict
-from django.http import Http404, JsonResponse, HttpResponseForbidden, HttpResponse
-from django.shortcuts import redirect, get_object_or_404, render_to_response
-from django.views.decorators.http import require_http_methods
 from django.forms import formset_factory
+from django.forms import model_to_dict
+from django.http import Http404, HttpResponseForbidden, HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render_to_response
+from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
     PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm
-from accounts.models import User, Relationships, DoctorSphere, Review
-
+from accounts.models import Relationships, DoctorSphere, Review
 from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Decease
@@ -38,6 +38,8 @@ def patient_sign_up(request):
             patient = patient_form.save(commit=False)
             patient.user = user_form.save()
             patient.save()
+            login(request, patient.user)
+            return redirect('self-profile')
     return {'user_form': user_form, 'patient_form': patient_form}
 
 
@@ -56,6 +58,8 @@ def public_doctor_sign_up(request):
             public_doctor = public_doctor_form.save(commit=False)
             public_doctor.doctor = doctor
             public_doctor.save()
+            login(request, doctor.user)
+            return redirect('self-profile')
     return {'user_form': user_form, 'doctor_form': doctor_form, 'public_doctor_form': public_doctor_form}
 
 
@@ -74,6 +78,8 @@ def private_doctor_sign_up(request):
             private_doctor = private_doctor_form.save(commit=False)
             private_doctor.doctor = doctor
             private_doctor.save()
+            login(request, doctor.user)
+            return redirect('self-profile')
     return {'user_form': user_form, 'doctor_form': doctor_form, 'private_doctor_form': private_doctor_form}
 
 
