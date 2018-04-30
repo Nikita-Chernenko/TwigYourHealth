@@ -1,0 +1,8 @@
+{% load material_form %}
+<form>
+    {% form form=shift_type_form %}
+    {% endform %}
+    <button class="btn waves-effect beige" type="submit">
+        {% if update %}Изменить{% else %}Добавить{% endif %}
+    </button>
+</form>

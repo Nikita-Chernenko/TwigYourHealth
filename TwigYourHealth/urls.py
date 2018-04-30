@@ -17,7 +17,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from django.views.static import serve
 
 from TwigYourHealth import settings
 
@@ -25,6 +24,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('deceases/', include('deceases.urls')),
     path('communication/', include('communication.urls')),
+    path('timetables/', include('timetables.urls')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]
