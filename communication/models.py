@@ -102,3 +102,7 @@ class ChatEntity(models.Model):
                     minutes += len(message.text) / 100
             self.hours = minutes / 60
         super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+
+    def clean(self):
+        # TODO add check that messages haven't been included in other entities
+        pass
