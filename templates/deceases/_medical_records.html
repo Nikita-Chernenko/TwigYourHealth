@@ -1,0 +1,54 @@
+<h3>Medical records</h3>
+<table class="table-of-contents">
+    <tr>
+        <th style="width:25%">Decease</th>
+        <th style="width:25%">Start date</th>
+        <th style="width:25%">End date</th>
+        <th style="width:25%">Cured</th>
+    </tr>
+</table>
+{% for record in medical_records %}
+    <ul class="collapsible" data-collapsible="accordion">
+        <li>
+            <div style="display: flex;flex-direction: row">
+                <div id="record-table-{{ forloop.counter }}" class="record-table" style="display: block; width: 100%">
+                    <table class=" table-of-contents ">
+                        <tr>
+                            <td style="width: 25%">{{ record.decease }}</td>
+                            <td style="width: 25%">{{ record.start_date }}</td>
+                            <td style="width: 25%">{{ record.end_date|default:"-" }}</td>
+                            <td style="width: 25%">
+                                {% if record.cured %}
+                                    <div class="green btn-floating btn-small"><i
+                                            class="small material-icons">check</i></div>
+                                {% else %}
+                                    <div class="red btn-floating btn-small"><i
+                                            class="small material-icons">close</i></div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="record-edit-form-{{ forloop.counter }}" class="record-edit-form" style="display: none">
+                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' with  decease_form=record.form action="Изменить" pk=record.id %}
+                </div>
+                <div data-id="{{ forloop.counter }}" class="record-toggle">
+                    <i class="material-icons">edit</i>
+                </div>
+            </div>
+            <div class="collapsible-header row">
+                <p>symptoms</p>
+            </div>
+            <div class="collapsible-body">
+                <ul>
+                    {% for symptom in record.symptoms.all %}
+                        <li>{{ symptom.symptom.name }} a</li>3
+                    {% endfor %}
+                </ul>
+            </div>
+            {#        TODO add symptoms CRUD#}
+        </li>
+    </ul>
+
+
+{% endfor %}

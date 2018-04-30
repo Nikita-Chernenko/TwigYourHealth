@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block breadcrumbs %}
+
+    <a href="{% url 'decease-list' %}">Болезни</a>
+{% endblock %}
+{% block content %}
+    <div class="row center-align">
+        <div class="col s9">
+            <div class="col s3 left-align">
+                <ul class="collapsible expandable popout">
+                    {% for sphere in spheres %}
+                        <li>
+                            <div class="collapsible-header">{{ sphere.name }}d</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {% for decease in sphere.decease_set.all %}
+                                        <li>
+                                            <a href="{% url 'decease-detail' decease_id=decease.id %}">{{ decease.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col s9">text</div>
+        </div>
+    </div>
+{% endblock %}

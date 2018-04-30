@@ -1,0 +1,18 @@
+[
+{
+  "model": "deceases.patientsymptomdecease",
+  "pk": 3,
+  "fields": {
+    "patient_decease": 1,
+    "symptom": 3908
+  }
+},
+{
+  "model": "deceases.patientsymptomdecease",
+  "pk": 4,
+  "fields": {
+    "patient_decease": 1,
+    "symptom": 3237
+  }
+}
+]

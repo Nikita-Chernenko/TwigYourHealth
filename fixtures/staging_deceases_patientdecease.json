@@ -1,156 +1,38 @@
 [
-{
-  "model": "deceases.patientdecease",
-  "pk": 1,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-08",
-    "end_date": null,
-    "cured": true
+  {
+    "model": "deceases.patientdecease",
+    "pk": 1,
+    "fields": {
+      "patient": 1,
+      "decease": 1,
+      "author": 1,
+      "start_date": "2018-03-08",
+      "end_date": null,
+      "cured": true
+    }
+  },
+  {
+    "model": "deceases.patientdecease",
+    "pk": 2,
+    "fields": {
+      "patient": 1,
+      "decease": 1,
+      "author": 1,
+      "start_date": "2018-03-14",
+      "end_date": null,
+      "cured": true
+    }
+  },
+  {
+    "model": "deceases.patientdecease",
+    "pk": 3,
+    "fields": {
+      "patient": 1,
+      "decease": 1,
+      "author": 1,
+      "start_date": "2018-03-15",
+      "end_date": null,
+      "cured": false
+    }
   }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 2,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-14",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 3,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-15",
-    "end_date": null,
-    "cured": false
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 4,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-19",
-    "end_date": null,
-    "cured": false
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 5,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-14",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 6,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-15",
-    "end_date": null,
-    "cured": false
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 7,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-19",
-    "end_date": null,
-    "cured": false
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 8,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-07",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 9,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-20",
-    "end_date": null,
-    "cured": false
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 10,
-  "fields": {
-    "patient": 1,
-    "decease": 1,
-    "start_date": "2018-03-21",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 11,
-  "fields": {
-    "patient": 1,
-    "decease": 9,
-    "start_date": "2018-03-20",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 12,
-  "fields": {
-    "patient": 1,
-    "decease": 9,
-    "start_date": "2018-03-20",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 13,
-  "fields": {
-    "patient": 1,
-    "decease": 9,
-    "start_date": "2018-03-20",
-    "end_date": null,
-    "cured": true
-  }
-},
-{
-  "model": "deceases.patientdecease",
-  "pk": 14,
-  "fields": {
-    "patient": 1,
-    "decease": 9,
-    "start_date": "2018-03-20",
-    "end_date": null,
-    "cured": true
-  }
-}
 ]

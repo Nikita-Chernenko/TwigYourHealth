@@ -1,0 +1,23 @@
+<div class="registration-tabs row">
+    <div class="col l1 s1 center-align">
+        <a class="btn-small  reg-tab" href="{% url 'login' %}" type="submit">Login</a>
+    </div>
+    <div class="col l8 s11 offset-l1 center-align">
+        {% with current_url=request.path %}
+            {% url 'patient-sign-up' as url %}
+            <a href="{{ url }}"
+               class="btn-small reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Patient sign up</a>
+
+            {% url 'public-doctor-sign-up' as url %}
+            <a href="{{ url }}"
+               class="btn-small  reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Public doctor sign
+                up</a>
+
+            {% url 'private-doctor-sign-up' as url %}
+            <a href="{{ url }}"
+               class="btn-small  reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Private doctor sign
+                up</a>
+        {% endwith %}
+    </div>
+
+</div>

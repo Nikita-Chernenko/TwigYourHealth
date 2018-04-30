@@ -1,14 +1,25 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from material import Layout, Row
 
-from deceases.models import PatientDecease
+from accounts.models import Patient
+from deceases.models import PatientDecease, Decease
 
 
 class PatientDeceaseForm(forms.ModelForm):
     start_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
+    end_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
+    patient = forms.ModelChoiceField(queryset=Patient.objects.all(), widget=forms.HiddenInput(), required=False)
+    decease = forms.CharField(widget=forms.TextInput(attrs={'class': 'decease-input'}))
 
     class Meta:
         model = PatientDecease
-        fields = ['decease', 'start_date', 'cured']
+        fields = ['patient', 'start_date', 'end_date', 'cured']
 
-    layout = Layout(Row('decease', 'start_date', 'cured'))
+    layout = Layout(Row('decease', 'start_date', 'end_date', 'cured'))
+
+    def clean_decease(self):
+        decease_name = self.data['decease']
+        if not Decease.objects.filter(name=decease_name).exists():
+            raise ValidationError('no such decease')
+        return decease_name

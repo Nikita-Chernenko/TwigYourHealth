@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load material_form %}
+{% block breadcrumbs %}
+{% endblock %}
+{% block content %}
+    {% include 'accounts/_registration tabs.html' %}
+    <form method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% form form=user_form %}{% endform %}
+        {% form form=patient_form %}{% endform %}
+
+        <div class="center-align">
+            <button class="waves-effect waves-light btn btn-large" type="submit">Sign up</button>
+        </div>
+    </form>
+{% endblock %}

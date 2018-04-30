@@ -3,352 +3,1104 @@
   "model": "deceases.bodypart",
   "pk": 1,
   "fields": {
-    "body_area": 1,
-    "name": "\u0413\u043e\u043b\u043e\u0432\u0430 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)"
+    "name": "\u0413\u043e\u043b\u043e\u0432\u0430",
+    "parent": null,
+    "lft": 1,
+    "rght": 38,
+    "tree_id": 8,
+    "level": 0
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 2,
   "fields": {
-    "body_area": 1,
-    "name": "\u0420\u043e\u0442\u043e\u0432\u0430\u044f \u043f\u043e\u043b\u043e\u0441\u0442\u044c"
+    "name": "\u0413\u043e\u043b\u043e\u0432\u0430 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 1,
+    "lft": 10,
+    "rght": 11,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 3,
   "fields": {
-    "body_area": 1,
-    "name": "\u041b\u0438\u0446\u043e"
+    "name": "\u0420\u043e\u0442\u043e\u0432\u0430\u044f \u043f\u043e\u043b\u043e\u0441\u0442\u044c",
+    "parent": 1,
+    "lft": 20,
+    "rght": 31,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 4,
   "fields": {
-    "body_area": 1,
-    "name": "\u0412\u0438\u0441\u043e\u0447\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+    "name": "\u0420\u043e\u0442\u043e\u0432\u0430\u044f \u043f\u043e\u043b\u043e\u0441\u0442\u044c (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 3,
+    "lft": 27,
+    "rght": 28,
+    "tree_id": 8,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 5,
   "fields": {
-    "body_area": 1,
-    "name": "\u041b\u043e\u0431"
+    "name": "\u0417\u0443\u0431\u044b",
+    "parent": 3,
+    "lft": 23,
+    "rght": 24,
+    "tree_id": 8,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 6,
   "fields": {
-    "body_area": 1,
-    "name": "\u0411\u0440\u043e\u0432\u0438"
+    "name": "\u0414\u0435\u0441\u043d\u044b",
+    "parent": 3,
+    "lft": 21,
+    "rght": 22,
+    "tree_id": 8,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 7,
   "fields": {
-    "body_area": 1,
-    "name": "\u0412\u0435\u043a\u0438"
+    "name": "\u042f\u0437\u044b\u043a",
+    "parent": 3,
+    "lft": 29,
+    "rght": 30,
+    "tree_id": 8,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 8,
   "fields": {
-    "body_area": 1,
-    "name": "\u0413\u043b\u0430\u0437\u0430"
+    "name": "\u041d\u0435\u0431\u043e",
+    "parent": 3,
+    "lft": 25,
+    "rght": 26,
+    "tree_id": 8,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 9,
   "fields": {
-    "body_area": 1,
-    "name": "\u0423\u0448\u0438"
+    "name": "\u041b\u0438\u0446\u043e",
+    "parent": 1,
+    "lft": 14,
+    "rght": 15,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 10,
   "fields": {
-    "body_area": 1,
-    "name": "\u041d\u043e\u0441"
+    "name": "\u0412\u0438\u0441\u043e\u0447\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 1,
+    "lft": 6,
+    "rght": 7,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 11,
   "fields": {
-    "body_area": 1,
-    "name": "\u0429\u0435\u043a\u0438"
+    "name": "\u041b\u043e\u0431",
+    "parent": 1,
+    "lft": 16,
+    "rght": 17,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 12,
   "fields": {
-    "body_area": 1,
-    "name": "\u0413\u0443\u0431\u044b"
+    "name": "\u0411\u0440\u043e\u0432\u0438",
+    "parent": 1,
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 13,
   "fields": {
-    "body_area": 1,
-    "name": "\u0427\u0435\u043b\u044e\u0441\u0442\u044c"
+    "name": "\u0412\u0435\u043a\u0438",
+    "parent": 1,
+    "lft": 4,
+    "rght": 5,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 14,
   "fields": {
-    "body_area": 2,
-    "name": "\u0413\u043e\u0440\u043b\u043e/\u0448\u0435\u044f"
+    "name": "\u0413\u043b\u0430\u0437\u0430",
+    "parent": 1,
+    "lft": 8,
+    "rght": 9,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 15,
   "fields": {
-    "body_area": 3,
-    "name": "\u0422\u0443\u043b\u043e\u0432\u0438\u0449\u0435 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)"
+    "name": "\u0423\u0448\u0438",
+    "parent": 1,
+    "lft": 32,
+    "rght": 33,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 16,
   "fields": {
-    "body_area": 3,
-    "name": "\u0413\u0440\u0443\u0434\u043d\u0430\u044f \u043a\u043b\u0435\u0442\u043a\u0430"
+    "name": "\u041d\u043e\u0441",
+    "parent": 1,
+    "lft": 18,
+    "rght": 19,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 17,
   "fields": {
-    "body_area": 3,
-    "name": "\u041f\u043e\u0434\u043c\u044b\u0448\u0435\u0447\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c"
+    "name": "\u0429\u0435\u043a\u0438",
+    "parent": 1,
+    "lft": 36,
+    "rght": 37,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 18,
   "fields": {
-    "body_area": 3,
-    "name": "\u0416\u0438\u0432\u043e\u0442"
+    "name": "\u0413\u0443\u0431\u044b",
+    "parent": 1,
+    "lft": 12,
+    "rght": 13,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 19,
   "fields": {
-    "body_area": 3,
-    "name": "\u041f\u0430\u0445"
+    "name": "\u0427\u0435\u043b\u044e\u0441\u0442\u044c",
+    "parent": 1,
+    "lft": 34,
+    "rght": 35,
+    "tree_id": 8,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 20,
   "fields": {
-    "body_area": 4,
-    "name": "\u0420\u0443\u043a\u0438 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)"
+    "name": "\u0413\u043e\u0440\u043b\u043e/\u0448\u0435\u044f",
+    "parent": null,
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 9,
+    "level": 0
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 21,
   "fields": {
-    "body_area": 4,
-    "name": "\u041f\u043b\u0435\u0447\u0435\u0432\u043e\u0439 \u0441\u0443\u0441\u0442\u0430\u0432"
+    "name": "\u0422\u0443\u043b\u043e\u0432\u0438\u0449\u0435",
+    "parent": null,
+    "lft": 1,
+    "rght": 46,
+    "tree_id": 77,
+    "level": 0
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 22,
   "fields": {
-    "body_area": 4,
-    "name": "\u041f\u043b\u0435\u0447\u0438"
+    "name": "\u0422\u0443\u043b\u043e\u0432\u0438\u0449\u0435 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 21,
+    "lft": 44,
+    "rght": 45,
+    "tree_id": 77,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 23,
   "fields": {
-    "body_area": 4,
-    "name": "\u041b\u043e\u043a\u0442\u0438"
+    "name": "\u0413\u0440\u0443\u0434\u043d\u0430\u044f \u043a\u043b\u0435\u0442\u043a\u0430",
+    "parent": 21,
+    "lft": 2,
+    "rght": 9,
+    "tree_id": 77,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 24,
   "fields": {
-    "body_area": 4,
-    "name": "\u041f\u0440\u0435\u0434\u043f\u043b\u0435\u0447\u044c\u0435"
+    "name": "\u0413\u0440\u0443\u0434\u043d\u0430\u044f \u043a\u043b\u0435\u0442\u043a\u0430 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 23,
+    "lft": 3,
+    "rght": 4,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 25,
   "fields": {
-    "body_area": 4,
-    "name": "\u041a\u0438\u0441\u0442\u0438"
+    "name": "\u041b\u0435\u0432\u0430\u044f \u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0430 \u0433\u0440\u0443\u0434\u043d\u043e\u0439 \u043a\u043b\u0435\u0442\u043a\u0438",
+    "parent": 23,
+    "lft": 5,
+    "rght": 6,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 26,
   "fields": {
-    "body_area": 5,
-    "name": "\u041d\u043e\u0433\u0438 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)"
+    "name": "\u041f\u0440\u0430\u0432\u0430\u044f \u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0430 \u0433\u0440\u0443\u0434\u043d\u043e\u0439 \u043a\u043b\u0435\u0442\u043a\u0438",
+    "parent": 23,
+    "lft": 7,
+    "rght": 8,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 27,
   "fields": {
-    "body_area": 5,
-    "name": "\u0422\u0430\u0437\u043e\u0431\u0435\u0434\u0440\u0435\u043d\u043d\u044b\u0439 \u0441\u0443\u0441\u0442\u0430\u0432"
+    "name": "\u041f\u043e\u0434\u043c\u044b\u0448\u0435\u0447\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 21,
+    "lft": 42,
+    "rght": 43,
+    "tree_id": 77,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 28,
   "fields": {
-    "body_area": 5,
-    "name": "\u0411\u0435\u0434\u0440\u0430"
+    "name": "\u0416\u0438\u0432\u043e\u0442",
+    "parent": 21,
+    "lft": 10,
+    "rght": 31,
+    "tree_id": 77,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 29,
   "fields": {
-    "body_area": 5,
-    "name": "\u041a\u043e\u043b\u0435\u043d\u0438"
+    "name": "\u0416\u0438\u0432\u043e\u0442 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 28,
+    "lft": 11,
+    "rght": 12,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 30,
   "fields": {
-    "body_area": 5,
-    "name": "\u0413\u043e\u043b\u0435\u043d\u0438"
+    "name": "\u041f\u0440\u0430\u0432\u043e\u0435 \u043f\u043e\u0434\u0440\u0435\u0431\u0435\u0440\u044c\u0435",
+    "parent": 28,
+    "lft": 27,
+    "rght": 28,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 31,
   "fields": {
-    "body_area": 5,
-    "name": "\u041b\u043e\u0434\u044b\u0436\u043a\u0438"
+    "name": "\u041b\u0435\u0432\u043e\u0435 \u043f\u043e\u0434\u0440\u0435\u0431\u0435\u0440\u044c\u0435",
+    "parent": 28,
+    "lft": 17,
+    "rght": 18,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 32,
   "fields": {
-    "body_area": 5,
-    "name": "\u0421\u0442\u043e\u043f\u044b"
+    "name": "\u041f\u043e\u0434\u043b\u043e\u0436\u0435\u0447\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 28,
+    "lft": 21,
+    "rght": 22,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 33,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)\n(\u0431\u043e\u043b\u044c, \u0432\u043d\u0435\u0448\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f, \u043d\u0435\u043f\u0440\u0438\u044f\u0442\u043d\u044b\u0435 \u043e\u0449\u0443\u0449\u0435\u043d\u0438\u044f)"
+    "name": "\u041b\u0435\u0432\u0430\u044f \u0431\u043e\u043a\u043e\u0432\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c \u0436\u0438\u0432\u043e\u0442\u0430",
+    "parent": 28,
+    "lft": 13,
+    "rght": 14,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 34,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u0433\u043e\u043b\u043e\u0432\u044b"
+    "name": "\u041f\u0440\u0430\u0432\u0430\u044f \u0431\u043e\u043a\u043e\u0432\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c \u0436\u0438\u0432\u043e\u0442\u0430",
+    "parent": 28,
+    "lft": 23,
+    "rght": 24,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 35,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u0448\u0435\u0438"
+    "name": "\u041f\u0443\u043f\u043e\u0447\u043d\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 28,
+    "lft": 29,
+    "rght": 30,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 36,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u0433\u0440\u0443\u0434\u043d\u043e\u0439 \u043a\u043b\u0435\u0442\u043a\u0438"
+    "name": "\u041b\u0435\u0432\u0430\u044f \u043f\u0430\u0445\u043e\u0432\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 28,
+    "lft": 15,
+    "rght": 16,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 37,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u043f\u043e\u0434\u043c\u044b\u0448\u0435\u0447\u043d\u044b\u0445 \u043e\u0431\u043b\u0430\u0441\u0442\u0435\u0439"
+    "name": "\u041f\u0440\u0430\u0432\u0430\u044f \u043f\u0430\u0445\u043e\u0432\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 28,
+    "lft": 25,
+    "rght": 26,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 38,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u0436\u0438\u0432\u043e\u0442\u0430"
+    "name": "\u041d\u0430\u0434\u043b\u043e\u0431\u043a\u043e\u0432\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 28,
+    "lft": 19,
+    "rght": 20,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 39,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u043b\u043e\u0431\u043a\u043e\u0432\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438"
+    "name": "\u041f\u0430\u0445",
+    "parent": 21,
+    "lft": 32,
+    "rght": 41,
+    "tree_id": 77,
+    "level": 1
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 40,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u043d\u0430\u0440\u0443\u0436\u043d\u044b\u0445 \u043f\u043e\u043b\u043e\u0432\u044b\u0445 \u043e\u0440\u0433\u0430\u043d\u043e\u0432 \u043c\u0443\u0436\u0447\u0438\u043d\u044b"
+    "name": "\u041f\u0430\u0445 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 39,
+    "lft": 39,
+    "rght": 40,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 41,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u0440\u0443\u043a"
+    "name": "\u041b\u043e\u0431\u043a\u043e\u0432\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c",
+    "parent": 39,
+    "lft": 33,
+    "rght": 34,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 42,
   "fields": {
-    "body_area": 6,
-    "name": "\u041a\u043e\u0436\u0430 \u043d\u043e\u0433"
+    "name": "\u041c\u043e\u0447\u0435\u0438\u0441\u043f\u0443\u0441\u043a\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043a\u0430\u043d\u0430\u043b",
+    "parent": 39,
+    "lft": 35,
+    "rght": 36,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 43,
   "fields": {
-    "body_area": 7,
-    "name": "\u0412\u043e\u043b\u043e\u0441\u044b"
+    "name": "\u041c\u0443\u0436\u0441\u043a\u0438\u0435 \u043d\u0430\u0440\u0443\u0436\u043d\u044b\u0435 \u043f\u043e\u043b\u043e\u0432\u044b\u0435 \u043e\u0440\u0433\u0430\u043d\u044b",
+    "parent": 39,
+    "lft": 37,
+    "rght": 38,
+    "tree_id": 77,
+    "level": 2
   }
 },
 {
   "model": "deceases.bodypart",
   "pk": 44,
   "fields": {
-    "body_area": 8,
-    "name": "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u044c \u043d\u0430 \u0442\u0435\u043b\u0435\n(\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430, \u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435, \u0442\u043e\u0448\u043d\u043e\u0442\u0430 \u0438 \u0440\u0432\u043e\u0442\u0430, \u043a\u043e\u0441\u0442\u0438, \u043f\u0441\u0438\u0445\u0438\u043a\u0430 \u0438 \u0442.\u0434.)"
+    "name": "\u0420\u0443\u043a\u0438",
+    "parent": null,
+    "lft": 1,
+    "rght": 22,
+    "tree_id": 72,
+    "level": 0
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 45,
+  "fields": {
+    "name": "\u0420\u0443\u043a\u0438 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 44,
+    "lft": 20,
+    "rght": 21,
+    "tree_id": 72,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 46,
+  "fields": {
+    "name": "\u041f\u043b\u0435\u0447\u0435\u0432\u043e\u0439 \u0441\u0443\u0441\u0442\u0430\u0432",
+    "parent": 44,
+    "lft": 14,
+    "rght": 15,
+    "tree_id": 72,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 47,
+  "fields": {
+    "name": "\u041f\u043b\u0435\u0447\u0438",
+    "parent": 44,
+    "lft": 16,
+    "rght": 17,
+    "tree_id": 72,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 48,
+  "fields": {
+    "name": "\u041b\u043e\u043a\u0442\u0438",
+    "parent": 44,
+    "lft": 12,
+    "rght": 13,
+    "tree_id": 72,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 49,
+  "fields": {
+    "name": "\u041f\u0440\u0435\u0434\u043f\u043b\u0435\u0447\u044c\u0435",
+    "parent": 44,
+    "lft": 18,
+    "rght": 19,
+    "tree_id": 72,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 50,
+  "fields": {
+    "name": "\u041a\u0438\u0441\u0442\u0438",
+    "parent": 44,
+    "lft": 2,
+    "rght": 11,
+    "tree_id": 72,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 51,
+  "fields": {
+    "name": "\u041a\u0438\u0441\u0442\u0438 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 50,
+    "lft": 5,
+    "rght": 6,
+    "tree_id": 72,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 52,
+  "fields": {
+    "name": "\u0417\u0430\u043f\u044f\u0441\u0442\u044c\u0435",
+    "parent": 50,
+    "lft": 3,
+    "rght": 4,
+    "tree_id": 72,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 53,
+  "fields": {
+    "name": "\u041b\u0430\u0434\u043e\u043d\u044c",
+    "parent": 50,
+    "lft": 7,
+    "rght": 8,
+    "tree_id": 72,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 54,
+  "fields": {
+    "name": "\u041f\u0430\u043b\u044c\u0446\u044b \u043a\u0438\u0441\u0442\u0435\u0439",
+    "parent": 50,
+    "lft": 9,
+    "rght": 10,
+    "tree_id": 72,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 55,
+  "fields": {
+    "name": "\u041d\u043e\u0433\u0438",
+    "parent": null,
+    "lft": 1,
+    "rght": 22,
+    "tree_id": 68,
+    "level": 0
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 56,
+  "fields": {
+    "name": "\u041d\u043e\u0433\u0438 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 55,
+    "lft": 10,
+    "rght": 11,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 57,
+  "fields": {
+    "name": "\u0422\u0430\u0437\u043e\u0431\u0435\u0434\u0440\u0435\u043d\u043d\u044b\u0439 \u0441\u0443\u0441\u0442\u0430\u0432",
+    "parent": 55,
+    "lft": 20,
+    "rght": 21,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 58,
+  "fields": {
+    "name": "\u0411\u0435\u0434\u0440\u0430",
+    "parent": 55,
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 59,
+  "fields": {
+    "name": "\u041a\u043e\u043b\u0435\u043d\u0438",
+    "parent": 55,
+    "lft": 6,
+    "rght": 7,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 60,
+  "fields": {
+    "name": "\u0413\u043e\u043b\u0435\u043d\u0438",
+    "parent": 55,
+    "lft": 4,
+    "rght": 5,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 61,
+  "fields": {
+    "name": "\u041b\u043e\u0434\u044b\u0436\u043a\u0438",
+    "parent": 55,
+    "lft": 8,
+    "rght": 9,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 62,
+  "fields": {
+    "name": "\u0421\u0442\u043e\u043f\u044b",
+    "parent": 55,
+    "lft": 12,
+    "rght": 19,
+    "tree_id": 68,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 63,
+  "fields": {
+    "name": "\u0421\u0442\u043e\u043f\u044b (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 62,
+    "lft": 17,
+    "rght": 18,
+    "tree_id": 68,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 64,
+  "fields": {
+    "name": "\u041f\u0430\u043b\u044c\u0446\u044b \u0441\u0442\u043e\u043f",
+    "parent": 62,
+    "lft": 15,
+    "rght": 16,
+    "tree_id": 68,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 65,
+  "fields": {
+    "name": "\u041d\u043e\u0433\u0442\u0438 \u043f\u0430\u043b\u044c\u0446\u0435\u0432 \u0441\u0442\u043e\u043f",
+    "parent": 62,
+    "lft": 13,
+    "rght": 14,
+    "tree_id": 68,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 66,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430\n(\u0431\u043e\u043b\u044c, \u0432\u043d\u0435\u0448\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f, \u043d\u0435\u043f\u0440\u0438\u044f\u0442\u043d\u044b\u0435 \u043e\u0449\u0443\u0449\u0435\u043d\u0438\u044f)",
+    "parent": null,
+    "lft": 1,
+    "rght": 50,
+    "tree_id": 42,
+    "level": 0
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 67,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)\n(\u0431\u043e\u043b\u044c, \u0432\u043d\u0435\u0448\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f, \u043d\u0435\u043f\u0440\u0438\u044f\u0442\u043d\u044b\u0435 \u043e\u0449\u0443\u0449\u0435\u043d\u0438\u044f)",
+    "parent": 66,
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 68,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0433\u043e\u043b\u043e\u0432\u044b",
+    "parent": 66,
+    "lft": 4,
+    "rght": 19,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 69,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0433\u043e\u043b\u043e\u0432\u044b (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 68,
+    "lft": 7,
+    "rght": 8,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 70,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043b\u0438\u0446\u0430",
+    "parent": 68,
+    "lft": 13,
+    "rght": 14,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 71,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043b\u0431\u0430",
+    "parent": 68,
+    "lft": 11,
+    "rght": 12,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 72,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0432\u0435\u043a",
+    "parent": 68,
+    "lft": 5,
+    "rght": 6,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 73,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0443\u0448\u0435\u0439",
+    "parent": 68,
+    "lft": 17,
+    "rght": 18,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 74,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043d\u043e\u0441\u0430",
+    "parent": 68,
+    "lft": 15,
+    "rght": 16,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 75,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0433\u0443\u0431",
+    "parent": 68,
+    "lft": 9,
+    "rght": 10,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 76,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0448\u0435\u0438",
+    "parent": 66,
+    "lft": 48,
+    "rght": 49,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 77,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0433\u0440\u0443\u0434\u043d\u043e\u0439 \u043a\u043b\u0435\u0442\u043a\u0438",
+    "parent": 66,
+    "lft": 20,
+    "rght": 21,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 78,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043f\u043e\u0434\u043c\u044b\u0448\u0435\u0447\u043d\u044b\u0445 \u043e\u0431\u043b\u0430\u0441\u0442\u0435\u0439",
+    "parent": 66,
+    "lft": 36,
+    "rght": 37,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 79,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0436\u0438\u0432\u043e\u0442\u0430",
+    "parent": 66,
+    "lft": 22,
+    "rght": 23,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 80,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043b\u043e\u0431\u043a\u043e\u0432\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438",
+    "parent": 66,
+    "lft": 24,
+    "rght": 25,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 81,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043d\u0430\u0440\u0443\u0436\u043d\u044b\u0445 \u043f\u043e\u043b\u043e\u0432\u044b\u0445 \u043e\u0440\u0433\u0430\u043d\u043e\u0432 \u043c\u0443\u0436\u0447\u0438\u043d\u044b",
+    "parent": 66,
+    "lft": 26,
+    "rght": 27,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 82,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0440\u0443\u043a",
+    "parent": 66,
+    "lft": 38,
+    "rght": 47,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 83,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0440\u0443\u043a (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 82,
+    "lft": 45,
+    "rght": 46,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 84,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043a\u0438\u0441\u0442\u0438",
+    "parent": 82,
+    "lft": 39,
+    "rght": 40,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 85,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043f\u0430\u043b\u044c\u0446\u0435\u0432 \u043a\u0438\u0441\u0442\u0438",
+    "parent": 82,
+    "lft": 43,
+    "rght": 44,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 86,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043b\u0430\u0434\u043e\u043d\u0435\u0439",
+    "parent": 82,
+    "lft": 41,
+    "rght": 42,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 87,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043d\u043e\u0433",
+    "parent": 66,
+    "lft": 28,
+    "rght": 35,
+    "tree_id": 42,
+    "level": 1
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 88,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043d\u043e\u0433 (\u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e)",
+    "parent": 87,
+    "lft": 29,
+    "rght": 30,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 89,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u0441\u0442\u043e\u043f\u044b",
+    "parent": 87,
+    "lft": 33,
+    "rght": 34,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 90,
+  "fields": {
+    "name": "\u041a\u043e\u0436\u0430 \u043f\u0430\u043b\u044c\u0446\u0435\u0432 \u0441\u0442\u043e\u043f\u044b",
+    "parent": 87,
+    "lft": 31,
+    "rght": 32,
+    "tree_id": 42,
+    "level": 2
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 91,
+  "fields": {
+    "name": "\u0412\u043e\u043b\u043e\u0441\u044b",
+    "parent": null,
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 7,
+    "level": 0
+  }
+},
+{
+  "model": "deceases.bodypart",
+  "pk": 92,
+  "fields": {
+    "name": "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u044c \u043d\u0430 \u0442\u0435\u043b\u0435\n(\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430, \u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435, \u0442\u043e\u0448\u043d\u043e\u0442\u0430 \u0438 \u0440\u0432\u043e\u0442\u0430, \u043a\u043e\u0441\u0442\u0438, \u043f\u0441\u0438\u0445\u0438\u043a\u0430 \u0438 \u0442.\u0434.)",
+    "parent": null,
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 67,
+    "level": 0
   }
 }
 ]

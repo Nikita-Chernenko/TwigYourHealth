@@ -1,0 +1,17 @@
+{% load material_form %}
+
+<form method="post" action="
+{% if pk %}
+{% url 'doctor-update-patient-decease' pk=pk %}
+{% else %}
+{% url 'doctor-create-patient-decease' %}
+{% endif %}
+"
+      style="display: flex; flex-direction: row; align-items: center!important;"
+      class="create-update-decease">
+    {% csrf_token %}
+    {% form form=decease_form %}
+        {% attr form.cured 'widget' id%}{{ form.cured.auto_id }}{% endattr %}
+    {% endform %}
+    <button class="btn waves-effect beige" type="submit">{% if pk %}Изменить{% else %}Добавить{% endif %}</button>
+</form>

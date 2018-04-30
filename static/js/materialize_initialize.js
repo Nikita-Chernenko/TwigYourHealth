@@ -1,7 +1,9 @@
 function materialize_initiailize() {
-    $(".button-collapse").sideNav();
-    $('select').material_select();
-    $('.datepicker').pickadate({
+    $('.collapsible').collapsible();
+    $('select').formSelect();
+    $('ul.tabs').tabs();
+    $('.sidenav').sidenav();
+    $('.datepicker').datepicker({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 199, // Creates a dropdown of 15 years to control year,
         today: 'Today',

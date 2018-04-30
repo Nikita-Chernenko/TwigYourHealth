@@ -1,0 +1,58 @@
+[
+{
+  "model": "communication.message",
+  "pk": 1,
+  "fields": {
+    "chat": 1,
+    "timestamp": "2018-04-15T20:07:59.037Z",
+    "author": [
+      "patient"
+    ],
+    "doctor_read": false,
+    "patient_read": true,
+    "text": "first message patient"
+  }
+},
+{
+  "model": "communication.message",
+  "pk": 2,
+  "fields": {
+    "chat": 1,
+    "timestamp": "2018-04-15T20:08:20.647Z",
+    "author": [
+      "patient"
+    ],
+    "doctor_read": true,
+    "patient_read": true,
+    "text": "read message patient"
+  }
+},
+{
+  "model": "communication.message",
+  "pk": 3,
+  "fields": {
+    "chat": 1,
+    "timestamp": "2018-04-15T20:10:28.275Z",
+    "author": [
+      "public"
+    ],
+    "doctor_read": true,
+    "patient_read": false,
+    "text": "unread public"
+  }
+},
+{
+  "model": "communication.message",
+  "pk": 4,
+  "fields": {
+    "chat": 1,
+    "timestamp": "2018-04-15T20:10:49.424Z",
+    "author": [
+      "public"
+    ],
+    "doctor_read": true,
+    "patient_read": true,
+    "text": "read public"
+  }
+}
+]

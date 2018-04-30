@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load material_form %}
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <a href="{% url 'change-password' %}" class="btn wave-effects">Change password</a>
+        <a href="{% url 'update-profile' %}" class="btn wave-effects">Update profile</a>
+        <a href="{% url 'diagnostics' %}" class="btn wave-effects">Diagnostics</a>
+        {% if medical_records %}
+            <h3>Medical records</h3>
+            <table class="table-of-contents">
+                <tr>
+                    <th>Decease</th>
+                    <th>Start date</th>
+                    <th>End date</th>
+                    <th>Cured</th>
+                </tr>
+                {% for record in medical_records %}
+                    <tr>
+                        <td>{{ record.decease }}</td>
+                        <td>{{ record.start_date }}</td>
+                        <td>{{ record.end_date|default:"-" }}</td>
+                        <td>
+                            {% if record.cured %}
+                                <div class="green btn-floating btn-small"><i
+                                        class="small material-icons">check</i></div>
+                            {% else %}
+                                <div class="red btn-floating btn-small"><i
+                                        class="small material-icons">close</i></div>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+        {% else %}
+            <h3>There are no medical records, please, fill it in</h3>
+        {% endif %}
+        <div class="divider"></div>
+        <form method="post">
+            {% csrf_token %}
+            {{ patient_decease_formset.management_form }}
+            <div id="form_set">
+                {% for form in patient_decease_formset.forms %}
+                    <table class='no_error'>
+                        {% form form=form %}
+                        {% endform %}
+                    </table>
+                {% endfor %}
+            </div>
+            <button class="btn waves-effect">Sumbit</button>
+        </form>
+        <div class="center-align">
+            <button id="add_more" class="btn waves-effect ">Add more</button>
+        </div>
+        <div id="empty_form" style="display:none">
+            {% form form=patient_decease_formset.empty_form %}
+            {% endform %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        function autocomplete() {
+            $('.decease-input').each(function () {
+                $(this).devbridgeAutocomplete({
+                    serviceUrl: '/deceases/autocomplete/',
+                });
+            })
+        }
+
+        autocomplete();
+        $('#add_more').click(function () {
+            var form_idx = $('#id_form-TOTAL_FORMS').val();
+            $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+            materialize_initiailize();
+            autocomplete()
+        });
+    </script>
+{% endblock %}

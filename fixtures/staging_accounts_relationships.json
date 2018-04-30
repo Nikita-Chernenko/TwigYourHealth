@@ -1,0 +1,22 @@
+[
+{
+  "model": "accounts.relationships",
+  "pk": 1,
+  "fields": {
+    "patient": 1,
+    "doctor": 2,
+    "patient_accept": false,
+    "doctor_accept": false
+  }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 2,
+  "fields": {
+    "patient": 1,
+    "doctor": 1,
+    "patient_accept": true,
+    "doctor_accept": true
+  }
+}
+]

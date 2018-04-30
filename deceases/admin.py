@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from deceases.models import PatientDecease, Decease, Symptom, DeceaseSymptom, BodyPart, BodyArea, PatientSymptomDecease
+from deceases.models import PatientDecease, Decease, Symptom, DeceaseSymptom, BodyPart, PatientSymptomDecease
 
 
 @admin.register(PatientDecease)
@@ -27,9 +27,7 @@ class DeceaseSymptomAdmin(admin.ModelAdmin):
 class BodyPartAdmin(admin.ModelAdmin):
     exclude = []
 
-@admin.register(BodyArea)
-class BodyAreaAdmin(admin.ModelAdmin):
-    exclude = []
+
 
 @admin.register(PatientSymptomDecease)
 class PatientSymptomDeceaseAdmin(admin.ModelAdmin):
