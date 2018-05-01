@@ -6,18 +6,15 @@ from django.db.models import Q
 from accounts.models import Doctor, Patient, User
 
 
-class CommunicationEntity(models.Model):
+class CallEntity(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.PROTECT, verbose_name='doctor')
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
     start = models.DateTimeField('start')
     end = models.DateTimeField('end')
-    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
-
-    class Meta:
-        abstract = True
 
     def __init__(self, *args, **kwargs):
-        super(CommunicationEntity, self).__init__(*args, **kwargs)
+        super(CallEntity, self).__init__(*args, **kwargs)
         self.__original_start = self.start
         self.__original_end = self.end
 
@@ -34,14 +31,6 @@ class CommunicationEntity(models.Model):
                     (Q(end__gte=end) & Q(start__lte=end)) |
                     (Q(start__gte=start) & Q(end__lte=end))).exists():
                 raise ValidationError(f'{self._meta.model_name} for this time already exists')
-
-
-class CallEntity(CommunicationEntity):
-    pass
-
-
-class ChatEntity(CommunicationEntity):
-    pass
 
 
 class Chat(models.Model):
@@ -88,3 +77,32 @@ class Message(models.Model):
                 and (self.author.is_patient and self.author.patient != self.chat.patient or
                      self.author.is_doctor and self.author.doctor != self.chat.doctor):
             raise ValidationError("User doesn't belong to chat")
+
+
+class ChatEntity(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.PROTECT, verbose_name='doctor')
+    patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    messages = models.ManyToManyField(Message)
+    hours = models.FloatField('sum of minutes spent on chat')
+
+    class Meta:
+        ordering = ['timestamp']
+        get_latest_by = ['timestamp']
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if self.messages.exists():
+            minutes = 0
+            for message in self.messages.all():
+                if hasattr(message.author, 'doctor'):
+                    minutes += len(message.text) / 50
+                elif hasattr(message.author, 'patient'):
+                    minutes += len(message.text) / 100
+            self.hours = minutes / 60
+        super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+
+    def clean(self):
+        # TODO add check that messages haven't been included in other entities
+        pass
