@@ -40,6 +40,8 @@ class Doctor(models.Model):
     accept_call = models.BooleanField(default=True)
     hospital = models.ForeignKey(Hospital, on_delete=models.SET_NULL, verbose_name='hospital', null=True, blank=True)
     personal_address = models.CharField("address if you don't work in clinic", max_length=512, null=True, blank=True)
+    price_per_minute = models.FloatField(default=0.0)
+    seconds = models.IntegerField(default=0)
     description = models.TextField('info about yourself')
 
     def __str__(self):
@@ -112,6 +114,8 @@ class Patient(models.Model):
     birthday = models.DateField()
     deceases = models.ManyToManyField(to='deceases.Decease', through='deceases.PatientDecease')
     gender = models.CharField(choices=GENDER_CHOICES, max_length=256, default=ANOTHER)
+    skype = models.CharField('skype username', max_length=256, unique=True, null=True, blank=True)
+
 
     def __str__(self):
         return f'patient {self.user}'

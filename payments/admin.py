@@ -7,6 +7,6 @@ from payments.models import Order, Payment
 class NotificationAdmin(admin.ModelAdmin):
     exclude = []
 
-admin.register(Payment)
+@admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
     exclude = []
