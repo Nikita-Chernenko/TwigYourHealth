@@ -3,6 +3,7 @@ from time import gmtime, strftime
 from skype_utils.call import Call
 from skype_utils.skype_format_parser import content_parser
 from datetime import datetime, timedelta
+from skype_utils.db_utils import get_patients_skype_accounts
 import json
 
 CONFIG = 'skype_utils\config.json'
@@ -15,6 +16,10 @@ def string_to_datetime(string):
         return datetime.strptime(string, '%Y-%m-%d %H:%M:%S')
     except Exception:
         return 0
+
+
+def set_time_as_local(time):
+    return time + timedelta(hours=int(get_data_from_conf(LOCALTIME)))
 
 def get_last_time_of_update():
     with open(CONFIG, 'r') as f:
@@ -50,7 +55,7 @@ def get_all_calls_until_last_time(messages):
 
 
 def is_a_patient(userID):
-    if userID in ["live:nicklukk98", "oliynol2"]:
+    if userID in get_patients_skype_accounts():
         return True
     return False
 
@@ -59,27 +64,26 @@ def sort_calls_by_time(calls):
     res = []
     time = get_last_time_of_update()
     for call in calls:
-        if call.Ended + timedelta(hours=int(get_data_from_conf(LOCALTIME))) > string_to_datetime(time):
+        if set_time_as_local(call.Ended) > set_time_as_local(string_to_datetime(time)):
             res.append(call)
     return res
 
 
-def update_skype_calls(doctors_accounts):
-    for account in doctors_accounts:
-        contacts = account.retrieve_contacts()
-        total_time = 0
-        for contact in contacts:
-            if is_a_patient(contact):
-                while True:
-                    try:
-                        chat = account.get_messages(contact)
-                        break
-                    except Exception:
-                        pass
-                calls = get_all_calls_until_last_time(chat)
-                calls = sort_calls_by_time(calls)
-                for call in calls:
-                    secondsS = content_parser(call.Content, 'duration')
-                    total_time += int(secondsS)
-        print(total_time)
-    set_last_time_of_update()
+def update_skype_calls_for_a_doctor(account):
+    contacts = account.retrieve_contacts()
+    total_time = 0
+    for contact in contacts:
+        if is_a_patient(contact):
+            while True:
+                try:
+                    chat = account.get_messages(contact)
+                    break
+                except Exception:
+                    pass
+            calls = get_all_calls_until_last_time(chat)
+            calls = sort_calls_by_time(calls)
+            for call in calls:
+                secondsS = content_parser(call.Content, 'duration')
+                total_time += int(secondsS)
+
+    return total_time
