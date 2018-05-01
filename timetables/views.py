@@ -1,3 +1,4 @@
+from copy import deepcopy
 from datetime import datetime, timedelta
 
 from annoying.decorators import render_to
@@ -53,15 +54,14 @@ def shift_type_create(request, pk=None):
 
 @require_http_methods(['POST'])
 @user_passes_test(lambda u: u.is_patient)
-def visit_create(request, doctor_pk=None):
-    doctor = get_object_or_404(Doctor, pk=doctor_pk)
+def visit_create(request):
     patient = request.user.patient
-    request.POST._mutable = True
-    request.POST.update({'doctor': doctor, 'patient': patient})
-    form = VisitForm(request.POST)
+    data = deepcopy(request.POST)
+    data['patient'] = patient.id
+    form = VisitForm(data)
     if form.is_valid():
-        form.save()
-        return JsonResponse({'success': True})
+        visit = form.save()
+        return JsonResponse({'success': True, 'visit_id': visit.id})
     return JsonResponse({'errors': form.errors, 'success': False})
 
 
