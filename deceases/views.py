@@ -29,7 +29,7 @@ def symptom_tree(request):
 
 def symptoms_autocomplete(request):
     input_name = request.GET.get('name').lower()
-    symptoms = list(Symptom.objects.filter(name__istartswith=input_name) \
+    symptoms = list(Symptom.objects.filter(name__icontains=input_name) \
                     .values('id', 'name').order_by('name'))
     if len(symptoms) < 10:
         symptoms += list(Symptom.objects.exclude(name__istartswith=input_name) \
@@ -82,17 +82,14 @@ class Round(Func):
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
     symptoms_ids = request.GET.getlist('symptoms[]')
-    # symptoms_ids = [109, 32, 103]
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids)
-    whole_chance = Sum('deceasesymptom__chances')
     current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=symptoms_ids))
-    chance = Round(Cast(current_chance, FloatField()) / Cast(whole_chance, FloatField())) * 100
-    deceases = list(Decease.objects.annotate(
-        symptom_count=Count('deceasesymptom', filter=Q(deceasesymptom__symptom__in=symptoms_ids))) \
-                    # .filter(symptom_count__gte=2) \
-                    .annotate(chance=chance).annotate(chance=ExpressionWrapper(
-        F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())).filter(
-        ~Q(chance=None)).order_by('-chance')[:5].values('id', 'name', 'chance', 'sphere'))
+    chance = Round(Cast(current_chance, FloatField()) / 400) * 100
+    deceases = list(Decease.objects \
+        .annotate(symptom_count=Count('deceasesymptom', filter=Q(deceasesymptom__symptom__in=symptoms_ids))) \
+        .annotate(chance=chance) \
+        .annotate(chance=ExpressionWrapper(F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())) \
+        .filter(~Q(chance=None)).order_by('-chance')[:10].values('id', 'name', 'chance', 'sphere'))
     deceases_with_doctors = []
     for d in deceases:
         sphere = d['sphere']
@@ -120,6 +117,7 @@ def decease_list(request):
 
 def decease_autocomplete(request):
     query = request.GET.get('query')
+    print(query)
     decease = list(Decease.objects.filter(name__icontains=query).order_by(Length('name'))[:30])
     decease = [{"value": d.name, "data": d.id} for d in decease]
     return JsonResponse({"suggestions": decease})
