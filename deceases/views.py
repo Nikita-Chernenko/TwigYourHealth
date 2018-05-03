@@ -82,14 +82,25 @@ class Round(Func):
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
     symptoms_ids = request.GET.getlist('symptoms[]')
-    symptoms = Symptom.objects.filter(pk__in=symptoms_ids)
-    current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=symptoms_ids))
+    symptoms = Symptom.objects.filter(pk__in=symptoms_ids).values_list('name', flat=True)
+    symptoms_lookup = None
+    for s in symptoms:
+        if symptoms_lookup:
+            symptoms_lookup |= Q(name__icontains=s)
+        else:
+            symptoms_lookup = Q(name__icontains=s)
+    related_symptoms = Symptom.objects.filter(symptoms_lookup).values_list('id', flat=True)
+    current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=related_symptoms))
     chance = Round(Cast(current_chance, FloatField()) / 400) * 100
     deceases = list(Decease.objects \
-        .annotate(symptom_count=Count('deceasesymptom', filter=Q(deceasesymptom__symptom__in=symptoms_ids))) \
-        .annotate(chance=chance) \
-        .annotate(chance=ExpressionWrapper(F('chance') * F('symptom_count') / len(symptoms), output_field=IntegerField())) \
-        .filter(~Q(chance=None)).order_by('-chance')[:10].values('id', 'name', 'chance', 'sphere'))
+                    .annotate(symptom_count=Count('deceasesymptom',
+                                                  filter=Q(deceasesymptom__symptom__in=related_symptoms))) \
+                    .annotate(chance=chance) \
+                    .annotate(chance=ExpressionWrapper(F('chance') * F('symptom_count') /
+                                                       len(symptoms_ids ), output_field=IntegerField())) \
+                    .filter(~Q(chance=None)) \
+                    .order_by('-chance')[:20] \
+                    .values('id', 'name', 'chance', 'sphere'))
     deceases_with_doctors = []
     for d in deceases:
         sphere = d['sphere']
