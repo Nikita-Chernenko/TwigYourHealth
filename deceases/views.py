@@ -28,12 +28,12 @@ def symptom_tree(request):
 
 
 def symptoms_autocomplete(request):
-    input_name = request.GET.get('name').lower()
-    symptoms = list(Symptom.objects.filter(name__icontains=input_name) \
+    input_name = request.GET.get('name').lower() # sqllite quark
+    symptoms = list(Symptom.objects.filter(name__istartswith=input_name) \
                     .values('id', 'name').order_by('name'))
     if len(symptoms) < 10:
         symptoms += list(Symptom.objects.exclude(name__istartswith=input_name) \
-                         .filter(aliases__icontains=input_name) \
+                         .filter(Q(aliases__icontains=input_name) | Q(name__icontains=input_name)) \
                          .values('id', 'name').order_by('name'))[:(10 - len(symptoms))]
     return JsonResponse(data=symptoms, safe=False)
 
@@ -97,7 +97,7 @@ def deceases_by_symptoms(request):
                                                   filter=Q(deceasesymptom__symptom__in=related_symptoms))) \
                     .annotate(chance=chance) \
                     .annotate(chance=ExpressionWrapper(F('chance') * F('symptom_count') /
-                                                       len(symptoms_ids ), output_field=IntegerField())) \
+                                                       len(symptoms_ids), output_field=IntegerField())) \
                     .filter(~Q(chance=None)) \
                     .order_by('-chance')[:20] \
                     .values('id', 'name', 'chance', 'sphere'))
