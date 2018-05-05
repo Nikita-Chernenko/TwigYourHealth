@@ -8,7 +8,7 @@ from django.utils.timezone import now
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from accounts.models import Patient, User, Relationships
+from accounts.models import Patient, User, Relationships, Gender, AgeGap
 from utils.validators import comma_separated_field
 
 
@@ -73,6 +73,13 @@ class Decease(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class DeceaseAgeGapGender(models.Model):
+    decease = models.ForeignKey(Decease, on_delete=models.CASCADE)
+    gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    age_gap = models.ForeignKey(AgeGap, on_delete=models.CASCADE)
+    number = models.PositiveIntegerField('number of people in average to get decease from 10^6')
 
 
 class DeceaseSymptom(models.Model):

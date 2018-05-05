@@ -3,7 +3,8 @@ import random
 import scrapy
 from annoying.functions import get_object_or_None
 
-from deceases.models import Symptom, DeceaseSymptom, Decease, Sphere
+from accounts.models import Gender, AgeGap
+from deceases.models import Symptom, DeceaseSymptom, Decease, Sphere, DeceaseAgeGapGender
 
 
 class SymptomSpider(scrapy.Spider):
@@ -106,4 +107,50 @@ class SymptomSpider(scrapy.Spider):
             'malignancy': malignancy,
             'sphere': sphere,
 
+        }
+
+
+class ChanceSpider(scrapy.Spider):
+    name = "Chance"
+
+    def start_requests(self):
+        urls = [
+            'https://online-diagnos.ru/illness',
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.get_urls)
+
+    def get_urls(self, response):
+        urls = response.css('#list_folclore_main').xpath('./li/a/@href').extract()
+        for url in urls:
+            yield scrapy.Request(url=f'https://online-diagnos.ru{url}', callback=self.parse)
+
+    def parse(self, response):
+        deceases = response.css('.category_illness_list').xpath('.//li/a/@href').extract()
+        for decease_link in deceases:
+            yield scrapy.Request(response.urljoin(decease_link), callback=self.parse_chance)
+
+    def parse_chance(self, response):
+        name = response.css('.title-h1::text').extract_first().strip()
+        table = response.css('.prevalence')
+        numbers = table.xpath('.//tr[3]/td[position()>1]/text()').extract()
+        if not (name or numbers):
+            return
+        decease = get_object_or_None(Decease, name=name)
+        age_gaps = AgeGap.objects.all()
+        for ind, number in enumerate(numbers[:7]):
+            number = int(float(number))
+            age_gap = age_gaps[ind]
+            gender = Gender.objects.get(name='Мужчина')
+            dagg, _ = DeceaseAgeGapGender.objects.get_or_create(decease=decease, number=number, age_gap=age_gap,
+                                                                gender=gender)
+        for ind, number in enumerate(numbers[7:]):
+            number = int(float(number))
+            age_gap = age_gaps[ind]
+            gender = Gender.objects.get(name='Женщина')
+            dagg, _ = DeceaseAgeGapGender.objects.get_or_create(decease=decease, number=number, age_gap=age_gap,
+                                                                gender=gender)
+
+        yield {
+            'count': DeceaseAgeGapGender.objects.all().count()
         }

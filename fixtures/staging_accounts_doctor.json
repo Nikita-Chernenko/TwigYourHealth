@@ -13,6 +13,8 @@
     "accept_call": true,
     "hospital": null,
     "personal_address": "my address",
+    "price_per_minute": 0.0,
+    "seconds": 0,
     "description": "I'm a doctor"
   }
 },
@@ -30,6 +32,8 @@
     "accept_call": true,
     "hospital": null,
     "personal_address": null,
+    "price_per_minute": 0.0,
+    "seconds": 0,
     "description": "I'm a private doctor"
   }
 }
