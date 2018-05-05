@@ -1,23 +1,29 @@
 from django.contrib import admin
 
-from accounts.models import User, Doctor, Patient, Hospital
+from accounts.models import User, Doctor, Patient, Hospital, PrivateDoctor, PublicDoctor
 
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    fields = ['username', 'password', 'first_name', 'patronymic', 'email', 'phone', 'is_doctor', 'is_patient']
+    exclude = []
 
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
-    fields = ['user', 'hour_rate']
+    exclude = []
 
 
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
-    fields = ['user', 'birthday']
+    exclude = []
 
+@admin.register(PrivateDoctor)
+class PrivateDoctorAdmin(admin.ModelAdmin):
+    exclude = []
 
+@admin.register(PublicDoctor)
+class PublicDoctorAdmin(admin.ModelAdmin):
+    exclude = []
 @admin.register(Hospital)
 class HospitalAdmin(admin.ModelAdmin):
-    fields = ['name', 'address']
+    exclude = []

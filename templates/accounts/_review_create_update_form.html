@@ -1,0 +1,14 @@
+{% load material_form %}
+
+<form method="post" action="
+{% if pk %}
+{% url 'review-update' doctor_sphere_id=doctor_sphere_id pk=pk %}
+{% else %}
+{% url 'review-create' doctor_sphere_id=doctor_sphere_id %}
+{% endif %}
+"
+      class="create-update-decease">
+    {% csrf_token %}
+    {% form form=review_form %}{% endform %}
+    <button class="btn waves-effect" type="submit">{% if pk %}Изменить{% else %}Добавить{% endif %} отзыв</button>
+</form>

@@ -6,8 +6,8 @@
     "user": [
       "public"
     ],
-    "skype": null,
-    "skype_password": null,
+    "skype": "mykola.lukianov@nure.ua",
+    "skype_password": "Twigyourhealth",
     "is_private": false,
     "accept_chat": true,
     "accept_call": true,

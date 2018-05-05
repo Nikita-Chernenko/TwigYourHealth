@@ -3,9 +3,9 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.db import models
 
+from accounts.models import Patient
 from communication.models import CallEntity, ChatEntity
 from timetables.models import Visit
-from accounts.models import Patient
 
 interaction_limit = models.Q(app_label='communications', model='CallEntity') | \
                     models.Q(app_label='communications', model='ChatEntity') | \
@@ -24,6 +24,9 @@ class Order(models.Model):
         self.__original_content_type = self.content_type
         self.__original_object_id = self.object_id
 
+    def __str__(self):
+        return f'{self.interaction} - {self.sum} - {self.payed}'
+
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         # calculate sum of the interaction
@@ -40,13 +43,13 @@ class Order(models.Model):
             elif isinstance(model, CallEntity):
                 call_entity = CallEntity.objects.get(pk=model_id)
                 doctor = call_entity.doctor.privatedoctor
-                hours = (call_entity.end - call_entity.start).seconds / 3600
+                hours = (call_entity.end - call_entity.start).seconds // 3600
                 sum = doctor.hour_rate * hours
             elif isinstance(model, ChatEntity):
                 chat_entity = ChatEntity.objects.get(pk=model_id)
                 doctor = chat_entity.doctor.privatedoctor
-                hours = (chat_entity.end - chat_entity.start).seconds / 3600
-                sum = doctor.hour_rate * hours
+                hours = chat_entity.hours
+                sum = int(doctor.hour_rate * hours)
             self.sum = sum
 
     def clean(self):
@@ -79,6 +82,8 @@ class Payment(models.Model):
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.patient} {self.order} {self.date}'
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         order = self.order
@@ -92,7 +97,7 @@ class Payment(models.Model):
             elif isinstance(model, CallEntity):
                 call_entity = CallEntity.objects.get(pk=model_id)
                 patient = call_entity.patient
-            elif isinstance(model, CallEntity):
-                call_entity = CallEntity.objects.get(pk=model_id)
-                patient = call_entity.patient
+            elif isinstance(model, ChatEntity):
+                chat_entity = ChatEntity.objects.get(pk=model_id)
+                patient = chat_entity.patient
             self.patient = patient

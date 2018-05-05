@@ -1,0 +1,26 @@
+[
+{
+  "model": "timetables.shift",
+  "pk": 1,
+  "fields": {
+    "shift_type": 2,
+    "day": "2018-05-02"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 2,
+  "fields": {
+    "shift_type": 3,
+    "day": "2018-05-07"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 3,
+  "fields": {
+    "shift_type": 2,
+    "day": "2018-05-03"
+  }
+}
+]

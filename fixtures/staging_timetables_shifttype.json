@@ -1,0 +1,35 @@
+[
+{
+  "model": "timetables.shifttype",
+  "pk": 1,
+  "fields": {
+    "title": "public",
+    "doctor": 1,
+    "start": "08:00:00",
+    "end": "17:00:00",
+    "gap": "00:30:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 2,
+  "fields": {
+    "title": "private1",
+    "doctor": 2,
+    "start": "12:00:00",
+    "end": "17:00:00",
+    "gap": "00:45:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 3,
+  "fields": {
+    "title": "private2",
+    "doctor": 2,
+    "start": "09:00:00",
+    "end": "13:00:00",
+    "gap": "00:50:00"
+  }
+}
+]

@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load material_form %}
+{% block breadcrumbs %}
+    <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">Patient profile</a>
+{% endblock %}
+{% block content %}
+    {% csrf_token %}
+    <div class="container">
+        {{ patient.user.username }}
+
+        {% include 'accounts/_avatar.html' with height="100" width="100" user=patient.user  img_class="circle" %}
+        {% if not relationships.patient_accept %}
+            {% if relationships.doctor_accept %}
+                <button class="btn " id="require-access" data-doctor-accept="false">
+                    Вы запросили доступ,
+                    Закрыть данные для этого пользователя
+                </button>
+            {% else %}
+                <button class="btn" id="require-access" data-doctor-accept="true">Запросить доступ и открыть свои
+                    данные
+                </button>
+            {% endif %}
+        {% else %}
+            <div>
+                {% if relationships.doctor_accept %}
+                    <div class="card-panel teal lighten-2">Это ваш пациент</div>
+                    <button class="btn waves-effect beige">Написать</button>
+                    <button class="btn waves-effect beige" id="require-access" data-doctor-accept="false">Закрыть доступ</button>
+                {% else %}
+                    <button class="btn waves-effect beige" id="require-access" data-doctor-accept="true">Дать доступ</button>
+                {% endif %}
+                {# TODO add chat pop up here #}
+                {% if medical_records %}
+                    <div id="medical_records">
+                        {% include 'deceases/_medical_records.html' %}
+                    </div>
+                    <div>
+                        {% include 'deceases/_doctor_create_update_patient_decease_form.html' %}
+                    </div>
+                {% else %}
+                    <h3>There are no medical records, please, fill it in</h3>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            $('#require-access').on('click', function () {
+                el = $(this);
+                $.ajax({
+                    "type": "POST",
+                    "url": "{% url 'relationships-update' pk=relationships.id %}",
+                    "data": {"doctor_accept": el.data('doctor-accept')},
+                    "success": function (result) {
+                        console.log(result);
+                        doctor_accept = result.doctor_accept;
+                        console.log(doctor_accept);
+                        el.data('doctor-accept', !doctor_accept);
+                        if (doctor_accept) {
+                            el.html(' Вы запросили доступ,\n' +
+                                '                    Закрыть данные для этого пользователя')
+                        }
+                        else {
+                            el.html('Запросить доступ и открыть свои данные')
+                        }
+                        location.reload();
+                    },
+                    "error": function (result) {
+                        console.log(result)
+                    }
+                })
+            });
+
+
+            $(document).on('submit', '.create-update-decease', function () {
+                form = $(this);
+                div = form.parent();
+                $.ajax({
+                    data: form.serialize(),
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    success: function (response) {
+                        if (response.length === 0) {
+                            render_medical_card();
+                        }
+                        else {
+                            div.html(response);
+                            autocomplete();
+                            materialize_initiailize();
+
+                        }
+                    }
+                });
+                return false;
+            });
+
+            $(document).on('click', '.record-toggle', function () {
+                var id = $(this).data('id');
+                $('#record-table-' + id).toggle();
+                $('#record-edit-form-' + id).toggle();
+            });
+
+            function render_medical_card() {
+                $.ajax({
+                    type: "GET",
+                    url: "{% url 'medical-records' patient_id=patient.id %}",
+                    success: function (response) {
+                        $("#medical_records").html(response);
+                        materialize_initiailize();
+                        autocomplete();
+                    }
+                })
+            }
+
+
+            function autocomplete() {
+                $('.decease-input').each(function () {
+                    $(this).devbridgeAutocomplete({
+                        serviceUrl: '/deceases/autocomplete/'
+                    });
+                })
+            }
+
+            autocomplete();
+        });
+    </script>
+{% endblock %}

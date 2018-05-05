@@ -1,22 +1,34 @@
 from django.contrib import admin
 
-from deceases.models import PatientDecease, Decease, Symptom, DeceaseSymptom
+from deceases.models import PatientDecease, Decease, Symptom, DeceaseSymptom, BodyPart, PatientSymptomDecease
 
 
 @admin.register(PatientDecease)
 class PatientDeceaseAdmin(admin.ModelAdmin):
-    fields = ['patient', 'decease', 'start_date', 'end_date', 'cured']
+    exclude = []
 
 
 @admin.register(Decease)
 class DeceaseAdmin(admin.ModelAdmin):
-    fields = ['name', 'chronic', 'duration', 'contagiousness', 'malignancy', 'first_aid', 'occurrence']
+    exclude = []
 
 
 @admin.register(Symptom)
 class SymptomAdmin(admin.ModelAdmin):
-    fields = ['name', 'aliases']
+    exclude = []
+
 
 @admin.register(DeceaseSymptom)
 class DeceaseSymptomAdmin(admin.ModelAdmin):
-    fields = ['symptom','decease','chances','occurrence']
+    exclude = []
+
+
+@admin.register(BodyPart)
+class BodyPartAdmin(admin.ModelAdmin):
+    exclude = []
+
+
+
+@admin.register(PatientSymptomDecease)
+class PatientSymptomDeceaseAdmin(admin.ModelAdmin):
+    exclude = []

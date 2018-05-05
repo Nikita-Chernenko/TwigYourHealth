@@ -1,0 +1,7 @@
+{% for el in deceases_with_doctors %}
+    <li class="collection-item avatar">
+        <i class="circle red">{{ el.decease.chance }}</i>
+        <p>{{ el.decease.name }}
+        </p>
+    </li>
+{% endfor %}

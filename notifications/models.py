@@ -9,3 +9,6 @@ class Notification(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     seen = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.owner} {self.text} {self.seen}'
