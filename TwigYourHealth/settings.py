@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
     'mptt',
-    # 'channels',
+    'channels',
     'sorl.thumbnail',
 
     'accounts',
@@ -163,13 +163,13 @@ FIXTURE_DIRS = [rel('..', 'fixtures')]
 pb = Pushbullet(PUSHBULLEY_KEY)
 
 # Chat
-# ASGI_APPLICATION = "communication.routing.application"
-#
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("localhost", 6379)],
-#         },
-#     },
-# }
+ASGI_APPLICATION = "communication.routing.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
+}
