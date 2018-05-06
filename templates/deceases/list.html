@@ -2,22 +2,25 @@
 
 {% block breadcrumbs %}
 
-    <a href="{% url 'decease-list' %}">Болезни</a>
+    <a href="{% url 'decease-list' %}" class="breadcrumb">Болезни</a>
 {% endblock %}
 {% block content %}
     <div class="row center-align">
-        <div class="col s9">
+        <div class="col s12">
             <div class="col s3 left-align">
+                <input id="decease-input" type="text">
                 <ul class="collapsible expandable popout">
                     {% for sphere in spheres %}
                         <li>
-                            <div class="collapsible-header">{{ sphere.name }}d</div>
+                            <div class="collapsible-header">{{ sphere.name }}</div>
                             <div class="collapsible-body">
                                 <ul>
                                     {% for decease in sphere.decease_set.all %}
                                         <li>
-                                            <a href="{% url 'decease-detail' decease_id=decease.id %}">{{ decease.name }}</a>
+                                            <a href="#" class="decease-detail"
+                                               data-id="{{ decease.id }}">{{ decease.name }}</a>
                                         </li>
+                                        <div class="divider"></div>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -25,7 +28,39 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col s9">text</div>
+            <div class="col s9 decease"></div>
         </div>
     </div>
+{% endblock %}
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            var input = $('#decease-input');
+            var DECEASE_DETAIL = "{% url 'decease-detail' pk=1 %}";
+            $('.decease-detail').on('click', function () {
+                var el = $(this);
+                $.ajax({
+                    url: DECEASE_DETAIL.replace('1', el.data('id')),
+                    method: 'GET',
+                    success: function (response) {
+                        input.val(el.html())
+                        $('.decease').html(response)
+                    }
+                })
+            });
+            input.devbridgeAutocomplete({
+                serviceUrl: '{% url "decease-autocomplete" %}',
+                onSelect: function (suggestion) {
+                    $(this).val(suggestion.value);
+                    $.ajax({
+                        url: DECEASE_DETAIL.replace('1', suggestion.data),
+                        method: 'GET',
+                        success: function (response) {
+                            $('.decease').html(response)
+                        }
+                    })
+                }
+            });
+        })
+    </script>
 {% endblock %}
