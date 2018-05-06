@@ -22,7 +22,7 @@
         {% endif %}
         {% if relationships.patient_accept %}
             {#            TODO add timetable#}
-            <button class="btn waves-effect">Записаться на прием</button>
+            <button class="btn waves-effect beige">Записаться на прием</button>
         {% endif %}
         {% if doctor.is_private %}
             {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}
@@ -35,12 +35,12 @@
     {% endif %}
     {% if not relationships.doctor_accept %}
         {% if relationships.patient_accept %}
-            <button class="btn" id="require-access" data-patient-accept="false">
+            <button class="btn beige" id="require-access" data-patient-accept="false">
                 Вы запросили доступ,
                 Закрыть данные для этого пользователя
             </button>
         {% else %}
-            <button class="btn" id="require-access" data-patient-accept="true">Запросить доступ и открыть свои
+            <button class="btn beige" id="require-access" data-patient-accept="true">Запросить доступ и открыть свои
                 данные
             </button>
         {% endif %}
@@ -51,11 +51,11 @@
             {% if relationships.patient_accept %}
                 <div class="card-panel teal lighten-2">Это ваш доктор</div>
                 {% if doctor.accept_chat %}
-                    <button class="btn waves-effect">Написать</button>
+                    <button class="btn waves-effec beiget">Написать</button>
                 {% endif %}
-                <button class="btn" id="require-access" data-patient-accept="false">Закрыть доступ</button>
+                <button class="btn beige" id="require-access" data-patient-accept="false">Закрыть доступ</button>
             {% else %}
-                <button class="btn" id="require-access" data-patient-accept="true">Дать доступ</button>
+                <button class="btn beige" id="require-access" data-patient-accept="true">Дать доступ</button>
             {% endif %}
         </div>
 
