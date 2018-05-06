@@ -3,7 +3,7 @@ import random
 
 from annoying.decorators import render_to
 from django.contrib.auth.decorators import user_passes_test
-from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField
+from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField, Avg
 from django.db.models.functions import Cast, Length
 from django.http import JsonResponse, HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
@@ -28,7 +28,7 @@ def symptom_tree(request):
 
 
 def symptoms_autocomplete(request):
-    input_name = request.GET.get('name').lower() # sqllite quark
+    input_name = request.GET.get('name').lower()  # sqllite quark
     symptoms = list(Symptom.objects.filter(name__istartswith=input_name) \
                     .values('id', 'name').order_by('name'))
     if len(symptoms) < 10:
@@ -79,8 +79,10 @@ class Round(Func):
     template = '%(function)s(%(expressions)s, 2)'
 
 
+@user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
+    patient = request.user.patient
     symptoms_ids = request.GET.getlist('symptoms[]')
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids).values_list('name', flat=True)
     symptoms_lookup = None
@@ -90,17 +92,29 @@ def deceases_by_symptoms(request):
         else:
             symptoms_lookup = Q(name__icontains=s)
     related_symptoms = Symptom.objects.filter(symptoms_lookup).values_list('id', flat=True)
-    current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=related_symptoms))
-    chance = Round(Cast(current_chance, FloatField()) / 400) * 100
-    deceases = list(Decease.objects \
+    # TODO switch to distinct sum on postgres to get correct result
+    whole_chance = Sum('deceasesymptom__chances')
+
+    current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=related_symptoms),
+                         distinct=True)
+    chance = Round(Cast(current_chance, FloatField()) /  Cast(whole_chance, FloatField())) * 100
+
+    chance_with_people = ExpressionWrapper(Round(F('chance') * (0.1 +(F('people_occurrence') / 6000))), IntegerField())
+    deceases = list(Decease.objects
                     .annotate(symptom_count=Count('deceasesymptom',
-                                                  filter=Q(deceasesymptom__symptom__in=related_symptoms))) \
-                    .annotate(chance=chance) \
+                                                  filter=Q(deceasesymptom__symptom__in=related_symptoms),
+                                                  distinct=True))
+                    .annotate(chance=chance)
                     .annotate(chance=ExpressionWrapper(F('chance') * F('symptom_count') /
-                                                       len(symptoms_ids), output_field=IntegerField())) \
-                    .filter(~Q(chance=None)) \
-                    .order_by('-chance')[:20] \
-                    .values('id', 'name', 'chance', 'sphere'))
+                                                       len(symptoms_ids), output_field=IntegerField()))
+                    .annotate(people_occurrence=Avg('deceaseagegapgender__number',
+                                                    filter=(Q(deceaseagegapgender__age_gap=patient.age_gap) &
+                                                            Q(deceaseagegapgender__gender=patient.gender))))
+                    .annotate(chance=chance_with_people)
+                    .filter(~Q(chance=None))
+                    .order_by('-chance')
+                    .values('id', 'name', 'chance', 'sphere')[:10])
+
     deceases_with_doctors = []
     for d in deceases:
         sphere = d['sphere']
@@ -110,6 +124,7 @@ def deceases_by_symptoms(request):
         random.shuffle(doctors)
         doctors = doctors[:3]
         deceases_with_doctors.append({"decease": d, "doctors": doctors})
+
 
     return {'deceases_with_doctors': deceases_with_doctors}
 
