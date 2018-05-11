@@ -1,60 +1,74 @@
-<div class="row">
-    <div class="col s12">
-        <ul class="tabs">
+<h3 class="center-align">Отзывы</h3>
+<div class="row mt-2">
+    <div class="col col-12">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
             {% for s in doctor_spheres %}
-                <li class="tab s3"><a class="{% if active_sphere == s %}active{% endif %} changelink"
-                                      href="#sphere{{ forloop.counter }}">{{ s.sphere.name|truncatewords:3 }}
-                    <div class="btn-floating btn-large waves-effect waves-light red"><i
-                            class="circle">{{ s.rating|default:"-" }}</i></div>
-                </a>
+                <li class="nav-item">
+                    <a class="nav-link {% if forloop.counter == 1 and not active_sphere or  active_sphere == s %} active{% endif %}"
+                       data-toggle="pill" role="tab"
+                       id="sphere{{ forloop.counter }}-tab" href="#sphere{{ forloop.counter }}"
+                       aria-controls="#sphere{{ forloop.counter }}"
+                       aria-selected="{% if active_sphere == s %}true{% else %}false{% endif %}">{{ s.sphere.name|truncatewords:5 }}
+                        <div class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i
+                                class="circle">{{ s.rating|default:"-" }}</i></div>
+                    </a>
                 </li>
             {% endfor %}
 
         </ul>
     </div>
-    {% for s in doctor_spheres %}
-        <div id="sphere{{ forloop.counter }}" class="col s12">
-            {% for review in s.review_set.all %}
-                <div class="row review">
-                    <div class="col s11 m3">
-                        <div class="review-form">
-                            <div>
-                                {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}
-                            </div>
-                            <div class="center-align">comment:{{ review.comment }} mark:{{ review.mark }}</div>
-                        </div>
-                        <div class="review-form" style="display: none">
-                            {% if patient == review.patient %}
-
-                                {% with review.get_form as review_form %}
-                                    <div class="review-form" style="display: none">
-                                        {% include 'accounts/_review_create_update_form.html' with review_form=review_form pk=review.id doctor_sphere_id=s.id %}
-                                    </div>
-                                {% endwith %}
-
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col s1">
-                        {% if patient %}
-                            <div data-id="{{ forloop.counter }}" class="record-toggle">
-                                <i class="material-icons blue">edit</i>
-                            </div>
-                            {% if patient == review.patient %}
-                                <div data-review-id="{{ review.id }}" class="record-delete">
-                                    <i class="material-icons red">delete</i>
+    <div class="col col-12 tab-content" id="nav-tabContent">
+        {% for s in doctor_spheres %}
+            <div id="sphere{{ forloop.counter }}" aria-labelledby="tabpanel"
+                 class="col col-12 tab-pane fade show {% if forloop.counter == 1 and not active_sphere or  active_sphere == s %} active{% endif %}">
+                {% for review in s.review_set.all %}
+                    <div class="row review mt-1 mb-1">
+                        <div class="col col-11 col-md-8 col-lg-7">
+                            <div class="review-form row justify-content-between">
+                                <div>
+                                    <a href="{% url 'profile' pk=review.patient.user.id %}">
+                                        {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}
+                                    </a>
                                 </div>
-                            {% endif %}
-                        {% endif %}
-                    </div>
-                </div>
+                                <div class="col">{{ review.comment }}</div>
+                                <div class="btn-floating btn-sm waves-effect waves-light teal lighten-2"><i
+                                        class="circle">{{ review.mark }}</i></div>
+                            </div>
+                            <div class="review-form" style="display: none">
+                                {% if patient == review.patient %}
 
-            {% endfor %}
-            {% if relationships.doctor_accept and s.form %}
-                <div class="review-form">
-                    {% include 'accounts/_review_create_update_form.html' with doctor_sphere_id=s.id review_form=s.form %}
-                </div>
-            {% endif %}
-        </div>
-    {% endfor %}
+                                    {% with review.get_form as review_form %}
+                                        <div class="review-form" style="display: none">
+                                            {% include 'accounts/_review_create_update_form.html' with review_form=review_form pk=review.id doctor_sphere_id=s.id %}
+                                        </div>
+                                    {% endwith %}
+
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col col-1">
+                            {% if patient %}
+                                <div data-id="{{ forloop.counter }}" class="record-toggle btn-floating btn-small teal">
+                                    <i class="material-icons ">edit</i>
+                                </div>
+                                {% if patient == review.patient %}
+                                    <div data-review-id="{{ review.id }}"
+                                         class="record-delete btn-floating btn-small red">
+                                        <i class="material-icons red">delete</i>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col divider"></div>
+                {% endfor %}
+                {% if relationships.doctor_accept and s.form %}
+                    <div class="review-form">
+                        {% include 'accounts/_review_create_update_form.html' with doctor_sphere_id=s.id review_form=s.form %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 </div>

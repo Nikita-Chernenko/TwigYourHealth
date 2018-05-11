@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from accounts.models import User, Doctor, Patient, Hospital, PrivateDoctor, PublicDoctor, Gender, AgeGap
+from accounts.models import User, Doctor, Patient, Hospital, PrivateDoctor, PublicDoctor, Gender, AgeGap, DoctorSphere
 
 
 @admin.register(User)
@@ -41,3 +41,7 @@ class PublicDoctorAdmin(admin.ModelAdmin):
 @admin.register(Hospital)
 class HospitalAdmin(admin.ModelAdmin):
     exclude = []
+
+@admin.register(DoctorSphere)
+class DoctorSphereAdmin(admin.ModelAdmin):
+    pass

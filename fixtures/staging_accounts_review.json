@@ -1,36 +1,6 @@
 [
 {
   "model": "accounts.review",
-  "pk": 1,
-  "fields": {
-    "doctor_sphere": 15,
-    "comment": "text",
-    "mark": 7,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 2,
-  "fields": {
-    "doctor_sphere": 4,
-    "comment": "text",
-    "mark": 99,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 3,
-  "fields": {
-    "doctor_sphere": 10,
-    "comment": "text",
-    "mark": 34,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
   "pk": 4,
   "fields": {
     "doctor_sphere": 11,
@@ -41,61 +11,11 @@
 },
 {
   "model": "accounts.review",
-  "pk": 5,
-  "fields": {
-    "doctor_sphere": 2,
-    "comment": "text",
-    "mark": 82,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 6,
-  "fields": {
-    "doctor_sphere": 12,
-    "comment": "text",
-    "mark": 90,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 7,
-  "fields": {
-    "doctor_sphere": 1,
-    "comment": "text",
-    "mark": 31,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 8,
-  "fields": {
-    "doctor_sphere": 14,
-    "comment": "text",
-    "mark": 38,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
   "pk": 9,
   "fields": {
     "doctor_sphere": 5,
     "comment": "text",
     "mark": 64,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 10,
-  "fields": {
-    "doctor_sphere": 9,
-    "comment": "text",
-    "mark": 27,
     "patient": 1
   }
 },
@@ -131,41 +51,11 @@
 },
 {
   "model": "accounts.review",
-  "pk": 14,
+  "pk": 18,
   "fields": {
-    "doctor_sphere": 7,
-    "comment": "text",
-    "mark": 49,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 15,
-  "fields": {
-    "doctor_sphere": 3,
-    "comment": "text",
-    "mark": 43,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 16,
-  "fields": {
-    "doctor_sphere": 6,
-    "comment": "text",
-    "mark": 18,
-    "patient": 1
-  }
-},
-{
-  "model": "accounts.review",
-  "pk": 17,
-  "fields": {
-    "doctor_sphere": 13,
-    "comment": "text",
-    "mark": 50,
+    "doctor_sphere": 4,
+    "comment": "\u0441\u0443\u043f\u0435\u0440",
+    "mark": 84,
     "patient": 1
   }
 }

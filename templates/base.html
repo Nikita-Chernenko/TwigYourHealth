@@ -16,6 +16,10 @@
     <script src="{% static 'js/materialize_initialize.js' %}"></script>
     <script src="{% static 'js/chat.js' %}"></script>
     <script src="{% static 'js/jquery.autocomplete.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% block extrahead %} {% endblock %}
 </head>
 <body>
@@ -82,7 +86,8 @@
                     record</a></li>
                 <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
                 </li>
-                <li><a class="waves-effect" href="{% url 'decease-list' %}"><i class="material-icons left">library_books</i>Deceases</a>
+                <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
+                        class="material-icons left">library_books</i>Deceases</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
                 </li>
@@ -103,37 +108,42 @@
     </header>
 
     <main>
-        <div class="row">
-            {% if messages %}
-                <div class="container-fluid">
-                    <div class="card-panel">
-                        {% for message in messages %}
-                            <div class="
+        {% if messages %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="card-panel">
+                            {% for message in messages %}
+                                <div class="
                             {% if message.level_tag == "info" %}teal lighten-2
                             {% elif message.level_tag == "warning" %} orange
                             {% elif message.level_tag == "error" %} red
                             {% endif %}" style="padding: 5px">
-                                {{ message }}</div>
-                        {% endfor %}
+                                    {{ message }}</div>
+                                </div>
+                            {% endfor %}
                     </div>
                 </div>
-            {% endif %}
-            {% block content %} {% endblock %}
-            {% if user.is_authenticated %}
-                {% include 'communications/_chat.html' %}
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
+
+
+        {% block content %} {% endblock %}
+        {% if user.is_authenticated %}
+            {% include 'communications/_chat.html' %}
+        {% endif %}
     </main>
-    <footer class="page-footer teal lighten-2" style="display: none">
+    <footer class="page-footer teal lighten-2">
 
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
+                <div class="col col-lg-6 col-12">
                     <h5 class="white-text">Footer Content</h5>
                     <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
                         content.</p>
                 </div>
-                <div class="col l4 offset-l2 s12">
+                <div class="col col-lg-4 offset-lg-2 col-12">
                     <h5 class="white-text">Links</h5>
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
@@ -158,7 +168,8 @@
             var MESSAGE_LIST = "{% url 'message-list' chat_id=0 %}";
             var IS_PATIENT = {% if user.is_authenticated %}{{ user.is_patient |json }}{% else %}false{% endif %};
             var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
-            chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR);
+            var PROFILE = "{% url 'profile' pk=0 %}";
+            chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
 
         });
 

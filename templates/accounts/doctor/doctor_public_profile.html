@@ -7,66 +7,64 @@
 {% block content %}
     <div class="container">
 
-    {% include 'accounts/_avatar.html' with height="100" width="100" user=doctor.user  img_class="circle" %}
-    <div>{{ doctor.user.name|default:"Имя" }} {{ doctor.user.surname|default:"Фамилия" }}</div>
-    <div>{{ doctor.is_private|yesno:"Частный,Госудасртвенный" }} врач</div>
-    <div>{{ doctor.description }} </div>
-    {% if relationships.doctor_accept %}
-        {% if doctor.accept_call %}
-            <div>{{ doctor.skype|default:"Нет скайпа" }}</div>
-        {% endif %}
-        {% if  doctor.hospital %}
-            <div>{{ doctor.hospital }} </div>
-        {% else %}
-            <div>{{ doctor.personal_address }} </div>
-        {% endif %}
-        {% if relationships.patient_accept %}
-            {#            TODO add timetable#}
-            <button class="btn waves-effect beige">Записаться на прием</button>
-        {% endif %}
-        {% if doctor.is_private %}
-            {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}
-
-        {% else %}
-            {% include 'accounts/doctor/public_doctor/_public_doctor_private_info.html' %}
-
-        {% endif %}
-
-    {% endif %}
-    {% if not relationships.doctor_accept %}
-        {% if relationships.patient_accept %}
-            <button class="btn beige" id="require-access" data-patient-accept="false">
-                Вы запросили доступ,
-                Закрыть данные для этого пользователя
-            </button>
-        {% else %}
-            <button class="btn beige" id="require-access" data-patient-accept="true">Запросить доступ и открыть свои
-                данные
-            </button>
-        {% endif %}
-
-    {% else %}
-
-        <div>
-            {% if relationships.patient_accept %}
-                <div class="card-panel teal lighten-2">Это ваш доктор</div>
-                {% if doctor.accept_chat %}
-                    <button class="btn waves-effect beige">Написать</button>
-                {% endif %}
-                <button class="btn beige" id="require-access" data-patient-accept="false">Закрыть доступ</button>
-            {% else %}
-                <button class="btn beige" id="require-access" data-patient-accept="true">Дать доступ</button>
+        {% include 'accounts/_avatar.html' with height="100" width="100" user=doctor.user  img_class="circle" %}
+        <div>{{ doctor.user.name|default:"Имя" }} {{ doctor.user.surname|default:"Фамилия" }}</div>
+        <div>{{ doctor.is_private|yesno:"Частный,Госудасртвенный" }} врач</div>
+        <div>{{ doctor.description }} </div>
+        {% if relationships.doctor_accept %}
+            {% if doctor.accept_call %}
+                <div>{{ doctor.skype|default:"Нет скайпа" }}</div>
             {% endif %}
-        </div>
+            {% if  doctor.hospital %}
+                <div>{{ doctor.hospital }} </div>
+            {% else %}
+                <div>{{ doctor.personal_address }} </div>
+            {% endif %}
+            {% if relationships.patient_accept %}
+                {#            TODO add timetable#}
+                <button class="btn waves-effect beige">Записаться на прием</button>
+            {% endif %}
+            {% if doctor.is_private %}
+                {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}
 
-    {% endif %}
-    {% if doctor_spheres %}
-        <div class="row">
+            {% else %}
+                {% include 'accounts/doctor/public_doctor/_public_doctor_private_info.html' %}
+
+            {% endif %}
+
+        {% endif %}
+        {% if not relationships.doctor_accept %}
+            {% if relationships.patient_accept %}
+                <button class="btn beige" id="require-access" data-patient-accept="false">
+                    Вы запросили доступ,
+                    Закрыть данные для этого пользователя
+                </button>
+            {% else %}
+                <button class="btn beige" id="require-access" data-patient-accept="true">Запросить доступ и открыть свои
+                    данные
+                </button>
+            {% endif %}
+
+        {% else %}
+
+            <div>
+                {% if relationships.patient_accept %}
+                    <div class="card-panel teal lighten-2">Это ваш доктор</div>
+                    {% if doctor.accept_chat %}
+                        <button class="btn waves-effect beige">Написать</button>
+                    {% endif %}
+                    <button class="btn beige" id="require-access" data-patient-accept="false">Закрыть доступ</button>
+                {% else %}
+                    <button class="btn beige" id="require-access" data-patient-accept="true">Дать доступ</button>
+                {% endif %}
+            </div>
+
+        {% endif %}
+        {% if doctor_spheres %}
             {% include 'accounts/_reviews.html' %}
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 {% endblock %}
-
 {% block extrajs %}
     <script>
         $(document).ready(function () {
@@ -143,7 +141,8 @@
                         url: "{% url 'review-delete' %}",
                         success: function (response) {
                             if (response.length === 0) {
-                                review_block.remove()
+                                review_block.remove();
+                                location.reload();
                             }
                             else {
                                 review_block.append(response);

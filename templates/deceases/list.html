@@ -5,31 +5,29 @@
     <a href="{% url 'decease-list' %}" class="breadcrumb">Болезни</a>
 {% endblock %}
 {% block content %}
-    <div class="row center-align">
-        <div class="col s12">
-            <div class="col s3 left-align">
-                <input id="decease-input" type="text">
-                <ul class="collapsible expandable popout">
-                    {% for sphere in spheres %}
-                        <li>
-                            <div class="collapsible-header">{{ sphere.name }}</div>
-                            <div class="collapsible-body">
-                                <ul>
-                                    {% for decease in sphere.decease_set.all %}
-                                        <li>
-                                            <a href="#" class="decease-detail"
-                                               data-id="{{ decease.id }}">{{ decease.name }}</a>
-                                        </li>
-                                        <div class="divider"></div>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="col s9 decease"></div>
+    <div class="row center-align m-2">
+        <div class="col col-3 left-align">
+            <input id="decease-input" type="text">
+            <ul class="collapsible expandable popout">
+                {% for sphere in spheres %}
+                    <li>
+                        <div class="collapsible-header">{{ sphere.name }}</div>
+                        <div class="collapsible-body">
+                            <ul>
+                                {% for decease in sphere.decease_set.all %}
+                                    <li>
+                                        <a href="#" class="decease-detail"
+                                           data-id="{{ decease.id }}">{{ decease.name }}</a>
+                                    </li>
+                                    <div class="divider"></div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
+        <div class="col col-9 decease"></div>
     </div>
 {% endblock %}
 {% block extrajs %}

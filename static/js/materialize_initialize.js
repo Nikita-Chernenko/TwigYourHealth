@@ -1,7 +1,6 @@
 function materialize_initiailize() {
     $('.collapsible').collapsible();
     $('select').formSelect();
-    $('ul.tabs').tabs();
     $('.sidenav').sidenav();
     $('.datepicker').datepicker({
         selectMonths: true, // Creates a dropdown to control month

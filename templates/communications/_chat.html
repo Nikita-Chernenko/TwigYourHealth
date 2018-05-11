@@ -1,8 +1,8 @@
-<div class="s12 m6 l3 col chat-block" id="chat-block-short" style="display: none">
+<div class="col-12 col-md-6 l3 col chat-block" id="chat-block-short" style="display: none">
     <div class="chat-short-header">
         <div class="message-search">
             <i class="small material-icons">search</i>
-            <input class="circle">
+            <input class="circle" type="text">
         </div>
         <a class="chat-close"><i class="small material-icons">close</i></a>
     </div>
@@ -14,9 +14,13 @@
                  data-with-id="
                          {% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
                 {% if user.is_patient %}
-                    {% include 'accounts/_avatar.html' with user=chat.doctor.user height='50' width='50' img_class='circle chat-avatar' %}
+                    <a href="{% url 'profile' pk=chat.doctor.user.id %}" class="chat-avatar">
+                        {% include 'accounts/_avatar.html' with user=chat.doctor.user height='50' width='50' img_class='circle' %}
+                    </a>
                 {% elif user.is_doctor %}
-                    {% include 'accounts/_avatar.html' with user=chat.patient.user height='50' width='50' img_class='circle chat-avatar' %}
+                    <a href="{% url 'profile' pk=chat.patient.user.id %}" class="chat-avatar">
+                        {% include 'accounts/_avatar.html' with user=chat.patient.user height='50' width='50' img_class='circle' %}
+                    </a>
                 {% endif %}
                 <div class="username-last-message">
                     <div>
@@ -36,7 +40,7 @@
         {% endfor %}
     </div>
 </div>
-<div class="s12 m6 l3 col chat-block" id="chat-block-full" style="display: none">
+<div class="col-12 col-md-6 l3 col chat-block" id="chat-block-full" style="display: none">
     <div>
         <div class="chat-header">
             <a class="chat-back"><i class="small material-icons">arrow_back</i> </a>

@@ -1,9 +1,8 @@
 @import "reset";
-
 @import "materialize/materialize";
 @import "bootstrap/bootstrap-reboot";
 @import "bootstrap/bootstrap-grid";
-
+@import "bootstrap/bootstrap";
 @import "chat";
 @import "sign_up";
 @import "timetable";
@@ -29,7 +28,10 @@ i.icon-red {
   color: red;
 }
 
-header, main, footer {
+header, footer {
+  padding-left: 300px;
+}
+main{
   padding-left: 300px;
 }
 
@@ -77,4 +79,8 @@ main {
 .autocomplete-group strong {
   display: block;
   border-bottom: 1px solid #000;
+}
+
+.nav-link.active{
+  border-radius: 15px;
 }

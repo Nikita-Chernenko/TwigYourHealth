@@ -1,8 +1,8 @@
 <div class="registration-tabs row">
-    <div class="col l1 s1 center-align">
+    <div class="col col-lg-1 col-1 center-align">
         <a class="btn-small  reg-tab" href="{% url 'login' %}" type="submit">Login</a>
     </div>
-    <div class="col l8 s11 offset-l1 center-align">
+    <div class="col col-lg-8 col-11 offset-lg-1 center-align">
         {% with current_url=request.path %}
             {% url 'patient-sign-up' as url %}
             <a href="{{ url }}"

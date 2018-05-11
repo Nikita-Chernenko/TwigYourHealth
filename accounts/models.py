@@ -59,14 +59,17 @@ class DoctorSphere(models.Model):
 
     @property
     def rating(self):
-        return self.review_set.all().aggregate(rating=Avg('mark'))['rating']
+        try:
+            return int(self.review_set.all().aggregate(rating=Avg('mark'))['rating'])
+        except TypeError:
+            return None
 
     def __str__(self):
         return f'{self.doctor}-{self.sphere}'
 
 
 class Review(models.Model):
-    doctor_sphere = models.ForeignKey(DoctorSphere, on_delete=models.PROTECT)
+    doctor_sphere = models.ForeignKey(DoctorSphere, on_delete=models.CASCADE)
     comment = models.TextField('comment')
     mark = models.PositiveSmallIntegerField('mark', validators=[MaxValueValidator(100)])
     patient = models.ForeignKey('Patient', on_delete=models.PROTECT)
