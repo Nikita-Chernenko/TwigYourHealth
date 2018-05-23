@@ -1,5 +1,6 @@
 import datetime
 import json
+from copy import deepcopy
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
@@ -38,9 +39,9 @@ def message_list(request, chat_id):
 
 @require_http_methods(['POST'])
 def message_create_update(request, pk=None):
-    request.POST._mutable = True
-    request.POST['author'] = request.user.id
-    form = MessageForm(request.POST, instance=pk)
+    data = deepcopy(request.POST)
+    data['author'] = request.user.id
+    form = MessageForm(data, instance=pk)
     if form.is_valid():
         message = form.save()
         channel_layer = get_channel_layer()

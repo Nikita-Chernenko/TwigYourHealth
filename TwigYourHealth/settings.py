@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_extensions',
     'sass_processor',
     'phonenumber_field',
     'annoying',
@@ -172,4 +173,9 @@ CHANNEL_LAYERS = {
             "hosts": [("localhost", 6379)],
         },
     },
+}
+
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
 }

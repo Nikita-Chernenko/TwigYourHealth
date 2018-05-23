@@ -12,7 +12,10 @@ class ShiftType(models.Model):
     doctor = models.ForeignKey(Doctor, verbose_name='doctor', on_delete=models.CASCADE)
     start = models.TimeField('start of the shift')
     end = models.TimeField('end of the shift')
-    gap = models.DurationField('time of a visit', null=True, blank=True)
+    gap = models.DurationField('time of a visit', null=True, blank=True, help_text='time in minutes')
+
+    class Meta:
+        unique_together = [['doctor', 'start', 'end']]
 
     def __init__(self, *args, **kwargs):
         super(ShiftType, self).__init__(*args, **kwargs)
@@ -24,7 +27,7 @@ class ShiftType(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         if not self.__original_gap and self.gap:
-            self.gap = (self.gap // 60) * 60
+            self.gap = self.gap * 60
         elif not self.gap:
             self.gap = timedelta(minutes=15)
         super(ShiftType, self).save(force_insert=False, force_update=False, using=None,
@@ -46,6 +49,7 @@ class Shift(models.Model):
 
     class Meta:
         ordering = ['day']
+        unique_together = [['shift_type', 'day']]
 
     def __str__(self):
         return f'{self.shift_type} - {self.day}'
@@ -107,7 +111,8 @@ class Visit(models.Model):
 
         if hasattr(self, 'shift') and hasattr(self.shift, 'shift_type') \
                 and hasattr(self.shift.shift_type, 'doctor') and hasattr(self, 'patient') \
-                and not Relationships.objects.filter(patient=self.patient, doctor=self.shift.shift_type.doctor):
+                and not Relationships.objects.filter(patient=self.patient,
+                                                     doctor=self.shift.shift_type.doctor).exists():
             raise ValidationError('the patient has no connection with doctor from the shift')
 
         if hasattr(self, 'shift') and self.shift.visit_set.filter(patient=self.patient):

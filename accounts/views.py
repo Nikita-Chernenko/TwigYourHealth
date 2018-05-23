@@ -22,18 +22,18 @@ from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Decease
 
-user_prefix = 'user'
-patient_prefix = 'patient'
-doctor_prefix = 'doctor'
-public_doctor_prefix = 'public_doctor'
-private_doctor_prefix = 'private_doctor'
+USER_PREFIX = 'user'
+PATIENT_PREFIX = 'patient'
+DOCTOR_PREFIX = 'doctor'
+PUBLIC_DOCTOR_PREFIX = 'public_doctor'
+PRIVATE_DOCTOR_PREFIX = 'private_doctor'
 
 
 @render_to('accounts/patient/patient_sign_up.html')
 @atomic
 def patient_sign_up(request):
-    user_form = UserPatientForm(request.POST or None, prefix=user_prefix)
-    patient_form = PatientForm(request.POST or None, prefix=patient_prefix)
+    user_form = UserPatientForm(request.POST or None, prefix=USER_PREFIX)
+    patient_form = PatientForm(request.POST or None, prefix=PATIENT_PREFIX)
     if request.POST:
         if user_form.is_valid() and patient_form.is_valid():
             patient = patient_form.save(commit=False)
@@ -47,9 +47,9 @@ def patient_sign_up(request):
 @render_to('accounts/doctor/public_doctor/public_doctor_sign_up.html')
 @atomic
 def public_doctor_sign_up(request):
-    user_form = UserDoctorForm(request.POST or None, prefix=user_prefix)
-    doctor_form = DoctorPublicDoctorForm(request.POST or None, prefix=doctor_prefix)
-    public_doctor_form = PublicDoctorForm(request.POST or None, prefix=public_doctor_prefix)
+    user_form = UserDoctorForm(request.POST or None, prefix=USER_PREFIX)
+    doctor_form = DoctorPublicDoctorForm(request.POST or None, prefix=DOCTOR_PREFIX)
+    public_doctor_form = PublicDoctorForm(request.POST or None, prefix=PUBLIC_DOCTOR_PREFIX)
     if request.POST:
         if user_form.is_valid() and doctor_form.is_valid() and public_doctor_form.is_valid():
             user = user_form.save()
@@ -67,9 +67,9 @@ def public_doctor_sign_up(request):
 @render_to('accounts/doctor/private_doctor/private_doctor_sign_up.html')
 @atomic
 def private_doctor_sign_up(request):
-    user_form = UserDoctorForm(request.POST or None, prefix=user_prefix)
-    doctor_form = DoctorPrivateDoctorForm(request.POST or None, prefix=doctor_prefix)
-    private_doctor_form = PrivateDoctorForm(request.POST or None, prefix=private_doctor_prefix)
+    user_form = UserDoctorForm(request.POST or None, prefix=USER_PREFIX)
+    doctor_form = DoctorPrivateDoctorForm(request.POST or None, prefix=DOCTOR_PREFIX)
+    private_doctor_form = PrivateDoctorForm(request.POST or None, prefix=PRIVATE_DOCTOR_PREFIX)
     if request.POST:
         if user_form.is_valid() and doctor_form.is_valid() and private_doctor_form.is_valid():
             user = user_form.save()
@@ -201,8 +201,8 @@ def update(request):
 def update_patient(request):
     patient = request.user
     if request.method == 'POST':
-        user_form = UserForm(request.POST, request.FILES, instance=request.user, prefix=user_prefix)
-        patient_form = PatientForm(request.POST, instance=request.user.patient, prefix=patient_prefix)
+        user_form = UserForm(request.POST, request.FILES, instance=request.user, prefix=USER_PREFIX)
+        patient_form = PatientForm(request.POST, instance=request.user.patient, prefix=PATIENT_PREFIX)
         if user_form.is_valid() and patient_form.is_valid():
             patient = patient_form.save(commit=False)
             patient.user = user_form.save()
@@ -210,8 +210,8 @@ def update_patient(request):
             messages.add_message(request, messages.INFO, "Успешное обновление аккаунта")
             return redirect('self-profile')
     else:
-        user_form = UserForm(instance=patient, prefix=user_prefix)
-        patient_form = PatientForm(instance=patient.patient, prefix=patient_prefix)
+        user_form = UserForm(instance=patient, prefix=USER_PREFIX)
+        patient_form = PatientForm(instance=patient.patient, prefix=PATIENT_PREFIX)
     return {'user_form': user_form, 'patient_form': patient_form}
 
 
@@ -220,10 +220,10 @@ def update_patient(request):
 def update_public_doctor(request):
     doctor = request.user
     if request.method == 'POST':
-        user_form = UserForm(request.POST, request.FILES, instance=doctor, prefix=user_prefix)
-        doctor_form = DoctorPublicDoctorForm(request.POST, instance=doctor.doctor, prefix=doctor_prefix)
+        user_form = UserForm(request.POST, request.FILES, instance=doctor, prefix=USER_PREFIX)
+        doctor_form = DoctorPublicDoctorForm(request.POST, instance=doctor.doctor, prefix=DOCTOR_PREFIX)
         public_doctor_form = PublicDoctorForm(request.POST, instance=doctor.doctor.publicdoctor,
-                                              prefix=public_doctor_prefix)
+                                              prefix=PUBLIC_DOCTOR_PREFIX)
         if user_form.is_valid() and doctor_form.is_valid() and public_doctor_form.is_valid():
             user = user_form.save()
             doctor = doctor_form.save(commit=False)
@@ -236,10 +236,10 @@ def update_public_doctor(request):
 
             return redirect('self-profile')
     else:
-        user_form = UserForm(instance=doctor, prefix=user_prefix)
-        doctor_form = DoctorPublicDoctorForm(instance=doctor.doctor, prefix=doctor_prefix)
+        user_form = UserForm(instance=doctor, prefix=USER_PREFIX)
+        doctor_form = DoctorPublicDoctorForm(instance=doctor.doctor, prefix=DOCTOR_PREFIX)
         public_doctor_form = PublicDoctorForm(instance=doctor.doctor.publicdoctor,
-                                            prefix=public_doctor_prefix)
+                                              prefix=PUBLIC_DOCTOR_PREFIX)
     return {'user_form': user_form, 'doctor_form': doctor_form, 'public_doctor_form': public_doctor_form}
 
 
@@ -248,10 +248,10 @@ def update_public_doctor(request):
 def update_private_doctor(request):
     doctor = request.user
     if request.method == 'POST':
-        user_form = UserForm(request.POST, request.FILES, instance=doctor, prefix=user_prefix)
-        doctor_form = DoctorPrivateDoctorForm(request.POST, instance=doctor.doctor, prefix=doctor_prefix)
+        user_form = UserForm(request.POST, request.FILES, instance=doctor, prefix=USER_PREFIX)
+        doctor_form = DoctorPrivateDoctorForm(request.POST, instance=doctor.doctor, prefix=DOCTOR_PREFIX)
         private_doctor_form = PrivateDoctorForm(request.POST, instance=doctor.doctor.privatedoctor,
-                                                prefix=private_doctor_prefix)
+                                                prefix=PRIVATE_DOCTOR_PREFIX)
         if user_form.is_valid() and doctor_form.is_valid() and private_doctor_form.is_valid():
             user = user_form.save()
             doctor = doctor_form.save(commit=False)
@@ -263,10 +263,10 @@ def update_private_doctor(request):
             messages.add_message(request, messages.INFO, "Успешное обновление аккаунта")
             return redirect('self-profile')
     else:
-        user_form = UserForm(instance=doctor, prefix=user_prefix)
-        doctor_form = DoctorPrivateDoctorForm(instance=doctor.doctor, prefix=doctor_prefix)
+        user_form = UserForm(instance=doctor, prefix=USER_PREFIX)
+        doctor_form = DoctorPrivateDoctorForm(instance=doctor.doctor, prefix=DOCTOR_PREFIX)
         private_doctor_form = PrivateDoctorForm(instance=doctor.doctor.privatedoctor,
-                                                prefix=private_doctor_prefix)
+                                                prefix=PRIVATE_DOCTOR_PREFIX)
     return {'user_form': user_form, 'doctor_form': doctor_form, 'private_doctor_form': private_doctor_form}
 
 
@@ -337,6 +337,7 @@ def user_retrieve(request, pk):
     user = get_object_or_404(User, pk=pk)
     user = serialize(queryset=[user], format='json')
     return JsonResponse(user, safe=False)
+
 
 def _success_change_password(request):
     messages.add_message(request, messages.INFO, "Пароль успешно изменен")

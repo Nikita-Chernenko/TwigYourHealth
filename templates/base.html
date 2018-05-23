@@ -89,9 +89,13 @@
                 <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
                         class="material-icons left">library_books</i>Deceases</a>
                 </li>
+
+                {% if user.is_doctor %}
+                    <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i class="material-icons left">schedule</i>Timetable</a>
+                    </li>
+                {% endif %}
                 <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
                 </li>
-
             {% else %}
                 <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
                 </li>
