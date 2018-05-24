@@ -98,6 +98,23 @@
                             class="material-icons left">search</i>Doctor search</a>
                     </li>
                 {% endif %}
+                <li class="p-2">
+                    <ul class="collapsible notifications">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">bell</i>Notifications</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>text</li>
+                                    {% for n in notifications %}
+                                        <li> {{ n.text }}</li>
+                                        <div class="divider"></div>
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                 <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
                 </li>
             {% else %}
@@ -178,6 +195,12 @@
             var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
             var PROFILE = "{% url 'profile' pk=0 %}";
             chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
+            $('.notifications .collapsible-header').click(function () {
+                $.ajax({
+                    url: "{% url 'mark-read' %}",
+                    method: "POST"
+                })
+            })
 
         });
 
