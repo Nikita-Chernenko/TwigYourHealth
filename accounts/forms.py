@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm as _UserCreationForm, AuthenticationForm
 from material import Layout, Row
 
-from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review
+from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review, City
+from deceases.models import Sphere
 
 
 class LoginViewForm(AuthenticationForm):
@@ -100,3 +101,57 @@ class ReviewForm(forms.ModelForm):
         fields = ['comment', 'mark']
 
     layout = Layout(Row('comment'), Row('mark'))
+
+
+class DoctorSearchForm(forms.Form):
+    min_price = forms.IntegerField(required=False)
+    max_price = forms.IntegerField(required=False)
+    name = forms.CharField(required=False)
+    surname = forms.CharField(required=False)
+    sphere = forms.ModelChoiceField(queryset=Sphere.objects.all(), required=False)
+    city = forms.ModelChoiceField(queryset=City.objects.all(), required=False)
+    TO_HIGH_PRICE, TO_LOW_PRICE = '1', '2'
+
+    ordering = forms.ChoiceField(
+        choices=(('0', '-------'), (TO_HIGH_PRICE, 'To high price'), (TO_LOW_PRICE, 'To low price')),
+        required=False)
+    only_public = forms.BooleanField(required=False)
+    only_private = forms.BooleanField(required=False)
+    layout = Layout(
+        Row('name', 'surname', 'min_price', 'max_price'),
+        Row('sphere', 'city', 'ordering', 'only_public', 'only_private')
+    )
+
+    def _get_qs(self):
+        queryset = Doctor.objects.all()
+        min_price = self.cleaned_data['min_price']
+        max_price = self.cleaned_data['max_price']
+        name = self.cleaned_data['name']
+        surname = self.cleaned_data['surname']
+        sphere = self.cleaned_data['sphere']
+        city = self.cleaned_data['city']
+        ordering = self.cleaned_data['ordering']
+        only_private = self.cleaned_data['only_private']
+        only_public = self.cleaned_data['only_public']
+        if min_price:
+            queryset = queryset.filter(privatedoctor__hour_rate__gte=min_price)
+        if max_price:
+            queryset = queryset.filter(privatedoctor__hour_rate__lte=max_price)
+        if name:
+            queryset = queryset.filter(user__first_name__icontains=name)
+        if surname:
+            queryset = queryset.filter(user__surname__icontais=surname)
+        if sphere:
+            queryset = queryset.filter(doctorsphere__sphere=sphere)
+        if city:
+            queryset = queryset.filter(user__city=city)
+        if ordering:
+            if ordering == self.TO_HIGH_PRICE:
+                queryset = queryset.order_by('privatedoctor__hour_rate')
+            elif ordering == self.TO_LOW_PRICE:
+                queryset = queryset.order_by('-privatedoctor__hour_rate')
+        if only_private:
+            queryset = queryset.filter(privatedoctor__isnull=False)
+        if only_public:
+            queryset = queryset.filter(publicdoctor__isnull=False)
+        return queryset

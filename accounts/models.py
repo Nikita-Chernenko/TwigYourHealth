@@ -7,13 +7,17 @@ from django.db.models import Sum, Avg, Q
 from phonenumber_field.modelfields import PhoneNumberField
 
 
+class City(models.Model):
+    name = models.CharField(max_length=256, unique=True)
+
+
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = PhoneNumberField(unique=True)
     patronymic = models.CharField(max_length=64)
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
-    city = models.CharField(max_length=256, blank=True, null=True)
+    city = models.ForeignKey(City, on_delete=models.PROTECT, null=True)
     avatar = models.ImageField(upload_to='user_avatars', blank=True, null=True)
 
     def __str__(self):

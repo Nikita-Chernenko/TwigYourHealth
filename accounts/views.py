@@ -16,8 +16,8 @@ from django.shortcuts import render_to_response
 from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
-    PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm
-from accounts.models import Relationships, DoctorSphere, Review
+    PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm, DoctorSearchForm
+from accounts.models import Relationships, DoctorSphere, Review, Doctor
 from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Decease
@@ -342,3 +342,13 @@ def user_retrieve(request, pk):
 def _success_change_password(request):
     messages.add_message(request, messages.INFO, "Пароль успешно изменен")
     return redirect('self-profile')
+
+
+@user_passes_test(lambda u: u.is_patient)
+@render_to('accounts/doctor_search.html')
+def doctor_search(request):
+    form = DoctorSearchForm(request.GET or None)
+    doctors = Doctor.objects.all()
+    if form.is_valid():
+        doctors = form._get_qs()
+    return {'doctors': doctors, 'form': form}

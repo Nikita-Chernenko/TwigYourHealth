@@ -93,6 +93,10 @@
                 {% if user.is_doctor %}
                     <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i class="material-icons left">schedule</i>Timetable</a>
                     </li>
+                {% elif user.is_patient %}
+                    <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
+                            class="material-icons left">search</i>Doctor search</a>
+                    </li>
                 {% endif %}
                 <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
                 </li>

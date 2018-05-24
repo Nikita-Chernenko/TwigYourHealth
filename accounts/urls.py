@@ -3,7 +3,8 @@ from django.urls import path
 
 from accounts.forms import LoginViewForm
 from accounts.views import patient_sign_up, public_doctor_sign_up, private_doctor_sign_up, logout, profile, update, \
-    self_profile, relationships_update, review_create_update, review_delete, user_retrieve, _success_change_password
+    self_profile, relationships_update, review_create_update, review_delete, user_retrieve, _success_change_password, \
+    doctor_search
 
 urlpatterns = [
     path('relationships/<int:pk>/update', relationships_update, name='relationships-update'),
@@ -22,5 +23,7 @@ urlpatterns = [
                                                        'post_change_redirect': 'success-change-password'},
          name='change-password'),
     path('user/<int:pk>/', user_retrieve, name='user-retrieve'),
-    path('success-change-password', _success_change_password, name='success-change-password')
+    path('success-change-password', _success_change_password, name='success-change-password'),
+
+    path('doctor-search', doctor_search, name='doctor-search'),
 ]

@@ -1,3 +1,4 @@
+import os
 from skpy import SkypeCallMsg
 from time import gmtime, strftime
 from skype_utils.call import Call
@@ -6,10 +7,11 @@ from datetime import datetime, timedelta
 from skype_utils.db_utils import get_patients_skype_accounts
 import json
 
-CONFIG = 'skype_utils\config.json'
+CONFIG = os.path.join('skype_utils', 'config.json')
 LAST_TIME_ATTR = 'LastRunOfProcedure'
 INTERVAL_ATTR = 'Interval'
 LOCALTIME = 'Local_time'
+
 
 def string_to_datetime(string):
     try:
@@ -20,6 +22,7 @@ def string_to_datetime(string):
 
 def set_time_as_local(time):
     return time + timedelta(hours=int(get_data_from_conf(LOCALTIME)))
+
 
 def get_last_time_of_update():
     with open(CONFIG, 'r') as f:

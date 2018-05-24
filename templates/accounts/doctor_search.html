@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load material_form %}
+{% block breadcrumbs %}
+    <a href="{% url 'doctor-search' %}" class="breadcrumb">Doctor search</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form method="get">
+            {% form form=form %}
+            {% endform %}
+            <div class="row justify-content-center mt-2">
+                <button class="btn  beige" type="submit">Search</button>
+            </div>
+        </form>
+
+        <div class="divider mt-2 mb-2"></div>
+        <div class="col-12">
+            {% for doctor in doctors %}
+                <div class="w-100 d-flex justify-content-between align-items-center">
+                    <a href="{% url 'profile'  pk=doctor.user.id %}">
+                        {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=doctor.user %}
+                        {{ doctor.user.username }}
+                    </a>
+                    <div>
+                        <a href="{% url 'profile' pk=doctor.user.id %}">
+                        </a>
+                    </div>
+                    {% if doctor.is_private %}
+                        <div>Hour rate: {{ doctor.privatedoctor.hour_rate }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
