@@ -3,6 +3,7 @@ from django.shortcuts import render
 from pushbullet import Pushbullet
 
 from TwigYourHealth.settings import pb
+from accounts.models import User
 from notifications.models import Notification
 
 
@@ -20,5 +21,5 @@ def send_message():
         n.save()
 
 
-def add_message(message, user, important=False):
-    Notification.objects.create(text=message, user=user, important=important)
+def add_message(message: str, owner: User, important: bool = False):
+    Notification.objects.create(text=message, owner=owner, important=important)

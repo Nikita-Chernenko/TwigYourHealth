@@ -21,6 +21,7 @@ from accounts.models import Relationships, DoctorSphere, Review, Doctor
 from accounts.models import User
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Decease
+from notifications.views import add_message
 
 USER_PREFIX = 'user'
 PATIENT_PREFIX = 'patient'
@@ -286,14 +287,20 @@ def relationships_update(request, pk):
         if not doctor_accept:
             raise Http404('no doctor_accept param')
         doctor_accept = json.loads(doctor_accept)
+        add_message(
+            message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a>  has {'added' if doctor_accept else 'removed'} from his contacts",
+
+            owner=relationships.patient.user)
         relationships.doctor_accept = doctor_accept
-        relationships.patient_accept = True  # change in prod
     else:
         relationships = get_object_or_404(Relationships, pk=pk, patient=patient)
         patient_accept = request.POST.get('patient_accept')
         if not patient_accept:
             raise Http404('no patient_accept param')
         patient_accept = json.loads(patient_accept)
+        add_message(
+            message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a>  has {'added' if patient_accept else 'removed'} from his contacts",
+            owner=relationships.doctor.user)
         relationships.patient_accept = patient_accept
     relationships.save()
     return JsonResponse(data=model_to_dict(relationships))
@@ -313,6 +320,9 @@ def review_create_update(request, doctor_sphere_id, pk=None):
         review.patient = request.user.patient
         review.doctor_sphere = doctor_sphere
         review.save()
+        add_message(
+            message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a>  has {'updated' if pk else 'created'} his review",
+            owner=doctor_sphere.doctor.user)
         return HttpResponse('')
     return render_to_response('accounts/_review_create_update_form.html',
                               {'pk': pk, 'review_form': review_form, 'doctor_sphere_id': doctor_sphere_id})
@@ -328,6 +338,10 @@ def review_delete(request):
     if not review.patient == request.user.patient:
         return HttpResponseForbidden('The user is not the owner of the review')
     review.delete()
+    patient = request.user.patient
+    add_message(
+        message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a> has removed his review",
+        owner=review.doctor_sphere.doctor.user)
     return HttpResponse('')
 
 

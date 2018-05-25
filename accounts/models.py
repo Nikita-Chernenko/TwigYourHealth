@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator
 from django.db import models
 from django.db.models import Sum, Avg, Q
+from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -22,6 +23,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def get_absolute_url(self):
+        return reverse('profile', args=[self.id])
 
 
 class Hospital(models.Model):
@@ -51,6 +55,9 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f'doctor {self.user}'
+
+    def get_absolute_url(self):
+        return self.user.get_absolute_url()
 
 
 class DoctorSphere(models.Model):
@@ -103,12 +110,18 @@ class PrivateDoctor(models.Model):
     def __str__(self):
         return f'private {self.doctor} '
 
+    def get_absolute_url(self):
+        return self.doctor.get_absolute_url()
+
 
 class PublicDoctor(models.Model):
     doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'public {self.doctor}'
+
+    def get_absolute_url(self):
+        return self.doctor.get_absolute_url()
 
 
 class AgeGap(models.Model):
@@ -157,6 +170,9 @@ class Patient(models.Model):
             age = (date.today() - self.birthday).days // 364
             self.age_gap = AgeGap.objects.get(start__lte=age, end__gt=age)
         super(Patient, self).save(force_insert, force_update, using, update_fields)
+
+    def get_absolute_url(self):
+        return self.user.get_absolute_url()
 
 
 class Relationships(models.Model):

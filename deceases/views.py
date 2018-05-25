@@ -12,6 +12,8 @@ from django.views.decorators.http import require_http_methods
 from accounts.models import Doctor, Relationships, DoctorSphere
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Symptom, Decease, BodyPart, PatientDecease, Sphere
+from notifications.views import add_message
+from utils.checks import has_relationships
 
 
 @render_to('deceases/diagnostics.html')
@@ -45,12 +47,16 @@ def doctor_create_update_decease(request, pk=None):
     form = PatientDeceaseForm(request.POST, instance=d, auto_id=str(pk) + '_%s')
     if form.is_valid():
         decease = form.save(commit=False)
-        if not Relationships.objects.filter(doctor=request.user.doctor, patient=decease.patient).exists():
+        doctor = request.user.doctor
+
+        if not has_relationships(doctor.id, decease.patient.id):
             return HttpResponseForbidden('No relation ship between doctor and user')
         decease.author = request.user
         decease.decease = Decease.objects.get(name=form.cleaned_data['decease'])
         decease.save()
-        form = PatientDeceaseForm(initial={'patient': decease.patient}, auto_id=str(pk) + '_%s')
+        add_message(
+            message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a> has {'updated' if pk else 'created'} a new diagnos",
+            owner=decease.patient.user)
         return HttpResponse('')
     return render_to_response('deceases/_doctor_create_update_patient_decease_form.html',
                               {'decease_form': form, 'pk': pk})
@@ -97,9 +103,9 @@ def deceases_by_symptoms(request):
 
     current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=related_symptoms),
                          distinct=True)
-    chance = Round(Cast(current_chance, FloatField()) /  Cast(whole_chance, FloatField())) * 100
+    chance = Round(Cast(current_chance, FloatField()) / Cast(whole_chance, FloatField())) * 100
 
-    chance_with_people = ExpressionWrapper(Round(F('chance') * (0.1 +(F('people_occurrence') / 6000))), IntegerField())
+    chance_with_people = ExpressionWrapper(Round(F('chance') * (0.1 + (F('people_occurrence') / 6000))), IntegerField())
     deceases = list(Decease.objects
                     .annotate(symptom_count=Count('deceasesymptom',
                                                   filter=Q(deceasesymptom__symptom__in=related_symptoms),
@@ -124,7 +130,6 @@ def deceases_by_symptoms(request):
         random.shuffle(doctors)
         doctors = doctors[:3]
         deceases_with_doctors.append({"decease": d, "doctors": doctors})
-
 
     return {'deceases_with_doctors': deceases_with_doctors}
 

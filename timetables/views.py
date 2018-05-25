@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_http_methods
 
 from accounts.models import Doctor
+from notifications.views import add_message
 from timetables.forms import ShiftForm, ShiftTypeForm, VisitForm
 from timetables.models import Shift, Visit, ShiftType
 
@@ -82,6 +83,10 @@ def visit_create(request):
     form = VisitForm(data)
     if form.is_valid():
         visit = form.save()
+        add_message(
+            message=f"<a href='{request.user.get_absolute_url()}'>{request.user.username}</a> has created a visit on date {visit.shift.day} at time {visit.start}-{visit.end}",
+            owner=visit.shift.shift_type.doctor.user, important=True
+        )
         return JsonResponse({'success': True, 'visit_id': visit.id})
     return JsonResponse({'errors': form.errors, 'success': False})
 
@@ -98,4 +103,8 @@ def visit_remove(request, pk):
     else:
         return HttpResponseForbidden("You are not either doctor or patient")
     visit.delete()
+    add_message(
+        message=f"<a href='{request.user.get_absolute_url()}'>{request.user.username}</a> has removed a visit on date {visit.shift.day} at time {visit.start}-{visit.end}",
+        owner=visit.patient if request.user.is_patient else visit.shift.shift_type.doctor.user, important=True
+    )
     return JsonResponse({'success': True})
