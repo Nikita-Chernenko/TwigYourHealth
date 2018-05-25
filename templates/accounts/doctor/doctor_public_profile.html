@@ -21,8 +21,9 @@
                 <div>{{ doctor.personal_address }} </div>
             {% endif %}
             {% if relationships.patient_accept %}
-                {#            TODO add timetable#}
-                <button class="btn waves-effect beige">Записаться на прием</button>
+                <a href="{% url 'timetable' doctor_pk=doctor.pk %}" class="btn waves-effect beige">
+                    Записаться на прием
+                </a>
             {% endif %}
             {% if doctor.is_private %}
                 {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}

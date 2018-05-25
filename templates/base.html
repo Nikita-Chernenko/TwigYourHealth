@@ -103,18 +103,21 @@
                         <li>
                             <div class="collapsible-header"><i class="material-icons left">notifications</i>
                                 <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
+                                    {% if notifications %}
+                                        <span class="new badge blue"> {{ notifications.count }}</span>{% endif %}
                                 </div>
                             </div>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li>text</li>
-                                    {% for n in notifications %}
-                                        <li> {{ n.text }}</li>
-                                        <div class="divider"></div>
-                                    {% endfor %}
-                                </ul>
+                            {% if notifications %}
+                                <div class="collapsible-body">
+                                    <ul>
+                                        {% for n in notifications %}
+                                            <li> {{ n.text }}</li>
+                                            <div class="divider"></div>
+                                        {% endfor %}
+                                    </ul>
 
-                            </div>
+                                </div>
+                            {% endif %}
                         </li>
                     </ul>
                 </li>

@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load utils %}
 {% block breadcrumbs %}
-    <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">Doctor profile</a>
-    {#    TODO timetable breadcrumb#}
+    {% if user.is_doctor %}
+        <a href="{% url 'self-profile' %}" class="breadcrumb">Profile</a>
+    {% endif %}
+    <a href="{{ request.path }}" class="breadcrumb">Timetable</a>
 {% endblock %}
 
 {% block content %}

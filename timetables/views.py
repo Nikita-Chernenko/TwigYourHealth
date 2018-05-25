@@ -12,7 +12,6 @@ from accounts.models import Doctor
 from timetables.forms import ShiftForm, ShiftTypeForm, VisitForm
 from timetables.models import Shift, Visit, ShiftType
 
-# TODO check relationships/ divide for patient and doctor
 from utils.checks import has_relationships
 
 SHIFT_TYPE_PREFIX = 'shift_type'
@@ -36,7 +35,6 @@ def timetable(request, doctor_pk):
     else:
         return HttpResponseForbidden('You are not doctor or patient')
     today = datetime.today()
-    # TODO check that visits are related to the shifts
     shift_types = ShiftType.objects.filter(doctor=doctor).prefetch_related(
         Prefetch('shift_set', queryset=Shift.objects.filter(day__gte=today, day__lt=today + timedelta(days=14))),
         'shift_set__visit_set')

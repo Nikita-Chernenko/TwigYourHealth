@@ -104,5 +104,10 @@ class ChatEntity(models.Model):
         super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
 
     def clean(self):
-        # TODO add check that messages haven't been included in other entities
-        pass
+        if self.messages.exists():
+            if self.id:
+                last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
+            else:
+                last_entity = ChatEntity.objects.latest('timestamp')
+            if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
+                raise ValidationError('At least one message has been included in previous entities')
