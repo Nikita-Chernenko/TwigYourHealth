@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'mptt',
     'channels',
     'sorl.thumbnail',
+    "storages",
 
     'accounts',
     'notifications',
