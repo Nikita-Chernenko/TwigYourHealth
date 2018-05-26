@@ -17,6 +17,7 @@ from django.urls import reverse
 from pushbullet import Pushbullet
 
 from TwigYourHealth.private_settings import PUSHBULLEY_KEY, SECRET_KEY
+from .private_settings import *
 
 
 def rel(*x):

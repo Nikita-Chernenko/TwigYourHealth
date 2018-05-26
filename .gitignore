@@ -41,7 +41,6 @@ tmtagsHistory
 .bundle
 
 venv
-*all.css
-*all.css.map
+
 *.sqlite3
 local_setting.py
