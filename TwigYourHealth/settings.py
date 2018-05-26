@@ -1,7 +1,7 @@
 from .base_settings import *
 import dj_database_url
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
