@@ -19,12 +19,12 @@ from pushbullet import Pushbullet
 from TwigYourHealth.private_settings import PUSHBULLEY_KEY, SECRET_KEY
 
 
-
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
 
 BASE_DIR = rel('.')
+DEBUG = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -99,6 +100,12 @@ WSGI_APPLICATION = 'TwigYourHealth.wsgi.application'
 
 # Database
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -156,7 +163,7 @@ FIXTURE_DIRS = [rel('..', 'fixtures')]
 pb = Pushbullet(PUSHBULLEY_KEY)
 
 # Chat
-ASGI_APPLICATION = "communication.routing.application"
+ASGI_APPLICATION = "TwigYourHealth.routing.application"
 
 CHANNEL_LAYERS = {
     "default": {
