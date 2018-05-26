@@ -178,3 +178,5 @@ GRAPH_MODELS = {
     'all_applications': True,
     'group_models': True,
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
