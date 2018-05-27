@@ -79,12 +79,6 @@ def medical_records(request, patient_id):
     return {'medical_records': medical_records}
 
 
-# WARNING tested only in sqlite
-class Round(Func):
-    function = 'ROUND'
-    template = '%(function)s(%(expressions)s, 2)'
-
-
 @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
@@ -101,9 +95,9 @@ def deceases_by_symptoms(request):
 
     current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=related_symptoms),
                          distinct=True)
-    chance = Round(Cast(current_chance, FloatField()) / Cast(whole_chance, FloatField())) * 100
+    chance = Cast(current_chance, FloatField()) / Cast(whole_chance, FloatField()) * 100
 
-    chance_with_people = ExpressionWrapper(Round(F('chance') * (1 + (F('number') / 6000))), IntegerField())
+    chance_with_people = ExpressionWrapper(F('chance') * (1 + (F('number') / 6000)), output_field=FloatField())
     deceases = list(Decease.objects
                     .annotate(symptom_count=Count('deceasesymptom',
                                                   filter=Q(deceasesymptom__symptom__in=related_symptoms),
@@ -118,6 +112,7 @@ def deceases_by_symptoms(request):
 
     deceases_with_doctors = []
     for d in deceases:
+        d['chance'] = round(d['chance'])
         sphere = d['sphere']
         doctors_sphere = (DoctorSphere.objects.filter(sphere__pk=sphere).select_related('doctor').order_by('?')[:1000])
         doctors_sphere = list(sorted(doctors_sphere, key=lambda x: x.rating))[:20]
