@@ -37,3 +37,5 @@ DATABASES['default'].update(db_from_env)
 import ssl
 if hasattr(ssl, '_create_unverified_context'):
    ssl._create_default_https_context = ssl._create_unverified_context
+
+   # TODO change settings name, add storage names

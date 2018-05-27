@@ -67,6 +67,7 @@ class Decease(models.Model):
     passing = models.TextField(blank=True, null=True)
     recommendations = models.TextField(blank=True, null=True)
     occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
+    number = models.PositiveIntegerField('number of people in average to get decease from 10^6', default=0)
 
     class Meta:
         ordering = ['name']
@@ -75,11 +76,6 @@ class Decease(models.Model):
         return self.name
 
 
-class DeceaseAgeGapGender(models.Model):
-    decease = models.ForeignKey(Decease, on_delete=models.CASCADE)
-    gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
-    age_gap = models.ForeignKey(AgeGap, on_delete=models.CASCADE)
-    number = models.PositiveIntegerField('number of people in average to get decease from 10^6')
 
 
 class DeceaseSymptom(models.Model):
