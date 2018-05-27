@@ -8,6 +8,7 @@ from django.db.models.functions import Cast, Length
 from django.http import JsonResponse, HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
+from math import sqrt
 
 from accounts.models import Doctor, Relationships, DoctorSphere
 from deceases.forms import PatientDeceaseForm
@@ -87,7 +88,7 @@ def deceases_by_symptoms(request):
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids).values_list('name', flat=True)
     symptoms_lookup = Q()
     for s in symptoms:
-        symptoms_lookup |= Q(name__icontains=s)
+        symptoms_lookup |= Q(name__icontains=s[:-1])
 
     related_symptoms = Symptom.objects.filter(symptoms_lookup).values_list('id', flat=True)
     # TODO switch to distinct sum on postgres to get correct result
@@ -97,7 +98,6 @@ def deceases_by_symptoms(request):
                          distinct=True)
     chance = Cast(current_chance, FloatField()) / Cast(whole_chance, FloatField()) * 100
 
-    chance_with_people = ExpressionWrapper(F('chance') * (1 + (F('number') / 6000)), output_field=FloatField())
     deceases = list(Decease.objects
                     .annotate(symptom_count=Count('deceasesymptom',
                                                   filter=Q(deceasesymptom__symptom__in=related_symptoms),
@@ -105,14 +105,17 @@ def deceases_by_symptoms(request):
                     .annotate(chance=chance)
                     .annotate(chance=ExpressionWrapper(F('chance') * F('symptom_count') /
                                                        len(symptoms_ids), output_field=IntegerField()))
-                    .annotate(chance=chance_with_people)
                     .filter(~Q(chance=None))
-                    .order_by('-chance')
-                    .values('id', 'name', 'chance', 'sphere')[:10])
+                    .order_by()
+                    .values('id', 'name', 'chance', 'number', 'sphere')[:10])
 
     deceases_with_doctors = []
-    for d in deceases:
-        d['chance'] = round(d['chance'])
+    for ind, d in enumerate(deceases):
+        chance = d['chance']
+        number = d['number']
+        deceases[ind]['chance'] = round(((chance * (100 / 2.27)) * (0.5 + ((number / 1000) ** 0.25))) ** 0.5)
+
+    for d in sorted(deceases, key=lambda x: -x['chance']):
         sphere = d['sphere']
         doctors_sphere = (DoctorSphere.objects.filter(sphere__pk=sphere).select_related('doctor').order_by('?')[:1000])
         doctors_sphere = list(sorted(doctors_sphere, key=lambda x: x.rating))[:20]
