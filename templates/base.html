@@ -10,17 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
 
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/csrf.js' %}"></script>
-    <script src="{% static 'js/materialize.min.js' %}"></script>
-    <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
-    <script src="{% static 'js/materialize_initialize.js' %}"></script>
-    <script src="{% static 'js/chat.js' %}"></script>
-    <script src="{% static 'js/jquery.autocomplete.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-            crossorigin="anonymous"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
     {% block extrahead %} {% endblock %}
 </head>
 <body>
@@ -160,8 +150,9 @@
             </div>
         {% endif %}
 
-
-        {% block content %} {% endblock %}
+        <div class="mt-2 mb-4">
+            {% block content %} {% endblock %}
+        </div>
         {% if user.is_authenticated %}
             {% include 'communications/_chat.html' %}
         {% endif %}
@@ -192,6 +183,17 @@
             </div>
         </div>
     </footer>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
+    <script src="{% static 'js/materialize_initialize.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script src="{% static 'js/jquery.autocomplete.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script>
         $(document).ready(function () {
             materialize_initiailize();

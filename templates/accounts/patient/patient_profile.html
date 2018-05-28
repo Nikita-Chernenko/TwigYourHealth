@@ -5,9 +5,11 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <a href="{% url 'change-password' %}" class="btn wave-effects beige">Change password</a>
-        <a href="{% url 'update-profile' %}" class="btn wave-effects beige">Update profile</a>
-        <a href="{% url 'diagnostics' %}" class="btn wave-effects beige">Diagnostics</a>
+        <div class="d-flex flex-column justify-content-center flex-sm-row">
+            <a href="{% url 'change-password' %}" class="btn wave-effects teal lighten-2 m-2">Change password</a>
+            <a href="{% url 'update-profile' %}" class="btn wave-effects teal lighten-2 m-2">Update profile</a>
+            <a href="{% url 'diagnostics' %}" class="btn wave-effects teal lighten-2 m-2">Diagnostics</a>
+        </div>
         {% if medical_records %}
             <h3>Medical records</h3>
             <table class="table-of-contents">
@@ -50,11 +52,12 @@
                     </table>
                 {% endfor %}
             </div>
+            <div class="center-align mt-1 mb-2">
+                <a id="add_more" class="btn btn-small waves-effect beige">Add additional form</a>
+            </div>
             <button class="btn waves-effect beige">Sumbit</button>
         </form>
-        <div class="center-align">
-            <button id="add_more" class="btn waves-effect beige">Add more</button>
-        </div>
+
         <div id="empty_form" style="display:none">
             {% form form=patient_decease_formset.empty_form %}
             {% endform %}

@@ -123,10 +123,11 @@ def patient_profile(request, user):
         patient_decease_formset = PatientDeceaseFormSet(request.POST)
         if patient_decease_formset.is_valid():
             for decease in patient_decease_formset:
-                d = decease.save(commit=False)
-                d.decease = Decease.objects.get(name=decease.cleaned_data['decease'])
-                d.patient = patient
-                d.save()
+                if decease.cleaned_data != {}:
+                    d = decease.save(commit=False)
+                    d.decease = Decease.objects.get(name=decease.cleaned_data['decease'])
+                    d.patient = patient
+                    d.save()
             patient_decease_formset = PatientDeceaseFormSet()
     else:
         patient_decease_formset = PatientDeceaseFormSet()

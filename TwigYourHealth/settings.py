@@ -1,4 +1,3 @@
-from .base_settings import *
 import dj_database_url
 
 DEBUG = False
@@ -30,12 +29,24 @@ CHANNEL_LAYERS = {
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
-
-
-
 # the next monkey patch is necessary to allow dots in the bucket names
 import ssl
-if hasattr(ssl, '_create_unverified_context'):
-   ssl._create_default_https_context = ssl._create_unverified_context
 
-   # TODO change settings name, add storage names
+if hasattr(ssl, '_create_unverified_context'):
+    ssl._create_default_https_context = ssl._create_unverified_context
+
+    # TODO change settings name, add storage names
+
+
+AWS_S3_SECURE_URLS = False  # use http instead of https
+AWS_QUERYSTRING_AUTH = False
+AWS_STORAGE_BUCKET_NAME = 'twig-your-health.media'
+AWS_S3_REGION_NAME = 'eu-west-3'
+# don't add complex authentication-related query parameters for requests
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME  # Change to the media center you chose when creating the bucket
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'

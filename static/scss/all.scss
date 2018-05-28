@@ -31,7 +31,8 @@ i.icon-red {
 header, footer {
   padding-left: 300px;
 }
-main{
+
+main {
   padding-left: 300px;
 }
 
@@ -81,6 +82,27 @@ main {
   border-bottom: 1px solid #000;
 }
 
-.nav-link.active{
+.nav-link.active {
   border-radius: 15px;
+}
+
+a.btn {
+  color: white !important;
+  &:hover {
+    color: white !important;
+    text-decoration: none;
+  }
+  &.btn-small {
+    line-height: 24px;
+  }
+}
+
+.btn-small {
+  height: 24px;
+  line-height: 14px;
+}
+
+.btn > a {
+  color: white;
+  text-decoration: none;
 }

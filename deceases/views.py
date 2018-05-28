@@ -1,22 +1,20 @@
-import json
 import random
 
 from annoying.decorators import render_to
 from django.contrib.auth.decorators import user_passes_test
-from django.db.models import Q, Sum, Count, Func, FloatField, ExpressionWrapper, F, IntegerField, Avg
+from django.db.models import Q, Sum, Count, FloatField, ExpressionWrapper, F, IntegerField
 from django.db.models.functions import Cast, Length
 from django.http import JsonResponse, HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.http import require_http_methods
-from math import sqrt
 
-from accounts.models import Doctor, Relationships, DoctorSphere
+from accounts.models import Relationships, DoctorSphere
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Symptom, Decease, BodyPart, PatientDecease, Sphere
 from notifications.views import add_message
 from utils.checks import has_relationships
 
-
+# @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/diagnostics.html')
 def diagnostics(request):
     body_symptoms = BodyPart.objects.all()
@@ -80,7 +78,7 @@ def medical_records(request, patient_id):
     return {'medical_records': medical_records}
 
 
-@user_passes_test(lambda u: u.is_patient)
+# @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
     patient = request.user.patient

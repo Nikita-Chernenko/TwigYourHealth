@@ -1,10 +1,9 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from pushbullet import Pushbullet
+from django.conf import settings
+from django.http import JsonResponse
 
-from TwigYourHealth.settings import pb
 from accounts.models import User
 from notifications.models import Notification
+pb = settings.PB
 
 
 def mark_read(request):
@@ -13,6 +12,7 @@ def mark_read(request):
 
 
 def send_message():
+    pb = settings.pb
     device = pb.get_device('Xiaomi Redmi Note 4')
     notifications = Notification.objects.filter(important=True, sent=False)
     for n in notifications:

@@ -1,7 +1,29 @@
 {% for el in deceases_with_doctors %}
-    <li class="collection-item avatar">
-        <i class="circle red">{{ el.decease.chance }}</i>
-        <p>{{ el.decease.name }}
-        </p>
-    </li>
+    <div class="row  align-items-center m-1">
+        <div>
+            {#            <a href="{% url 'profile' pk=review.patient.user.id %}">#}
+            {#                {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}#}
+            {#            </a>#}
+        </div>
+        <div class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i
+                class="circle">{{ el.decease.chance }}%</i></div>
+        <div class="col">
+            <p>Предполагаемая болезнь</p>
+            <a href="{% url 'decease-detail' pk=el.decease.id %}" target="_blank">{{ el.decease.name }}</a>
+        </div>
+        {% if el.doctors %}
+            <div class="col mt-sm-0 mt-2">
+                <p>Рекоммендуемые врачи:</p>
+                <div class="row">
+                    {% for d in el.doctors %}
+                        <a href="{% url 'profile' pk=d.user.id %}">
+                            {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+    <div class="divider"></div>
 {% endfor %}

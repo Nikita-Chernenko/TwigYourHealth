@@ -16,7 +16,7 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'phone', 'avatar']
 
-    layout = Layout(Row('username', 'email', 'phone', 'avatar'))
+    # layout = Layout(Row('username', 'email', 'phone', 'avatar'))
 
 
 class UserCreationForm(_UserCreationForm):
@@ -24,7 +24,7 @@ class UserCreationForm(_UserCreationForm):
         model = User
         fields = ['username', 'email', 'phone']
 
-    layout = Layout(Row('username', 'email', 'phone'), Row('password1', 'password2'))
+    # layout = Layout(Row('username', 'email', 'phone'), Row('password1', 'password2'))
 
 
 class UserPatientForm(UserCreationForm):
@@ -60,7 +60,7 @@ class DoctorForm(forms.ModelForm):
         model = Doctor
         fields = ['accept_call', 'accept_chat', 'hospital', 'personal_address', 'description']
 
-    layout = Layout(Row('accept_call', 'accept_chat'), Row('hospital'), Row('personal_address'), Row('description'))
+    # layout = Layout(Row('accept_call', 'accept_chat'), Row('hospital'), Row('personal_address'), Row('description'))
 
 
 class DoctorPublicDoctorForm(DoctorForm):
@@ -92,7 +92,7 @@ class PrivateDoctorForm(forms.ModelForm):
         model = PrivateDoctor
         fields = ['hour_rate', 'visit_price']
 
-    layout = Layout(Row('hour_rate', 'visit_price'))
+    # layout = Layout(Row('hour_rate', 'visit_price'))
 
 
 class ReviewForm(forms.ModelForm):
