@@ -70,7 +70,8 @@
                     </div>
                 </li>
 
-                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i class="material-icons left">account_box</i>Profile</a>
+                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                        class="material-icons left">account_box</i>Profile</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
                         class="material-icons left">payment</i>Medical
@@ -82,7 +83,8 @@
                 </li>
 
                 {% if user.is_doctor %}
-                    <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i class="material-icons left">schedule</i>Timetable</a>
+                    <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i
+                            class="material-icons left">schedule</i>Timetable</a>
                     </li>
                 {% elif user.is_patient %}
                     <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
@@ -90,19 +92,20 @@
                     </li>
                 {% endif %}
                 <li style="padding-left: 12px;">
-                    <ul class="collapsible notifications">
+                    <ul class="{% if notifications %}collapsible {% endif %} expandable notifications">
                         <li>
                             <div class="collapsible-header"><i class="material-icons left">notifications</i>
                                 <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
                                     {% if notifications %}
-                                        <span class="new badge blue"> {{ notifications.count }}</span>{% endif %}
+                                        <span class="new badge blue ml-2"> {{ notifications.count }}</span>{% endif %}
                                 </div>
                             </div>
                             {% if notifications %}
                                 <div class="collapsible-body">
                                     <ul>
+                                        <div class="divider"></div>
                                         {% for n in notifications %}
-                                            <li> {{ n.text }}</li>
+                                            <li class="notification-text"> {{ n.text|safe }}</li>
                                             <div class="divider"></div>
                                         {% endfor %}
                                     </ul>
@@ -209,7 +212,7 @@
                     url: "{% url 'mark-read' %}",
                     method: "POST"
                 })
-            })
+             })
 
         });
 

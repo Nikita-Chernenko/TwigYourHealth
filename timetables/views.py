@@ -105,6 +105,6 @@ def visit_remove(request, pk):
     visit.delete()
     add_message(
         message=f"<a href='{request.user.get_absolute_url()}'>{request.user.username}</a> has removed a visit on date {visit.shift.day} at time {visit.start}-{visit.end}",
-        owner=visit.patient if request.user.is_patient else visit.shift.shift_type.doctor.user, important=True
+        owner=visit.shift.shift_type.doctor.user if request.user.is_patient else visit.patient.user, important=True
     )
     return JsonResponse({'success': True})

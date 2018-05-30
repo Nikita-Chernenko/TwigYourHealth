@@ -1,0 +1,19 @@
+.notification-text {
+  line-height: initial !important;
+  padding: 10px !important;
+  a {
+    line-height: 20px !important;
+    height: auto !important;
+    width: auto !important;
+    display: initial !important;
+    color: white !important;
+    background-color: #4db6ac !important;
+    padding: 5px !important;
+    &:hover {
+      transform: scale(1.4);
+      color: white !important;
+      background-color: $beige !important;
+      text-decoration: none;
+    }
+  }
+}
