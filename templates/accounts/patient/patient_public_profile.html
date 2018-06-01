@@ -3,7 +3,7 @@
 {% load thumbnail %}
 {% load material_form %}
 {% block breadcrumbs %}
-    <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">Patient profile</a>
+    <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">{{ patient.user.username|capfirst }} profile</a>
 {% endblock %}
 {% block content %}
     {% csrf_token %}

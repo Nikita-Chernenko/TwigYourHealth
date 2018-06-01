@@ -14,6 +14,7 @@ from deceases.models import Symptom, Decease, BodyPart, PatientDecease, Sphere
 from notifications.views import add_message
 from utils.checks import has_relationships
 
+
 # @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/diagnostics.html')
 def diagnostics(request):
@@ -81,7 +82,6 @@ def medical_records(request, patient_id):
 # @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
-    patient = request.user.patient
     symptoms_ids = request.GET.getlist('symptoms[]')
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids).values_list('name', flat=True)
     symptoms_lookup = Q()

@@ -113,3 +113,9 @@ a.btn {
   margin-left: -5px;
   height: auto;
 }
+.brand-logo, .breadcrumb{
+  &:hover{
+    text-decoration: underline;
+    color: white;
+  }
+}

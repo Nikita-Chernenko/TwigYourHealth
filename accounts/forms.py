@@ -14,7 +14,7 @@ class LoginViewForm(AuthenticationForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'phone', 'avatar']
+        fields = ['first_name', 'last_name', 'patronymic', 'username', 'email', 'phone', 'avatar']
 
     # layout = Layout(Row('username', 'email', 'phone', 'avatar'))
 
@@ -22,7 +22,7 @@ class UserForm(forms.ModelForm):
 class UserCreationForm(_UserCreationForm):
     class Meta(_UserCreationForm.Meta):
         model = User
-        fields = ['username', 'email', 'phone']
+        fields = ['first_name', 'last_name', 'username', 'email', 'phone']
 
     # layout = Layout(Row('username', 'email', 'phone'), Row('password1', 'password2'))
 
@@ -159,6 +159,7 @@ class DoctorSearchForm(forms.Form):
 
 class DoctorSphereForm(forms.ModelForm):
     doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(), widget=forms.HiddenInput())
+
     class Meta:
         model = DoctorSphere
         fields = ['doctor', 'sphere']

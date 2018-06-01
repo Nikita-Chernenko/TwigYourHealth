@@ -73,9 +73,7 @@
                 <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
                         class="material-icons left">account_box</i>Profile</a>
                 </li>
-                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
-                        class="material-icons left">payment</i>Medical
-                    record</a></li>
+
                 <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
@@ -87,6 +85,10 @@
                             class="material-icons left">schedule</i>Timetable</a>
                     </li>
                 {% elif user.is_patient %}
+                    <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                            class="material-icons left">payment</i>Medical
+                        record</a>
+                    </li>
                     <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
                             class="material-icons left">search</i>Doctor search</a>
                     </li>
@@ -138,17 +140,15 @@
             <div class="container">
                 <div class="row">
                     <div class="container-fluid">
-                        <div class="card-panel">
-                            {% for message in messages %}
-                                <div class="
+                        {% for message in messages %}
+                            <div class="white-text
                             {% if message.level_tag == "info" %}teal lighten-2
                             {% elif message.level_tag == "warning" %} orange
                             {% elif message.level_tag == "error" %} red
                             {% endif %}" style="padding: 5px">
-                                    {{ message }}</div>
-                                </div>
-                            {% endfor %}
-                    </div>
+                                {{ message }}</div>
+                            </div>
+                        {% endfor %}
                 </div>
             </div>
         {% endif %}

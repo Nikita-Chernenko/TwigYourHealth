@@ -159,8 +159,13 @@ def patient_public_profile(request, user, request_user):
     patient = user.patient
     doctor = request_user.doctor
     relationships, _ = Relationships.objects.get_or_create(patient=patient, doctor=doctor)
-    dict = {'patient': patient,
-            'doctor': doctor, 'relationships': relationships}
+    have_chat = get_object_or_None(Chat, patient=patient, doctor=doctor)
+    dict = {
+        'patient': patient,
+        'doctor': doctor,
+        'relationships': relationships,
+        'have_chat': have_chat,
+    }
     if relationships.patient_accept:
         medical_records = patient.patientdecease_set.all()
         for record in medical_records:

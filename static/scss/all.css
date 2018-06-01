@@ -8347,7 +8347,10 @@ html {
     border: 1px solid black;
     margin-left: 0; }
     .shift-type .timetable .timetable-cell.time {
-      width: 100px; }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px; }
     .shift-type .timetable .timetable-cell.free:hover {
       background: lightgoldenrodyellow; }
     .shift-type .timetable .timetable-cell.free.active {
@@ -8465,5 +8468,9 @@ a.btn, a.btn-large, a.btn-small {
   margin-top: 5px;
   margin-left: -5px;
   height: auto; }
+
+.brand-logo:hover, .breadcrumb:hover {
+  text-decoration: underline;
+  color: white; }
 
 /*# sourceMappingURL=../../../../../../static/scss/all.css.map */

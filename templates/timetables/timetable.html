@@ -3,6 +3,8 @@
 {% block breadcrumbs %}
     {% if user.is_doctor %}
         <a href="{% url 'self-profile' %}" class="breadcrumb">Profile</a>
+        {% else %}
+        <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">{{ doctor.user.username|capfirst }} profile </a>
     {% endif %}
     <a href="{{ request.path }}" class="breadcrumb">Timetable</a>
 {% endblock %}
@@ -14,6 +16,7 @@
                 <form method="post" action="{% url 'shift-type-create' %}" id="shift-type-form">
                     {% csrf_token %}
                     {{ shift_type_form }}
+                    <br>
                     <button class="btn beige"> Create new shift type</button>
                 </form>
             </div>
