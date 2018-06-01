@@ -68,6 +68,9 @@ class DoctorSphere(models.Model):
     # rating = models.DecimalField('sphere rating', validators=[MinValueValidator(0), MaxValueValidator(100)],
     #                              max_digits=5, decimal_places=2, default=0)
 
+    class Meta:
+        unique_together = [['doctor', 'sphere']]
+
     @property
     def rating(self):
         try:

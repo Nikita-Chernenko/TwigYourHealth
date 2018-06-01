@@ -31,7 +31,7 @@
                         {% endif %}
                     </div>
                     <div class="last-message">
-                        <div class="last-message-text">{{ chat.last_message.text }}t</div>
+                        <div class="last-message-text">{{ chat.last_message.text|default:"No messages yet" }}</div>
                         <div class="last-message-time">{{ chat.last_message.timestamp|date:"H:i" }}</div>
                     </div>
                 </div>

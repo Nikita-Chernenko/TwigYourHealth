@@ -10,6 +10,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.dateparse import parse_date, parse_datetime
 from django.views.decorators.http import require_http_methods
 
+from accounts.models import Doctor, Patient
 from communication.forms import MessageForm
 from communication.models import Chat, Message
 from communication.utils import _user_belong_to_chat
@@ -17,6 +18,15 @@ from communication.utils import _user_belong_to_chat
 MESSAGE_CREATE = 'message_create'
 MESSAGE_DELETE = 'message_delete'
 MESSAGE_UPDATE = 'message_update'
+
+
+def chat_create(request):
+    doctor_pk = request.POST['doctor']
+    patient_pk = request.POST['patient']
+    doctor = get_object_or_404(Doctor, pk=doctor_pk)
+    patient = get_object_or_404(Patient, pk=patient_pk)
+    Chat.objects.get_or_create(patient=patient, doctor=doctor)
+    return JsonResponse({'success': True})
 
 
 def chat_retrieve(request, pk):

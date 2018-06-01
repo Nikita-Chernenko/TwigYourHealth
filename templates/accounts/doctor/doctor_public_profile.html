@@ -51,8 +51,8 @@
             <div>
                 {% if relationships.patient_accept %}
                     <div class="card-panel teal lighten-2">Это ваш доктор</div>
-                    {% if doctor.accept_chat %}
-                        <button class="btn waves-effect beige">Написать</button>
+                    {% if doctor.accept_chat and not have_chat %}
+                        <button class="btn waves-effect beige" id="create-chat">Создать чат</button>
                     {% endif %}
                     <button class="btn beige" id="require-access" data-patient-accept="false">Закрыть доступ</button>
                 {% else %}
@@ -155,6 +155,18 @@
             }
 
             record_delete();
+
+            $('#create-chat').click(function () {
+                $.ajax({
+                    data: {'doctor':{{ doctor.pk }}, 'patient':{{patient.pk}}},
+                    method: "POST",
+                    url: "{% url 'chat-create' %}",
+                    success: function () {
+                        document.location.reload()
+                    }
+                })
+
+            })
         })
     </script>
 

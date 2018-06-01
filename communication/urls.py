@@ -1,9 +1,10 @@
 from django.urls import path
 
 from communication.views import chat_retrieve, message_list, message_create_update, message_create_update, \
-    message_delete, message_search
+    message_delete, message_search, chat_create
 
 urlpatterns = [
+    path('chat/create/', chat_create, name='chat-create'),
     path('chat/<int:pk>/', chat_retrieve, name='chat-retrieve'),
     path('chat/<int:chat_id>/message-list/', message_list, name='message-list'),
     path('chat/<int:chat_id>/message/search/<str:text>/', message_search, name='chat-message-search'),

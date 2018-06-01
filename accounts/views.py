@@ -1,6 +1,8 @@
 import json
+from copy import deepcopy
 
 from annoying.decorators import render_to
+from annoying.functions import get_object_or_None
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
@@ -16,9 +18,11 @@ from django.shortcuts import render_to_response
 from django.views.decorators.http import require_http_methods
 
 from accounts.forms import UserPatientForm, PatientForm, UserDoctorForm, DoctorPublicDoctorForm, \
-    PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm, DoctorSearchForm
+    PublicDoctorForm, DoctorPrivateDoctorForm, PrivateDoctorForm, UserForm, ReviewForm, DoctorSearchForm, \
+    DoctorSphereForm
 from accounts.models import Relationships, DoctorSphere, Review, Doctor
 from accounts.models import User
+from communication.models import Chat
 from deceases.forms import PatientDeceaseForm
 from deceases.models import Decease
 from notifications.views import add_message
@@ -177,7 +181,14 @@ def doctor_public_profile(request, user, request_user):
     for sphere in doctor_spheres:
         if not Review.objects.filter(patient=patient, doctor_sphere=sphere).exists():
             sphere.form = ReviewForm()
-    return {'doctor': doctor, 'patient': patient, 'doctor_spheres': doctor_spheres, 'relationships': relationships}
+    have_chat = get_object_or_None(Chat, patient=patient, doctor=doctor)
+    return {
+        'doctor': doctor,
+        'patient': patient,
+        'doctor_spheres': doctor_spheres,
+        'relationships': relationships,
+        'have_chat': have_chat
+    }
 
 
 def private_doctor_public_profile(request, user, request_user):
@@ -289,7 +300,7 @@ def relationships_update(request, pk):
             raise Http404('no doctor_accept param')
         doctor_accept = json.loads(doctor_accept)
         add_message(
-            message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a>  has {'added' if doctor_accept else 'removed'} from his contacts",
+            message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a>  has {'added' if doctor_accept else 'removed'} you from his contacts",
 
             owner=relationships.patient.user)
         relationships.doctor_accept = doctor_accept
@@ -300,7 +311,7 @@ def relationships_update(request, pk):
             raise Http404('no patient_accept param')
         patient_accept = json.loads(patient_accept)
         add_message(
-            message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a>  has {'added' if patient_accept else 'removed'} from his contacts",
+            message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a>  has {'added' if patient_accept else 'removed'} you from his contacts",
             owner=relationships.doctor.user)
         relationships.patient_accept = patient_accept
     relationships.save()
@@ -367,3 +378,21 @@ def doctor_search(request):
     if form.is_valid():
         doctors = form._get_qs()
     return {'doctors': doctors, 'form': form}
+
+
+@user_passes_test(lambda u: u.is_doctor)
+@render_to('accounts/doctor/sphere_create.html')
+def sphere_create(request, doctor_pk):
+    doctor = get_object_or_404(Doctor, pk=doctor_pk)
+    if request.POST:
+        data = deepcopy(request.POST)
+        data['doctor'] = doctor.id
+    else:
+        data = request.POST
+    form = DoctorSphereForm(data or None)
+    if form.is_valid():
+        form.save()
+        form = DoctorSphereForm()
+
+    spheres = DoctorSphere.objects.filter(doctor=doctor)
+    return {'form': form, 'spheres': spheres}

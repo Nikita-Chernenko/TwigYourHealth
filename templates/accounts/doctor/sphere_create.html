@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load material_form %}
+{% block breadcrumbs %}
+
+    <a href="{% url 'profile' pk=request.user.id %}" class="breadcrumb">Doctor profile</a>
+    <a href="{% url 'sphere-create' doctor_pk=request.user.doctor.id %}" class="breadcrumb">Spheres</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <ul>
+        <li>Существующие сферы: </li>
+            {% for s in spheres %}
+                <li>
+                    Sphere name: "{{ s.sphere.name }}"
+                    rating: {{ s.rating|default:"-" }}
+                </li>
+            {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn beige">Add new sphere of knowledge</button>
+        </form>
+    </div>
+{% endblock %}

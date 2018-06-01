@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm as _UserCreationForm, AuthenticationForm
 from material import Layout, Row
 
-from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review, City
+from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review, City, DoctorSphere
 from deceases.models import Sphere
 
 
@@ -155,3 +155,10 @@ class DoctorSearchForm(forms.Form):
         if only_public:
             queryset = queryset.filter(publicdoctor__isnull=False)
         return queryset
+
+
+class DoctorSphereForm(forms.ModelForm):
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(), widget=forms.HiddenInput())
+    class Meta:
+        model = DoctorSphere
+        fields = ['doctor', 'sphere']

@@ -8329,13 +8329,6 @@ html {
 #chat-icon {
   overflow: hidden; }
 
-.registration-tabs a {
-  font-size: 10px !important;
-  padding: 2px !important;
-  height: 20px !important;
-  line-height: 20px;
-  margin: 0 -3px 0 -3px; }
-
 .shift-type .timetable {
   display: flex;
   flex-direction: row; }
@@ -8370,6 +8363,25 @@ html {
     .shift-type .timetable .timetable-cell .date-header {
       font-size: 18px;
       font-weight: bold; }
+
+.notification-text {
+  line-height: initial !important;
+  padding: 10px !important; }
+  .notification-text a {
+    line-height: 20px !important;
+    height: auto !important;
+    width: auto !important;
+    display: initial !important;
+    color: white !important;
+    background-color: #4db6ac !important;
+    padding: 5px !important; }
+    .notification-text a:hover {
+      transform: scale(1.4);
+      color: white !important;
+      background-color: #FFAA6C !important;
+      text-decoration: none; }
+  .notification-text.gray {
+    background-color: lightgray; }
 
 body {
   display: flex;
@@ -8432,5 +8444,26 @@ main {
 
 .nav-link.active {
   border-radius: 15px; }
+
+a.btn, a.btn-large, a.btn-small {
+  color: white !important; }
+  a.btn:hover, a.btn-large:hover, a.btn-small:hover {
+    color: white !important;
+    text-decoration: none; }
+  a.btn.btn-small, a.btn-small {
+    line-height: 24px; }
+
+.btn-small {
+  height: 24px;
+  line-height: 14px; }
+
+.btn > a, .btn-large > a, .btn-small > a {
+  color: white;
+  text-decoration: none; }
+
+.autocomplete .chip {
+  margin-top: 5px;
+  margin-left: -5px;
+  height: auto; }
 
 /*# sourceMappingURL=../../../../../../static/scss/all.css.map */

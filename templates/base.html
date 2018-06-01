@@ -96,8 +96,8 @@
                         <li>
                             <div class="collapsible-header"><i class="material-icons left">notifications</i>
                                 <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
-                                    {% if notifications %}
-                                        <span class="new badge blue ml-2"> {{ notifications.count }}</span>{% endif %}
+                                    {% if new_notifications_count %}
+                                        <span class="new badge blue ml-2"> {{ new_notifications_count }}</span>{% endif %}
                                 </div>
                             </div>
                             {% if notifications %}
@@ -105,7 +105,7 @@
                                     <ul>
                                         <div class="divider"></div>
                                         {% for n in notifications %}
-                                            <li class="notification-text"> {{ n.text|safe }}</li>
+                                            <li class="notification-text {% if n.seen %} gray {% endif %}"> {{ n.text|safe }}</li>
                                             <div class="divider"></div>
                                         {% endfor %}
                                     </ul>
@@ -211,8 +211,9 @@
                 $.ajax({
                     url: "{% url 'mark-read' %}",
                     method: "POST"
-                })
-             })
+                });
+                $('.notifications .collapsible-header .badge').remove();
+            })
 
         });
 
