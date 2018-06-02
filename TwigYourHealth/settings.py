@@ -1,5 +1,6 @@
 import dj_database_url
 from .base_settings import *
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
@@ -34,9 +35,6 @@ import ssl
 
 if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
-
-    # TODO change settings name, add storage names
-
 
 AWS_S3_SECURE_URLS = False  # use http instead of https
 AWS_QUERYSTRING_AUTH = False
