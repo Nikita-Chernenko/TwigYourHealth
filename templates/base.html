@@ -12,6 +12,7 @@
 
 
     {% block extrahead %} {% endblock %}
+
 </head>
 <body>
 
@@ -135,6 +136,7 @@
     </header>
 
     <main>
+
         {% if messages %}
 
             <div class="container">
@@ -192,11 +194,14 @@
     <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
     <script src="{% static 'js/materialize_initialize.js' %}"></script>
     <script src="{% static 'js/chat.js' %}"></script>
+    <script src="{% static 'js/call.js' %}"></script>
     <script src="{% static 'js/jquery.autocomplete.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
             integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
             crossorigin="anonymous"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'js/simplewebrtc.js' %}"></script>
     <script>
         $(document).ready(function () {
             materialize_initiailize();
@@ -207,6 +212,11 @@
             var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
             var PROFILE = "{% url 'profile' pk=0 %}";
             chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
+
+            var CALL_REQUEST = "{% url 'call-request' with_id=0 %}";
+            var CALL_END = "{% url 'call-end' with_id=0 room_name='1' %}";
+            call(CALL_REQUEST, CALL_END);
+
             $('.notifications .collapsible-header').click(function () {
                 $.ajax({
                     url: "{% url 'mark-read' %}",

@@ -10,6 +10,7 @@ class CallEntity(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.PROTECT, verbose_name='doctor')
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
     orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
+    room = models.CharField('room name', max_length=256, null=True)
     start = models.DateTimeField('start')
     end = models.DateTimeField('end')
 

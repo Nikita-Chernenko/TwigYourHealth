@@ -7,7 +7,7 @@
     <div class="container">
         <a href="{% url 'change-password' %}" class="btn wave-effects beige">Change password</a>
         <a href="{% url 'update-profile' %}" class="btn wave-effects beige">Update profile</a>
-        <a href="{% url 'sphere-create' doctor_pk = request.user.doctor.id %}" class="btn wave-effects beige">Add sphere</a>
+        <a href="{% url 'sphere-create' doctor_pk=request.user.doctor.id %}" class="btn wave-effects beige">Add sphere</a>
     </div>
     {% if doctor_spheres %}
         <div class="container">

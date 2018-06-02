@@ -61,3 +61,28 @@ class ChatConsumer(JsonWebsocketConsumer):
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(f"chat-{self.chat_id}", self.channel_name)
+
+
+class CallConsumer(JsonWebsocketConsumer):
+    def connect(self):
+        user = self.scope['user']
+        self.user = user
+        if not user.is_patient and not user.is_doctor:
+            self.close()
+            return
+        self.accept()
+        async_to_sync(self.channel_layer.group_add)(f"user-{user.id}", self.channel_name)
+
+    def call_request(self, event):
+        print(event)
+        self.send_json(
+            event
+        )
+
+    def call_end(self, event):
+        self.send_json(
+            event
+        )
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(f"user-{self.user.id}", self.channel_name)
