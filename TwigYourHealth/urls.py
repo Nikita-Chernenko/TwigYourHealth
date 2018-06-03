@@ -25,6 +25,7 @@ urlpatterns = [
     path('deceases/', include('deceases.urls')),
     path('communication/', include('communication.urls')),
     path('timetables/', include('timetables.urls')),
+    path('payment/', include('payments.urls')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

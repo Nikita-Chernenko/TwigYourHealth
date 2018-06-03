@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from annoying.decorators import render_to
 
-# Create your views here.
+
+@render_to('payments/payment.html')
+def payment(request):
+    return {'fee': 10234}

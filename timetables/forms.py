@@ -7,7 +7,7 @@ from timetables.models import ShiftType, Shift, Visit
 class ShiftTypeForm(forms.ModelForm):
     class Meta:
         model = ShiftType
-        fields = ['title', 'doctor', 'start', 'end', 'gap']
+        fields = ['title', "doctor", 'start', 'end', 'gap']
 
 
 class ShiftForm(forms.ModelForm):

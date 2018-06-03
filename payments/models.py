@@ -43,7 +43,8 @@ class Order(models.Model):
             elif isinstance(model, CallEntity):
                 call_entity = CallEntity.objects.get(pk=model_id)
                 doctor = call_entity.doctor.privatedoctor
-                hours = (call_entity.end - call_entity.start).seconds // 3600
+                # TODO update with new logic
+                hours = (call_entity.end - call_entity.start).seconds / 3600
                 sum = doctor.hour_rate * hours
             elif isinstance(model, ChatEntity):
                 chat_entity = ChatEntity.objects.get(pk=model_id)
