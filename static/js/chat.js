@@ -1,4 +1,4 @@
-function chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR) {
+function chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE) {
     var chatSocket;
     $('.send-sms').on('click', function () {
         console.log(chatSocket);

@@ -1,52 +1,42 @@
-{% extends 'base.html' %}
-{% block breadcrumbs %}
-    <a href="{% url 'decease-list' %}" class="breadcrumb">Болезни</a>
-    <a href="{% url 'decease-detail' decease_id=decease.id %}" class="breadcrumb">{{ decease.name }}</a>
-{% endblock %}
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <h1>{{ decease.name }}</h1>
-            <h2>Область: {{ decease.sphere.name }}</h2>
+<h1>{{ decease.name }}</h1>
+<h2>Область: {{ decease.sphere.name }}</h2>
 
-            <div>
-                <h2>Описание</h2>
-                <p>{{ decease.description }}</p>
-            </div>
-            <ul>
-                <li>{{ decease.chronic|yesno:"Хроническое,Не хроническое" }}</li>
-                <li>Длительность: {{ decease.duration }} дней</li>
-                <li>Заразность: {{ decease.contagiousness }}/100</li>
-                <li>Опасность: {{ decease.malignancy }}/100</li>
-                <li>Отмечено случаев на нашем сайте: {{ decease.occurrence }}</li>
-            </ul>
-            {% if decease.diagnostics %}
-                <div>
-                    <h2>Диагностика</h2>
-                    <p>{{ decease.diagnostics }}</p>
-                </div>
-            {% endif %}
-            {% if decease.passing %}
-
-                <div>
-                    <h2>Ход болезни</h2>
-                    <p>{{ decease.passing }}</p>
-                </div>
-            {% endif %}
-            {% if decease.treatment %}
-
-                <div>
-                    <h2>Лечение</h2>
-                    <p>{{ decease.treatment }}</p>
-                </div>
-            {% endif %}
-            {% if decease.recommendations %}
-
-                <div>
-                    <h2>Рекомендации</h2>
-                    <p>{{ decease.recommendations }}</p>
-                </div>
-            {% endif %}
-        </div>
+<div>
+    <h2>Описание</h2>
+    <p>{{ decease.description }}</p>
+</div>
+<ul>
+    <li>{{ decease.chronic|yesno:"Хроническое,Не хроническое" }}</li>
+    <li>Длительность: {{ decease.duration }} дней</li>
+    <li>Заразность: {{ decease.contagiousness }}/100</li>
+    <li>Опасность: {{ decease.malignancy }}/100</li>
+    <li>Отмечено случаев на нашем сайте: {{ decease.occurrence }}</li>
+</ul>
+{% if decease.diagnostics %}
+    <div>
+        <h2>Диагностика</h2>
+        <p>{{ decease.diagnostics }}</p>
     </div>
-{% endblock %}
+{% endif %}
+
+{% if decease.passing %}
+
+    <div>
+        <h2>Ход болезни</h2>
+        <p>{{ decease.passing }}</p>
+    </div>
+{% endif %}
+{% if decease.treatment %}
+
+    <div>
+        <h2>Лечение</h2>
+        <p>{{ decease.treatment }}</p>
+    </div>
+{% endif %}
+{% if decease.recommendations %}
+
+    <div>
+        <h2>Рекомендации</h2>
+        <p>{{ decease.recommendations }}</p>
+    </div>
+{% endif %}

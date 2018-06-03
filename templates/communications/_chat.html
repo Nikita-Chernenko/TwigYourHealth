@@ -1,42 +1,99 @@
-<div class="s12 m6 l3 col chat-block" id="chat-block-short" style="display: none">
+<div class="col-12 col-md-6 col-lg-4 col chat-block" id="chat-block-short" style="display: none">
     <div class="chat-short-header">
         <div class="message-search">
             <i class="small material-icons">search</i>
-            <input class="circle">
+            <input class="circle" type="text">
         </div>
         <a class="chat-close"><i class="small material-icons">close</i></a>
     </div>
     <div class="chat-short-chats">
         {% for chat in chats %}
-            <div class="chat-short" data-chat-id="{{ chat.id }}"
-                 data-user-id="
-                         {% if user.is_patient %}{{ chat.doctor.user.id }} {% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}"
-                 data-with-id="
-                         {% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
+            {% spaceless %}
+                <div class="chat-short" data-chat-id="{{ chat.id }}"
+                     data-user-id="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             {% if user.is_patient %}{{ chat.doctor.user.id }} {% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}"
+                     data-with-id="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             {% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
                 {% if user.is_patient %}
-                    {% include 'accounts/_avatar.html' with user=chat.doctor.user height='50' width='50' img_class='circle chat-avatar' %}
+                    <a href="{% url 'profile' pk=chat.doctor.user.id %}" class="chat-avatar">
+                        {% include 'accounts/_avatar.html' with user=chat.doctor.user height='50' width='50' img_class='circle' %}
+                    </a>
                 {% elif user.is_doctor %}
-                    {% include 'accounts/_avatar.html' with user=chat.patient.user height='50' width='50' img_class='circle chat-avatar' %}
+                    <a href="{% url 'profile' pk=chat.patient.user.id %}" class="chat-avatar">
+                        {% include 'accounts/_avatar.html' with user=chat.patient.user height='50' width='50' img_class='circle' %}
+                    </a>
                 {% endif %}
-                <div class="username-last-message">
-                    <div>
-                        {% if user.is_patient %}
-                            {{ chat.doctor.user.username }}
-                        {% elif user.is_doctor %}
-                            {{ chat.patient.user.username }}
-                        {% endif %}
-                    </div>
-                    <div class="last-message">
-                        <div class="last-message-text">{{ chat.last_message.text }}t</div>
-                        <div class="last-message-time">{{ chat.last_message.timestamp|date:"H:i" }}</div>
-                    </div>
-                </div>
+            {% endspaceless %}
+        <div class="call-request">
+            <i class="material-icons">phone</i>
+        </div>
+        <div class="username-last-message">
+            <div>
+                {% if user.is_patient %}
+                    {{ chat.doctor.user.username }}
+                {% elif user.is_doctor %}
+                    {{ chat.patient.user.username }}
+                {% endif %}
             </div>
+            <div class="last-message">
+                <div class="last-message-text">{{ chat.last_message.text|default:"No messages yet" }}</div>
+                <div class="last-message-time">{{ chat.last_message.timestamp|date:"H:i" }}</div>
+            </div>
+        </div>
+        </div>
             <div class="divider"></div>
         {% endfor %}
     </div>
 </div>
-<div class="s12 m6 l3 col chat-block" id="chat-block-full" style="display: none">
+<div class="col-12 col-md-6 col-lg-4 col chat-block" id="chat-block-full" style="display: none">
     <div>
         <div class="chat-header">
             <a class="chat-back"><i class="small material-icons">arrow_back</i> </a>
@@ -70,3 +127,27 @@
 </div>
 <div class="chat-block" id="chat-icon"><a id="open-chat" class="beige btn-floating btn-large"><i
         class="medium material-icons">chat</i></a></div>
+{#TODO add behaviour on dicline, add accept event#}
+<div id="call-request-wrapper" style="display: none">
+    <div id="call-request" class="col-12 col-md-2 p-2 flex-column justify-content-center align-self-center">
+        <div id="call-request-username">
+            Patient is calling
+        </div>
+        <div class="row justify-content-center icons">
+            <i id='accept-call-btn' class="medium  material-icons green mr-1 tooltipped circle" data-position="bottom"
+               data-tooltip="Accept">phone</i>
+            <i id='decline-call-btn' class="medium material-icons red ml-1  tooltipped circle" data-position="bottom"
+               data-tooltip="Decline">phone</i>
+        </div>
+    </div>
+</div>
+<div id="call-window-wrapper" style="display: none">
+    <div id="call-window" class="col">
+        <div id="video-self" class="d-flex justify-content-center align-items-center mt-2"></div>
+        <div id="video-other" class="d-flex justify-content-center align-items-center mt-2"></div>
+        <div class="mt-2">
+            <i id='end-call-btn' class="medium material-icons red ml-1  tooltipped circle" data-position="top"
+               data-tooltip="End call">phone</i>
+        </div>
+    </div>
+</div>

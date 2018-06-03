@@ -1,21 +1,37 @@
 import datetime
 import json
+import uuid
+from copy import deepcopy
 
+from annoying.functions import get_object_or_None
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from django.core.serializers import serialize
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.utils.dateparse import parse_date, parse_datetime
-from django.views.decorators.http import require_http_methods
+from django.views.decorators.http import require_http_methods, require_POST
 
+from accounts.models import Doctor, Patient, User
 from communication.forms import MessageForm
-from communication.models import Chat, Message
+from communication.models import Chat, Message, CallEntity
 from communication.utils import _user_belong_to_chat
 
 MESSAGE_CREATE = 'message_create'
 MESSAGE_DELETE = 'message_delete'
 MESSAGE_UPDATE = 'message_update'
+
+CALL_REQUEST = 'call_request'
+CALL_END = 'call_end'
+
+
+def chat_create(request):
+    doctor_pk = request.POST['doctor']
+    patient_pk = request.POST['patient']
+    doctor = get_object_or_404(Doctor, pk=doctor_pk)
+    patient = get_object_or_404(Patient, pk=patient_pk)
+    Chat.objects.get_or_create(patient=patient, doctor=doctor)
+    return JsonResponse({'success': True})
 
 
 def chat_retrieve(request, pk):
@@ -38,9 +54,9 @@ def message_list(request, chat_id):
 
 @require_http_methods(['POST'])
 def message_create_update(request, pk=None):
-    request.POST._mutable = True
-    request.POST['author'] = request.user.id
-    form = MessageForm(request.POST, instance=pk)
+    data = deepcopy(request.POST)
+    data['author'] = request.user.id
+    form = MessageForm(data, instance=pk)
     if form.is_valid():
         message = form.save()
         channel_layer = get_channel_layer()
@@ -97,3 +113,58 @@ def message_search(request, text, chat_id=None):
     messages = Message.objects.filter(chat_id__in=chats, text__icontains=text).select_related('chat')
     messages = serialize(queryset=messages, format='json')
     return JsonResponse(messages, safe=False)
+
+
+@require_POST
+def call_request(request, with_id):
+    user_from = request.user
+    user_to = get_object_or_404(User, pk=with_id)
+    if user_from.is_doctor and user_to.is_patient:
+        doctor, patient = user_from.doctor, user_to.patient
+    elif user_from.is_patient and user_to.is_doctor:
+        patient, doctor = user_from.patient, user_to.doctor
+    else:
+        return HttpResponseForbidden("Available only between patient an doctor")
+    room_name = str(uuid.uuid4())
+    if doctor.is_private:
+        CallEntity.objects.create(doctor=doctor, patient=patient, room=room_name,
+                                  start=datetime.datetime.now(), end=datetime.datetime.now())
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        f'user-{user_to.id}',
+        {
+            "type": "call.request",
+            "user_id": user_from.id,
+            "room": room_name,
+            "action": CALL_REQUEST,
+        }
+    )
+    return JsonResponse({'room': room_name})
+
+
+@require_POST
+def call_end(request, with_id, room_name):
+    user_from = request.user
+    user_to = get_object_or_404(User, pk=with_id)
+    if user_from.is_doctor and user_to.is_patient:
+        doctor, patient = user_from.doctor, user_to.patient
+    elif user_from.is_patient and user_to.is_doctor:
+        patient, doctor = user_from.patient, user_to.doctor
+    else:
+        return HttpResponseForbidden("Available only between patient an doctor")
+    if doctor.is_private:
+        call_entity = get_object_or_None(CallEntity, room=room_name)
+        if call_entity:
+            call_entity.end = datetime.datetime.now()
+            call_entity.save()
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        f'user-{user_to.id}',
+        {
+            "type": "call.end",
+            "user_id": user_from.id,
+            "room": room_name,
+            "action": CALL_END,
+        }
+    )
+    return JsonResponse({'success': True})

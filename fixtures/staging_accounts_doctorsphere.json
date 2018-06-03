@@ -1,30 +1,6 @@
 [
 {
   "model": "accounts.doctorsphere",
-  "pk": 1,
-  "fields": {
-    "doctor": 1,
-    "sphere": 146
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 2,
-  "fields": {
-    "doctor": 1,
-    "sphere": 140
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 3,
-  "fields": {
-    "doctor": 1,
-    "sphere": 136
-  }
-},
-{
-  "model": "accounts.doctorsphere",
   "pk": 4,
   "fields": {
     "doctor": 1,
@@ -41,22 +17,6 @@
 },
 {
   "model": "accounts.doctorsphere",
-  "pk": 6,
-  "fields": {
-    "doctor": 2,
-    "sphere": 137
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 7,
-  "fields": {
-    "doctor": 2,
-    "sphere": 130
-  }
-},
-{
-  "model": "accounts.doctorsphere",
   "pk": 8,
   "fields": {
     "doctor": 2,
@@ -65,58 +25,10 @@
 },
 {
   "model": "accounts.doctorsphere",
-  "pk": 9,
-  "fields": {
-    "doctor": 2,
-    "sphere": 147
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 10,
-  "fields": {
-    "doctor": 2,
-    "sphere": 138
-  }
-},
-{
-  "model": "accounts.doctorsphere",
   "pk": 11,
   "fields": {
     "doctor": 1,
     "sphere": 135
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 12,
-  "fields": {
-    "doctor": 1,
-    "sphere": 144
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 13,
-  "fields": {
-    "doctor": 1,
-    "sphere": 129
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 14,
-  "fields": {
-    "doctor": 2,
-    "sphere": 129
-  }
-},
-{
-  "model": "accounts.doctorsphere",
-  "pk": 15,
-  "fields": {
-    "doctor": 2,
-    "sphere": 126
   }
 },
 {

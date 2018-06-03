@@ -8,7 +8,7 @@ from django.utils.timezone import now
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from accounts.models import Patient, User, Relationships
+from accounts.models import Patient, User, Relationships, Gender, AgeGap
 from utils.validators import comma_separated_field
 
 
@@ -26,7 +26,7 @@ class BodyPart(MPTTModel):
 
 class Symptom(MPTTModel):
     body_part = models.ForeignKey(BodyPart, on_delete=models.PROTECT, blank=True, null=True)
-    name = models.CharField(max_length=512, db_index=True, unique=True)
+    name = models.CharField(max_length=1024, db_index=True, unique=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
                             on_delete=models.CASCADE)
     aliases = models.TextField(validators=[comma_separated_field], blank=True, null=True)
@@ -67,12 +67,15 @@ class Decease(models.Model):
     passing = models.TextField(blank=True, null=True)
     recommendations = models.TextField(blank=True, null=True)
     occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
+    number = models.PositiveIntegerField('number of people in average to get decease from 10^6', default=0)
 
     class Meta:
         ordering = ['name']
 
     def __str__(self):
         return self.name
+
+
 
 
 class DeceaseSymptom(models.Model):
@@ -152,7 +155,7 @@ class PatientSymptomDecease(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         if hasattr(self, 'patient_decease') and hasattr(self, 'symptom'):
-            # TODO recheck the algo
+            # TODO remove the algo
             # create new symptom of decease because it occurred and doesn't exist
             decease = self.patient_decease.decease
             if self.symptom not in decease.symptoms.all():

@@ -9,8 +9,14 @@ from accounts.models import Doctor, Patient, User, PrivateDoctor
 class CallEntity(models.Model):
     doctor = models.ForeignKey(PrivateDoctor, on_delete=models.PROTECT, verbose_name='doctor')
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
+<<<<<<< HEAD
     orders = GenericRelation('payments.Order', on_delete=models.CASCADE, default=None)
     start = models.DateTimeField('start', default=None)
+=======
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
+    room = models.CharField('room name', max_length=256, null=True)
+    start = models.DateTimeField('start')
+>>>>>>> 276e9c736f85da28a3e6c16347aa1c5e0ee1ac4a
     end = models.DateTimeField('end')
     duration = models.IntegerField()
 
@@ -105,5 +111,10 @@ class ChatEntity(models.Model):
         super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
 
     def clean(self):
-        # TODO add check that messages haven't been included in other entities
-        pass
+        if self.messages.exists():
+            if self.id:
+                last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
+            else:
+                last_entity = ChatEntity.objects.latest('timestamp')
+            if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
+                raise ValidationError('At least one message has been included in previous entities')

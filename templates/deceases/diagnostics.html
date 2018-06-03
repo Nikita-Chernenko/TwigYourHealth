@@ -11,57 +11,88 @@
         <form id="symptoms-search">
             {% csrf_token %}
             <div class="row">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <div class="autocomplete" id="multiple">
-                            <div class="ac-users"></div>
-                            <div class="ac-input">
-                                <input type="text" id="symptoms" placeholder="Please input some letters"
-                                       data-activates="multipleDropdown" data-beloworigin="true" autocomplete="off">
-                            </div>
-                            <ul id="multipleDropdown" class="dropdown-content ac-dropdown"></ul>
-                            <input type="hidden" name="multipleHidden"/>
+                <div class="input-field col col-12">
+                    <div class="autocomplete" id="multiple">
+                        <div class="ac-users"></div>
+                        <div class="ac-input">
+                            <input type="text" id="symptoms" placeholder="Please input some letters"
+                                   data-activates="multipleDropdown" data-beloworigin="true" autocomplete="off">
                         </div>
-                        <label class="active" for="multipleInput">Выбранные симптомы: </label>
+                        <ul id="multipleDropdown" class="dropdown-content ac-dropdown"></ul>
+                        <input type="hidden" name="multipleHidden"/>
                     </div>
+                    <label class="active" for="multipleInput">Выбранные симптомы: </label>
                 </div>
             </div>
-            <button class="btn waves-effect">Get deceases</button>
-            <div class="col s12">
-                <ul id="tabs-swipe-demo" class="tabs">
-                    <li class="tab col s6" style="width: 50%"><a class="active" href="#body-part">Часть тела</a></li>
-                    <li class="tab col s6" style="width: 50%"><a href="#symptom">Симптом</a></li>
+            <button class="btn waves-effect beige">Get deceases</button>
+            <div class="col col-12">
+
+                {% for s in doctor_spheres %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if forloop.counter == 1 and not active_sphere or  active_sphere == s %} active{% endif %}"
+                           data-toggle="pill" role="tab"
+                           id="sphere{{ forloop.counter }}-tab" href="#sphere{{ forloop.counter }}"
+                           aria-controls="#sphere{{ forloop.counter }}"
+                           aria-selected="{% if active_sphere == s %}true{% else %}false{% endif %}">{{ s.sphere.name|truncatewords:5 }}
+                            <div class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i
+                                    class="circle">{{ s.rating|default:"-" }}</i></div>
+                        </a>
+                    </li>
+                {% endfor %}
+
+                </ul>
+            </div>
+            <div class="col col-12">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" role="tab"
+                           id="body-part-tab" href="#body-part"
+                           aria-controls="#body-part" aria-selected="true">Часть тела</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" role="tab"
+                           id="symptom-tab" href="#symptom"
+                           aria-controls="#symptom" aria-selected="false">Симптом</a>
+                    </li>
                 </ul>
 
-                <div id="body-part" class="tabs content" style="width: 100%; height: 1000px;">
-                    <ul class="collapsible" data-collapsible="accordion">
-                        {% recursetree body_symptoms %}
-                            <li>
-                                {% if not node.is_leaf_node %}
-                                    <div class="collapsible-header">{{ node.name }}
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <ul class="children collapsible" data-collapsible="accordion">
-                                            <li>{{ children }}</li>
-                                        </ul>
-                                    </div>
-                                {% else %}
-                                    <div class="h3">
-                                        <a class="symptom-trigger button waves-effect"
-                                           data-id="{{ node.id }}">{{ node.name }}</a>
-                                    </div>
+                <div class="col col-12 tab-content mt-1 mb-1" id="nav-tabContent">
+                    <div id="body-part" aria-labelledby="tabpanel"
+                         class="col col-12 tab-pane fade show active">
+                        <ul class="collapsible" data-collapsible="accordion"
+                            class="col col-12 tab-pane fade show active">
+                            {% recursetree body_symptoms %}
+                                <li>
+                                    {% if not node.is_leaf_node %}
+                                        <div class="collapsible-header">{{ node.name }}
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <ul class="children collapsible" data-collapsible="accordion">
+                                                <li>{{ children }}</li>
+                                            </ul>
+                                        </div>
+                                    {% else %}
+                                        <div class="h3">
+                                            <a class="symptom-trigger button waves-effect"
+                                               data-id="{{ node.id }}">{{ node.name }}</a>
+                                        </div>
 
-                                {% endif %}
-                            </li>
-                        {% endrecursetree %}
-                    </ul>
+                                    {% endif %}
+                                </li>
+                            {% endrecursetree %}
+                        </ul>
+                    </div>
+                    <div id="symptom" aria-labelledby="tabpanel"
+                         class="col col-12 tab-pane fade show">Симптом
+                    </div>
                 </div>
-                <div id="symptom" class="card" style="width: 100%; height: 1000px;">Симптом</div>
             </div>
 
 
         </form>
-        <div id="deceases" style="height: 1000px; width: 1000px; border: 1px gainsboro solid;"></div>
+
+        <div id="deceases"></div>
     </div>
 
 {% endblock %}
@@ -71,7 +102,7 @@
             var multiple;
             $('.symptom-trigger').on('click', function (e) {
                 el = $(e.target);
-                $('ul.tabs').tabs('select', 'symptom');
+                $('#symptom-tab').tab('show');
                 $.ajax({
                     "type": "GET",
                     "url": "{% url 'symptom-tree' %}",

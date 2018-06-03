@@ -1,9 +1,15 @@
+from datetime import datetime, date
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator
 from django.db import models
-from django.db.models import Sum, Avg
+from django.db.models import Sum, Avg, Q
+from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
+
+
+class City(models.Model):
+    name = models.CharField(max_length=256, unique=True)
 
 
 class User(AbstractUser):
@@ -12,11 +18,14 @@ class User(AbstractUser):
     patronymic = models.CharField(max_length=64)
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
-    city = models.CharField(max_length=256, blank=True, null=True)
+    city = models.ForeignKey(City, on_delete=models.PROTECT, null=True)
     avatar = models.ImageField(upload_to='user_avatars', blank=True, null=True)
 
     def __str__(self):
         return self.username
+
+    def get_absolute_url(self):
+        return reverse('profile', args=[self.id])
 
 
 class Hospital(models.Model):
@@ -47,6 +56,9 @@ class Doctor(models.Model):
     def __str__(self):
         return f'doctor {self.user}'
 
+    def get_absolute_url(self):
+        return self.user.get_absolute_url()
+
 
 class DoctorSphere(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -56,16 +68,22 @@ class DoctorSphere(models.Model):
     # rating = models.DecimalField('sphere rating', validators=[MinValueValidator(0), MaxValueValidator(100)],
     #                              max_digits=5, decimal_places=2, default=0)
 
+    class Meta:
+        unique_together = [['doctor', 'sphere']]
+
     @property
     def rating(self):
-        return self.review_set.all().aggregate(rating=Avg('mark'))['rating']
+        try:
+            return int(self.review_set.all().aggregate(rating=Avg('mark'))['rating'])
+        except TypeError:
+            return None
 
     def __str__(self):
         return f'{self.doctor}-{self.sphere}'
 
 
 class Review(models.Model):
-    doctor_sphere = models.ForeignKey(DoctorSphere, on_delete=models.PROTECT)
+    doctor_sphere = models.ForeignKey(DoctorSphere, on_delete=models.CASCADE)
     comment = models.TextField('comment')
     mark = models.PositiveSmallIntegerField('mark', validators=[MaxValueValidator(100)])
     patient = models.ForeignKey('Patient', on_delete=models.PROTECT)
@@ -95,6 +113,9 @@ class PrivateDoctor(models.Model):
     def __str__(self):
         return f'private {self.doctor} '
 
+    def get_absolute_url(self):
+        return self.doctor.get_absolute_url()
+
 
 class PublicDoctor(models.Model):
     doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)
@@ -102,23 +123,59 @@ class PublicDoctor(models.Model):
     def __str__(self):
         return f'public {self.doctor}'
 
+    def get_absolute_url(self):
+        return self.doctor.get_absolute_url()
+
+
+class AgeGap(models.Model):
+    start = models.PositiveIntegerField()
+    end = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ['start']
+
+    def __str__(self):
+        return f'{self.start}-{self.end}'
+
+    def clean(self):
+        start, end = self.start, self.end
+        if start and end:
+            if AgeGap.objects.filter(
+                    Q(start__lt=start, end__gt=start) |
+                    Q(start__lt=end, end__gt=end) |
+                    Q(start__gt=start, end__lt=end) |
+                    Q(start__exact=start, end__exact=end)) \
+                    .exists():
+                raise ValidationError('start or end are already in some gap')
+
+
+class Gender(models.Model):
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
 
 class Patient(models.Model):
-    MAN, WOMAN, ANOTHER = 'man', 'woman', 'another'
-    GENDER_CHOICES = (
-        (MAN, 'Man'),
-        (WOMAN, 'Woman'),
-        (ANOTHER, 'Another')
-    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField()
     deceases = models.ManyToManyField(to='deceases.Decease', through='deceases.PatientDecease')
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=256, default=ANOTHER)
-    skype = models.CharField('skype username', max_length=256, unique=True, null=True, blank=True)
-
+    skype = models.CharField('skype username', max_length=256, unique=True)
+    gender = models.ForeignKey(Gender, on_delete=models.PROTECT)
+    age_gap = models.ForeignKey(AgeGap, on_delete=models.PROTECT, verbose_name='age gap', blank=True)
 
     def __str__(self):
         return f'patient {self.user}'
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if self.birthday:
+            age = (date.today() - self.birthday).days // 364
+            self.age_gap = AgeGap.objects.get(start__lte=age, end__gt=age)
+        super(Patient, self).save(force_insert, force_update, using, update_fields)
+
+    def get_absolute_url(self):
+        return self.user.get_absolute_url()
 
 
 class Relationships(models.Model):

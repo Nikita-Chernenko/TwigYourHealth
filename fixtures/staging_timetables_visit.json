@@ -1,0 +1,32 @@
+[
+{
+  "model": "timetables.visit",
+  "pk": 18,
+  "fields": {
+    "patient": 1,
+    "shift": 2,
+    "start": "10:40:00",
+    "end": "11:30:00"
+  }
+},
+{
+  "model": "timetables.visit",
+  "pk": 22,
+  "fields": {
+    "patient": 1,
+    "shift": 3,
+    "start": "12:45:00",
+    "end": "13:30:00"
+  }
+},
+{
+  "model": "timetables.visit",
+  "pk": 23,
+  "fields": {
+    "patient": 1,
+    "shift": 1,
+    "start": "12:45:00",
+    "end": "13:30:00"
+  }
+}
+]

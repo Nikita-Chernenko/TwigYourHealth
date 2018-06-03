@@ -13,22 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-
-from TwigYourHealth import settings
 
 urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('deceases/', include('deceases.urls')),
     path('communication/', include('communication.urls')),
     path('timetables/', include('timetables.urls')),
+<<<<<<< HEAD
     path('payment/', include('payments.urls')),
+=======
+    path('notifications/', include('notifications.urls')),
+>>>>>>> 276e9c736f85da28a3e6c16347aa1c5e0ee1ac4a
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
