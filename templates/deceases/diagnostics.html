@@ -2,183 +2,187 @@
 {% load mptt_tags %}
 
 {% block breadcrumbs %}
-    <a href="{% url 'profile' user.id %}" class="breadcrumb">Profile</a>
-    <a href="{% url 'diagnostics' %}" class="breadcrumb">Symptom pick</a>
+  <a href="{% url 'profile' user.id %}" class="breadcrumb">Profile</a>
+  <a href="{% url 'diagnostics' %}" class="breadcrumb">Symptom pick</a>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <form id="symptoms-search">
-            {% csrf_token %}
-            <div class="row">
-                <div class="input-field col col-12">
-                    <div class="autocomplete" id="multiple">
-                        <div class="ac-users"></div>
-                        <div class="ac-input">
-                            <input type="text" id="symptoms" placeholder="Please input some letters"
-                                   data-activates="multipleDropdown" data-beloworigin="true" autocomplete="off">
-                        </div>
-                        <ul id="multipleDropdown" class="dropdown-content ac-dropdown"></ul>
-                        <input type="hidden" name="multipleHidden"/>
-                    </div>
-                    <label class="active" for="multipleInput">Выбранные симптомы: </label>
-                </div>
+  <div class="container">
+    <form id="symptoms-search">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field col col-12">
+          <div class="autocomplete" id="multiple">
+            <div class="ac-users"></div>
+            <div class="ac-input">
+              <input type="text" id="symptoms" placeholder="Please input some letters"
+                     data-activates="multipleDropdown" data-beloworigin="true" autocomplete="off">
             </div>
-            <button class="btn waves-effect beige">Get deceases</button>
-            <div class="col col-12">
+            <ul id="multipleDropdown" class="dropdown-content ac-dropdown"></ul>
+            <input type="hidden" name="multipleHidden"/>
+          </div>
+          <label class="active" for="multipleInput">Выбранные симптомы: </label>
+        </div>
+      </div>
+      <button class="btn waves-effect beige">Get deceases</button>
+      <div class="col col-12">
 
-                {% for s in doctor_spheres %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if forloop.counter == 1 and not active_sphere or  active_sphere == s %} active{% endif %}"
-                           data-toggle="pill" role="tab"
-                           id="sphere{{ forloop.counter }}-tab" href="#sphere{{ forloop.counter }}"
-                           aria-controls="#sphere{{ forloop.counter }}"
-                           aria-selected="{% if active_sphere == s %}true{% else %}false{% endif %}">{{ s.sphere.name|truncatewords:5 }}
-                            <div class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i
-                                    class="circle">{{ s.rating|default:"-" }}</i></div>
-                        </a>
-                    </li>
-                {% endfor %}
+        {% for s in doctor_spheres %}
+          <li class="nav-item">
+            <a class="nav-link {% if forloop.counter == 1 and not active_sphere or  active_sphere == s %} active{% endif %}"
+               data-toggle="pill" role="tab"
+               id="sphere{{ forloop.counter }}-tab" href="#sphere{{ forloop.counter }}"
+               aria-controls="#sphere{{ forloop.counter }}"
+               aria-selected="{% if active_sphere == s %}true{% else %}false{% endif %}">{{ s.sphere.name|truncatewords:5 }}
+              <div class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i
+                      class="circle">{{ s.rating|default:"-" }}</i></div>
+            </a>
+          </li>
+        {% endfor %}
 
-                </ul>
-            </div>
-            <div class="col col-12">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        </ul>
+      </div>
+      <div class="col col-12 mt-2">
+        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
 
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" role="tab"
-                           id="body-part-tab" href="#body-part"
-                           aria-controls="#body-part" aria-selected="true">Часть тела</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" role="tab"
-                           id="symptom-tab" href="#symptom"
-                           aria-controls="#symptom" aria-selected="false">Симптом</a>
-                    </li>
-                </ul>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="pill" role="tab"
+               id="body-part-tab" href="#body-part"
+               aria-controls="#body-part" aria-selected="true">Часть тела</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" role="tab"
+               id="symptom-tab" href="#symptom"
+               aria-controls="#symptom" aria-selected="false">Симптом</a>
+          </li>
+        </ul>
 
-                <div class="col col-12 tab-content mt-1 mb-1" id="nav-tabContent">
-                    <div id="body-part" aria-labelledby="tabpanel"
-                         class="col col-12 tab-pane fade show active">
-                        <ul class="collapsible" data-collapsible="accordion"
-                            class="col col-12 tab-pane fade show active">
-                            {% recursetree body_symptoms %}
-                                <li>
-                                    {% if not node.is_leaf_node %}
-                                        <div class="collapsible-header">{{ node.name }}
-                                        </div>
-                                        <div class="collapsible-body">
-                                            <ul class="children collapsible" data-collapsible="accordion">
-                                                <li>{{ children }}</li>
-                                            </ul>
-                                        </div>
-                                    {% else %}
-                                        <div class="h3">
-                                            <a class="symptom-trigger button waves-effect"
-                                               data-id="{{ node.id }}">{{ node.name }}</a>
-                                        </div>
-
-                                    {% endif %}
-                                </li>
-                            {% endrecursetree %}
-                        </ul>
+        <div class="col col-12 tab-content mt-1 mb-1" id="nav-tabContent">
+          <div id="body-part" aria-labelledby="tabpanel"
+               class="col col-12 tab-pane fade show active">
+            <ul class="collapsible" data-collapsible="accordion"
+                class="col col-12 tab-pane fade show active">
+              {% recursetree body_symptoms %}
+                <li class="body-part-root  {% if  node.is_leaf_node %} leaf {% endif %}">
+                  {% if not node.is_leaf_node %}
+                    <div class="collapsible-header d-flex justify-content-between align-items-end">
+                      <div>{{ node.name }}</div>
+                      <div class="arrow"><i class="small material-icons">arrow_drop_down</i></div>
                     </div>
-                    <div id="symptom" aria-labelledby="tabpanel"
-                         class="col col-12 tab-pane fade show">Симптом
+                    <div class="collapsible-body">
+                      <ul class="children collapsible" data-collapsible="accordion">
+                        <li>{{ children }}</li>
+                      </ul>
                     </div>
-                </div>
-            </div>
+                  {% else %}
+                    <div class="h3">
+                      <a class="symptom-trigger"
+                         data-id="{{ node.id }}">{{ node.name }}</a>
+                    </div>
+
+                  {% endif %}
+
+                </li>
+                <div class="divider"></div>
+              {% endrecursetree %}
+            </ul>
+          </div>
+          <div id="symptom" aria-labelledby="tabpanel"
+               class="col col-12 tab-pane fade show">Симптом
+          </div>
+        </div>
+      </div>
 
 
-        </form>
+    </form>
 
-        <div id="deceases"></div>
-    </div>
+    <div id="deceases"></div>
+  </div>
 
 {% endblock %}
 {% block extrajs %}
-    <script>
-        $(document).ready(function () {
-            var multiple;
-            $('.symptom-trigger').on('click', function (e) {
-                el = $(e.target);
-                $('#symptom-tab').tab('show');
-                $.ajax({
-                    "type": "GET",
-                    "url": "{% url 'symptom-tree' %}",
-                    "data": {'body_part_id': el.data('id')},
-                    "success": function (result) {
-                        $('#symptom').html(result);
-                        $('.collapsible').collapsible();
-                        $('.symptom-leaf').on('click', function (e) {
-                            el = $(e.target);
-                            console.log(el.text(), el.data('id'));
-                            console.log(multiple)
-                            multiple.append({'id': el.data('id'), 'text': el.text()})
+  <script>
+      $(document).ready(function () {
+          var multiple;
+          $('.symptom-trigger').on('click', function (e) {
+              el = $(e.target);
+              $('#symptom-tab').tab('show');
+              $.ajax({
+                  "type": "GET",
+                  "url": "{% url 'symptom-tree' %}",
+                  "data": {'body_part_id': el.data('id')},
+                  "success": function (result) {
+                      $('#symptom').html(result);
+                      $('.collapsible').collapsible();
+                      $('.symptom-leaf').on('click', function (e) {
+                          el = $(e.target);
+                          console.log(el.text(), el.data('id'));
+                          console.log(multiple)
+                          multiple.append({'id': el.data('id'), 'text': el.text()})
 
-                        });
-                    },
-                    "error": function (result) {
-                        console.log(result);
-                    }
-                })
-            });
-            $('#symptoms-search').on('submit', function (e) {
-                console.log(multiple.value);
-                values = [];
-                for (i = 0; i < multiple.value.length; i++) {
-                    values.push(multiple.value[i].id)
-                }
-                $.ajax({
-                    "type": "GET",
-                    "url": "{% url 'deceases-by-symptoms' %}",
-                    "data": {'symptoms': values},
-                    "success": function (result) {
-                        console.log(result);
-                        $('#deceases').html(result);
+                      });
+                  },
+                  "error": function (result) {
+                      console.log(result);
+                  }
+              })
+          });
+          $('#symptoms-search').on('submit', function (e) {
+              console.log(multiple.value);
+              values = [];
+              for (i = 0; i < multiple.value.length; i++) {
+                  values.push(multiple.value[i].id)
+              }
+              $.ajax({
+                  "type": "GET",
+                  "url": "{% url 'deceases-by-symptoms' %}",
+                  "data": {'symptoms': values},
+                  "success": function (result) {
+                      console.log(result);
+                      $('#deceases').html(result);
 
-                        materialize_initiailize();
-                    },
-                    "error": function (error) {
-                        console.log(error);
-                    }
-                });
-                e.preventDefault();
-            });
-            multiple = $('#symptoms').materialize_autocomplete({
-                multiple: {
-                    enable: true
-                },
-                appender: {
-                    el: '.ac-users'
-                },
-                getData: function (value, callback) {
-                    console.log(value);
-                    data = [];
-                    if (value.length < 3) {
-                        return data
-                    }
-                    $.ajax({
-                        "type": "GET",
-                        "dataType": "json",
-                        "url": "{% url 'symptoms-autocomplete' %}",
-                        "data": {'name': value},
-                        "success": function (result) {
+                      materialize_initiailize();
+                  },
+                  "error": function (error) {
+                      console.log(error);
+                  }
+              });
+              e.preventDefault();
+          });
+          multiple = $('#symptoms').materialize_autocomplete({
+              multiple: {
+                  enable: true
+              },
+              appender: {
+                  el: '.ac-users'
+              },
+              getData: function (value, callback) {
+                  console.log(value);
+                  data = [];
+                  if (value.length < 3) {
+                      return data
+                  }
+                  $.ajax({
+                      "type": "GET",
+                      "dataType": "json",
+                      "url": "{% url 'symptoms-autocomplete' %}",
+                      "data": {'name': value},
+                      "success": function (result) {
 
-                            for (var i = 0; i < result.length; i++) {
-                                data[i] = {'id': result[i]['id'], 'text': result[i]['name']}
-                            }
-                            console.log(data);
-                            callback(value, data);
-                        },
-                        "error": function (error) {
-                            console.log(error);
-                            callback(value, data);
-                        }
-                    });
+                          for (var i = 0; i < result.length; i++) {
+                              data[i] = {'id': result[i]['id'], 'text': result[i]['name']}
+                          }
+                          console.log(data);
+                          callback(value, data);
+                      },
+                      "error": function (error) {
+                          console.log(error);
+                          callback(value, data);
+                      }
+                  });
 
-                }
-            });
-        });
-    </script>
+              }
+          });
+      });
+  </script>
 {% endblock %}

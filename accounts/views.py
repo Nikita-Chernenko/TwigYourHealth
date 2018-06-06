@@ -190,7 +190,7 @@ def doctor_public_profile(request, user, request_user):
     return {
         'doctor': doctor,
         'patient': patient,
-        'doctor_spheres': doctor_spheres,
+        'doctor_spheres': tuple(enumerate(doctor_spheres)),
         'relationships': relationships,
         'have_chat': have_chat
     }
