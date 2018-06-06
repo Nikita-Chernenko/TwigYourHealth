@@ -8,20 +8,23 @@ from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from django.core.serializers import serialize
 from django.http import JsonResponse, Http404, HttpResponseForbidden
-from django.shortcuts import render, get_object_or_404
-from django.utils.dateparse import parse_date, parse_datetime
+from django.shortcuts import get_object_or_404
+from django.utils.dateparse import parse_datetime
 from django.views.decorators.http import require_http_methods, require_POST
 
 from accounts.models import Doctor, Patient, User
 from communication.forms import MessageForm
 from communication.models import Chat, Message, CallEntity
 from communication.utils import _user_belong_to_chat
+from utils.checks import has_relationships
 
 MESSAGE_CREATE = 'message_create'
 MESSAGE_DELETE = 'message_delete'
 MESSAGE_UPDATE = 'message_update'
 
 CALL_REQUEST = 'call_request'
+CALL_ACCEPT = 'call_accept'
+CALL_DECLINE = 'call_decline'
 CALL_END = 'call_end'
 
 
@@ -125,21 +128,73 @@ def call_request(request, with_id):
         patient, doctor = user_from.patient, user_to.doctor
     else:
         return HttpResponseForbidden("Available only between patient an doctor")
-    room_name = str(uuid.uuid4())
-    if doctor.is_private:
-        CallEntity.objects.create(doctor=doctor, patient=patient, room=room_name,
-                                  start=datetime.datetime.now(), end=datetime.datetime.now())
+    if not has_relationships(doctor.pk, patient.pk):
+        return HttpResponseForbidden("You have no connection with the user")
+
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         f'user-{user_to.id}',
         {
             "type": "call.request",
             "user_id": user_from.id,
-            "room": room_name,
             "action": CALL_REQUEST,
         }
     )
+    return JsonResponse({})
+
+
+@require_POST
+def call_accept(request, with_id):
+    user_from = request.user
+    user_to = get_object_or_404(User, pk=with_id)
+    if user_from.is_doctor and user_to.is_patient:
+        doctor, patient = user_from.doctor, user_to.patient
+    elif user_from.is_patient and user_to.is_doctor:
+        patient, doctor = user_from.patient, user_to.doctor
+    else:
+        return HttpResponseForbidden("Available only between patient an doctor")
+    if not has_relationships(doctor.pk, patient.pk):
+        return HttpResponseForbidden("You have no connection with the user")
+    room_name = str(uuid.uuid4())
+    if doctor.is_private:
+        CallEntity.objects.create(doctor=doctor, patient=patient, room=room_name,
+                                  start=datetime.datetime.now(), end=datetime.datetime.now())
+
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        f'user-{user_to.id}',
+        {
+            "type": "call.accept",
+            "user_id": user_from.id,
+            "room": room_name,
+            "action": CALL_ACCEPT,
+        }
+    )
     return JsonResponse({'room': room_name})
+
+
+@require_POST
+def call_decline(request, with_id):
+    user_from = request.user
+    user_to = get_object_or_404(User, pk=with_id)
+    if user_from.is_doctor and user_to.is_patient:
+        doctor, patient = user_from.doctor, user_to.patient
+    elif user_from.is_patient and user_to.is_doctor:
+        patient, doctor = user_from.patient, user_to.doctor
+    else:
+        return HttpResponseForbidden("Available only between patient an doctor")
+    if not has_relationships(doctor.pk, patient.pk):
+        return HttpResponseForbidden("You have no connection with the user")
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        f'user-{user_to.id}',
+        {
+            "type": "call.decline",
+            "user_id": user_from.id,
+            "action": CALL_DECLINE,
+        }
+    )
+    return JsonResponse({'success': True})
 
 
 @require_POST
@@ -152,6 +207,8 @@ def call_end(request, with_id, room_name):
         patient, doctor = user_from.patient, user_to.doctor
     else:
         return HttpResponseForbidden("Available only between patient an doctor")
+    if not has_relationships(doctor.pk, patient.pk):
+        return HttpResponseForbidden("You have no connection with the user")
     if doctor.is_private:
         call_entity = get_object_or_None(CallEntity, room=room_name)
         if call_entity:

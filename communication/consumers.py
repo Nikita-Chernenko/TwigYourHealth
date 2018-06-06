@@ -1,6 +1,5 @@
-from asgiref.sync import async_to_sync, AsyncToSync
-from channels.generic.websocket import WebsocketConsumer, JsonWebsocketConsumer
-from django.db.models import Q
+from asgiref.sync import async_to_sync
+from channels.generic.websocket import JsonWebsocketConsumer
 from django.shortcuts import get_object_or_404
 
 from accounts.models import User, Relationships
@@ -74,15 +73,16 @@ class CallConsumer(JsonWebsocketConsumer):
         async_to_sync(self.channel_layer.group_add)(f"user-{user.id}", self.channel_name)
 
     def call_request(self, event):
-        print(event)
-        self.send_json(
-            event
-        )
+        self.send_json(event)
+
+    def call_accept(self, event):
+        self.send_json(event)
+
+    def call_decline(self, event):
+        self.send_json(event)
 
     def call_end(self, event):
-        self.send_json(
-            event
-        )
+        self.send_json(event)
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(f"user-{self.user.id}", self.channel_name)
