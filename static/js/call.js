@@ -71,10 +71,7 @@ function call(CALL_REQUEST, CALL_END) {
                     });
                 });
 
-                webrtc.on('videoAdded', function (video, peer) {
-                    console.log('videoadded')
-                    $('#video-other').html(video);
-                });
+
 
             }
         });
