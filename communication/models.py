@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import Q
 
 from accounts.models import Doctor, Patient, User
+from payments.models import Order
 
 
 class CallEntity(models.Model):
@@ -32,6 +33,12 @@ class CallEntity(models.Model):
                     (Q(end__gte=end) & Q(start__lte=end)) |
                     (Q(start__gte=start) & Q(end__lte=end))).exists():
                 raise ValidationError(f'{self._meta.model_name} for this time already exists')
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            order = Order()
+            order.content_type
+        super(CallEntity, self).save(*args, **kwargs)
 
 
 class Chat(models.Model):
