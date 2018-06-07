@@ -10,12 +10,7 @@ class ShiftTypeForm(forms.ModelForm):
 
     class Meta:
         model = ShiftType
-<<<<<<< HEAD
-        fields = ['title', "doctor", 'start', 'end', 'gap']
-=======
         fields = ['title', 'start', 'doctor', 'end', 'gap']
-
->>>>>>> 276e9c736f85da28a3e6c16347aa1c5e0ee1ac4a
 
 
 class ShiftForm(forms.ModelForm):
