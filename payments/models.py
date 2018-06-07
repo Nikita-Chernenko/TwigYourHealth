@@ -7,9 +7,9 @@ from accounts.models import Patient
 from communication.models import CallEntity, ChatEntity
 from timetables.models import Visit
 
-interaction_limit = models.Q(app_label='communications', model='CallEntity') | \
-                    models.Q(app_label='communications', model='ChatEntity') | \
-                    models.Q(app_label='timetables', model='Visit')
+interaction_limit = models.Q(app_label='communication', model='callentity') | \
+                    models.Q(app_label='communication', model='chatentity') | \
+                    models.Q(app_label='timetables', model='visit')
 
 
 class Order(models.Model):
@@ -19,10 +19,14 @@ class Order(models.Model):
     sum = models.PositiveIntegerField('sum to pay')
     payed = models.BooleanField(default=False)
 
+    class Meta:
+        unique_together = [['object_id', 'content_type']]
+
     def __init__(self, *args, **kwargs):
         super(Order, self).__init__(*args, **kwargs)
-        self.__original_content_type = self.content_type
-        self.__original_object_id = self.object_id
+        if getattr(self, 'content_type', False) and self.object_id:
+            self.__original_content_type = self.content_type
+            self.__original_object_id = self.object_id
 
     def __str__(self):
         return f'{self.interaction} - {self.sum} - {self.payed}'
@@ -30,8 +34,10 @@ class Order(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         # calculate sum of the interaction
-        content_type_changed = self.__original_content_type != self.content_type
-        object_id_changed = self.__original_object_id != self.object_id
+        content_type_changed = getattr(self, '__original_content_type', False) and \
+                               self.__original_content_type != self.content_type
+        object_id_changed = getattr(self, '__original_object_id', False) and \
+                            self.__original_object_id != self.object_id
         if content_type_changed or object_id_changed:
             model = self.content_type.model_class()
             model_id = self.object_id
@@ -52,12 +58,15 @@ class Order(models.Model):
                 hours = chat_entity.hours
                 sum = int(doctor.hour_rate * hours)
             self.sum = sum
+        super(Order, self).save(force_insert, force_update, using, update_fields)
 
     def clean(self):
         # check that doctor is private
-        if self.content_type and self.object_id:
-            content_type_changed = self.__original_content_type != self.content_type
-            object_id_changed = self.__original_object_id != self.object_id
+        if getattr(self, 'content_type', False) and self.object_id:
+            content_type_changed = getattr(self, '__original_content_type', False) and \
+                                   self.__original_content_type != self.content_type
+            object_id_changed = getattr(self, '__original_object_id', False) and \
+                                self.__original_object_id != self.object_id
             if content_type_changed or object_id_changed:
                 doctor = None
                 model = self.content_type.model_class()
@@ -85,20 +94,24 @@ class Payment(models.Model):
 
     def __str__(self):
         return f'{self.patient} {self.order} {self.date}'
+
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        order = self.order
-        if not self.pk and order and order.content_type and order.object_id:
+        order = getattr(self, 'order', False) and self.order
+        if not self.pk and order and getattr(order, 'content_type', False) and order.object_id:
             model = order.content_type.model_class()
             model_id = order.object_id
             patient = None
-            if isinstance(model, Visit):
+            if model is Visit:
                 visit = Visit.objects.get(pk=model_id)
                 patient = visit.patient
-            elif isinstance(model, CallEntity):
+            elif model is CallEntity:
                 call_entity = CallEntity.objects.get(pk=model_id)
                 patient = call_entity.patient
-            elif isinstance(model, ChatEntity):
+            elif model is ChatEntity:
                 chat_entity = ChatEntity.objects.get(pk=model_id)
                 patient = chat_entity.patient
             self.patient = patient
+            order.payed = True
+            order.save()
+        super(Payment, self).save(force_insert, force_update, using, update_fields)

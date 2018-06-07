@@ -3,35 +3,35 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 
-from accounts.models import Doctor, Patient, User, PrivateDoctor
+from accounts.models import Doctor, Patient, User
 
 
 class CallEntity(models.Model):
-    doctor = models.ForeignKey(PrivateDoctor, on_delete=models.PROTECT, verbose_name='doctor')
+    doctor = models.ForeignKey(Doctor, on_delete=models.PROTECT, verbose_name='doctor')
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT, verbose_name='patient')
-    orders = GenericRelation('payments.Order', on_delete=models.CASCADE, default=None)
-    start = models.DateTimeField('start', default=None)
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
+    room = models.CharField('room name', max_length=256, null=True)
+    start = models.DateTimeField('start')
     end = models.DateTimeField('end')
-    duration = models.IntegerField()
 
-    # def __init__(self, *args, **kwargs):
-    #     super(CallEntity, self).__init__(*args, **kwargs)
-    #     self.__original_start = self.start
-    #     self.__original_end = self.end
+    def __init__(self, *args, **kwargs):
+        super(CallEntity, self).__init__(*args, **kwargs)
+        self.__original_start = self.start
+        self.__original_end = self.end
 
     def __str__(self):
         return f'{self.doctor} {self.patient} {self.start} {self.end}'
 
-    # def clean(self):
-    #     if self.start and self.end:
-    #         start, end = self.start, self.end
-    #         start_changed, end_changed = self.start != self.__original_start, self.end != self.__original_end
-    #
-    #         if (start_changed or end_changed) and self.objects.filter(
-    #                 (Q(start__lte=start) & Q(end__gte=start)) |
-    #                 (Q(end__gte=end) & Q(start__lte=end)) |
-    #                 (Q(start__gte=start) & Q(end__lte=end))).exists():
-    #             raise ValidationError(f'{self._meta.model_name} for this time already exists')
+    def clean(self):
+        if self.start and self.end:
+            start, end = self.start, self.end
+            start_changed, end_changed = self.start != self.__original_start, self.end != self.__original_end
+
+            if (start_changed or end_changed) and CallEntity.objects.filter(
+                    (Q(start__lte=start) & Q(end__gte=start)) |
+                    (Q(end__gte=end) & Q(start__lte=end)) |
+                    (Q(start__gte=start) & Q(end__lte=end))).exists():
+                raise ValidationError(f'{self._meta.model_name} for this time already exists')
 
 
 class Chat(models.Model):
@@ -86,7 +86,7 @@ class ChatEntity(models.Model):
     orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     messages = models.ManyToManyField(Message)
-    hours = models.FloatField('sum of minutes spent on chat')
+    hours = models.FloatField('sum of hours spent on chat', blank=True, default=0)
 
     class Meta:
         ordering = ['timestamp']
@@ -94,7 +94,16 @@ class ChatEntity(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if self.messages.exists():
+
+        super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+        if self.hours == 0 and self.messages.exists():
+            if not self.id and ChatEntity.objects.all().count() > 0 or ChatEntity.objects.count() > 1:
+                if self.id:
+                    last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
+                else:
+                    last_entity = ChatEntity.objects.latest('timestamp')
+                if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
+                    raise ValidationError('At least one message has been included in previous entities')
             minutes = 0
             for message in self.messages.all():
                 if hasattr(message.author, 'doctor'):
@@ -102,13 +111,4 @@ class ChatEntity(models.Model):
                 elif hasattr(message.author, 'patient'):
                     minutes += len(message.text) / 100
             self.hours = minutes / 60
-        super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
-
-    def clean(self):
-        if self.messages.exists():
-            if self.id:
-                last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
-            else:
-                last_entity = ChatEntity.objects.latest('timestamp')
-            if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
-                raise ValidationError('At least one message has been included in previous entities')
+            self.save()

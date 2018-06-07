@@ -1,7 +1,7 @@
 from django.urls import path
 
-from communication.views import chat_retrieve, message_list, message_create_update, message_create_update, \
-    message_delete, message_search, chat_create, call_request, call_end
+from communication.views import chat_retrieve, message_list, message_create_update, \
+    message_delete, message_search, chat_create, call_request, call_end, call_accept, call_decline
 
 urlpatterns = [
     path('chat/create/', chat_create, name='chat-create'),
@@ -15,5 +15,7 @@ urlpatterns = [
     path('message/search/<str:text>/', message_search, name='message-search'),
 
     path('call/request/<int:with_id>/', call_request, name='call-request'),
+    path('call/accept/<int:with_id>/', call_accept, name='call-accept'),
+    path('call/decline/<int:with_id>/', call_decline, name='call-decline'),
     path('call/end/<int:with_id>/<str:room_name>/', call_end, name='call-end'),
 ]
