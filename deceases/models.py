@@ -155,7 +155,7 @@ class PatientSymptomDecease(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         if hasattr(self, 'patient_decease') and hasattr(self, 'symptom'):
-            # TODO recheck the algo
+            # TODO remove the algo
             # create new symptom of decease because it occurred and doesn't exist
             decease = self.patient_decease.decease
             if self.symptom not in decease.symptoms.all():

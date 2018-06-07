@@ -1,22 +1,24 @@
 {% load mptt_tags %}
 <ul class="collapsible" data-collapsible="accordion">
-    {% recursetree tree %}
-        <li>
-            {% if not node.is_leaf_node %}
-                <div class="collapsible-header">{{ node.name }}
-                </div>
-                <div class="collapsible-body">
-                    <ul class="children collapsible" data-collapsible="accordion">
-                        <li>{{ children }}</li>
-                    </ul>
-                </div>
-            {% else %}
-                <div class="h1">
-                    <a class="symptom-leaf button waves-effect"
-                       data-id="{{ node.id }}">{{ node.name }}</a>
-                </div>
+  {% recursetree tree %}
+    <li class="symptom-part-root  {% if  node.is_leaf_node %} leaf {% endif %}">
+      {% if not node.is_leaf_node %}
+        <div class="collapsible-header d-flex justify-content-between align-items-end">
+          <div>{{ node.name }}</div>
+          <div class="arrow"><i class="small material-icons">arrow_drop_down</i></div>
+        </div>
+        <div class="collapsible-body">
+          <ul class="children collapsible" data-collapsible="accordion">
+            <li>{{ children }}</li>
+          </ul>
+        </div>
+      {% else %}
+        <div class="h3">
+          <a class="symptom-leaf "
+             data-id="{{ node.id }}">{{ node.name }}</a>
+        </div>
 
-            {% endif %}
-        </li>
-    {% endrecursetree %}
+      {% endif %}
+    </li>
+  {% endrecursetree %}
 </ul>

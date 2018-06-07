@@ -11,56 +11,8 @@
             {% spaceless %}
                 <div class="chat-short" data-chat-id="{{ chat.id }}"
                      data-user-id="
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                              {% if user.is_patient %}{{ chat.doctor.user.id }} {% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}"
                      data-with-id="
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                              {% if user.is_patient %}{{ chat.doctor.user.id }}{% elif user.is_doctor %}{{ chat.patient.user.id }}{% endif %}">
                 {% if user.is_patient %}
                     <a href="{% url 'profile' pk=chat.doctor.user.id %}" class="chat-avatar">
@@ -127,7 +79,6 @@
 </div>
 <div class="chat-block" id="chat-icon"><a id="open-chat" class="beige btn-floating btn-large"><i
         class="medium material-icons">chat</i></a></div>
-
 <div id="call-request-wrapper" style="display: none">
     <div id="call-request" class="col-12 col-md-2 p-2 flex-column justify-content-center align-self-center">
         <div id="call-request-username">
