@@ -1,4 +1,6 @@
 var CALL_REQUEST_ACTION = 'call_request';
+var CALL_ACCEPT_ACTION = 'call_accept';
+var CALL_DECLINE_ACTION = 'call_decline';
 var CALL_END_ACTION = 'call_end';
 var room;
 var webrtc;
@@ -27,7 +29,7 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
                 autoRequestMedia: true,
                 signalingOptions: {"force new connection": true},
             });
-            room = message['room'];
+            room = message['room']
             console.log(room);
             $callRequestWrapper.hide();
             $callVideoWrapper.show();
@@ -50,6 +52,7 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
                 $callVideoWrapper.hide();
             }
         }
+    }
     ;
 
     chatSocket.onclose = function () {
@@ -104,8 +107,8 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
                     });
                 });
 
-
-
+                $callRequestWrapper.hide();
+                $callVideoWrapper.show();
             }
         });
 
