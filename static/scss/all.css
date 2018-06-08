@@ -5173,7 +5173,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
   .tap-target-wrapper.open .tap-target-wave::after {
     visibility: visible;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    transition: opacity .3s, transform .3s, visibility 0s 1s; }
+    transition: opacity .3s, transform .3s, visibility 0s 1s; }
 
 .tap-target {
   position: absolute;
@@ -5208,7 +5208,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     transition: transform .3s; }
   .tap-target-wave::after {
     visibility: hidden;
-    transition: opacity .3s, transform .3s, visibility 0s;
+    transition: opacity .3s, transform .3s, visibility 0s;
     z-index: -1; }
 
 .tap-target-origin {
@@ -8250,6 +8250,9 @@ html {
     display: flex;
     flex-direction: row; }
 
+#chat-block-short .chat-short-chats .call-request:hover i {
+  background-color: green; }
+
 #chat-block-short .chat-short-chats .chat-short {
   display: flex;
   flex-direction: row;
@@ -8258,7 +8261,7 @@ html {
   align-items: center; }
   #chat-block-short .chat-short-chats .chat-short:hover {
     cursor: pointer;
-    border-bottom: 1px solid lightgray; }
+    background-color: rgba(0, 0, 0, 0.1); }
   #chat-block-short .chat-short-chats .chat-short .username-last-message {
     margin-left: 15px;
     display: flex;
@@ -8405,7 +8408,8 @@ html {
   #call-request-wrapper #call-request {
     background-color: white; }
     #call-request-wrapper #call-request .icons:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      background-color: #4CAF50; }
 
 #call-window-wrapper {
   display: flex;
@@ -8428,6 +8432,26 @@ html {
     border-radius: 30px; }
   #call-window-wrapper #call-window #video-other video {
     width: 45%; }
+  #call-window-wrapper #call-window #end-call-btn:hover {
+    cursor: pointer; }
+
+.symptom-leaf {
+  height: 100%;
+  width: 100%; }
+
+.decease-detail:hover {
+  cursor: pointer;
+  background-color: #FFAA6C; }
+
+.collapsible.popout li.active {
+  margin-left: 5px; }
+  .collapsible.popout li.active .collapsible-header {
+    background-color: #FFAA6C; }
+    .collapsible.popout li.active .collapsible-header .arrow i {
+      transform: rotate(180deg); }
+
+.collapsible.popout > li {
+  margin: 0; }
 
 body {
   display: flex;
@@ -8516,4 +8540,25 @@ a.btn, a.btn-large, a.btn-small {
   text-decoration: underline;
   color: white; }
 
-/*# sourceMappingURL=/static/scss/all.css.map */
+.collapsible div {
+  min-height: 35px;
+  padding: 2px; }
+  .collapsible div.leaf:hover {
+    background-color: #FFAA6C;
+    color: white;
+    cursor: pointer; }
+  .collapsible div.active > .collapsible-header, .collapsible div:hover > .collapsible-header {
+    background-color: #FFAA6C;
+    color: white;
+    cursor: pointer; }
+  .collapsible div.active > .collapsible-header .arrow i {
+    transform: rotate(180deg); }
+  .collapsible div .collapsible-header {
+    border-bottom: none;
+    padding: 0; }
+  .collapsible div .collapsible-body {
+    padding: 0;
+    padding-left: 5px;
+    border: none; }
+
+/*# sourceMappingURL=../../../../../../static/scss/all.css.map */

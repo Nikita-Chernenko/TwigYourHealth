@@ -1,46 +1,53 @@
 from django.contrib import admin
 
-from accounts.models import User, Doctor, Patient, Hospital, PrivateDoctor, PublicDoctor, Gender, AgeGap, DoctorSphere
+from accounts.models import User, Doctor, Patient, Hospital, PrivateDoctor, PublicDoctor, Gender, AgeGap, DoctorSphere, \
+    City
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(AgeGap)
 class GapAgeAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(Gender)
 class GenderAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(PrivateDoctor)
 class PrivateDoctorAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(PublicDoctor)
 class PublicDoctorAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
 
 
 @admin.register(Hospital)
 class HospitalAdmin(admin.ModelAdmin):
-    exclude = []
+    pass
+
 
 @admin.register(DoctorSphere)
 class DoctorSphereAdmin(admin.ModelAdmin):

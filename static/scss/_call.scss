@@ -19,6 +19,7 @@
     .icons {
       &:hover {
         cursor: pointer;
+        background-color: #4CAF50;
       }
     }
   }
@@ -51,6 +52,11 @@
     #video-other {
       video {
         width: 45%;
+      }
+    }
+    #end-call-btn{
+      &:hover{
+        cursor: pointer;
       }
     }
 
