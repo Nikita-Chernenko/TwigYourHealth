@@ -114,9 +114,43 @@ a.btn {
   margin-left: -5px;
   height: auto;
 }
-.brand-logo, .breadcrumb{
-  &:hover{
+
+.brand-logo, .breadcrumb {
+  &:hover {
     text-decoration: underline;
     color: white;
+  }
+}
+
+.collapsible {
+  .body-part-root, .symptom-part-root {
+    min-height: 35px;
+    padding: 2px;
+    &.leaf:hover {
+      background-color: $beige;
+      color: white;
+      cursor: pointer;
+    }
+    &.active, &:hover {
+      & > .collapsible-header {
+        background-color: $beige;
+        color: white;
+        cursor: pointer;
+
+      }
+
+    }
+    &.active > .collapsible-header .arrow i {
+      transform: rotate(180deg);
+    }
+    .collapsible-header {
+      border-bottom: none;
+      padding: 0;
+    }
+    .collapsible-body {
+      padding: 0;
+      padding-left: 5px;
+      border: none;
+    }
   }
 }
