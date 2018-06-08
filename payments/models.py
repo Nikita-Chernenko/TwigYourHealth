@@ -28,9 +28,8 @@ class Order(models.Model):
 
     def __init__(self, *args, **kwargs):
         super(Order, self).__init__(*args, **kwargs)
-        if getattr(self, 'content_type', False) and self.object_id:
-            self.__original_content_type = self.content_type
-            self.__original_object_id = self.object_id
+        self.__original_content_type = getattr(self, 'content_type', None)
+        self.__original_object_id = self.object_id
 
     def __str__(self):
         return f'{self.interaction} - {self.sum} - {self.payed}'
@@ -38,11 +37,9 @@ class Order(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         # calculate sum of the interaction
-        content_type_changed = getattr(self, '__original_content_type', True) and \
-                               self.__original_content_type != self.content_type
-        object_id_changed = getattr(self, '__original_object_id', True) and \
-                            self.__original_object_id != self.object_id
-        if content_type_changed or object_id_changed:
+        content_type_changed = self.__original_content_type != self.content_type
+        object_id_changed = self.__original_object_id != self.object_id
+        if (content_type_changed or object_id_changed) and getattr(self, 'content_type', False) and self.object_id:
             model = self.content_type.model_class()
             model_id = self.object_id
             sum = None
@@ -92,4 +89,3 @@ class Order(models.Model):
 
                 if not doctor.is_private:
                     raise ValidationError('This doctor is public')
-
