@@ -125,7 +125,7 @@ a.btn {
 }
 
 .collapsible {
-  div {
+  .body-part-root, .symptom-part-root {
     min-height: 35px;
     padding: 2px;
     &.leaf:hover {

@@ -8443,6 +8443,12 @@ html {
   cursor: pointer;
   background-color: #FFAA6C; }
 
+.collapsible.popout .collapsible-header {
+  padding: 3px; }
+
+.collapsible.popout .collapsible-body {
+  padding: 5px; }
+
 .collapsible.popout li.active {
   margin-left: 5px; }
   .collapsible.popout li.active .collapsible-header {
@@ -8540,23 +8546,23 @@ a.btn, a.btn-large, a.btn-small {
   text-decoration: underline;
   color: white; }
 
-.collapsible div {
+.collapsible .body-part-root, .collapsible .symptom-part-root {
   min-height: 35px;
   padding: 2px; }
-  .collapsible div.leaf:hover {
+  .collapsible .body-part-root.leaf:hover, .collapsible .symptom-part-root.leaf:hover {
     background-color: #FFAA6C;
     color: white;
     cursor: pointer; }
-  .collapsible div.active > .collapsible-header, .collapsible div:hover > .collapsible-header {
+  .collapsible .body-part-root.active > .collapsible-header, .collapsible .body-part-root:hover > .collapsible-header, .collapsible .symptom-part-root.active > .collapsible-header, .collapsible .symptom-part-root:hover > .collapsible-header {
     background-color: #FFAA6C;
     color: white;
     cursor: pointer; }
-  .collapsible div.active > .collapsible-header .arrow i {
+  .collapsible .body-part-root.active > .collapsible-header .arrow i, .collapsible .symptom-part-root.active > .collapsible-header .arrow i {
     transform: rotate(180deg); }
-  .collapsible div .collapsible-header {
+  .collapsible .body-part-root .collapsible-header, .collapsible .symptom-part-root .collapsible-header {
     border-bottom: none;
     padding: 0; }
-  .collapsible div .collapsible-body {
+  .collapsible .body-part-root .collapsible-body, .collapsible .symptom-part-root .collapsible-body {
     padding: 0;
     padding-left: 5px;
     border: none; }
