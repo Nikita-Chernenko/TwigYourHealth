@@ -41,14 +41,16 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
             $callVideoWrapper.hide();
         }
         else if (message['action'] === CALL_END_ACTION) {
-            webrtc.stopLocalVideo();
-            webrtc.leaveRoom();
-            webrtc.disconnect();
+            if (webrtc) {
+                webrtc.stopLocalVideo();
+                webrtc.leaveRoom();
+                webrtc.disconnect();
 
-            $('#video-self').html('');
-            $('#video-other').html('');
+                $('#video-self').html('');
+                $('#video-other').html('');
 
-            $callVideoWrapper.hide();
+                $callVideoWrapper.hide();
+            }
         }
     }
     ;
@@ -105,10 +107,6 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
                     });
                 });
 
-                webrtc.on('videoAdded', function (video, peer) {
-                    console.log('videoadded')
-                    $('#video-other').html(video);
-                });
                 $callRequestWrapper.hide();
                 $callVideoWrapper.show();
             }
