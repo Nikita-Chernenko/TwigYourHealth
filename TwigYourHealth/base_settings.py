@@ -163,7 +163,7 @@ SASS_PROCESSOR_ROOT = rel('..', 'static')
 FIXTURE_DIRS = [rel('..', 'fixtures')]
 
 # CMS
-PB = Pushbullet(PUSHBULLEY_KEY)
+# PB = Pushbullet(PUSHBULLEY_KEY)
 
 # Chat
 ASGI_APPLICATION = "TwigYourHealth.routing.application"

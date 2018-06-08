@@ -3,7 +3,6 @@ from django.http import JsonResponse
 
 from accounts.models import User
 from notifications.models import Notification
-pb = settings.PB
 
 
 def mark_read(request):
