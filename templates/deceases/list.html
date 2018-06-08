@@ -8,7 +8,7 @@
   <div class="row center-align m-2">
     <div class="col col-12 col-md-4 left-align">
       <input id="decease-input" type="text">
-      <ul class="collapsible expandable popout hide-on-small-and-down">
+      <ul class="collapsible expandable popout hide-on-med-and-down">
         {% for sphere in spheres %}
           <li>
             <div class="collapsible-header d-flex justify-content-between align-items-end">
@@ -30,7 +30,7 @@
         {% endfor %}
       </ul>
     </div>
-    <div class="col col-9 decease"></div>
+    <div class="col col-12 col-md-8 decease"></div>
   </div>
 {% endblock %}
 {% block extrajs %}
