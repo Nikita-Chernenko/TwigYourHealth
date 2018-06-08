@@ -17,6 +17,18 @@
   #call-request {
     background-color: white;
     .icons {
+      i {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.chat-short-chats {
+  .call-request {
+    .material-icons {
       &:hover {
         cursor: pointer;
         background-color: #4CAF50;
@@ -54,8 +66,8 @@
         width: 45%;
       }
     }
-    #end-call-btn{
-      &:hover{
+    #end-call-btn {
+      &:hover {
         cursor: pointer;
       }
     }
