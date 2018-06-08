@@ -66,7 +66,7 @@ class CallConsumer(JsonWebsocketConsumer):
     def connect(self):
         user = self.scope['user']
         self.user = user
-        if not user.is_patient and not user.is_doctor:
+        if not user.is_authenticated or not user.is_patient and not user.is_doctor:
             self.close()
             return
         self.accept()

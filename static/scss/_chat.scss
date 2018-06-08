@@ -45,6 +45,13 @@
     }
   }
   .chat-short-chats {
+    .call-request {
+      &:hover {
+        i {
+          background-color: green;
+        }
+      }
+    }
     .chat-short {
       display: flex;
       flex-direction: row;
@@ -53,7 +60,7 @@
       align-items: center;
       &:hover {
         cursor: pointer;
-        border-bottom: 1px solid lightgray;
+        background-color: rgba(0, 0, 0, 0.1);
       }
       .username-last-message {
         margin-left: 15px;

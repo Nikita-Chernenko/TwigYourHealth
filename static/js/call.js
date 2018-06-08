@@ -132,10 +132,11 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
             url: CALL_END.replace('0', withId).replace('1', room),
             method: "POST",
             success: function () {
-
-                webrtc.stopLocalVideo();
-                webrtc.leaveRoom();
-                webrtc.disconnect();
+                if (webrtc) {
+                    webrtc.stopLocalVideo();
+                    webrtc.leaveRoom();
+                    webrtc.disconnect();
+                }
                 $('#video-self').html('');
                 $('#video-other').html('');
                 $callVideoWrapper.hide();

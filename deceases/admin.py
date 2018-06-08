@@ -5,30 +5,25 @@ from deceases.models import PatientDecease, Decease, Symptom, DeceaseSymptom, Bo
 
 @admin.register(PatientDecease)
 class PatientDeceaseAdmin(admin.ModelAdmin):
-    exclude = []
-
+    pass
 
 @admin.register(Decease)
 class DeceaseAdmin(admin.ModelAdmin):
-    exclude = []
-
+    pass
 
 @admin.register(Symptom)
 class SymptomAdmin(admin.ModelAdmin):
-    exclude = []
-
+    pass
 
 @admin.register(DeceaseSymptom)
 class DeceaseSymptomAdmin(admin.ModelAdmin):
-    exclude = []
-
+    pass
 
 @admin.register(BodyPart)
 class BodyPartAdmin(admin.ModelAdmin):
-    exclude = []
-
+    pass
 
 
 @admin.register(PatientSymptomDecease)
 class PatientSymptomDeceaseAdmin(admin.ModelAdmin):
-    exclude = []
+    pass

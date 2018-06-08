@@ -104,8 +104,8 @@
   <script>
       $(document).ready(function () {
           var multiple;
-          $('.symptom-trigger').on('click', function (e) {
-              el = $(e.target);
+          $('.body-part-root.leaf ').on('click', function (e) {
+              el = $(this).find('.symptom-trigger');
               $('#symptom-tab').tab('show');
               $.ajax({
                   "type": "GET",
@@ -114,10 +114,10 @@
                   "success": function (result) {
                       $('#symptom').html(result);
                       $('.collapsible').collapsible();
-                      $('.symptom-leaf').on('click', function (e) {
-                          el = $(e.target);
+                      $('.symptom-part-root.leaf').on('click', function (e) {
+                          el = $(this).find('.symptom-leaf');
                           console.log(el.text(), el.data('id'));
-                          console.log(multiple)
+                          console.log(multiple);
                           multiple.append({'id': el.data('id'), 'text': el.text()})
 
                       });
@@ -140,7 +140,8 @@
                   "success": function (result) {
                       console.log(result);
                       $('#deceases').html(result);
-
+                      var distance = $('#deceases').offset().top
+                      $('html,body').animate({scrollTop: distance}, 1500);
                       materialize_initiailize();
                   },
                   "error": function (error) {

@@ -5,4 +5,4 @@ from notifications.models import Notification
 
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
-    exclude = []
+    pass

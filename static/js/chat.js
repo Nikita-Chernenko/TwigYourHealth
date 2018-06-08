@@ -126,4 +126,7 @@ function chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR
             })
         }
     });
+    $(".chat-avatar").click(function (e) {
+        e.stopPropagation();
+    })
 }
