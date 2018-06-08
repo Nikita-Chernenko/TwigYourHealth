@@ -27,10 +27,6 @@ class Order(models.Model):
     class Meta:
         unique_together = [['object_id', 'content_type']]
 
-    def __init__(self, *args, **kwargs):
-        super(Order, self).__init__(*args, **kwargs)
-        self.__original_content_type = getattr(self, 'content_type', None)
-        self.__original_object_id = self.object_id
 
     def __str__(self):
         return f'{self.interaction} - {self.sum} - {self.payed}'
@@ -38,9 +34,7 @@ class Order(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         # calculate sum of the interaction
-        content_type_changed = self.__original_content_type != getattr(self, 'content_type', None)
-        object_id_changed = self.__original_object_id != self.object_id
-        if (content_type_changed or object_id_changed) and getattr(self, 'content_type', False) and self.object_id:
+        if  getattr(self, 'content_type', False) and self.object_id:
             model = self.content_type.model_class()
             model_id = self.object_id
             sum = None
@@ -62,6 +56,7 @@ class Order(models.Model):
                 doctor = chat_entity.doctor.privatedoctor
                 hours = chat_entity.hours
                 sum = int(doctor.hour_rate * Decimal(hours))
+            print(sum)
             self.sum = sum
             self.patient = patient
         super(Order, self).save(force_insert, force_update, using, update_fields)
