@@ -146,11 +146,13 @@ LOGIN_EXEMPT_URLS = ['admin', 'accounts/sign-up/']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 AUTH_USER_MODEL = 'accounts.User'
+
 MEDIA_ROOT = rel('..', 'files', 'media')
 MEDIA_URL = '/media/'
-
+#
 STATIC_ROOT = rel('..', 'files', 'static')
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = (
     rel('..', 'static'),
 )

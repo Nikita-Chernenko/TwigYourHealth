@@ -101,10 +101,7 @@ function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
                 $callVideoWrapper.show();
                 webrtc.on('readyToCall', function () {
                     // you can name it anything
-                    webrtc.createRoom(room, function (err, name) {
-                        console.log(err);
-                        console.log(name);
-                    });
+                    webrtc.joinRoom(room);
                 });
 
                 $callRequestWrapper.hide();

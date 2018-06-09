@@ -305,7 +305,7 @@ def relationships_update(request, pk):
             raise Http404('no doctor_accept param')
         doctor_accept = json.loads(doctor_accept)
         add_message(
-            message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a>  has {'added' if doctor_accept else 'removed'} you from his contacts",
+            message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a>  has {'added you to' if doctor_accept else 'removed you from'}  his contacts",
 
             owner=relationships.patient.user)
         relationships.doctor_accept = doctor_accept
@@ -316,7 +316,7 @@ def relationships_update(request, pk):
             raise Http404('no patient_accept param')
         patient_accept = json.loads(patient_accept)
         add_message(
-            message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a>  has {'added' if patient_accept else 'removed'} you from his contacts",
+            message=f"<a href='{patient.get_absolute_url()}'>{patient.user.username}</a>  has {'added you to' if patient_accept else 'removed you from'}  his contacts",
             owner=relationships.doctor.user)
         relationships.patient_accept = patient_accept
     relationships.save()
