@@ -31,12 +31,13 @@ def symptom_tree(request):
 
 def symptoms_autocomplete(request):
     input_name = request.GET.get('name').lower()  # sqllite quark
-    symptoms = list(Symptom.objects.filter(name__istartswith=input_name) \
+    symptoms = list(Symptom.objects.filter(Q(name__startswith=input_name) | Q(name__startswith=input_name.capitalize())) \
                     .values('id', 'name').order_by('name'))
-    if len(symptoms) < 10:
-        symptoms += list(Symptom.objects.exclude(name__istartswith=input_name) \
-                         .filter(Q(aliases__icontains=input_name) | Q(name__icontains=input_name)) \
-                         .values('id', 'name').order_by('name'))[:(10 - len(symptoms))]
+    if len(symptoms) < 20:
+        symptoms += list(
+            Symptom.objects.exclude(Q(name__startswith=input_name) | Q(name__startswith=input_name.capitalize())) \
+            .filter(Q(aliases__icontains=input_name) | Q(name__icontains=input_name)) \
+            .values('id', 'name').order_by('name'))[:(20 - len(symptoms))]
     return JsonResponse(data=symptoms, safe=False)
 
 
@@ -138,8 +139,11 @@ def decease_list(request):
 
 
 def decease_autocomplete(request):
-    query = request.GET.get('query')
+    query = request.GET.get('query').lower()
     print(query)
-    decease = list(Decease.objects.filter(name__icontains=query).order_by(Length('name'))[:30])
+    decease = list(Decease.objects.filter(Q(name__contains=query) |
+                                          Q(name__startswith=query) |
+                                          Q(name__startswith=query.capitalize())) \
+                   .order_by(Length('name'))[:30])
     decease = [{"value": d.name, "data": d.id} for d in decease]
     return JsonResponse({"suggestions": decease})
