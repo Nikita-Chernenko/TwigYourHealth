@@ -49,7 +49,7 @@ if hasattr(ssl, '_create_unverified_context'):
 # MEDIAFILES_LOCATION = 'media'
 # DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
-STATICFILES_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = 'SRVup088i8AAAAAAAAAAR7vEjznQ4hXSXyi8H50LV8kCcIVWJf07XSFAbAA3XfP2'
-DROPBOX_ROOT_PATH = 'twig-your-health'
+# STATICFILES_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# DROPBOX_OAUTH2_TOKEN = 'SRVup088i8AAAAAAAAAAR7vEjznQ4hXSXyi8H50LV8kCcIVWJf07XSFAbAA3XfP2'
+# DROPBOX_ROOT_PATH = 'twig-your-health'
