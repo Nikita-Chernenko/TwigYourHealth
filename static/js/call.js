@@ -9,8 +9,9 @@ var $callVideoWrapper = $('#call-window-wrapper');
 var withId;
 
 function call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END) {
+    var ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
     chatSocket = new WebSocket(
-        'ws://' + window.location.host + '/call/');
+        ws_scheme + '://' + window.location.host + '/call/');
     chatSocket.onmessage = function (e) {
         var message = JSON.parse(e.data);
         console.log(message)
