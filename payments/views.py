@@ -1,7 +1,9 @@
 from annoying.decorators import render_to
+from django.contrib.auth.decorators import user_passes_test
+
 from payments.models import Order
 
-
+@user_passes_test(lambda u: u.is_patient)
 @render_to('payments/payment.html')
 def payment(request, pk):
     order = Order.objects.get(pk=pk)
@@ -13,7 +15,8 @@ def payment(request, pk):
     return {'order': order}
 
 
+@user_passes_test(lambda u: u.is_patient)
 @render_to('payments/orders.html')
 def orders(request, pk):
     orders = Order.objects.filter(patient__id=pk).order_by('payed')
-    return {'orders': orders }
+    return {'orders': orders}
