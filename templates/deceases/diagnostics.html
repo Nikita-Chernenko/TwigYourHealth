@@ -151,9 +151,10 @@
                 e.preventDefault();
             });
             multiple = $('#symptoms').materialize_autocomplete({
-                limit: 20,
+                limit: 10,
                 multiple: {
                     enable: true,
+                    maxSize: 10,
                 },
                 appender: {
                     el: '.ac-users'

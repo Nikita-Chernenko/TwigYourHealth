@@ -1,0 +1,39 @@
+<div class="row align-items-center">
+    <div class="col-12 col-md-4 d-flex flex-column align-items-center">
+        <div>
+            {% include 'accounts/_avatar.html' with height="100" width="100" user=doctor.user  img_class="circle" %}
+        </div>
+        <div>
+            {% if patient_accept %}
+                <a href="{% url 'timetable' doctor_pk=doctor.pk %}"
+                   class="btn waves-effect teal lighten-2 mt-1 mb-1">
+                    Записаться на прием
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-12 col-md-8">
+        <div>{{ doctor.user.first_name|default:"Имя" }} {{ doctor.user.last_name|default:"Фамилия" }}</div>
+        <div>{{ doctor.is_private|yesno:"Частный,Госудасртвенный" }} врач</div>
+        <div>О себе: {{ doctor.description }} </div>
+        {% if doctor_accept %}
+            {% if doctor.accept_call %}
+                <div>{{ doctor.skype|default:"Нет скайпа" }}</div>
+            {% endif %}
+            {% if  doctor.hospital %}
+                <div>{{ doctor.hospital }} </div>
+            {% else %}
+                <div>{{ doctor.personal_address|default:"Нет адреса" }} </div>
+            {% endif %}
+
+            {% if doctor.is_private %}
+                {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}
+
+            {% else %}
+                {% include 'accounts/doctor/public_doctor/_public_doctor_private_info.html' %}
+
+            {% endif %}
+
+        {% endif %}
+    </div>
+</div>

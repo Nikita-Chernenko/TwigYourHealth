@@ -2,67 +2,71 @@
 
 {% block breadcrumbs %}
 
-  <a href="{% url 'decease-list' %}" class="breadcrumb">Болезни</a>
+    <a href="{% url 'decease-list' %}" class="breadcrumb">Болезни</a>
 {% endblock %}
 {% block content %}
-  <div class="row center-align m-2">
-    <div class="col col-12 col-md-4 left-align">
-      <input id="decease-input" type="text">
-      <ul class="collapsible expandable popout hide-on-med-and-down">
-        {% for sphere in spheres %}
-          <li>
-            <div class="collapsible-header d-flex justify-content-between align-items-end">
-              <div>{{ sphere.name }}</div>
-              <div class="arrow"><i class="small material-icons">arrow_drop_down</i></div>
-            </div>
-            <div class="collapsible-body">
-              <ul>
-                {% for decease in sphere.decease_set.all %}
-                  <li>
+    <div class="row center-align m-2">
+        <div class="col col-12 col-md-4 left-align">
+            <input id="decease-input" type="text">
+            <ul class="collapsible expandable popout hide-on-med-and-down">
+                {% for sphere in spheres %}
+                    <li>
+                        <div class="collapsible-header d-flex justify-content-between align-items-end">
+                            <div>{{ sphere.name }}</div>
+                            <div class="arrow"><i class="small material-icons">arrow_drop_down</i></div>
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                {% for decease in sphere.decease_set.all %}
+                                    <li>
 
-                    <div class="decease-detail"
-                         data-id="{{ decease.id }}">{{ decease.name }}</div>
-                    <div class="divider"></div>
-                  </li>
+                                        <div class="decease-detail"
+                                             data-id="{{ decease.id }}">{{ decease.name }}</div>
+                                        <div class="divider"></div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
                 {% endfor %}
-              </ul>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
+            </ul>
+        </div>
+        <div class="col col-12 col-md-8 decease"></div>
     </div>
-    <div class="col col-12 col-md-8 decease"></div>
-  </div>
 {% endblock %}
 {% block extrajs %}
-  <script>
-      $(document).ready(function () {
-          var input = $('#decease-input');
-          var DECEASE_DETAIL = "{% url 'decease-detail' pk=1 %}";
-          $('.decease-detail').on('click', function () {
-              var el = $(this);
-              $.ajax({
-                  url: DECEASE_DETAIL.replace('1', el.data('id')),
-                  method: 'GET',
-                  success: function (response) {
-                      input.val(el.html())
-                      $('.decease').html(response)
-                  }
-              })
-          });
-          input.devbridgeAutocomplete({
-              serviceUrl: '{% url "decease-autocomplete" %}',
-              onSelect: function (suggestion) {
-                  $(this).val(suggestion.value);
-                  $.ajax({
-                      url: DECEASE_DETAIL.replace('1', suggestion.data),
-                      method: 'GET',
-                      success: function (response) {
-                          $('.decease').html(response)
-                      }
-                  })
-              }
-          });
-      })
-  </script>
+    <script>
+        $(document).ready(function () {
+
+
+            var input = $('#decease-input');
+            var DECEASE_DETAIL = "{% url 'decease-detail' pk=1 %}";
+            $('.decease-detail').on('click', function (e) {
+                var el = $(this);
+                $.ajax({
+                    url: DECEASE_DETAIL.replace('1', el.data('id')),
+                    method: 'GET',
+                    success: function (response) {
+                        input.val(el.html());
+                        $('.decease').html(response)
+                        var search = '?decease_id=' + el.data('id');
+                        var l = location.protocol + '//' + location.host + location.pathname;
+                        window.history.pushState({'decease_id': el.data('id')}, "", l + search);
+                    }
+                })
+            });
+            var decease = parseInt("{{ request.GET.decease_id}}");
+            if (decease) {
+                var el = $(".decease-detail[data-id='" + decease + "']");
+                el.click();
+            }
+            input.devbridgeAutocomplete({
+                serviceUrl: '{% url "decease-autocomplete" %}',
+                onSelect: function (suggestion) {
+                    var el = $(".decease-detail[data-id='" + suggestion.data + "']");
+                    el.click();
+                }
+            });
+        })
+    </script>
 {% endblock %}

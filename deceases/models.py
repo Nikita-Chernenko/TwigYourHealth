@@ -66,7 +66,7 @@ class Decease(models.Model):
     treatment = models.TextField(blank=True, null=True)
     passing = models.TextField(blank=True, null=True)
     recommendations = models.TextField(blank=True, null=True)
-    occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
+    # occurrence = models.PositiveIntegerField(default=1)  # How many times this decease has occurred
     number = models.PositiveIntegerField('number of people in average to get decease from 10^6', default=0)
 
     class Meta:
@@ -74,8 +74,6 @@ class Decease(models.Model):
 
     def __str__(self):
         return self.name
-
-
 
 
 class DeceaseSymptom(models.Model):
@@ -92,17 +90,10 @@ class DeceaseSymptom(models.Model):
     # inconsistency of the occurrence and the symptom occurrence at the moment of the saving
     chances = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)], default=50)
 
-    occurrence = models.PositiveIntegerField(default=1)  # How many times this symptom has occurred for the decease
+    # occurrence = models.PositiveIntegerField(default=1)  # How many times this symptom has occurred for the decease
 
     def __str__(self):
         return f'{self.symptom} - {self.decease}'
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        # handled in save for now for simplicity
-        if hasattr(self, 'decease') and self.occurrence:
-            self.chances = ceil(self.occurrence / self.decease.occurrence * 100)
-        super(DeceaseSymptom, self).save(force_insert, force_update, using, update_fields)
 
 
 class PatientDecease(models.Model):
@@ -117,8 +108,8 @@ class PatientDecease(models.Model):
         return f'{self.patient} {self.decease}'
 
     def update_occurence(self):
-        if not self.pk and hasattr(self, 'decease') and self.symptoms.exists():
-            Decease.objects.filter(pk=self.decease.id).update(occurrence=F('occurrence') + 1)
+        if not self.pk and hasattr(self, 'decease') and self.decease.symptoms.exists():
+            Decease.objects.filter(pk=self.decease.id).update(number=F('number') + 1)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
@@ -129,7 +120,7 @@ class PatientDecease(models.Model):
 
     def delete(self, using=None, keep_parents=False):
         if self.symptoms.exists():
-            Decease.objects.filter(pk=self.decease.id).update(occurrence=F('occurrence') - 1)
+            Decease.objects.filter(pk=self.decease.id).update(number=F('number') - 1)
         super(PatientDecease, self).delete(using, keep_parents)
 
     def clean(self):
@@ -154,26 +145,9 @@ class PatientSymptomDecease(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if hasattr(self, 'patient_decease') and hasattr(self, 'symptom'):
-            # TODO remove the algo
+        if getattr(self, 'patient_decease', False) and getattr(self, 'symptom', False):
             # create new symptom of decease because it occurred and doesn't exist
             decease = self.patient_decease.decease
             if self.symptom not in decease.symptoms.all():
                 DeceaseSymptom.objects.create(decease=decease, symptom=self.symptom)
-            # update the existing decease symptom
-            else:
-                DeceaseSymptom.objects.filter(decease=decease, symptom=self.symptom).update(
-                    occurrence=F('occurrence') + 1)
-            # decease has been either set or changed
-            if not self.__original_decease == decease:
-                # if decease has been changed, minus occurrence of the previous one
-                if self.__original_decease:
-                    self.__original_decease.occurrence = F('occurrence') - 1
-                    self.__original_decease.save()
-                # update occurrence of new decease
-                DeceaseSymptom.objects.filter(decease=decease, symptom=self.symptom).update(
-                    occurrence=F('occurrence') + 1)
         super(PatientSymptomDecease, self).save(force_insert, force_update, using, update_fields)
-        # Update occurence of the decease
-        if hasattr(self, 'patient_decease'):
-            self.patient_decease.update_occurence()

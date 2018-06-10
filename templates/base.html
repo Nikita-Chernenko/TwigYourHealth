@@ -12,7 +12,6 @@
     <link rel="shortcut icon" type="image/png" href="{{ STATIC_URL }}/favicon.ico"/>
 
 
-
     {% block extrahead %} {% endblock %}
 
 </head>
@@ -215,28 +214,29 @@
     <script>
         $(document).ready(function () {
             materialize_initiailize();
-            var MESSAGE_CREATE = "{% url 'message-create' %}";
-            var USER_RETRIEVE = "{% url 'user-retrieve' pk=0 %}";
-            var MESSAGE_LIST = "{% url 'message-list' chat_id=0 %}";
-            var IS_PATIENT = {% if user.is_authenticated %}{{ user.is_patient |json }}{% else %}false{% endif %};
-            var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
-            var PROFILE = "{% url 'profile' pk=0 %}";
-            chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
+            {% if user.is_authenticated %}
+                var MESSAGE_CREATE = "{% url 'message-create' %}";
+                var USER_RETRIEVE = "{% url 'user-retrieve' pk=0 %}";
+                var MESSAGE_LIST = "{% url 'message-list' chat_id=0 %}";
+                var IS_PATIENT = {% if user.is_authenticated %}{{ user.is_patient |json }}{% else %}false{% endif %};
+                var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
+                var PROFILE = "{% url 'profile' pk=0 %}";
+                chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
 
-            var CALL_REQUEST = "{% url 'call-request' with_id=0 %}";
-            var CALL_ACCEPT = "{% url 'call-accept' with_id=0 %}";
-            var CALL_DECLINE = "{% url 'call-decline' with_id=0 %}";
-            var CALL_END = "{% url 'call-end' with_id=0 room_name=1 %}";
-            call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END);
+                var CALL_REQUEST = "{% url 'call-request' with_id=0 %}";
+                var CALL_ACCEPT = "{% url 'call-accept' with_id=0 %}";
+                var CALL_DECLINE = "{% url 'call-decline' with_id=0 %}";
+                var CALL_END = "{% url 'call-end' with_id=0 room_name=1 %}";
+                call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END);
 
-            $('.notifications .collapsible-header').click(function () {
-                $.ajax({
-                    url: "{% url 'mark-read' %}",
-                    method: "POST"
-                });
-                $('.notifications .collapsible-header .badge').remove();
-            })
-
+                $('.notifications .collapsible-header').click(function () {
+                    $.ajax({
+                        url: "{% url 'mark-read' %}",
+                        method: "POST"
+                    });
+                    $('.notifications .collapsible-header .badge').remove();
+                })
+            {% endif %}
         });
 
     </script>

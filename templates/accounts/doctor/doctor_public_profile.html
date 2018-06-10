@@ -5,35 +5,9 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-
-        {% include 'accounts/_avatar.html' with height="100" width="100" user=doctor.user  img_class="circle" %}
-        <div>{{ doctor.user.name|default:"Имя" }} {{ doctor.user.surname|default:"Фамилия" }}</div>
-        <div>{{ doctor.is_private|yesno:"Частный,Госудасртвенный" }} врач</div>
-        <div>{{ doctor.description }} </div>
-        {% if relationships.doctor_accept %}
-            {% if doctor.accept_call %}
-                <div>{{ doctor.skype|default:"Нет скайпа" }}</div>
-            {% endif %}
-            {% if  doctor.hospital %}
-                <div>{{ doctor.hospital }} </div>
-            {% else %}
-                <div>{{ doctor.personal_address }} </div>
-            {% endif %}
-            {% if relationships.patient_accept %}
-                <a href="{% url 'timetable' doctor_pk=doctor.pk %}" class="btn waves-effect beige">
-                    Записаться на прием
-                </a>
-            {% endif %}
-            {% if doctor.is_private %}
-                {% include 'accounts/doctor/private_doctor/_private_doctor_private_info.html' with private_doctor=doctor.privatedoctor %}
-
-            {% else %}
-                {% include 'accounts/doctor/public_doctor/_public_doctor_private_info.html' %}
-
-            {% endif %}
-
-        {% endif %}
-        {% if not relationships.doctor_accept %}
+        {% include 'accounts/doctor/_doctor_info.html' with patient_accept=relationships.patient_accept doctor_accept=relationships.doctor_accept %}
+        <div class="divider"></div>
+            {% if not relationships.doctor_accept %}
             {% if relationships.patient_accept %}
                 <button class="btn beige" id="require-access" data-patient-accept="false">
                     Вы запросили доступ,
@@ -49,7 +23,7 @@
 
             <div>
                 {% if relationships.patient_accept %}
-                    <div class="card-panel teal lighten-2">Это ваш доктор</div>
+                    <div class="white-text center-align teal lighten-2 mt-2 mb-2">Это ваш доктор</div>
                     {% if doctor.accept_chat and not have_chat %}
                         <button class="btn waves-effect beige" id="create-chat">Создать чат</button>
                     {% endif %}
@@ -60,6 +34,7 @@
             </div>
 
         {% endif %}
+        <div class="divider mt-2"></div>
         {% if doctor_spheres %}
             {% include 'accounts/_reviews.html' %}
         {% endif %}

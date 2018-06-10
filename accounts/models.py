@@ -160,7 +160,7 @@ class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField()
     deceases = models.ManyToManyField(to='deceases.Decease', through='deceases.PatientDecease')
-    skype = models.CharField('skype username', max_length=256, unique=True)
+    skype = models.CharField('skype username', max_length=256, unique=True, blank=True, null=True)
     gender = models.ForeignKey(Gender, on_delete=models.PROTECT)
     age_gap = models.ForeignKey(AgeGap, on_delete=models.PROTECT, verbose_name='age gap', blank=True)
 

@@ -10,6 +10,10 @@ class Notification(models.Model):
     seen = models.BooleanField(default=False)
     important = models.BooleanField(default=False)
     sent = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(null=True, auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timestamp']
 
     def __str__(self):
         return f'{self.owner} {self.text} {self.seen}'

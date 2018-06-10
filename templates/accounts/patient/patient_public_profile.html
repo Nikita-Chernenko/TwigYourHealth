@@ -12,40 +12,56 @@
 
         {% include 'accounts/_avatar.html' with height="100" width="100" user=patient.user  img_class="circle" %}
         {% if not relationships.patient_accept %}
-            {% if relationships.doctor_accept %}
-                <button class="btn beige" id="require-access" data-doctor-accept="false">
-                    Вы запросили доступ,
-                    Закрыть данные для этого пользователя
-                </button>
-            {% else %}
-                <button class="btn beige" id="require-access" data-doctor-accept="true">Запросить доступ и открыть свои
-                    данные
-                </button>
-            {% endif %}
-        {% else %}
-            <div>
+            <div class="col d-flex flex-column align-items-center">
+
                 {% if relationships.doctor_accept %}
-                    <div class="card-panel teal lighten-2">Это ваш пациент</div>
-                    {% if doctor.accept_chat and not have_chat %}
-                        <button class="btn waves-effect beige" id="create-chat">Создать чат</button>
-                    {% endif %}
-                    <button class="btn waves-effect beige" id="require-access" data-doctor-accept="false">Закрыть
-                        доступ
+                    <button class="btn beige" id="require-access" data-doctor-accept="false">
+                        Вы запросили доступ,
+                        Закрыть данные для этого пользователя
                     </button>
                 {% else %}
-                    <button class="btn waves-effect beige" id="require-access" data-doctor-accept="true">Дать доступ
+                    <button class="btn beige" id="require-access" data-doctor-accept="true">Запросить доступ и открыть
+                        свои
+                        данные
                     </button>
                 {% endif %}
+            </div>
+        {% else %}
+            <div>
+                <div class="col d-flex flex-column align-items-center">
+                    {% if relationships.doctor_accept %}
+                        <div class=" mt-2 mb-2 center-align white-text teal lighten-2" style="width: 100%">Это ваш пациент</div>
+                        {% if doctor.accept_chat and not have_chat %}
+                            <div>
+                                <button class="btn waves-effect beige" id="create-chat">Создать чат</button>
+                            </div>
+                        {% endif %}
+                        <div>
+                            <button class="btn waves-effect beige" id="require-access" data-doctor-accept="false">
+                                Закрыть
+                                доступ
+                            </button>
+                        </div>
+
+                    {% else %}
+                        <div>
+                            <button class="btn waves-effect beige" id="require-access" data-doctor-accept="true">Дать
+                                доступ
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
                 {% if medical_records %}
                     <div id="medical_records">
                         {% include 'deceases/_medical_records.html' %}
                     </div>
-                    <div>
-                        {% include 'deceases/_doctor_create_update_patient_decease_form.html' %}
-                    </div>
+
                 {% else %}
                     <h3>There are no medical records, please, fill it in</h3>
                 {% endif %}
+                <div>
+                    {% include 'deceases/_doctor_create_update_patient_decease_form.html' %}
+                </div>
             </div>
         {% endif %}
     </div>
