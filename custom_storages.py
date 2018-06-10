@@ -1,11 +1,10 @@
 from django.conf import settings
-from dropbox.exceptions import ApiError
-from storages.backends.dropbox import DropBoxStorage
+from storages.backends.s3boto3 import S3Boto3Storage
 
 
-class MyStorage(DropBoxStorage):
-    def url(self, name):
-        try:
-            return super(MyStorage, self).url(name)
-        except ApiError:
-            return None
+class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+
+class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
