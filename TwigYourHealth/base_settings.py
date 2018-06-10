@@ -142,7 +142,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_EXEMPT_URLS = ['admin', 'accounts/sign-up/']
+LOGIN_EXEMPT_URLS = ['admin/', 'accounts/sign-up/', 'contact/', 'about/']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 AUTH_USER_MODEL = 'accounts.User'
@@ -183,4 +183,3 @@ GRAPH_MODELS = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-
