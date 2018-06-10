@@ -76,7 +76,7 @@ class DoctorSphere(models.Model):
         try:
             return int(self.review_set.all().aggregate(rating=Avg('mark'))['rating'])
         except TypeError:
-            return None
+            return 0
 
     def __str__(self):
         return f'{self.doctor}-{self.sphere}'
