@@ -4,236 +4,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Twig your health {% endblock %}</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Twig your health {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" type="image/png" href="{{ STATIC_URL }}/favicon.ico"/>
 
 
-  {% block extrahead %} {% endblock %}
+
+    {% block extrahead %} {% endblock %}
 
 </head>
 <body>
 
 <div class="content">
-  <header>
+    <header>
 
-    <nav>
-      <div class="nav-wrapper teal lighten-2">
-        <div class="container center-align">
+        <nav>
+            <div class="nav-wrapper teal lighten-2">
+                <div class="container center-align">
 
 
-          <a href="#" class="brand-logo center-align">Twig Your Health </a>
+                    <a href="#" class="brand-logo center-align">Twig Your Health </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="nav-wrapper beige">
+            <div class="container breadcrumbs">
+                {% block breadcrumbs %}
+                    <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
+                {% endblock %}
+            </div>
         </div>
-      </div>
-    </nav>
 
-    <div class="nav-wrapper beige">
-      <div class="container breadcrumbs">
-        {% block breadcrumbs %}
-          <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
-        {% endblock %}
-      </div>
-    </div>
-
-    <ul id="slide-menu" class="sidenav sidenav-fixed">
-      <li><a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
-      <li><a class="waves-effect" href="#"><i class="material-icons left">group</i>About us</a></li>
-      <li><a class="waves-effect" href="#"><i class="material-icons left">contact_phone</i>Contact us</a>
-      </li>
-      <li>
-        <div class="divider"></div>
-      </li>
-
-      {% if user.is_authenticated %}
-        <li>
-          <div class="user-view">
-            {% include 'accounts/_avatar.html' with user=user width='150' height='150' img_class='menu-avatar' %}
-            <a href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
-            <a href=""><span class="black-text email">jdandturk@gmail.com</span></a>
-            {% if user.is_doctor %}
-              {% if user.doctor.is_private %}
-                Hi, private doctor {{ user.username }}
-
-              {% else %}
-                Hi, public doctor {{ user.username }}
-
-              {% endif %}
-
-            {% elif user.is_patient %}
-              Hi, patient {{ user.username }}
-
-
-            {% else %}
-              Hi, OUR GOD ADMIN {{ user.username }}
-            {% endif %}
-          </div>
-        </li>
-
-        <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
-                class="material-icons left">account_box</i>Profile</a>
-        </li>
-
-        <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
-        </li>
-        <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
-                class="material-icons left">library_books</i>Deceases</a>
-        </li>
-
-        {% if user.is_doctor %}
-          <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i
-                  class="material-icons left">schedule</i>Timetable</a>
-          </li>
-        {% elif user.is_patient %}
-          <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
-                  class="material-icons left">payment</i>Medical
-            record</a>
-          </li>
-          <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
-                  class="material-icons left">search</i>Doctor search</a>
-          </li>
-        {% endif %}
-        <li style="padding-left: 12px;">
-          <ul class="{% if notifications %}collapsible {% endif %} expandable notifications">
-            <li>
-              <div class="collapsible-header"><i class="material-icons left">notifications</i>
-                <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
-                  {% if new_notifications_count %}
-                    <span class="new badge blue ml-2"> {{ new_notifications_count }}</span>{% endif %}
-                </div>
-              </div>
-              {% if notifications %}
-                <div class="collapsible-body">
-                  <ul>
-                    <div class="divider"></div>
-                    {% for n in notifications %}
-                      <li class="notification-text {% if n.seen %} gray {% endif %}"> {{ n.text|safe }}</li>
-                      <div class="divider"></div>
-                    {% endfor %}
-                  </ul>
-
-                </div>
-              {% endif %}
+        <ul id="slide-menu" class="sidenav sidenav-fixed">
+            <li><a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
+            <li><a class="waves-effect" href="{% url 'about' %}"><i class="material-icons left">group</i>About us</a>
             </li>
-          </ul>
-        </li>
-        <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
-        </li>
-      {% else %}
-        <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
-        </li>
-        <li><a class="waves-effect" href="{% url 'patient-sign-up' %}"><i
-                class="material-icons left">person_add</i>Sign
-          up</a></li>
-      {% endif %}
-    </ul>
+            <li><a class="waves-effect" href="{% url 'contact' %}"><i class="material-icons left">contact_phone</i>Contact
+                us</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
 
-    <a href="#" data-target="slide-menu"
-       class="sidenav-trigger button-collapse btn-floating btn-large beige hide-on-large-only">
-      <i class="material-icons">menu</i></a>
+            {% if user.is_authenticated %}
+                <li>
+                    <div class="user-view">
+                        {% include 'accounts/_avatar.html' with user=user width='150' height='150' img_class='menu-avatar' %}
+                        <a href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
+                        <a href=""><span class="black-text email">jdandturk@gmail.com</span></a>
+                        {% if user.is_doctor %}
+                            {% if user.doctor.is_private %}
+                                Hi, private doctor {{ user.username }}
 
-  </header>
+                            {% else %}
+                                Hi, public doctor {{ user.username }}
 
-  <main>
+                            {% endif %}
 
-    {% if messages %}
+                        {% elif user.is_patient %}
+                            Hi, patient {{ user.username }}
 
-      <div class="container">
-        <div class="row">
-          <div class="container-fluid">
-            {% for message in messages %}
-              <div class="white-text
+
+                        {% else %}
+                            Hi, OUR GOD ADMIN {{ user.username }}
+                        {% endif %}
+                    </div>
+                </li>
+
+                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                        class="material-icons left">account_box</i>Profile</a>
+                </li>
+
+                <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
+                </li>
+                <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
+                        class="material-icons left">library_books</i>Deceases</a>
+                </li>
+
+                {% if user.is_doctor %}
+                    <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i
+                            class="material-icons left">schedule</i>Timetable</a>
+                    </li>
+                {% elif user.is_patient %}
+                    <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                            class="material-icons left">payment</i>Medical
+                        record</a>
+                    </li>
+                    <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
+                            class="material-icons left">search</i>Doctor search</a>
+                    </li>
+                {% endif %}
+                <li style="padding-left: 12px;">
+                    <ul class="{% if notifications %}collapsible {% endif %} expandable notifications">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons left">notifications</i>
+                                <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
+                                    {% if new_notifications_count %}
+                                        <span class="new badge blue ml-2"> {{ new_notifications_count }}</span>{% endif %}
+                                </div>
+                            </div>
+                            {% if notifications %}
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <div class="divider"></div>
+                                        {% for n in notifications %}
+                                            <li class="notification-text {% if n.seen %} gray {% endif %}"> {{ n.text|safe }}</li>
+                                            <div class="divider"></div>
+                                        {% endfor %}
+                                    </ul>
+
+                                </div>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
+                </li>
+            {% else %}
+                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
+                </li>
+                <li><a class="waves-effect" href="{% url 'patient-sign-up' %}"><i
+                        class="material-icons left">person_add</i>Sign
+                    up</a></li>
+            {% endif %}
+        </ul>
+
+        <a href="#" data-target="slide-menu"
+           class="sidenav-trigger button-collapse btn-floating btn-large beige hide-on-large-only">
+            <i class="material-icons">menu</i></a>
+
+    </header>
+
+    <main>
+
+        {% if messages %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+                        {% for message in messages %}
+                            <div class="white-text
                             {% if message.level_tag == "info" %}teal lighten-2
                             {% elif message.level_tag == "warning" %} orange
                             {% elif message.level_tag == "error" %} red
                             {% endif %}" style="padding: 5px">
-                {{ message }}</div>
-              </div>
-            {% endfor %}
+                                {{ message }}</div>
+                            </div>
+                        {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="mt-2 mb-4">
+            {% block content %} {% endblock %}
         </div>
-      </div>
-    {% endif %}
+        {% if user.is_authenticated %}
+            {% include 'communications/_chat.html' %}
+        {% endif %}
+    </main>
+    <footer class="page-footer teal lighten-2">
 
-    <div class="mt-2 mb-4">
-      {% block content %} {% endblock %}
-    </div>
-    {% if user.is_authenticated %}
-      {% include 'communications/_chat.html' %}
-    {% endif %}
-  </main>
-  <footer class="page-footer teal lighten-2">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-4 offset-lg-2 col-12">
 
-    <div class="container">
-      <div class="row">
-        <div class="col col-lg-6 col-12">
+                   <ul>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'home' %}">Главная</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'about' %}">Контакты</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'contact' %}">О нас</a></li>
+                    </ul>
 
-          <p class="grey-text text-lighten-4">
-            Please, don't perceive diagnosis as the final point
-          <br>
-            Consult your doctor before taking any drugs
-          </p>
-
+                </div>
+                <div class="col col-lg-6 col-12">
+                    <p class="grey-text text-lighten-4">
+                        Please, don't perceive diagnosis as the final point
+                        <br>
+                        Consult your doctor before taking any drugs
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col col-lg-4 offset-lg-2 col-12">
-          <h5 class="white-text">Links</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
-          </ul>
+        <div class="footer-copyright  teal lighten-2">
+            <div class="container row justify-content-center">
+                <div>© 2018 Copyright TwigYourHealth</div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="footer-copyright  teal lighten-2">
-      <div class="container row justify-content-center">
-        <div>© 2018 Copyright TwigYourHealth</div>
-      </div>
-    </div>
-  </footer>
-  <script src="{% static 'js/jquery.js' %}"></script>
-  <script src="{% static 'js/csrf.js' %}"></script>
-  <script src="{% static 'js/materialize.min.js' %}"></script>
-  <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
-  <script src="{% static 'js/materialize_initialize.js' %}"></script>
-  <script src="{% static 'js/chat.js' %}"></script>
-  <script src="{% static 'js/call.js' %}"></script>
-  <script src="{% static 'js/jquery.autocomplete.js' %}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-          integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-          crossorigin="anonymous"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    </footer>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/jquery.materialize-autocomplete.min.js' %}"></script>
+    <script src="{% static 'js/materialize_initialize.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script src="{% static 'js/call.js' %}"></script>
+    <script src="{% static 'js/jquery.autocomplete.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-  <script src="{% static 'js/simplewebrtc.js' %}"></script>
-  <script>
-      $(document).ready(function () {
-          materialize_initiailize();
-          var MESSAGE_CREATE = "{% url 'message-create' %}";
-          var USER_RETRIEVE = "{% url 'user-retrieve' pk=0 %}";
-          var MESSAGE_LIST = "{% url 'message-list' chat_id=0 %}";
-          var IS_PATIENT = {% if user.is_authenticated %}{{ user.is_patient |json }}{% else %}false{% endif %};
-          var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
-          var PROFILE = "{% url 'profile' pk=0 %}";
-          chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
+    <script src="{% static 'js/simplewebrtc.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            materialize_initiailize();
+            var MESSAGE_CREATE = "{% url 'message-create' %}";
+            var USER_RETRIEVE = "{% url 'user-retrieve' pk=0 %}";
+            var MESSAGE_LIST = "{% url 'message-list' chat_id=0 %}";
+            var IS_PATIENT = {% if user.is_authenticated %}{{ user.is_patient |json }}{% else %}false{% endif %};
+            var IS_DOCTOR = {% if user.is_authenticated %}{{ user.is_doctor |json }}{% else %}false{% endif %};
+            var PROFILE = "{% url 'profile' pk=0 %}";
+            chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR, PROFILE);
 
-          var CALL_REQUEST = "{% url 'call-request' with_id=0 %}";
-          var CALL_ACCEPT = "{% url 'call-accept' with_id=0 %}";
-          var CALL_DECLINE = "{% url 'call-decline' with_id=0 %}";
-          var CALL_END = "{% url 'call-end' with_id=0 room_name=1 %}";
-          call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END);
+            var CALL_REQUEST = "{% url 'call-request' with_id=0 %}";
+            var CALL_ACCEPT = "{% url 'call-accept' with_id=0 %}";
+            var CALL_DECLINE = "{% url 'call-decline' with_id=0 %}";
+            var CALL_END = "{% url 'call-end' with_id=0 room_name=1 %}";
+            call(CALL_REQUEST, CALL_ACCEPT, CALL_DECLINE, CALL_END);
 
-          $('.notifications .collapsible-header').click(function () {
-              $.ajax({
-                  url: "{% url 'mark-read' %}",
-                  method: "POST"
-              });
-              $('.notifications .collapsible-header .badge').remove();
-          })
+            $('.notifications .collapsible-header').click(function () {
+                $.ajax({
+                    url: "{% url 'mark-read' %}",
+                    method: "POST"
+                });
+                $('.notifications .collapsible-header .badge').remove();
+            })
 
-      });
+        });
 
-  </script>
+    </script>
 
-  {% block extrajs %}
-  {% endblock %}
+    {% block extrajs %}
+    {% endblock %}
 
 
 </div>

@@ -23,8 +23,9 @@ function chat(MESSAGE_CREATE, USER_RETRIEVE, MESSAGE_LIST, IS_PATIENT, IS_DOCTOR
         var user_id = parseInt(el.data('user-id'));
         var with_id = parseInt(el.data('with-id'));
         var message_block = chat.find('.chat-messages');
+        var ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
         chatSocket = new WebSocket(
-            'ws://' + window.location.host +
+            ws_scheme + '://' + window.location.host +
             '/chat/' + with_id + '/');
         chatSocket.onmessage = function (e) {
             var message = JSON.parse(e.data);

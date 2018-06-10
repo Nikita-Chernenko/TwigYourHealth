@@ -8570,4 +8570,7 @@ a.btn, a.btn-large, a.btn-small {
     padding-left: 5px;
     border: none; }
 
+.btn-floating.btn-large {
+  min-width: 56px; }
+
 /*# sourceMappingURL=/static/scss/all.css.map */
