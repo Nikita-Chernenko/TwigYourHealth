@@ -10,62 +10,70 @@
     <link rel="stylesheet" href="{% static 'css/cards.css' %}">
 </head>
 <body>
-<div class="margin_from_adaptive fr_card">
-    <div class="content__cards__sender">
-        <div class="content__cards__sender__input">
-            <p class="content__cards__sender__input__title">Номер картки відправника:</p>
-{#            <img src="{% static 'images/cards.png' %}" alt="">#}
-            <form el="SendFormCard">
-                <input class="content__cards__sender__input__number card" tabindex="1" type="text" placeholder="XXXX"
-                       maxlength="4">
-                <input class="content__cards__sender__input__number card" tabindex="2" type="text" placeholder="XXXX"
-                       maxlength="4">
-                <input class="content__cards__sender__input__number card" tabindex="3" type="text" placeholder="XXXX"
-                       maxlength="4">
-                <input class="content__cards__sender__input__number card" tabindex="4" type="text" placeholder="XXXX"
-                       maxlength="4">
-            </form>
-        </div>
-        <div class="content__cards__sender__data">
-            <select el="SendMonth" tabindex="6" class="small">
-                <option value="01" selected="">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select><select el="SendYear" tabindex="7" class="small" style="width: 70px;">
-            <option value="18"> 2018</option>
-            <option value="19" selected=""> 2019</option>
-            <option value="20"> 2020</option>
-            <option value="21"> 2021</option>
-            <option value="22"> 2022</option>
-            <option value="23"> 2023</option>
-            <option value="24"> 2024</option>
-            <option value="25"> 2025</option>
-            <option value="26"> 2026</option>
-            <option value="27"> 2027</option>
-            <option value="28"> 2028</option>
-            <option value="29"> 2029</option>
-            <option value="30"> 2030</option>
-            <option value="31"> 2031</option>
-            <option value="32"> 2032</option>
-        </select></div>
-    </div>
-    <div class="content__cards__cvv">
-        <div class="content__cards__sender__input">
-            <form>
-                <input el="SendCVV" tabindex="5" class="content__cards__sender__input__number cvv"
-                       style="margin-top: 25px;width: 53px;" type="password" pattern="d*" novalidate=""
-                       placeholder="XXX" maxlength="3"></form>
-        </div>
-    </div>
+<div>
+    <b1>Sum to pay: {{ order.sum }}</b1>
 </div>
+<form method="post">
+    {% csrf_token %}
+    <div class="margin_from_adaptive fr_card">
+        <div class="content__cards__sender">
+            <div class="content__cards__sender__input">
+                <p class="content__cards__sender__input__title">Номер картки відправника:</p>
+                    <input class="content__cards__sender__input__number card" tabindex="1" type="text"
+                           placeholder="XXXX"
+                           maxlength="4">
+                    <input class="content__cards__sender__input__number card" tabindex="2" type="text"
+                           placeholder="XXXX"
+                           maxlength="4">
+                    <input class="content__cards__sender__input__number card" tabindex="3" type="text"
+                           placeholder="XXXX"
+                           maxlength="4">
+                    <input class="content__cards__sender__input__number card" tabindex="4" type="text"
+                           placeholder="XXXX"
+                           maxlength="4">
+            </div>
+            <div class="content__cards__sender__data">
+                <select el="SendMonth" tabindex="6" class="small">
+                    <option value="01" selected="">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select><select el="SendYear" tabindex="7" class="small" style="width: 70px;">
+                <option value="18"> 2018</option>
+                <option value="19" selected=""> 2019</option>
+                <option value="20"> 2020</option>
+                <option value="21"> 2021</option>
+                <option value="22"> 2022</option>
+                <option value="23"> 2023</option>
+                <option value="24"> 2024</option>
+                <option value="25"> 2025</option>
+                <option value="26"> 2026</option>
+                <option value="27"> 2027</option>
+                <option value="28"> 2028</option>
+                <option value="29"> 2029</option>
+                <option value="30"> 2030</option>
+                <option value="31"> 2031</option>
+                <option value="32"> 2032</option>
+            </select></div>
+        </div>
+        <div class="content__cards__cvv">
+            <div class="content__cards__sender__input">
+                    <input el="SendCVV" tabindex="5" class="content__cards__sender__input__number cvv"
+                           style="margin-top: 25px;width: 53px;" type="password" placeholder="XXX" maxlength="3">
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="submit">OK</button>
+    </div>
+</form>
 </body>
 </html>

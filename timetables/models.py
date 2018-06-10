@@ -93,6 +93,15 @@ class Visit(models.Model):
     def __str__(self):
         return f'{self.start}-{self.end} {self.patient} - {self.shift}'
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            super(Visit, self).save(*args, **kwargs)
+            from payments.models import Order
+            order = Order(interaction=self)
+            order.save()
+        else:
+            super(Visit, self).save(*args, **kwargs)
+
     def clean(self):
         start, end = self.start, self.end
         if start and end:

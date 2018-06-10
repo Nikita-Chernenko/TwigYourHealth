@@ -4,7 +4,6 @@ from django.db import models
 from django.db.models import Q
 
 from accounts.models import Doctor, Patient, User
-from payments.models import Order
 
 
 class CallEntity(models.Model):
@@ -36,9 +35,12 @@ class CallEntity(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            order = Order()
-            order.content_type
-        super(CallEntity, self).save(*args, **kwargs)
+            super(CallEntity, self).save(*args, **kwargs)
+            from payments.models import Order
+            order = Order(interaction=self)
+            order.save()
+        else:
+            super(CallEntity, self).save(*args, **kwargs)
 
 
 class Chat(models.Model):
@@ -101,21 +103,26 @@ class ChatEntity(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-
-        super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
-        if self.hours == 0 and self.messages.exists():
-            if not self.id and ChatEntity.objects.all().count() > 0 or ChatEntity.objects.count() > 1:
-                if self.id:
-                    last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
-                else:
-                    last_entity = ChatEntity.objects.latest('timestamp')
-                if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
-                    raise ValidationError('At least one message has been included in previous entities')
-            minutes = 0
-            for message in self.messages.all():
-                if hasattr(message.author, 'doctor'):
-                    minutes += len(message.text) / 50
-                elif hasattr(message.author, 'patient'):
-                    minutes += len(message.text) / 100
-            self.hours = minutes / 60
-            self.save()
+        if not self.pk:
+            super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+            from payments.models import Order
+            order = Order(interaction=self)
+            order.save()
+        else:
+            super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+            if self.hours == 0 and self.messages.exists():
+                if not self.id and ChatEntity.objects.all().count() > 0 or ChatEntity.objects.count() > 1:
+                    if self.id:
+                        last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
+                    else:
+                        last_entity = ChatEntity.objects.latest('timestamp')
+                    if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
+                        raise ValidationError('At least one message has been included in previous entities')
+                minutes = 0
+                for message in self.messages.all():
+                    if hasattr(message.author, 'doctor'):
+                        minutes += len(message.text) / 50
+                    elif hasattr(message.author, 'patient'):
+                        minutes += len(message.text) / 100
+                self.hours = minutes / 60
+                self.save()

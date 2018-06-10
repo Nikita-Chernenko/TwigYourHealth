@@ -1,15 +1,19 @@
 from annoying.decorators import render_to
-from payments.models import Order, Payment
+from payments.models import Order
 
 
 @render_to('payments/payment.html')
-def payment(request):
-    return {'fee': 10234}
+def payment(request, pk):
+    order = Order.objects.get(pk=pk)
+    if request.POST:
+        if sum == order.sum:
+            raise Exception('Wrong sum!')
+        order.payed = True
+        order.save()
+    return {'order': order}
 
 
-@render_to('payments/payment.html')
+@render_to('payments/orders.html')
 def orders(request, pk):
-    orders = Order.objects.filter(client__id=pk)
-    payments = Payment.objects.filter(client__id=pk)
-    return {'orders': orders,
-            'payments': payments}
+    orders = Order.objects.filter(patient__id=pk).order_by('payed')
+    return {'orders': orders }

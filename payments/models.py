@@ -50,7 +50,7 @@ class Order(models.Model):
                 doctor = call_entity.doctor.privatedoctor
                 # TODO update with new logic
                 hours = (call_entity.end - call_entity.start).seconds / 3600
-                sum = doctor.hour_rate * hours
+                sum = int(doctor.hour_rate * Decimal(hours))
             elif model is ChatEntity:
                 chat_entity = ChatEntity.objects.get(pk=model_id)
                 patient = chat_entity.patient
