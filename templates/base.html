@@ -170,22 +170,21 @@
 
         <div class="container">
             <div class="row">
-                <div class="col col-lg-6 col-12">
+                <div class="col col-lg-4 offset-lg-2 col-12">
 
+                   <ul>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'home' %}">Главная</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'about' %}">Контакты</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'contact' %}">О нас</a></li>
+                    </ul>
+
+                </div>
+                <div class="col col-lg-6 col-12">
                     <p class="grey-text text-lighten-4">
                         Please, don't perceive diagnosis as the final point
                         <br>
                         Consult your doctor before taking any drugs
                     </p>
-
-                </div>
-                <div class="col col-lg-4 offset-lg-2 col-12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="{% url 'home' %}">Home</a></li>
-                        <li><a class="grey-text text-lighten-3" href="{% url 'about' %}">About us</a></li>
-                        <li><a class="grey-text text-lighten-3" href="{% url 'contact' %}">Contact us</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
