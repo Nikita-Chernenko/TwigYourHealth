@@ -4,74 +4,80 @@
 {% endblock %}
 {% block content %}
 
-   <div class="text">
-        <h1>Кто мы?</h1>
-        <table>
-        <tr>
-            <td class="leftcol">
-                <img class="responsive-img" src="{% static 'images/doctors.jpg' %}" width="65%" height="65%" style="margin-left: 30%; border-radius: 8px">
-            </td>
+    <body>
+    <div class="containter">
 
-            <td style= "text-indent: 3%">
-                <div style="margin-right: 20%; margin-left: 20%">Мы - ваше спасение. Мы предоставляем нашим пользователям онлайн диагностику по введенным симптомам. А также удлбную зпись к интересующему вас врачу. Больше не потребуется стоять в долгих очередях, чтобы решить маленькую проблему.</div>
-            </td>
-        </tr>
-        </table>
+       <div class="text">
+            <h2 style="margin-top: 2%">Кто мы?</h2>
+            <table>
+            <tr>
+                <td class="leftcol">
+                    <img class="responsive-img" src="{% static 'images/doctors.jpg' %}" width="65%" height="65%" style="margin-left: 30%; border-radius: 8px">
+                </td>
 
-        <h1>Почему мы?</h1>
-        <table>
-        <tr>
-            <td style= "text-indent: 3%">
-                <div style="margin-left: 30%">Мы - первый онлайн сервис по диагностике различных заболеваний. Полная конфиденциальность и опервативность. Комфортность и удобство в использовании. </div>
+                <td style= "text-indent: 3%">
+                    <div style="margin-right: 20%; margin-left: 20%;font-size: 13pt;">Мы - ваше спасение. Мы предоставляем нашим пользователям онлайн диагностику по введенным симптомам. А также удлбную зпись к интересующему вас врачу. Больше не потребуется стоять в долгих очередях, чтобы решить маленькую проблему.</div>
+                </td>
+            </tr>
+            </table>
 
-            </td>
+            <h2 style="margin-top: 2%">Почему мы?</h2>
+            <table>
+            <tr>
+                <td style= "text-indent: 3%">
+                    <div style="margin-left: 26%;font-size: 13pt;margin-right: 15%;">Мы - первый онлайн сервис по диагностике различных заболеваний. Полная конфиденциальность и опервативность. Комфортность и удобство в использовании. </div>
 
-            <td>
-                <div style="margin-left: 10%">
-                <img class="responsive-img" src="{% static 'images/medical-record.jpg' %}" width="75%" height="75%" style=" border-radius: 8px">
+                </td>
+
+                <td>
+                    <div style="margin-left: 5%">
+                    <img class="responsive-img" src="{% static 'images/medical-record.jpg' %}" width="80%" height="80%" style=" border-radius: 8px">
+                    </div>
+                </td>
+            </tr>
+            </table>
+
+            <h2 style="margin-bottom: 3%;margin-top: 2%">Больницы,с которыми мы сотрудничаем</h2>
+            <div class="wrap">
+                <div class="blocks example3" style="margin-bottom: 2%;">
+                    <img src="{% static 'images/KlinHos.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
+                        <div class="example_text">
+                            <h6>Харьковская Областная Клиническая Больница</h6>
+                            <span style="font-size: 10pt;" >проспект Независимости 13</span>
+                        </div>
                 </div>
-            </td>
-        </tr>
-        </table>
 
-        <h1>Больницы,с которыми мы сотрудничаем</h1>
-        <div class="wrap">
-            <div class="blocks example3">
-                <img src="{% static 'images/KlinHos.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
+                <div class="blocks example3">
+                    <img src="{% static 'images/Hos14.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
                     <div class="example_text">
-                        <h6>Харьковская Областная Клиническая Больница</h6>
-                        <span>проспект Независимости 13</span>
+                            <h6>14-Я Городская Клиническая Больница им. проф. л. л. Гиршмана</h6>
+                            <span style="font-size: 10pt;">ул. Олеся Гончара, 5</span>
                     </div>
-            </div>
-
-            <div class="blocks example3">
-                <img src="{% static 'images/Hos14.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
-                <div class="example_text">
-                        <h6>14-Я Городская Клиническая Больница им. проф. л. л. Гиршмана</h6>
-                        <span>ул. Олеся Гончара, 5</span>
                 </div>
-            </div>
 
 
-            <div class="blocks example3">
-                <img src="{% static 'images/StudHos.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
-                <div class="example_text">
-                        <h6>Харьковская городская студенческая больница</h6>
-                        <span>ул. Дарвина 10</span>
-                </div>
-            </div>
-
-
-            <div class="blocks example3">
-                <img src="{% static 'images/hospit18.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
-                <div class="example_text">
-                        <h6>Городская многопрофильная больница № 18</h6>
-                        <span>ул. Краснодарская, 104</span>
+                <div class="blocks example3">
+                    <img src="{% static 'images/StudHos.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
+                    <div class="example_text">
+                            <h6>Харьковская городская студенческая больница</h6>
+                            <span style="font-size: 10pt;">ул. Дарвина 10</span>
                     </div>
+                </div>
+
+
+                <div class="blocks example3" style="margin-bottom: 3%;">
+                    <img src="{% static 'images/hospit18.jpg' %}" width="100%" height="100%" style="border-radius: 8px"/>
+                    <div class="example_text">
+                            <h6>Городская многопрофильная больница № 18</h6>
+                            <span style="font-size: 10pt;">ул. Краснодарская, 104</span>
+                        </div>
+                </div>
+
             </div>
 
         </div>
 
     </div>
+    </body>
 
 {% endblock %}

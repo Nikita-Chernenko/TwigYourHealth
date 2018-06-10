@@ -40,11 +40,14 @@
         </div>
 
         <ul id="slide-menu" class="sidenav sidenav-fixed">
-            <li><a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
-            <li><a class="waves-effect" href="{% url 'about' %}"><i class="material-icons left">group</i>About us</a>
+            <li>
+                <a  class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
+            <li>
+                <a  class="waves-effect" href="{% url 'about' %}"><i class="material-icons left">group</i>About us</a>
             </li>
-            <li><a class="waves-effect" href="{% url 'contact' %}"><i class="material-icons left">contact_phone</i>Contact
-                us</a>
+            <li>
+                <a class="waves-effect" href="{% url 'contact' %}"><i class="material-icons left">
+                    contact_phone</i>Contact us</a>
             </li>
             <li>
                 <div class="divider"></div>
@@ -54,8 +57,8 @@
                 <li>
                     <div class="user-view">
                         {% include 'accounts/_avatar.html' with user=user width='150' height='150' img_class='menu-avatar' %}
-                        <a href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
-                        <a href=""><span class="black-text email">jdandturk@gmail.com</span></a>
+                        <a style="font-size: 13pt" href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
+                        <a style="font-size: 13pt" href=""><span class="black-text email">jdandturk@gmail.com</span></a>
                         {% if user.is_doctor %}
                             {% if user.doctor.is_private %}
                                 Hi, private doctor {{ user.username }}
@@ -75,13 +78,13 @@
                     </div>
                 </li>
 
-                <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                <li><a  class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
                         class="material-icons left">account_box</i>Profile</a>
                 </li>
 
-                <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
+                <li><a " class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
                 </li>
-                <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
+                <li><a  class="waves-effect" href="{% url 'decease-list' %}"><i
                         class="material-icons left">library_books</i>Deceases</a>
                 </li>
 
@@ -90,18 +93,18 @@
                             class="material-icons left">schedule</i>Timetable</a>
                     </li>
                 {% elif user.is_patient %}
-                    <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
+                    <li><a  class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
                             class="material-icons left">payment</i>Medical
                         record</a>
                     </li>
-                    <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
+                    <li><a  class="waves-effect" href="{% url 'doctor-search' %}"><i
                             class="material-icons left">search</i>Doctor search</a>
                     </li>
                 {% endif %}
                 <li style="padding-left: 12px;">
                     <ul class="{% if notifications %}collapsible {% endif %} expandable notifications">
                         <li>
-                            <div class="collapsible-header"><i class="material-icons left">notifications</i>
+                            <div style="margin-left:7%;" class="collapsible-header"><i class="material-icons left">notifications</i>
                                 <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
                                     {% if new_notifications_count %}
                                         <span class="new badge blue ml-2"> {{ new_notifications_count }}</span>{% endif %}
@@ -122,12 +125,12 @@
                         </li>
                     </ul>
                 </li>
-                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
+                <li><a  class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
                 </li>
             {% else %}
-                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
+                <li><a  class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
                 </li>
-                <li><a class="waves-effect" href="{% url 'patient-sign-up' %}"><i
+                <li><a  class="waves-effect" href="{% url 'patient-sign-up' %}"><i
                         class="material-icons left">person_add</i>Sign
                     up</a></li>
             {% endif %}
@@ -170,16 +173,16 @@
 
         <div class="container">
             <div class="row">
-                <div class="col col-lg-4 offset-lg-2 col-12">
+                <div class="col col-lg-4 offset-lg-1 col-12">
 
                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="{% url 'home' %}">Главная</a></li>
-                        <li><a class="grey-text text-lighten-3" href="{% url 'about' %}">Контакты</a></li>
-                        <li><a class="grey-text text-lighten-3" href="{% url 'contact' %}">О нас</a></li>
+                        <li style="font-size: 13pt" ;><a class="grey-text text-lighten-3" href="{% url 'home' %}">Главная</a></li>
+                        <li style="font-size: 13pt" ><a class="grey-text text-lighten-3" href="{% url 'about' %}">Контакты</a></li>
+                        <li style="font-size: 13pt" ><a class="grey-text text-lighten-3" href="{% url 'contact' %}">О нас</a></li>
                     </ul>
 
                 </div>
-                <div class="col col-lg-6 col-12">
+                <div class="col col-lg-7 col-12">
                     <p class="grey-text text-lighten-4">
                         Please, don't perceive diagnosis as the final point
                         <br>
@@ -194,6 +197,7 @@
             </div>
         </div>
     </footer>
+
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/materialize.min.js' %}"></script>

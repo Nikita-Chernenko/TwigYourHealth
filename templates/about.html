@@ -5,49 +5,52 @@
 {% block content %}
 
 
+    <body>
+    <div class="containter">
+
+        <div class="text">
+        <h2 style="margin-top: 2%; 	margin-bottom: 2%">О нас</h2>
+
+            <p style="text-align: justify; text-indent: 1%; margin-top: 1%; margin-right: 15%; margin-left: 15%; line-height: 1.5; font-size: 13pt;">
+                <a style="font-size: 14pt; color: black; font-weight: 600 ">Twig your health</a>
+                - бесплатный онлайн-сервис поиска врача и записи на прием. А так же онлайн поиска болезни по симптомам.
+            </p>
+
+            <p style="text-align: justify; text-indent: 1%; margin-top: 5px; margin-right: 15%; margin-left: 15%; line-height: 1.5; font-size: 13pt;">
+                <a style="font-size: 14pt; color: black;font-weight: 600">Наша цель</a>
+                — помочь пациенту в любое время найти нужного врача и быстро записаться к нему нам прием!
+                Быстро найти предположительные варианты вашей болезни по введенным вами симптомам!
+            </p>
+        <hr style="margin-top: 4%">
+
+        <h2 style="margin-top: 2%; 	margin-bottom: 2%">Как работает Twig your health</h2>
+        <div align="left" style="margin-left: 15% ">
+        <ul >
+             <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5; font-size: 13pt;">выбираете врача самостоятельно;</li>
+             <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5; font-size: 13pt;">все врачи и клиники на одном сайте;</li>
+             <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5; font-size: 13pt;">быстрая запись к любому специалисту;</li>
+             <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5; font-size: 13pt;">после записи вам придет sms-напоминание с датой и местом приема;</li>
+             <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5; font-size: 13pt;">ваш отзыв влияет на рейтинг врача и клиники;</li>
+        </ul>
+        </div>
 
 
-    <div class="text">
-    <h4 style="margin-top: 2%; 	margin-bottom: 2%">О нас</h4>
 
-		<p style="text-align: justify; text-indent: 1%; margin-top: 1%; margin-right: 15%; margin-left: 15%; line-height: 1.5;">
-			<a style="font-size: 12pt; color: black; font-weight: 600 ">Twig your health</a>
-			- бесплатный онлайн-сервис поиска врача и записи на прием. А так же онлайн поиска болезни по симптомам.
-		</p>
+        <table style = "margin-top: 5%">
+            <tr>
+                <td class="leftcol">
+                    <img class="responsive-img" src="{% static 'images/pat_on.jpg' %}" width="65%" height="65%" style="margin-left: 30%; border-radius: 8px">
+                </td>
 
-		<p style="text-align: justify; text-indent: 1%; margin-top: 5px; margin-right: 15%; margin-left: 15%; line-height: 1.5;">
-			<a style="font-size: 12pt; color: black;font-weight: 600">Наша цель</a>
-			— помочь пациенту в любое время найти нужного врача и быстро записаться к нему нам прием!
-			Быстро найти предположительные варианты вашей болезни по введенным вами симптомам!
-		</p>
-	<hr style="margin-top: 4%">
+                <td style= "text-indent: 3%">
+                    <img class="responsive-img" src="{% static 'images/doc_on.jpg' %}" width="65%" height="65%" style="border-radius: 8px">
+                </td>
+            </tr>
+            </table>
 
-	<h4 style="margin-top: 2%; 	margin-bottom: 2%">Как работает Twig your health</h4>
-	<div align="left" style="margin-left: 15% ">
-	<ul >
-		 <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5;">выбираете врача самостоятельно;</li>
-		 <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5;">все врачи и клиники на одном сайте;</li>
-		 <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5;">быстрая запись к любому специалисту;</li>
-		 <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5;">после записи вам придет sms-напоминание с датой и местом приема;</li>
-		 <li style="display: list-item; list-style-type: disc; list-style-position: inside; line-height: 1.5;">ваш отзыв влияет на рейтинг врача и клиники;</li>
-	</ul>
-	</div>
+        </div>
 
-
-
-	<table style = "margin-top: 5%">
-        <tr>
-            <td class="leftcol">
-				<img class="responsive-img" src="{% static 'images/pat_on.jpg' %}" width="65%" height="65%" style="margin-left: 30%; border-radius: 8px">
-            </td>
-
-            <td style= "text-indent: 3%">
-				<img class="responsive-img" src="{% static 'images/doc_on.jpg' %}" width="65%" height="65%" style="border-radius: 8px">
-            </td>
-        </tr>
-        </table>
-
-	</div>
-
+    </div>
+    </body>
 
 {% endblock %}
