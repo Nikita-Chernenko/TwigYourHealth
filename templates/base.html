@@ -41,8 +41,10 @@
 
         <ul id="slide-menu" class="sidenav sidenav-fixed">
             <li><a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
-            <li><a class="waves-effect" href="#"><i class="material-icons left">group</i>About us</a></li>
-            <li><a class="waves-effect" href="#"><i class="material-icons left">contact_phone</i>Contact us</a>
+            <li><a class="waves-effect" href="{% url 'about' %}"><i class="material-icons left">group</i>About us</a>
+            </li>
+            <li><a class="waves-effect" href="{% url 'contact' %}"><i class="material-icons left">contact_phone</i>Contact
+                us</a>
             </li>
             <li>
                 <div class="divider"></div>
@@ -180,7 +182,9 @@
                 <div class="col col-lg-4 offset-lg-2 col-12">
                     <h5 class="white-text">Links</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'about' %}">About us</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{% url 'contact' %}">Contact us</a></li>
                     </ul>
                 </div>
             </div>
