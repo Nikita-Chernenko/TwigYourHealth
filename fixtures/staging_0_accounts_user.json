@@ -66,7 +66,7 @@
     "is_doctor": false,
     "is_patient": true,
     "city": null,
-    "avatar": "",
+    "avatar": "staging/accounts/user/avatar.jpg",
     "groups": [],
     "user_permissions": []
   }
