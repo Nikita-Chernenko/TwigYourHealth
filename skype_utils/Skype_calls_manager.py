@@ -2,6 +2,8 @@ import os
 from skpy import SkypeCallMsg
 from time import gmtime, strftime
 from skype_utils.call import Call
+from communication.models import CallEntity
+from accounts.models import PrivateDoctor, Patient
 from skype_utils.skype_format_parser import content_parser
 from datetime import datetime, timedelta
 from skype_utils.db_utils import get_patients_skype_accounts
@@ -72,7 +74,17 @@ def sort_calls_by_time(calls):
     return res
 
 
-def update_skype_calls_for_a_doctor(account):
+def insert_call_into_db(_call, doctors_id, patients_skype):
+    call = CallEntity()
+    call.doctor = PrivateDoctor.objects.get(id=doctors_id)
+    call.patient = Patient.objects.get(skype=patients_skype)
+    call.end = _call.Ended
+    call.duration = int(content_parser(_call.Content, 'duration'))
+    call.start = call.end - timedelta(seconds=call.duration)
+    call.save(force_insert=True)
+
+
+def update_skype_calls_for_a_doctor(account, doctor_id):
     contacts = account.retrieve_contacts()
     total_time = 0
     for contact in contacts:
@@ -86,7 +98,11 @@ def update_skype_calls_for_a_doctor(account):
             calls = get_all_calls_until_last_time(chat)
             calls = sort_calls_by_time(calls)
             for call in calls:
+<<<<<<< HEAD
+                insert_call_into_db(call, doctor_id, contact)
+=======
                 secondsS = content_parser(call.Content, 'duration')
                 total_time += int(secondsS)
 
     return total_time
+>>>>>>> 276e9c736f85da28a3e6c16347aa1c5e0ee1ac4a

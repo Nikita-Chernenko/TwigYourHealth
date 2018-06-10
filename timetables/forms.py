@@ -13,7 +13,6 @@ class ShiftTypeForm(forms.ModelForm):
         fields = ['title', 'start', 'doctor', 'end', 'gap']
 
 
-
 class ShiftForm(forms.ModelForm):
     day = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
 

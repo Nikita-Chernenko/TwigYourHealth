@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+    <div style="padding-left: 5%">
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Sum</th>
+                <th>Payed</th>
+                <th>Date</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.content_type }}</td>
+                    <td>{{ order.sum }}</td>
+                    <td>{{ order.payed }}</td>
+                    <td>{{ order.date }}</td>
+                    {% if not order.payed %}
+                        <td><a href="{% url 'payment' pk=order.id %}">Pay</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
