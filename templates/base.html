@@ -33,7 +33,7 @@
         <div class="nav-wrapper beige">
             <div class="container breadcrumbs">
                 {% block breadcrumbs %}
-                    <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Profile</a>
+                    <a href="{% url 'profile' pk=user.id %}" class="breadcrumb">Профиль</a>
                 {% endblock %}
             </div>
         </div>
@@ -56,8 +56,6 @@
                 <li>
                     <div class="user-view">
                         {% include 'accounts/_avatar.html' with user=user width='150' height='150' img_class='menu-avatar' %}
-                        <a style="font-size: 13pt" href="{% url 'profile' pk=user.id %}"><span class="black-text name">Джон Доуи</span></a>
-                        <a style="font-size: 13pt" href=""><span class="black-text email">jdandturk@gmail.com</span></a>
                         {% if user.is_doctor %}
                             {% if user.doctor.is_private %}
                                 Приветствуем, частный врач {{ user.username }}
@@ -78,10 +76,10 @@
                 </li>
 
                 <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
-                        class="material-icons left">account_box</i>Профайл</a>
+                        class="material-icons left">account_box</i>Профиль</a>
                 </li>
 
-                <li><a " class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Диагностика</a>
+                <li><a  class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Диагностика</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
                         class="material-icons left">library_books</i>Заболевания</a>
@@ -186,7 +184,7 @@
                 </div>
                 <div class="col col-lg-7 col-12">
                     <p class="grey-text text-lighten-4">
-                        Диагноз поставленный сайтов не является точным
+                        Диагноз поставленный сайтом не является точным
                         <br>
                         Проконсультируйтесь с врачом до приема любых лекарств
                         <br>
@@ -253,3 +251,5 @@
 </div>
 </body>
 </html>
+{# TODO add city to form, add Khrakiv #}
+{# TODO add student hospital #}
