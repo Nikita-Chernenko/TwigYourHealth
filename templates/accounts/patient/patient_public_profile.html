@@ -3,7 +3,7 @@
 {% load thumbnail %}
 {% load material_form %}
 {% block breadcrumbs %}
-    <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">{{ patient.user.username|capfirst }} profile</a>
+    <a href="{% url 'profile' pk=patient.user.id %}" class="breadcrumb">{{ patient.user.username|capfirst }} Профайл</a>
 {% endblock %}
 {% block content %}
     {% csrf_token %}
@@ -57,7 +57,7 @@
                     </div>
 
                 {% else %}
-                    <h3>There are no medical records, please, fill it in</h3>
+                    <h3>Нет мед. записей, пожалуйста заполните</h3>
                 {% endif %}
                 <div>
                     {% include 'deceases/_doctor_create_update_patient_decease_form.html' %}

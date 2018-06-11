@@ -6,18 +6,18 @@
 {% block content %}
     <div class="container">
         <div class="d-flex flex-column justify-content-center flex-sm-row">
-            <a href="{% url 'change-password' %}" class="btn wave-effects teal lighten-2 m-2">Change password</a>
-            <a href="{% url 'update-profile' %}" class="btn wave-effects teal lighten-2 m-2">Update profile</a>
-            <a href="{% url 'diagnostics' %}" class="btn wave-effects teal lighten-2 m-2">Diagnostics</a>
+            <a href="{% url 'change-password' %}" class="btn wave-effects teal lighten-2 m-2">Поменять пароль</a>
+            <a href="{% url 'update-profile' %}" class="btn wave-effects teal lighten-2 m-2">Обновить профиль</a>
+            <a href="{% url 'diagnostics' %}" class="btn wave-effects teal lighten-2 m-2">Диагностика</a>
         </div>
         {% if medical_records %}
-            <h3>Medical records</h3>
+            <h3 style="margin-top: 3%">Мед. карта пациента</h3>
             <table class="table-of-contents">
                 <tr>
-                    <th>Decease</th>
-                    <th>Start date</th>
-                    <th>End date</th>
-                    <th>Cured</th>
+                    <th>Болезнь</th>
+                    <th>Начало</th>
+                    <th>Конец</th>
+                    <th>Состояние</th>
                 </tr>
                 {% for record in medical_records %}
                     <tr>
@@ -27,10 +27,10 @@
                         <td>
                             {% if record.cured %}
                                 <div class="green btn-floating btn-small"><i
-                                        class="small material-icons">check</i></div>
+                                        class="small material-icons">проверить</i></div>
                             {% else %}
                                 <div class="red btn-floating btn-small"><i
-                                        class="small material-icons">close</i></div>
+                                        class="small material-icons">закрыть</i></div>
                             {% endif %}
                         </td>
                     </tr>
@@ -38,7 +38,7 @@
                 {% endfor %}
             </table>
         {% else %}
-            <h3>There are no medical records, please, fill it in</h3>
+            <h3>Нет медицинских записей, пожалуйста заполните</h3>
         {% endif %}
         <div class="divider"></div>
         <form method="post">
@@ -53,9 +53,10 @@
                 {% endfor %}
             </div>
             <div class="center-align mt-1 mb-2">
-                <a id="add_more" class="btn btn-small waves-effect beige">Add additional form</a>
+                <button class="btn waves-effect beige">Добавить запись</button>
+                <a id="add_more" class="btn btn-small waves-effect beige">Добавить форму</a>
             </div>
-            <button class="btn waves-effect beige">Sumbit</button>
+
         </form>
 
         <div id="empty_form" style="display:none">

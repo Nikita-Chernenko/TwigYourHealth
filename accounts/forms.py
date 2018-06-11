@@ -51,7 +51,7 @@ class PatientForm(forms.ModelForm):
         birthday = self.cleaned_data['birthday']
         if datetime.combine(date=birthday, time=datetime.now().time()) + timedelta(
                 days=365 * 12) >= datetime.now():
-            raise ValidationError('You are too young to register, only 12+')
+            raise ValidationError('Вы слышком молоды, только 12+')
         return birthday
 
 

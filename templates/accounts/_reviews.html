@@ -53,12 +53,12 @@
                         <div class="col col-1">
                             {% if patient %}
                                 <div data-id="{{ forloop.counter }}" class="record-toggle btn-floating btn-small teal">
-                                    <i class="material-icons ">edit</i>
+                                    <i class="material-icons ">редактировать</i>
                                 </div>
                                 {% if patient == review.patient %}
                                     <div data-review-id="{{ review.id }}"
                                          class="record-delete btn-floating btn-small red">
-                                        <i class="material-icons red">delete</i>
+                                        <i class="material-icons red">удалить</i>
                                     </div>
                                 {% endif %}
                             {% endif %}

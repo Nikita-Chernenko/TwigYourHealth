@@ -1,10 +1,10 @@
 <h3>Medical records</h3>
 <table class="table-of-contents">
     <tr>
-        <th style="width:25%">Decease</th>
-        <th style="width:25%">Start date</th>
-        <th style="width:25%">End date</th>
-        <th style="width:25%">Cured</th>
+        <th style="width:25%">Болезнь</th>
+        <th style="width:25%">Начало</th>
+        <th style="width:25%">Конец</th>
+        <th style="width:25%">Состояние</th>
     </tr>
 </table>
 {% for record in medical_records %}
@@ -19,10 +19,10 @@
                     <td style="width: 25%">
                         {% if record.cured %}
                             <div class="green btn-floating btn-small"><i
-                                    class="small material-icons">check</i></div>
+                                    class="small material-icons">проверить</i></div>
                         {% else %}
                             <div class="red btn-floating btn-small"><i
-                                    class="small material-icons">close</i></div>
+                                    class="small material-icons">закрыть</i></div>
                         {% endif %}
                     </td>
                 </tr>

@@ -2,12 +2,13 @@
 {% load mptt_tags %}
 
 {% block breadcrumbs %}
-    <a href="{% url 'profile' user.id %}" class="breadcrumb">Profile</a>
-    <a href="{% url 'diagnostics' %}" class="breadcrumb">Symptom pick</a>
+    <a href="{% url 'profile' user.id %}" class="breadcrumb">Профиль</a>
+    <a href="{% url 'diagnostics' %}" class="breadcrumb">Выбор симптомов</a>
 {% endblock %}
 
 {% block content %}
     <div class="container">
+    <h5 style="margin-top: 3%">Вы можете ввести симптомы сами, или выбрать из предлаженного нами списка</h5>
         <form id="symptoms-search">
             {% csrf_token %}
             <div class="row">
@@ -24,7 +25,7 @@
                     <label class="active" for="multipleInput">Выбранные симптомы: </label>
                 </div>
             </div>
-            <button class="btn waves-effect beige">Get deceases</button>
+            <button class="btn waves-effect beige">Получить болезнь</button>
             <div class="col col-12">
 
                 {% for s in doctor_spheres %}
@@ -88,7 +89,7 @@
                         </ul>
                     </div>
                     <div id="symptom" aria-labelledby="tabpanel"
-                         class="col col-12 tab-pane fade show">Симптом
+                         class="col col-12 tab-pane fade show">Выберите часть тела
                     </div>
                 </div>
             </div>
