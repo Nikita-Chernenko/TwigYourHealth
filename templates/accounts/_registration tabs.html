@@ -1,25 +1,23 @@
 <div>
     <div class="col col-lg-1 m-2 m-sm-0 col-12 justify-content-start">
-        <a class="btn-small  reg-tab" href="{% url 'login' %}">Login</a>
+        <a class="btn-small  reg-tab" href="{% url 'login' %}">Логин</a>
     </div>
+
+    <h3>Зарегистрироваться как</h3>
+
     <div class="d-flex flex-column justify-content-center flex-sm-row">
         {% with current_url=request.path %}
             {% url 'patient-sign-up' as url %}
             <a href="{{ url }}"
-               class="btn-small m-2 reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Patient sign
-                up</a>
+               class="btn-small m-2 reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Пациент</a>
 
             {% url 'public-doctor-sign-up' as url %}
             <a href="{{ url }}"
-               class="btn-small m-2  reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Public doctor
-                sign
-                up</a>
+               class="btn-small m-2  reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Гос. врач</a>
 
             {% url 'private-doctor-sign-up' as url %}
             <a href="{{ url }}"
-               class="btn-small m-2  reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Private doctor
-                sign
-                up</a>
+               class="btn-small m-2  reg-tab {% if url == current_url %}beige{% else %}wave{% endif %}">Частный врач</a>
         {% endwith %}
     </div>
 

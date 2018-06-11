@@ -170,17 +170,3 @@ div.has-error .select-wrapper input {
   display: none;
 }
 
-.btn, .btn-large, .btn-small {
-  text-decoration: none;
-  color: #fff;
-  background-color: #FFAA6C;
-  text-align: center;
-  letter-spacing: .5px;
-  transition: background-color .2s ease-out;
-  cursor: pointer; }
-  .btn:hover, .btn-large:hover, .btn-small:hover {
-    background-color: #FFAA6C; }
-
-.btn:focus, .btn-large:focus, .btn-small:focus,
-.btn-floating:focus {
-  background-color: #FFAA6C }
