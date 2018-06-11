@@ -1,26 +1,5 @@
 .home, .contact, .about {
-  .text {
-    text-align: center; /* выравнивание текста по центру */
-  }
 
-  @font-face {
-    font-family: Ambarella; /* Гарнитура шрифта */
-  }
-
-  h1, h2 {
-    font-family: "Uni sans", monospace;
-  }
-
-  p, a {
-    font-family: "Uni sans", monospace;
-    text-indent: 20px; /* Отступ первой строки в пикселах */
-  }
-
-  td {
-    font-family: "Uni sans", monospace;
-    line-height: 1.5;
-    font-weight: 600;
-  }
 
   .leftcol {
     width: 50%; /* Ширина левой колонки с рисунком */
@@ -60,10 +39,7 @@
 
   .blocks {
     display: inline-block;
-    width: 40%;
   }
 
-  .wrap {
-    width: 100%;
-  }
+
 }

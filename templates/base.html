@@ -61,7 +61,7 @@
                                 Приветствуем, частный врач {{ user.username }}
 
                             {% else %}
-                               Приветствуем, гос. врач {{ user.username }}
+                                Приветствуем, гос. врач {{ user.username }}
 
                             {% endif %}
 
@@ -79,7 +79,7 @@
                         class="material-icons left">account_box</i>Профиль</a>
                 </li>
 
-                <li><a  class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Диагностика</a>
+                <li><a class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Диагностика</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
                         class="material-icons left">library_books</i>Заболевания</a>
@@ -171,18 +171,19 @@
 
         <div class="container">
             <div class="row">
-                <div class="col col-lg-4 offset-lg-1 col-12">
+                <div class="col col-lg-6  col-12">
 
                     <ul>
                         <li style="font-size: 13pt" ;><a class="grey-text text-lighten-3" href="{% url 'home' %}">Главная</a>
                         </li>
                         <li style="font-size: 13pt"><a class="grey-text text-lighten-3" href="{% url 'about' %}">Контакты</a>
                         </li>
-                        <li style="font-size: 13pt"><a class="grey-text text-lighten-3" href="{% url 'contact' %}">О нас</a></li>
+                        <li style="font-size: 13pt"><a class="grey-text text-lighten-3" href="{% url 'contact' %}">О
+                            нас</a></li>
                     </ul>
 
                 </div>
-                <div class="col col-lg-7 col-12">
+                <div class="col col-lg-6 col-12">
                     <p class="grey-text text-lighten-4">
                         Диагноз поставленный сайтом не является точным
                         <br>
@@ -193,10 +194,8 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright  teal lighten-2">
-            <div class="container row justify-content-center">
-                <div>© 2018 Copyright TwigYourHealth</div>
-            </div>
+        <div class="footer-copyright  teal lighten-2 justify-content-center">
+            <div>© 2018 Copyright TwigYourHealth</div>
         </div>
     </footer>
 
