@@ -40,13 +40,13 @@
 
         <ul id="slide-menu" class="sidenav sidenav-fixed">
             <li>
-                <a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Home</a></li>
+                <a class="waves-effect" href="{% url 'home' %}"><i class="material-icons left">home</i>Главная</a></li>
             <li>
-                <a class="waves-effect" href="{% url 'about' %}"><i class="material-icons left">group</i>About us</a>
+                <a class="waves-effect" href="{% url 'about' %}"><i class="material-icons left">group</i>О нас</a>
             </li>
             <li>
                 <a class="waves-effect" href="{% url 'contact' %}"><i class="material-icons left">
-                    contact_phone</i>Contact us</a>
+                    contact_phone</i>Контакты</a>
             </li>
             <li>
                 <div class="divider"></div>
@@ -56,58 +56,57 @@
                 <li>
                     <div class="user-view">
                         {% include 'accounts/_avatar.html' with user=user width='150' height='150' img_class='menu-avatar' %}
-                        <a style="font-size: 13pt" href="{% url 'profile' pk=user.id %}"><span class="black-text name">John Doe</span></a>
+                        <a style="font-size: 13pt" href="{% url 'profile' pk=user.id %}"><span class="black-text name">Джон Доуи</span></a>
                         <a style="font-size: 13pt" href=""><span class="black-text email">jdandturk@gmail.com</span></a>
                         {% if user.is_doctor %}
                             {% if user.doctor.is_private %}
-                                Hi, private doctor {{ user.username }}
+                                Приветствуем, частный врач {{ user.username }}
 
                             {% else %}
-                                Hi, public doctor {{ user.username }}
+                               Приветствуем, гос. врач {{ user.username }}
 
                             {% endif %}
 
                         {% elif user.is_patient %}
-                            Hi, patient {{ user.username }}
+                            Приветствуем, пациент {{ user.username }}
 
 
                         {% else %}
-                            Hi, OUR GOD ADMIN {{ user.username }}
+                            Приветствуем, админ {{ user.username }}
                         {% endif %}
                     </div>
                 </li>
 
                 <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
-                        class="material-icons left">account_box</i>Profile</a>
+                        class="material-icons left">account_box</i>Профайл</a>
                 </li>
 
-                <li><a " class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Diagnostics</a>
+                <li><a " class="waves-effect" href="{% url 'diagnostics' %}"><i class="material-icons left">healing</i>Диагностика</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'decease-list' %}"><i
-                        class="material-icons left">library_books</i>Deceases</a>
+                        class="material-icons left">library_books</i>Заболевания</a>
                 </li>
 
                 {% if user.is_doctor %}
                     <li><a class="waves-effect" href="{% url 'self-timetable' %}"><i
-                            class="material-icons left">schedule</i>Timetable</a>
+                            class="material-icons left">schedule</i>Расписание</a>
                     </li>
                 {% elif user.is_patient %}
                     <li><a class="waves-effect" href="{% url 'profile' pk=user.id %}"><i
-                            class="material-icons left">payment</i>Medical
-                        record</a>
+                            class="material-icons left">payment</i>Мед. карта</a>
                     </li>
                     <li><a class="waves-effect" href="{% url 'doctor-search' %}"><i
-                            class="material-icons left">search</i>Doctor search</a>
+                            class="material-icons left">search</i>Поиск врача</a>
                     </li>
                     <li><a class="waves-effect" href="{% url 'orders' pk=request.user.patient.id %}"><i
-                            class="material-icons left">attach_money</i>Bills</a>
+                            class="material-icons left">attach_money</i>Счет</a>
                     </li>
                 {% endif %}
                 <li style="padding-left: 12px;">
                     <ul class="{% if notifications %}collapsible {% endif %} expandable notifications">
                         <li>
                             <div class="collapsible-header"><i class="material-icons left">notifications</i>
-                                <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Notifications
+                                <div style="margin-left:16px;font-size: 14px;font-weight: 500;">Уведомления
                                     {% if new_notifications_count %}
                                         <span class="new badge blue ml-2"> {{ new_notifications_count }}</span>{% endif %}
                                 </div>
@@ -127,14 +126,13 @@
                         </li>
                     </ul>
                 </li>
-                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Logout</a>
+                <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i>Выйти</a>
                 </li>
             {% else %}
-                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Login</a>
+                <li><a class="waves-effect" href="{% url 'login' %}"><i class="material-icons left">person</i>Войти</a>
                 </li>
                 <li><a class="waves-effect" href="{% url 'patient-sign-up' %}"><i
-                        class="material-icons left">person_add</i>Sign
-                    up</a></li>
+                        class="material-icons left">person_add</i>Регистрация</a></li>
             {% endif %}
         </ul>
 

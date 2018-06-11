@@ -9,7 +9,7 @@ from deceases.models import Sphere
 
 
 class LoginViewForm(AuthenticationForm):
-    username = forms.CharField(help_text='username or email or phone')
+    username = forms.CharField(help_text='* ваш логин, email, телефон')
     layout = Layout(Row('username'), Row('password'))
 
 
