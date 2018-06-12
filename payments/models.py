@@ -29,7 +29,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return f'{str(self.interaction)}'
+        return f'{self.interaction} - {self.sum} - {self.payed}'
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):

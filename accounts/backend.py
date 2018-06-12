@@ -10,9 +10,9 @@ class EmailPhoneUsernameBackend(ModelBackend):
             pass
 
     def authenticate(self, request, username=None, password=None, **kwargs):
-
         user = get_object_or_None(User, username=username) or \
                get_object_or_None(User, email=username) or \
                get_object_or_None(User, phone=username)
+        print(user)
         if user and user.check_password(password):
             return user

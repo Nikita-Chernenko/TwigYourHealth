@@ -2,20 +2,30 @@
 {% load static %}
 {% load staticfiles %}
 
+{% block breadcrumbs %}
+    {{ block.super }}
+    <a href="{% url 'decease-list' %}" class="breadcrumb">Счета</a>
+{% endblock %}
 {% block content %}
     <div style="padding-left: 5%">
         <table>
             <tr>
-                <th>Type</th>
-                <th>Sum</th>
-                <th>Payed</th>
-                <th>Date</th>
+                <th>Взаимодействие</th>
+                <th>Сумма</th>
+                <th>Оплачено</th>
+                <th>Дата</th>
             </tr>
             {% for order in orders %}
                 <tr>
-                    <td>{{ order }}</td>
+                    <td>{{ order.interaction }}</td>
                     <td>{{ order.sum }}</td>
-                    <td>{{ order.payed }}</td>
+                    <td>{% if order.payed %}
+                        <div class="green btn-floating btn-small"><i
+                                class="small material-icons">check</i></div>
+                    {% else %}
+                        <div class="red btn-floating btn-small"><i
+                                class="small material-icons">close</i></div>
+                    {% endif %}</td>
                     <td>{{ order.date }}</td>
                     {% if not order.payed %}
                         <td><a href="{% url 'payment' pk=order.id %}">Pay</a></td>
