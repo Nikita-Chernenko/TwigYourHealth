@@ -166,7 +166,29 @@ div.has-error .select-wrapper input {
   border-bottom: 1px solid #F44336 !important;
   box-shadow: 0 1px 0 0 #F44336 !important;
 }
-.file-field-clear{
+
+.file-field-clear {
   display: none;
 }
 
+div.input-field.required label:after {
+  content: " *" !important;
+  opacity: 1;
+  display: initial !important;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.help-block {
+  font-size: 10px;
+}
+
+.decease-input {
+  @media (max-width: $small-screen) {
+    min-width: 100px;
+    margin-right: -20px !important;
+    margin-left: -10px !important;
+
+  }
+}

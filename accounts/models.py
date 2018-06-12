@@ -1,9 +1,10 @@
-from datetime import datetime, date
+from datetime import date
+
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Sum, Avg, Q
+from django.db.models import Avg, Q
 from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -14,8 +15,8 @@ class City(models.Model):
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
-    phone = PhoneNumberField(unique=True)
-    patronymic = models.CharField(max_length=64)
+    phone = PhoneNumberField(unique=True, help_text="Начиная с +38")
+    patronymic = models.CharField(max_length=64, null=True, blank=True)
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
     city = models.ForeignKey(City, on_delete=models.PROTECT, null=True)
@@ -107,8 +108,8 @@ class Review(models.Model):
 
 class PrivateDoctor(models.Model):
     doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)
-    hour_rate = models.DecimalField('hour rate', max_digits=8, decimal_places=2)
-    visit_price = models.DecimalField('visit price', max_digits=8, decimal_places=2)
+    hour_rate = models.DecimalField('hour rate', max_digits=8, decimal_places=2, validators=[MinValueValidator(0)])
+    visit_price = models.DecimalField('visit price', max_digits=8, decimal_places=2, validators=[MinValueValidator(0)])
 
     def __str__(self):
         return f'private {self.doctor} '

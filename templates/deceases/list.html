@@ -38,19 +38,39 @@
   <script>
       $(document).ready(function () {
           var history = false;
+          var sug;
+
+          function click_decease_by_id(id) {
+              var el = $(".decease-detail[data-id='" + id + "']");
+              el.click();
+              var header = el.parents('.collapsible-body').siblings('.collapsible-header');
+              console.log(header.h)
+              if (!header.parent().hasClass('active')) {
+                  header.click()
+              }
+          }
+
+
+          var input = $('#decease-input');
+
           window.onpopstate = function (e) {
               if (e.state && e.state['decease_id']) {
                   var decease = e.state['decease_id'];
                   history = true;
-                  var el = $(".decease-detail[data-id='" + decease + "']");
-                  el.click();
+                  click_decease_by_id(decease)
+              }
+              else {
+                  $('#decease-input').val('');
+                  $('.decease-detail.active').removeClass('active');
+                  $('.collapsible li.active .collapsible-header').click();
+                  $('.decease').html('')
               }
           };
-
-          var input = $('#decease-input');
           var DECEASE_DETAIL = "{% url 'decease-detail' pk=1 %}";
           $('.decease-detail').on('click', function (e) {
               var el = $(this);
+              $('.decease-detail.active').removeClass('active');
+              el.addClass('active');
               $.ajax({
                   url: DECEASE_DETAIL.replace('1', el.data('id')),
                   method: 'GET',
@@ -62,21 +82,24 @@
                           var search = '?decease_id=' + el.data('id');
                           var l = location.protocol + '//' + location.host + location.pathname;
                           window.history.pushState({'decease_id': el.data('id')}, "", l + search);
-                          history = false;
+
                       }
+                      history = false;
                   }
               })
           });
           var decease = parseInt("{{ request.GET.decease_id}}");
           if (decease) {
-              var el = $(".decease-detail[data-id='" + decease + "']");
-              el.click();
+              click_decease_by_id(decease)
           }
           input.devbridgeAutocomplete({
               serviceUrl: '{% url "decease-autocomplete" %}',
               onSelect: function (suggestion) {
-                  var el = $(".decease-detail[data-id='" + suggestion.data + "']");
-                  el.click();
+                  if (suggestion.data !== sug) {
+                      var el = $(".decease-detail[data-id='" + suggestion.data + "']");
+                      el.click();
+                  }
+                  sug = suggestion.data
               }
           });
       })

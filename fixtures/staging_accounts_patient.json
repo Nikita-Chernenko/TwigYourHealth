@@ -11,5 +11,18 @@
     "gender": 1,
     "age_gap": 4
   }
+},
+{
+  "model": "accounts.patient",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "patient2"
+    ],
+    "birthday": "2002-06-21",
+    "skype": null,
+    "gender": 1,
+    "age_gap": 4
+  }
 }
 ]

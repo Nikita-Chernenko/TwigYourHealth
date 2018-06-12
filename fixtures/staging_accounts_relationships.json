@@ -5,8 +5,8 @@
   "fields": {
     "patient": 1,
     "doctor": 2,
-    "patient_accept": false,
-    "doctor_accept": false
+    "patient_accept": true,
+    "doctor_accept": true
   }
 },
 {
@@ -17,6 +17,16 @@
     "doctor": 1,
     "patient_accept": true,
     "doctor_accept": true
+  }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 3,
+  "fields": {
+    "patient": 2,
+    "doctor": 2,
+    "patient_accept": false,
+    "doctor_accept": false
   }
 }
 ]

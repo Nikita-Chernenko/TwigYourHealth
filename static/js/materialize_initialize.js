@@ -10,7 +10,8 @@ function materialize_initiailize() {
         clear: 'Clear',
         close: 'Ok',
         closeOnSelect: false,
-        format: 'yyyy-mm-dd'
+        format: 'yyyy-mm-dd',
+        autoClose: true,
     });
     M.Tooltip.init($('.tooltipped'), {});
 }
