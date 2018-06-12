@@ -1,42 +1,70 @@
-<h1>{{ decease.name }}</h1>
-<h2>Область: {{ decease.sphere.name }}</h2>
+<div class="container">
+    <h3>{{ decease.name }}</h3>
+    <h5>Область: {{ decease.sphere.name }}</h5>
 
-<div>
-    <h2>Описание</h2>
-    <p>{{ decease.description }}</p>
+    <div>
+        <h4>Описание</h4>
+        <p class="left-align">{{ decease.description }}</p>
+        <div class="divider"></div>
+    </div>
+    <ul>
+        <li>{{ decease.chronic|yesno:"Хроническое,Не хроническое" }}</li>
+        <li>Длительность: {{ decease.duration }} дней</li>
+        <li>Заразность: {{ decease.contagiousness }}/100</li>
+        <li>Опасность: {{ decease.malignancy }}/100</li>
+        <li>Отмечено случаев на нашем сайте: {{ decease.number }}</li>
+    </ul>
+    <div class="divider"></div>
+
+    {% if decease.diagnostics %}
+        <div>
+            <h5>Диагностика</h5>
+            <p class="left-align">{{ decease.diagnostics }}</p>
+        </div>
+        <div class="divider"></div>
+
+    {% endif %}
+
+    {% if decease.passing %}
+
+        <div>
+            <h5>Ход болезни</h5>
+            <p class="left-align">{{ decease.passing }}</p>
+        </div>
+        <div class="divider"></div>
+
+    {% endif %}
+    {% if decease.treatment %}
+
+        <div>
+            <h5>Лечение</h5>
+            <p class="left-align">{{ decease.treatment }}</p>
+        </div>
+        <div class="divider"></div>
+    {% endif %}
+    {% if decease.recommendations %}
+
+        <div>
+            <h5>Рекомендации</h5>
+            <p class="left-align">{{ decease.recommendations }}</p>
+        </div>
+        <div class="divider"></div>
+
+    {% endif %}
+    {% if decease.symptoms.exists %}
+        <div class="ml-3 mr-3">
+            <h5>Симптомы</h5>
+            <div class="row justify-content-between">
+                <h5>Название</h5>
+                <h5>Шансы</h5>
+            </div>
+            {% for s in decease.deceasesymptom_set.all %}
+                <div class="row justify-content-between align-items-center mt-2">
+                    <div class="left-align" style="max-width: 70%" > {{ s.symptom.name }} </div>
+                    <div class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i
+                            class="circle">{{ s.chances }}</i></div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>
-<ul>
-    <li>{{ decease.chronic|yesno:"Хроническое,Не хроническое" }}</li>
-    <li>Длительность: {{ decease.duration }} дней</li>
-    <li>Заразность: {{ decease.contagiousness }}/100</li>
-    <li>Опасность: {{ decease.malignancy }}/100</li>
-    <li>Отмечено случаев на нашем сайте: {{ decease.occurrence }}</li>
-</ul>
-{% if decease.diagnostics %}
-    <div>
-        <h2>Диагностика</h2>
-        <p>{{ decease.diagnostics }}</p>
-    </div>
-{% endif %}
-
-{% if decease.passing %}
-
-    <div>
-        <h2>Ход болезни</h2>
-        <p>{{ decease.passing }}</p>
-    </div>
-{% endif %}
-{% if decease.treatment %}
-
-    <div>
-        <h2>Лечение</h2>
-        <p>{{ decease.treatment }}</p>
-    </div>
-{% endif %}
-{% if decease.recommendations %}
-
-    <div>
-        <h2>Рекомендации</h2>
-        <p>{{ decease.recommendations }}</p>
-    </div>
-{% endif %}

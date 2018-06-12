@@ -1,5 +1,7 @@
+from datetime import datetime, timedelta
 from django import forms
 from django.contrib.auth.forms import UserCreationForm as _UserCreationForm, AuthenticationForm
+from django.core.exceptions import ValidationError
 from material import Layout, Row
 
 from accounts.models import User, Patient, PublicDoctor, Doctor, Hospital, PrivateDoctor, Review, City, DoctorSphere
@@ -7,7 +9,7 @@ from deceases.models import Sphere
 
 
 class LoginViewForm(AuthenticationForm):
-    username = forms.CharField(help_text='username or email or phone')
+    username = forms.CharField(help_text='* ваш логин, email, телефон')
     layout = Layout(Row('username'), Row('password'))
 
 
@@ -20,6 +22,8 @@ class UserForm(forms.ModelForm):
 
 
 class UserCreationForm(_UserCreationForm):
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
     class Meta(_UserCreationForm.Meta):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'phone']
@@ -41,7 +45,14 @@ class PatientForm(forms.ModelForm):
 
     class Meta:
         model = Patient
-        fields = ['birthday', 'gender']
+        fields = ['birthday', 'gender', 'skype']
+
+    def clean_birthday(self):
+        birthday = self.cleaned_data['birthday']
+        if datetime.combine(date=birthday, time=datetime.now().time()) + timedelta(
+                days=365 * 12) >= datetime.now():
+            raise ValidationError('Вы слышком молоды, только 12+')
+        return birthday
 
 
 class UserDoctorForm(UserCreationForm):

@@ -5,15 +5,21 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <a href="{% url 'change-password' %}" class="btn wave-effects beige">Change password</a>
-        <a href="{% url 'update-profile' %}" class="btn wave-effects beige">Update profile</a>
-        <a href="{% url 'sphere-create' doctor_pk=request.user.doctor.id %}" class="btn wave-effects beige">
-            Add sphere
-        </a>
-    </div>
-    {% if doctor_spheres %}
-        <div class="container">
-            {% include 'accounts/_reviews.html' %}
+
+        <div class="d-flex flex-column justify-content-center flex-sm-row">
+            <a href="{% url 'change-password' %}" class="btn wave-effects teal lighten-2 m-2">Change password</a>
+            <a href="{% url 'update-profile' %}" class="btn wave-effects teal lighten-2 m-2">Update profile</a>
+            <a href="{% url 'sphere-create' doctor_pk=request.user.doctor.id %}"
+               class="btn wave-effects teal lighten-2 m-2">
+                Add sphere
+            </a>
         </div>
-    {% endif %}
+        <div class="divider"></div>
+        {% include 'accounts/doctor/_doctor_info.html' with patient_accept=False doctor_accept=True %}
+        <div class="divider"></div>
+        {% if doctor_spheres %}
+            {% include 'accounts/_reviews.html' %}
+        {% endif %}
+    </div>
+
 {% endblock %}

@@ -9,14 +9,14 @@
                 class="circle">{{ el.decease.chance }}%</i></div>
         <div class="col">
             <p>Предполагаемая болезнь</p>
-            <a href="{% url 'decease-detail' pk=el.decease.id %}" target="_blank">{{ el.decease.name }}</a>
+            <a href="{% url 'decease-list' %}?decease_id={{ el.decease.id }}" target="_blank">{{ el.decease.name }}</a>
         </div>
         {% if el.doctors %}
             <div class="col mt-sm-0 mt-2">
                 <p>Рекоммендуемые врачи:</p>
                 <div class="row">
                     {% for d in el.doctors %}
-                        <a href="{% url 'profile' pk=d.user.id %}">
+                        <a href="{% url 'profile' pk=d.user.id %}" target="_blank">
                             {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}
                         </a>
                     {% endfor %}

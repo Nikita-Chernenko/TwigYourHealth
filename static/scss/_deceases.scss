@@ -1,5 +1,6 @@
 .decease-detail {
-  &:hover {
+
+  &:hover, &.active {
     cursor: pointer;
     background-color: $beige;
   }

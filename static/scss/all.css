@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -5173,7 +5174,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
   .tap-target-wrapper.open .tap-target-wave::after {
     visibility: visible;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    transition: opacity .3s, transform .3s, visibility 0s 1s; }
+    transition: opacity .3s, transform .3s, visibility 0s 1s; }
 
 .tap-target {
   position: absolute;
@@ -5208,7 +5209,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     transition: transform .3s; }
   .tap-target-wave::after {
     visibility: hidden;
-    transition: opacity .3s, transform .3s, visibility 0s;
+    transition: opacity .3s, transform .3s, visibility 0s;
     z-index: -1; }
 
 .tap-target-origin {
@@ -8462,6 +8463,67 @@ html {
 .collapsible.popout > li {
   margin: 0; }
 
+.home .text, .contact .text, .about .text {
+  text-align: center;
+  /* выравнивание текста по центру */ }
+
+@font-face {
+  .home, .contact, .about {
+    font-family: Ambarella;
+    /* Гарнитура шрифта */ } }
+
+.home h1, .home h2, .contact h1, .contact h2, .about h1, .about h2 {
+  font-family: "Uni sans", monospace; }
+
+.home p, .home a, .contact p, .contact a, .about p, .about a {
+  font-family: "Uni sans", monospace;
+  text-indent: 20px;
+  /* Отступ первой строки в пикселах */ }
+
+.home td, .contact td, .about td {
+  font-family: "Uni sans", monospace;
+  line-height: 1.5;
+  font-weight: 600; }
+
+.home .leftcol, .contact .leftcol, .about .leftcol {
+  width: 50%;
+  /* Ширина левой колонки с рисунком */
+  vertical-align: top;
+  /* Выравнивание по верхнему краю */ }
+
+.home .example3, .contact .example3, .about .example3 {
+  display: inline-block;
+  position: relative; }
+
+.home .example3 .example_text, .contact .example3 .example_text, .about .example3 .example_text {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px; }
+
+.home .example3 h6, .contact .example3 h6, .about .example3 h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px; }
+
+.home .example3 span, .contact .example3 span, .about .example3 span {
+  font-size: 12px; }
+
+.home .blocks, .contact .blocks, .about .blocks {
+  display: inline-block;
+  width: 40%; }
+
+.home .wrap, .contact .wrap, .about .wrap {
+  width: 100%; }
+
 body {
   display: flex;
   min-height: 100vh;
@@ -8573,4 +8635,11 @@ a.btn, a.btn-large, a.btn-small {
 .btn-floating.btn-large {
   min-width: 56px; }
 
-/*# sourceMappingURL=/static/scss/all.css.map */
+div.has-error .select-wrapper input {
+  border-bottom: 1px solid #F44336 !important;
+  box-shadow: 0 1px 0 0 #F44336 !important; }
+
+.file-field-clear {
+  display: none; }
+
+/*# sourceMappingURL=../../../../../../static/scss/all.css.map */

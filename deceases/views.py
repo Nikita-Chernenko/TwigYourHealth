@@ -90,7 +90,7 @@ def deceases_by_symptoms(request):
         symptoms_lookup |= Q(name__icontains=s[:-1])
 
     related_symptoms = Symptom.objects.filter(symptoms_lookup).values_list('id', flat=True)
-    # TODO switch to distinct sum on postgres to get correct result
+    #  switch to distinct sum on postgres to get correct result
     whole_chance = Sum('deceasesymptom__chances')
 
     current_chance = Sum('deceasesymptom__chances', filter=Q(deceasesymptom__symptom__in=related_symptoms),

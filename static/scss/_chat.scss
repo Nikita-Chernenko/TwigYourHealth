@@ -10,6 +10,9 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   z-index: 2;
   background: white;
+  @media (max-width: $medium-screen) {
+      height: 80%;
+  }
   .chat-close {
     overflow: visible;
     color: black;
@@ -18,6 +21,7 @@
       color: red;
     }
   }
+
 
   .chat-avatar {
     height: 50px;
@@ -29,6 +33,7 @@
     justify-content: flex-end;
     box-shadow: none;
     background: none;
+    height: 10%;
   }
 }
 

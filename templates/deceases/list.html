@@ -37,30 +37,69 @@
 {% block extrajs %}
   <script>
       $(document).ready(function () {
+          var history = false;
+          var sug;
+
+          function click_decease_by_id(id) {
+              var el = $(".decease-detail[data-id='" + id + "']");
+              el.click();
+              var header = el.parents('.collapsible-body').siblings('.collapsible-header');
+              console.log(header.h)
+              if (!header.parent().hasClass('active')) {
+                  header.click()
+              }
+          }
+
+
           var input = $('#decease-input');
+
+          window.onpopstate = function (e) {
+              if (e.state && e.state['decease_id']) {
+                  var decease = e.state['decease_id'];
+                  history = true;
+                  click_decease_by_id(decease)
+              }
+              else {
+                  $('#decease-input').val('');
+                  $('.decease-detail.active').removeClass('active');
+                  $('.collapsible li.active .collapsible-header').click();
+                  $('.decease').html('')
+              }
+          };
           var DECEASE_DETAIL = "{% url 'decease-detail' pk=1 %}";
-          $('.decease-detail').on('click', function () {
+          $('.decease-detail').on('click', function (e) {
               var el = $(this);
+              $('.decease-detail.active').removeClass('active');
+              el.addClass('active');
               $.ajax({
                   url: DECEASE_DETAIL.replace('1', el.data('id')),
                   method: 'GET',
                   success: function (response) {
-                      input.val(el.html())
-                      $('.decease').html(response)
+                      input.val(el.html());
+                      $('.decease').html(response);
+                      console.log(history)
+                      if (!history) {
+                          var search = '?decease_id=' + el.data('id');
+                          var l = location.protocol + '//' + location.host + location.pathname;
+                          window.history.pushState({'decease_id': el.data('id')}, "", l + search);
+
+                      }
+                      history = false;
                   }
               })
           });
+          var decease = parseInt("{{ request.GET.decease_id}}");
+          if (decease) {
+              click_decease_by_id(decease)
+          }
           input.devbridgeAutocomplete({
               serviceUrl: '{% url "decease-autocomplete" %}',
               onSelect: function (suggestion) {
-                  $(this).val(suggestion.value);
-                  $.ajax({
-                      url: DECEASE_DETAIL.replace('1', suggestion.data),
-                      method: 'GET',
-                      success: function (response) {
-                          $('.decease').html(response)
-                      }
-                  })
+                  if (suggestion.data !== sug) {
+                      var el = $(".decease-detail[data-id='" + suggestion.data + "']");
+                      el.click();
+                  }
+                  sug = suggestion.data
               }
           });
       })

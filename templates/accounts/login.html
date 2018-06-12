@@ -3,25 +3,31 @@
 
 {% block title %}{{ block.super }}Login{% endblock %}
 {% block breadcrumbs %}
-    {#    <a href="{% url 'login' %}" class="breadcrumb">Login</a>#}
+  {#    <a href="{% url 'login' %}" class="breadcrumb">Login</a>#}
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col col-6 offset-3">
-                <h2>Login</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {% form form=form %}{% endform %}
-                    <input type="hidden" name="next" value="{% url 'self-profile' %}"/>
-                    <div class="center-align">
-                        <button class="waves-effect waves-light btn-large btn m-1 beige" type="submit">Login</button>
-                        <a class="waves-effect waves-light btn btn-large  m-1 wave" href="{% url 'patient-sign-up' %}">
-                            Sign up
-                        </a>
-                    </div>
-                </form>
+  <div class="container">
+
+    <div class="row">
+
+
+      <div class="col col-6 offset-3">
+        <form method="post">
+          {% csrf_token %}
+          {% form form=form %}{% endform %}
+          <input type="hidden" name="next" value="{% url 'self-profile' %}"/>
+          <div class="col flex-column d-flex flex-md-row align-items-center justify-content-center ">
+            <div>
+              <button class="waves-effect waves-light btn-large btn m-1 beige" type="submit">Войти</button>
             </div>
-        </div>
+            <div><a class="waves-effect waves-light btn btn-large  m-1 wave" href="{% url 'patient-sign-up' %}">Регистрация</a>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
     </div>
+
+  </div>
 {% endblock %}

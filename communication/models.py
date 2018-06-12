@@ -110,19 +110,19 @@ class ChatEntity(models.Model):
             order.save()
         else:
             super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
-            if self.hours == 0 and self.messages.exists():
-                if not self.id and ChatEntity.objects.all().count() > 0 or ChatEntity.objects.count() > 1:
-                    if self.id:
-                        last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
-                    else:
-                        last_entity = ChatEntity.objects.latest('timestamp')
-                    if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
-                        raise ValidationError('At least one message has been included in previous entities')
-                minutes = 0
-                for message in self.messages.all():
-                    if hasattr(message.author, 'doctor'):
-                        minutes += len(message.text) / 50
-                    elif hasattr(message.author, 'patient'):
-                        minutes += len(message.text) / 100
-                self.hours = minutes / 60
-                self.save()
+        if self.hours == 0 and self.messages.exists():
+            if not self.id and ChatEntity.objects.all().count() > 0 or ChatEntity.objects.count() > 1:
+                if self.id:
+                    last_entity = ChatEntity.objects.filter(~Q(pk=self.pk)).latest('timestamp')
+                else:
+                    last_entity = ChatEntity.objects.latest('timestamp')
+                if self.messages.latest('-timestamp').timestamp < last_entity.timestamp:
+                    raise ValidationError('At least one message has been included in previous entities')
+            minutes = 0
+            for message in self.messages.all():
+                if hasattr(message.author, 'doctor'):
+                    minutes += len(message.text) / 50
+                elif hasattr(message.author, 'patient'):
+                    minutes += len(message.text) / 100
+            self.hours = minutes / 60
+            self.save()
