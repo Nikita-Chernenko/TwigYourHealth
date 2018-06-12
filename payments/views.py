@@ -1,5 +1,6 @@
 from annoying.decorators import render_to
 from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import redirect
 
 from payments.models import Order
 
@@ -12,6 +13,7 @@ def payment(request, pk):
             raise Exception('Wrong sum!')
         order.payed = True
         order.save()
+        return redirect('orders', order.patient.id)
     return {'order': order}
 
 

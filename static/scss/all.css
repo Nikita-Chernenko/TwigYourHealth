@@ -5174,7 +5174,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
   .tap-target-wrapper.open .tap-target-wave::after {
     visibility: visible;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    transition: opacity .3s, transform .3s, visibility 0s 1s; }
+    transition: opacity .3s, transform .3s, visibility 0s 1s; }
 
 .tap-target {
   position: absolute;
@@ -5209,7 +5209,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     transition: transform .3s; }
   .tap-target-wave::after {
     visibility: hidden;
-    transition: opacity .3s, transform .3s, visibility 0s;
+    transition: opacity .3s, transform .3s, visibility 0s;
     z-index: -1; }
 
 .tap-target-origin {
@@ -8225,6 +8225,9 @@ html {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   z-index: 2;
   background: white; }
+  @media (max-width: 992px) {
+    .chat-block {
+      height: 80%; } }
   .chat-block .chat-close {
     overflow: visible;
     color: black; }
@@ -8239,7 +8242,8 @@ html {
     align-items: flex-end;
     justify-content: flex-end;
     box-shadow: none;
-    background: none; }
+    background: none;
+    height: 10%; }
 
 #chat-block-short .chat-short-header {
   display: flex;
@@ -8443,7 +8447,7 @@ html {
   height: 100%;
   width: 100%; }
 
-.decease-detail:hover {
+.decease-detail:hover, .decease-detail.active {
   cursor: pointer;
   background-color: #FFAA6C; }
 
@@ -8462,28 +8466,6 @@ html {
 
 .collapsible.popout > li {
   margin: 0; }
-
-.home .text, .contact .text, .about .text {
-  text-align: center;
-  /* выравнивание текста по центру */ }
-
-@font-face {
-  .home, .contact, .about {
-    font-family: Ambarella;
-    /* Гарнитура шрифта */ } }
-
-.home h1, .home h2, .contact h1, .contact h2, .about h1, .about h2 {
-  font-family: "Uni sans", monospace; }
-
-.home p, .home a, .contact p, .contact a, .about p, .about a {
-  font-family: "Uni sans", monospace;
-  text-indent: 20px;
-  /* Отступ первой строки в пикселах */ }
-
-.home td, .contact td, .about td {
-  font-family: "Uni sans", monospace;
-  line-height: 1.5;
-  font-weight: 600; }
 
 .home .leftcol, .contact .leftcol, .about .leftcol {
   width: 50%;
@@ -8518,11 +8500,7 @@ html {
   font-size: 12px; }
 
 .home .blocks, .contact .blocks, .about .blocks {
-  display: inline-block;
-  width: 40%; }
-
-.home .wrap, .contact .wrap, .about .wrap {
-  width: 100%; }
+  display: inline-block; }
 
 body {
   display: flex;
@@ -8642,4 +8620,21 @@ div.has-error .select-wrapper input {
 .file-field-clear {
   display: none; }
 
-/*# sourceMappingURL=../../../../../../static/scss/all.css.map */
+div.input-field.required label:after {
+  content: " *" !important;
+  opacity: 1;
+  display: initial !important;
+  position: relative;
+  top: 0;
+  left: 0; }
+
+.help-block {
+  font-size: 10px; }
+
+@media (max-width: 600px) {
+  .decease-input {
+    min-width: 100px;
+    margin-right: -20px !important;
+    margin-left: -10px !important; } }
+
+/*# sourceMappingURL=/static/scss/all.css.map */

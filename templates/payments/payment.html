@@ -10,27 +10,27 @@
     <link rel="stylesheet" href="{% static 'css/cards.css' %}">
 </head>
 <body>
-<div>
-    <b1>Sum to pay: {{ order.sum }}</b1>
+<div style="padding-left: 10%">
+    <h1>Sum to pay: <b>{{ order.sum }}</b> HRN</h1>
 </div>
 <form method="post">
     {% csrf_token %}
-    <div class="margin_from_adaptive fr_card">
+    <div class="margin_from_adaptive fr_card" style="padding-left: 5%">
         <div class="content__cards__sender">
             <div class="content__cards__sender__input">
                 <p class="content__cards__sender__input__title">Номер карты отправителя:</p>
                     <input class="content__cards__sender__input__number card" tabindex="1" type="text"
                            placeholder="XXXX"
-                           maxlength="4">
+                           maxlength="4" required>
                     <input class="content__cards__sender__input__number card" tabindex="2" type="text"
                            placeholder="XXXX"
-                           maxlength="4">
+                           maxlength="4" required>
                     <input class="content__cards__sender__input__number card" tabindex="3" type="text"
                            placeholder="XXXX"
-                           maxlength="4">
+                           maxlength="4" required>
                     <input class="content__cards__sender__input__number card" tabindex="4" type="text"
                            placeholder="XXXX"
-                           maxlength="4">
+                           maxlength="4" required>
             </div>
             <div class="content__cards__sender__data">
                 <select el="SendMonth" tabindex="6" class="small">
@@ -67,11 +67,11 @@
         <div class="content__cards__cvv">
             <div class="content__cards__sender__input">
                     <input el="SendCVV" tabindex="5" class="content__cards__sender__input__number cvv"
-                           style="margin-top: 25px;width: 53px;" type="password" placeholder="XXX" maxlength="3">
+                           style="margin-top: 25px;width: 53px;" type="password" placeholder="XXX" maxlength="3" required>
             </div>
         </div>
     </div>
-    <div>
+    <div style="padding-left: 15%; padding-top: 2%">
         <button type="submit">OK</button>
     </div>
 </form>

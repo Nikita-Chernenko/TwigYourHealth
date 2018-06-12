@@ -287,7 +287,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] + label {
-    background: url('../img/checkbox.png') 0 0 no-repeat;
+    /*background: url('../img/checkbox.png') 0 0 no-repeat;*/
     font-size: 13px;
     width: 20px;
     height: 20px;
@@ -320,7 +320,7 @@ input[type="checkbox"]:checked + label {
 }
 
 .connection_loader {
-    background: url('../img/connection_loader.gif') 0 0 no-repeat;
+    /*background: url('../img/connection_loader.gif') 0 0 no-repeat;*/
     width: 32px;
     height: 32px;
     margin: 30px auto
@@ -365,7 +365,7 @@ input[type="checkbox"]:checked + label {
     font-size: 28px;
     text-decoration: none;
     color: #559731;
-    background: url(../img/privat_logo.png) no-repeat;
+    /*background: url(../img/privat_logo.png) no-repeat;*/
     width: 35px;
     height: 33px;
     display: block;
@@ -390,10 +390,10 @@ input[type="checkbox"]:checked + label {
     -moz-appearance: textfield
 }
 
-.content input[type=number]::-o-outer-spin-button, .content input[type=number]::-o-inner-spin-button {
-    -o-appearance: none;
-    margin: 0
-}
+/*.content input[type=number]::-o-outer-spin-button, .content input[type=number]::-o-inner-spin-button {*/
+    /*-o-appearance: none;*/
+    /*margin: 0*/
+/*}*/
 
 .content h1 {
     text-align: center;
@@ -3252,7 +3252,7 @@ body {
     }
 }
 
-,
+
 #embed-container {
     height: 315px;
     overflow: hidden;
@@ -3268,7 +3268,7 @@ body {
     width: 100%;
 }
 
-,
+
 /*!
  * Bootstrap v3.3.2 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -10058,7 +10058,7 @@ button.close {
 }
 
 @-ms-viewport {
-    width: device-width
+    /*width: */
 }
 
 .visible-lg, .visible-md, .visible-sm, .visible-xs {
