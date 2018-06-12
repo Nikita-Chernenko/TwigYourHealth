@@ -12,6 +12,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 class City(models.Model):
     name = models.CharField(max_length=256, unique=True)
 
+    def __str__(self):
+        return self.name
+
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
