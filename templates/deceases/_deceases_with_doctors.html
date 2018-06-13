@@ -17,7 +17,7 @@
                 <div class="row">
                     {% for d in el.doctors %}
                         <a href="{% url 'profile' pk=d.user.id %}" target="_blank">
-                            {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=review.patient.user %}
+                            {% include 'accounts/_avatar.html' with width="50" height="50" img_class="circle" user=d.user %}
                         </a>
                     {% endfor %}
                 </div>

@@ -2,11 +2,11 @@
 {% load utils %}
 {% block breadcrumbs %}
     {% if user.is_doctor %}
-        <a href="{% url 'self-profile' %}" class="breadcrumb">Profile</a>
+        <a href="{% url 'self-profile' %}" class="breadcrumb">Профиль</a>
         {% else %}
-        <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">{{ doctor.user.username|capfirst }} profile </a>
+        <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">Профиль {{ doctor.user.username|capfirst }}  </a>
     {% endif %}
-    <a href="{{ request.path }}" class="breadcrumb">Timetable</a>
+    <a href="{{ request.path }}" class="breadcrumb">Расписание</a>
 {% endblock %}
 
 {% block content %}
@@ -20,6 +20,7 @@
                     <button class="btn beige"> Create new shift type</button>
                 </form>
             </div>
+            <div class="divider mt-3 mb-3 "></div>
             <div>
                 <form method="post" id="shift-form" action="{% url 'shift-create' %}">
                     {% csrf_token %}
@@ -28,7 +29,7 @@
                 </form>
             </div>
         {% endif %}
-        <div class="divider"></div>
+        <div class="divider mt-2 mb-2"></div>
         {% for shift_type in shift_types %}
             <div class="shift-type">
                 <div class="shift-type-header">

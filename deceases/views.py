@@ -36,8 +36,8 @@ def symptoms_autocomplete(request):
     if len(symptoms) < 20:
         symptoms += list(
             Symptom.objects.exclude(Q(name__startswith=input_name) | Q(name__startswith=input_name.capitalize())) \
-            .filter(Q(aliases__icontains=input_name) | Q(name__icontains=input_name)) \
-            .values('id', 'name').order_by('name'))[:(20 - len(symptoms))]
+                .filter(Q(aliases__icontains=input_name) | Q(name__icontains=input_name)) \
+                .values('id', 'name').order_by('name'))[:(20 - len(symptoms))]
     return JsonResponse(data=symptoms, safe=False)
 
 
@@ -126,10 +126,10 @@ def deceases_by_symptoms(request):
     return {'deceases_with_doctors': deceases_with_doctors}
 
 
-@render_to('deceases/detail.html')
+@render_to('deceases/_detail.html')
 def decease_detail(request, pk):
     decease = get_object_or_404(Decease, pk=pk)
-    return {'decease': decease}
+    return {'decease': decease, 'symptoms': decease.deceasesymptom_set.order_by('-chances')}
 
 
 @render_to('deceases/list.html')

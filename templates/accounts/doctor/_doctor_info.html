@@ -12,7 +12,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8 d-flex flex-column align-items-center align-items-md-start">
         <div>{{ doctor.user.first_name|default:"Имя" }} {{ doctor.user.last_name|default:"Фамилия" }}</div>
         <div>{{ doctor.is_private|yesno:"Частный,Госудасртвенный" }} врач</div>
         <div>О себе: {{ doctor.description }} </div>

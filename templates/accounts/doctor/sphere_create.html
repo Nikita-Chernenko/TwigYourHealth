@@ -2,17 +2,17 @@
 {% load material_form %}
 {% block breadcrumbs %}
 
-    <a href="{% url 'profile' pk=request.user.id %}" class="breadcrumb">Doctor profile</a>
-    <a href="{% url 'sphere-create' doctor_pk=request.user.doctor.id %}" class="breadcrumb">Spheres</a>
+    <a href="{% url 'profile' pk=request.user.id %}" class="breadcrumb">Профиль</a>
+    <a href="{% url 'sphere-create' doctor_pk=request.user.doctor.id %}" class="breadcrumb">Сферы</a>
 {% endblock %}
 {% block content %}
     <div class="container">
         <ul>
-        <li>Существующие сферы: </li>
+            <li>Существующие сферы:</li>
             {% for s in spheres %}
                 <li>
-                    Sphere name: "{{ s.sphere.name }}"
-                    rating: {{ s.rating|default:"-" }}
+                    Название: "{{ s.sphere.name }}"
+                    Рейтинг: {{ s.rating|default:"-" }}
                 </li>
             {% endfor %}
         </ul>

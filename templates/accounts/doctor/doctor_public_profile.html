@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load material_form %}
 {% block breadcrumbs %}
-    <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">{{ doctor.user.username|capfirst }} profile</a>
+    <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">{{ doctor.user.username|capfirst }} профиль</a>
 {% endblock %}
 {% block content %}
     <div class="container">

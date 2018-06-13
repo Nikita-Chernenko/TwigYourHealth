@@ -20,5 +20,5 @@ def payment(request, pk):
 @user_passes_test(lambda u: u.is_patient)
 @render_to('payments/orders.html')
 def orders(request, pk):
-    orders = Order.objects.filter(patient__id=pk).order_by('payed')
+    orders = Order.objects.filter(patient__id=pk).filter(sum__gt=0).order_by('payed')
     return {'orders': orders}

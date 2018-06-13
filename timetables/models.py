@@ -79,7 +79,7 @@ class Visit(models.Model):
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     start = models.TimeField('start of the visit')
     end = models.TimeField('end of the visit')
-    orders = GenericRelation('payments.Order', on_delete=models.CASCADE)
+    orders = GenericRelation('payments.Order', on_delete=models.CASCADE, related_name='visits')
 
     class Meta:
         ordering = ['shift', 'start']
@@ -91,7 +91,7 @@ class Visit(models.Model):
         self.__original_end = self.end
 
     def __str__(self):
-        return f'{self.start}-{self.end} {self.patient} - {self.shift}'
+        return f'Визит к {self.shift.shift_type.doctor.user.username} в {self.start.strftime("%H:%I")}'
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -101,6 +101,8 @@ class Visit(models.Model):
             order.save()
         else:
             super(Visit, self).save(*args, **kwargs)
+            for order in self.orders.all():
+                order.save()
 
     def clean(self):
         start, end = self.start, self.end
