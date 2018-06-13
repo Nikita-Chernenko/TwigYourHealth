@@ -103,13 +103,13 @@ class ChatEntity(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if not self.pk:
-            super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
-            from payments.models import Order
-            order = Order(interaction=self)
-            order.save()
-        else:
-            super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+        # if not self.pk:
+        #     super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
+        #     from payments.models import Order
+        #     order = Order(interaction=self)
+        #     order.save()
+        # else:
+        #     super(ChatEntity, self).save(force_insert, force_update, using, update_fields)
         if self.hours == 0 and self.messages.exists():
             if not self.id and ChatEntity.objects.all().count() > 0 or ChatEntity.objects.count() > 1:
                 if self.id:
