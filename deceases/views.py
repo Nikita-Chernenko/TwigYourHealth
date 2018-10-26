@@ -15,7 +15,6 @@ from notifications.views import add_message
 from utils.checks import has_relationships
 
 
-# @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/diagnostics.html')
 def diagnostics(request):
     body_symptoms = BodyPart.objects.all()
