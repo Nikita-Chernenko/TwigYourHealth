@@ -98,5 +98,11 @@ def update_skype_calls_for_a_doctor(account, doctor_id):
             calls = get_all_calls_until_last_time(chat)
             calls = sort_calls_by_time(calls)
             for call in calls:
+<<<<<<< HEAD
                 insert_call_into_db(call, doctor_id, contact)
+=======
+                secondsS = content_parser(call.Content, 'duration')
+                total_time += int(secondsS)
 
+    return total_time
+>>>>>>> 276e9c736f85da28a3e6c16347aa1c5e0ee1ac4a
