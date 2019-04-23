@@ -39,6 +39,7 @@ PRIVATE_DOCTOR_PREFIX = 'private_doctor'
 def patient_sign_up(request):
     user_form = UserPatientForm(request.POST or None, prefix=USER_PREFIX)
     patient_form = PatientForm(request.POST or None, prefix=PATIENT_PREFIX)
+
     if request.POST:
         if user_form.is_valid() and patient_form.is_valid():
             patient = patient_form.save(commit=False)
@@ -73,8 +74,9 @@ def public_doctor_sign_up(request):
 @atomic
 def private_doctor_sign_up(request):
     user_form = UserDoctorForm(request.POST or None, prefix=USER_PREFIX)
-    doctor_form = DoctorPrivateDoctorForm(request.POST or None, prefix=DOCTOR_PREFIX)
     private_doctor_form = PrivateDoctorForm(request.POST or None, prefix=PRIVATE_DOCTOR_PREFIX)
+    doctor_form = DoctorPrivateDoctorForm(request.POST or None, prefix=DOCTOR_PREFIX)
+
     if request.POST:
         if user_form.is_valid() and doctor_form.is_valid() and private_doctor_form.is_valid():
             user = user_form.save()

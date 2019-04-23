@@ -13,6 +13,7 @@ class PatientDeceaseForm(forms.ModelForm):
     decease = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'decease-input', 'placeholder': 'Start input decease'}))
 
+
     class Meta:
         model = PatientDecease
         fields = ['patient', 'start_date', 'end_date', 'cured']

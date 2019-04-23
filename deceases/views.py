@@ -32,6 +32,7 @@ def symptoms_autocomplete(request):
     input_name = request.GET.get('name').lower()  # sqllite quark
     symptoms = list(Symptom.objects.filter(Q(name__startswith=input_name) | Q(name__startswith=input_name.capitalize())) \
                     .values('id', 'name').order_by('name'))
+
     if len(symptoms) < 20:
         symptoms += list(
             Symptom.objects.exclude(Q(name__startswith=input_name) | Q(name__startswith=input_name.capitalize())) \
@@ -45,15 +46,18 @@ def symptoms_autocomplete(request):
 def doctor_create_update_decease(request, pk=None):
     d = get_object_or_404(PatientDecease, pk=pk) if pk else None
     form = PatientDeceaseForm(request.POST, instance=d, auto_id=str(pk) + '_%s')
+
     if form.is_valid():
         decease = form.save(commit=False)
         doctor = request.user.doctor
 
         if not has_relationships(doctor.id, decease.patient.id):
             return HttpResponseForbidden('No relation ship between doctor and user')
+
         decease.author = request.user
         decease.decease = Decease.objects.get(name=form.cleaned_data['decease'])
         decease.save()
+
         add_message(
             message=f"<a href='{doctor.get_absolute_url()}'>{doctor.user.username}</a> has {'updated' if pk else 'created'} a new diagnos",
             owner=decease.patient.user)
@@ -82,6 +86,7 @@ def medical_records(request, patient_id):
 # @user_passes_test(lambda u: u.is_patient)
 @render_to('deceases/_deceases_with_doctors.html')
 def deceases_by_symptoms(request):
+
     symptoms_ids = request.GET.getlist('symptoms[]')
     symptoms = Symptom.objects.filter(pk__in=symptoms_ids).values_list('name', flat=True)
     symptoms_lookup = Q()
@@ -106,6 +111,8 @@ def deceases_by_symptoms(request):
                     .filter(~Q(chance=None))
                     .order_by()
                     .values('id', 'name', 'chance', 'number', 'sphere')[:10])
+
+
 
     deceases_with_doctors = []
     for ind, d in enumerate(deceases):
