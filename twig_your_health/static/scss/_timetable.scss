@@ -1,0 +1,57 @@
+.shift-type {
+  .timetable {
+    display: flex;
+    flex-direction: row;
+    .time {
+      display: flex;
+      flex-direction: column
+    }
+    .shifts {
+      display: flex;
+      flex-direction: row;
+      .shift {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .timetable-cell {
+      height: 60px;
+      width: 60px;
+      border: 1px solid black;
+      margin-left: 0;
+      &.time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 110px;
+      }
+      &.free {
+        &:hover {
+          background: lightgoldenrodyellow;
+        }
+        &.active {
+          background: $beige;
+        }
+
+      }
+      &.disabled {
+        background: grey;
+      }
+      &.owner {
+        background: green;
+        &:hover {
+          background: indianred;
+        }
+        &.active {
+          background: red;
+        }
+      }
+      .date-header {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+    }
+  }
+}
+

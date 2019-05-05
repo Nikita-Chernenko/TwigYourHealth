@@ -1,0 +1,28 @@
+.decease-detail {
+
+  &:hover, &.active {
+    cursor: pointer;
+    background-color: $beige;
+  }
+}
+
+.collapsible.popout {
+  .collapsible-header {
+    padding: 3px;
+  }
+  .collapsible-body {
+    padding: 5px;
+  }
+  li.active {
+    .collapsible-header {
+      background-color: $beige;
+      .arrow i {
+        transform: rotate(180deg);
+      }
+    }
+    margin-left: 5px;
+  }
+  & > li {
+    margin: 0;
+  }
+}

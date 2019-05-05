@@ -1,0 +1,194 @@
+@import "reset";
+@import "materialize/materialize";
+@import "bootstrap/bootstrap-reboot";
+@import "bootstrap/bootstrap-grid";
+@import "bootstrap/bootstrap";
+@import "chat";
+@import "sign_up";
+@import "timetable";
+@import "notifications";
+@import "call";
+@import "diagnostics";
+@import "deceases";
+@import "home";
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: "Uni sans", monospace;
+}
+
+i.icon-red {
+  color: red;
+}
+
+header, footer {
+  padding-left: 300px;
+}
+
+main {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
+.dropdown-content {
+  opacity: 1 !important;
+  top: 50px;
+  width: 100%;
+}
+
+main {
+  margin-top: 5px;
+}
+
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #FFF;
+  overflow: auto;
+}
+
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.autocomplete-selected {
+  background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399FF;
+}
+
+.autocomplete-group {
+  padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000;
+}
+
+.nav-link.active {
+  border-radius: 15px;
+}
+
+a.btn {
+  color: white !important;
+  &:hover {
+    color: white !important;
+    text-decoration: none;
+  }
+  &.btn-small {
+    line-height: 24px;
+  }
+}
+
+.btn-small {
+  height: 24px;
+  line-height: 14px;
+}
+
+.btn > a {
+  color: white;
+  text-decoration: none;
+}
+
+.autocomplete .chip {
+  margin-top: 5px;
+  margin-left: -5px;
+  height: auto;
+}
+
+.brand-logo, .breadcrumb {
+  &:hover {
+    text-decoration: underline;
+    color: white;
+  }
+}
+
+.collapsible {
+  .body-part-root, .symptom-part-root {
+    min-height: 35px;
+    padding: 2px;
+    &.leaf:hover {
+      background-color: $beige;
+      color: white;
+      cursor: pointer;
+    }
+    &.active, &:hover {
+      & > .collapsible-header {
+        background-color: $beige;
+        color: white;
+        cursor: pointer;
+
+      }
+
+    }
+    &.active > .collapsible-header .arrow i {
+      transform: rotate(180deg);
+    }
+    .collapsible-header {
+      border-bottom: none;
+      padding: 0;
+    }
+    .collapsible-body {
+      padding: 0;
+      padding-left: 5px;
+      border: none;
+    }
+  }
+}
+
+.btn-floating.btn-large {
+  min-width: 56px;
+}
+
+div.has-error .select-wrapper input {
+  border-bottom: 1px solid #F44336 !important;
+  box-shadow: 0 1px 0 0 #F44336 !important;
+}
+
+.file-field-clear {
+  display: none;
+}
+
+div.input-field.required label:after {
+  content: " *" !important;
+  opacity: 1;
+  display: initial !important;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.help-block {
+  font-size: 10px;
+}
+
+.decease-input {
+  @media (max-width: $small-screen) {
+    min-width: 100px;
+    margin-right: -20px !important;
+    margin-left: -10px !important;
+
+  }
+}

@@ -1,0 +1,24 @@
+$beige: #FFAA6C;
+
+.menu-avatar {
+  border-radius: 50%;
+}
+
+.breadcrumb {
+  font-size: 25px !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .nav-wrapper .container a{
+    font-size: 20px !important;
+  }
+}
+
+.brand-logo{
+  position: relative !important;
+  left: 0 !important;
+  transform: none !important;
+}
+.checkbox-field{
+  padding-top: 40px !important;
+}
