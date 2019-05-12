@@ -34,3 +34,7 @@ Install docker and docker-compose.
 Go to folder "docker".
 run `docker-compose up`.
 Go to `0.0.0.0:8000` in browser
+
+##To save data
+Run 
+docker exec twig_your_health_django /bin/bash -c "python manage.py save_staging accounts communication deceases notifications payments timetables --settings=base_settings"

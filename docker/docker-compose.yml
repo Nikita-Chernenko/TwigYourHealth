@@ -2,6 +2,7 @@ version: '2.3'
 services:
 
   redis:
+    container_name: twig_your_health_redis
     restart: always
     image: redis:latest
     expose:
@@ -9,19 +10,21 @@ services:
 
   db:
     image: postgres:latest
-    container_name: ps01
+    container_name: twig_your_health_db
     expose:
     - 5432
 
   web:
+    container_name: twig_your_health_django
     build:
       args:
       - no_static=1
       context: ../
       dockerfile: docker/backend.Dockerfile
-    command: bash -c "(ls && python manage.py reset_staging --settings=base_settings  && python manage.py runserver 0.0.0.0:8000 --settings=base_settings)"
+    command: bash -c "python manage.py reset_staging --settings=base_settings && gunicorn wsgi -b 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=base_settings"
     depends_on:
     - db
+    - redis
     volumes:
     - ../twig_your_health:/srv/TwigYourHealth/twig_your_health
     - ../files:/srv/TwigYourHealth/files
