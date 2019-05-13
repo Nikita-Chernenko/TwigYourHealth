@@ -46,5 +46,45 @@
     "doctor": 2,
     "sphere": 135
   }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 18,
+  "fields": {
+    "doctor": 3,
+    "sphere": 128
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 19,
+  "fields": {
+    "doctor": 4,
+    "sphere": 146
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 20,
+  "fields": {
+    "doctor": 5,
+    "sphere": 138
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 21,
+  "fields": {
+    "doctor": 6,
+    "sphere": 136
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 22,
+  "fields": {
+    "doctor": 7,
+    "sphere": 132
+  }
 }
 ]

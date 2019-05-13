@@ -7,7 +7,10 @@
       "admin"
     ],
     "text": "test1",
-    "seen": false
+    "seen": false,
+    "important": false,
+    "sent": false,
+    "timestamp": null
   }
 },
 {
@@ -18,7 +21,10 @@
       "admin"
     ],
     "text": "test 2",
-    "seen": false
+    "seen": false,
+    "important": false,
+    "sent": false,
+    "timestamp": null
   }
 }
 ]

@@ -24,5 +24,31 @@
     "gender": 1,
     "age_gap": 4
   }
+},
+{
+  "model": "accounts.patient",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "JohnDoe"
+    ],
+    "birthday": "1966-05-03",
+    "skype": "johndoe",
+    "gender": 1,
+    "age_gap": 6
+  }
+},
+{
+  "model": "accounts.patient",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "nervnyi_vrach"
+    ],
+    "birthday": "1954-05-12",
+    "skype": null,
+    "gender": 1,
+    "age_gap": 7
+  }
 }
 ]

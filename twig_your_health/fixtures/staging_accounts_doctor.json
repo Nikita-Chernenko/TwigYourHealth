@@ -36,5 +36,100 @@
     "description": "I'm a private doctor",
     "seconds": 0
   }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "doctor_alex"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "I am a good eye doctor",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "BoneDoctor"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "I am a good bone doctor",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "brain_doctor"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "I am a good brain doctor",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "kupetman"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "I am a venerolog",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "Genicolog"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "I am a Genicolog",
+    "seconds": 0
+  }
 }
 ]
