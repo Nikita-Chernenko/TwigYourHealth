@@ -21,7 +21,8 @@ services:
       - no_static=1
       context: ../
       dockerfile: docker/backend.Dockerfile
-    command: bash -c "gunicorn wsgi -b 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=base_settings"
+    command: bash -c "daphne -b 0.0.0.0 -p 8000 development_asgi:application"
+
     depends_on:
     - db
     - redis
