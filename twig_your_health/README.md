@@ -36,7 +36,10 @@ run 'docker-compose build'.
 run `docker-compose up`.
 
 run with chat, but with lags 'docker-compose -f docket-compose-chat.yml up'
-Go to `0.0.0.0:8000` in browser
+Go to `0.0.0.0:8000` in browser (linux)
+Go to `locahost:8000` in browser (Windows)
+if doesn't work, go
+Go to `192.168.99.100:8000` in browser (Windows)
 
 ##To save data
 Run 
