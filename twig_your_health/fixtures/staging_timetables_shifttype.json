@@ -31,5 +31,82 @@
     "end": "13:00:00",
     "gap": "00:50:00"
   }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 4,
+  "fields": {
+    "title": "\u0442\u0435\u0441\u0442",
+    "doctor": 3,
+    "start": "18:00:00",
+    "end": "15:00:00",
+    "gap": "00:30:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 5,
+  "fields": {
+    "title": "test",
+    "doctor": 3,
+    "start": "11:00:00",
+    "end": "18:00:00",
+    "gap": "00:30:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 6,
+  "fields": {
+    "title": "test",
+    "doctor": 8,
+    "start": "11:00:00",
+    "end": "18:00:00",
+    "gap": "00:30:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 7,
+  "fields": {
+    "title": "test",
+    "doctor": 9,
+    "start": "12:00:00",
+    "end": "20:00:00",
+    "gap": "00:40:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 8,
+  "fields": {
+    "title": "test",
+    "doctor": 10,
+    "start": "12:30:00",
+    "end": "21:30:00",
+    "gap": "00:30:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 9,
+  "fields": {
+    "title": "test",
+    "doctor": 11,
+    "start": "14:00:00",
+    "end": "19:00:00",
+    "gap": "00:20:00"
+  }
+},
+{
+  "model": "timetables.shifttype",
+  "pk": 10,
+  "fields": {
+    "title": "test",
+    "doctor": 12,
+    "start": "10:00:00",
+    "end": "23:00:00",
+    "gap": "01:00:00"
+  }
 }
 ]

@@ -52,5 +52,50 @@
     "hour_rate": "23.00",
     "visit_price": "230.00"
   }
+},
+{
+  "model": "accounts.privatedoctor",
+  "pk": 7,
+  "fields": {
+    "doctor": 8,
+    "hour_rate": "222.00",
+    "visit_price": "22.00"
+  }
+},
+{
+  "model": "accounts.privatedoctor",
+  "pk": 8,
+  "fields": {
+    "doctor": 9,
+    "hour_rate": "3424.00",
+    "visit_price": "343.00"
+  }
+},
+{
+  "model": "accounts.privatedoctor",
+  "pk": 9,
+  "fields": {
+    "doctor": 10,
+    "hour_rate": "1200.00",
+    "visit_price": "120.00"
+  }
+},
+{
+  "model": "accounts.privatedoctor",
+  "pk": 10,
+  "fields": {
+    "doctor": 11,
+    "hour_rate": "123.00",
+    "visit_price": "12.00"
+  }
+},
+{
+  "model": "accounts.privatedoctor",
+  "pk": 11,
+  "fields": {
+    "doctor": 12,
+    "hour_rate": "1234.00",
+    "visit_price": "1234.00"
+  }
 }
 ]

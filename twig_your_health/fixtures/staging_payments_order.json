@@ -1,0 +1,17 @@
+[
+{
+  "model": "payments.order",
+  "pk": 1,
+  "fields": {
+    "content_type": [
+      "timetables",
+      "visit"
+    ],
+    "object_id": 24,
+    "sum": 200,
+    "payed": false,
+    "date": "2019-05-13T19:55:26.821Z",
+    "patient": 1
+  }
+}
+]

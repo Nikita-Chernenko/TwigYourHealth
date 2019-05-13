@@ -86,5 +86,37 @@
     "doctor": 7,
     "sphere": 132
   }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 23,
+  "fields": {
+    "doctor": 9,
+    "sphere": 148
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 24,
+  "fields": {
+    "doctor": 10,
+    "sphere": 142
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 25,
+  "fields": {
+    "doctor": 11,
+    "sphere": 125
+  }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 26,
+  "fields": {
+    "doctor": 12,
+    "sphere": 148
+  }
 }
 ]

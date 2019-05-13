@@ -131,5 +131,100 @@
     "description": "I am a Genicolog",
     "seconds": 0
   }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "JohnDoew"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "qwre",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "leraalex"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "qwerty",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "ivan_volk"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "fferfeq",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "ivanka"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "qewe",
+    "seconds": 0
+  }
+},
+{
+  "model": "accounts.doctor",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "oop_oop_oop"
+    ],
+    "skype": null,
+    "skype_password": null,
+    "is_private": true,
+    "accept_chat": true,
+    "accept_call": true,
+    "hospital": null,
+    "personal_address": null,
+    "price_per_minute": 0.0,
+    "description": "hello how r u",
+    "seconds": 0
+  }
 }
 ]
