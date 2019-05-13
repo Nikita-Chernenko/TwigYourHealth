@@ -32,8 +32,14 @@ Patients and doctors of any age.
 ##To run the project
 Install docker and docker-compose.
 Go to folder "docker".
+run 'docker-compose build'.
 run `docker-compose up`.
-Go to `localhost:8000` in browser
+
+run with chat, but with lags 'docker-compose -f docket-compose-chat.yml up'
+Go to `0.0.0.0:8000` in browser (linux)
+Go to `locahost:8000` in browser (Windows)
+if doesn't work, go
+Go to `192.168.99.100:8000` in browser (Windows)
 
 ##To save data
 Run 

@@ -3,8 +3,9 @@
 {% block breadcrumbs %}
     {% if user.is_doctor %}
         <a href="{% url 'self-profile' %}" class="breadcrumb">Профиль</a>
-        {% else %}
-        <a href="{% url 'profile' pk=doctor.user.id %}" class="breadcrumb">Профиль {{ doctor.user.username|capfirst }}  </a>
+    {% else %}
+        <a href="{% url 'profile' pk=doctor.user.id %}"
+           class="breadcrumb">Профиль {{ doctor.user.username|capfirst }}  </a>
     {% endif %}
     <a href="{{ request.path }}" class="breadcrumb">Расписание</a>
 {% endblock %}
@@ -82,12 +83,28 @@
                 </div>
                 {% if user.is_patient %}
                     <button class="btn beige visit-create beige" style="display: none"></button>
+
+
                 {% endif %}
                 <button class="btn beige visit-remove beige" style="display: none"></button>
 
             </div>
         {% endfor %}
+
+        {% if user.is_patient %}
+
+            <div id="modal" class="modal" style="top: 100px;">
+                <div class="modal-content">
+                    <h4>Error</h4>
+                    <p id="modal-errors"></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                </div>
+            </div>
+        {% endif %}
     </div>
+
 {% endblock %}
 {% block extrajs %}
 
@@ -127,7 +144,11 @@
                                 el.hide()
                             }
                             else {
-                                console.log(response)
+                                $('#modal-errors').html(response.errors['__all__']);
+                                $('#modal').show();
+                                $('.modal-close').click(function () {
+                                    $('#modal').hide()
+                                })
                             }
                         }
                     })

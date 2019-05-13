@@ -3,6 +3,7 @@ from datetime import date, datetime, timedelta
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import Q
 
 from accounts.models import Doctor, Patient, Relationships
 
@@ -96,9 +97,10 @@ class Visit(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             super(Visit, self).save(*args, **kwargs)
-            from payments import Order
-            order = Order(interaction=self)
-            order.save()
+            from payments.models import Order
+            if getattr(self, 'shift', False) and self.shift.shift_type.doctor.is_private:
+                order = Order(interaction=self)
+                order.save()
         else:
             super(Visit, self).save(*args, **kwargs)
             for order in self.orders.all():
@@ -117,7 +119,11 @@ class Visit(models.Model):
                 # check if current time clashes with other visits
                 if hasattr(self, 'shift'):
                     visits_this_day = Visit.objects.filter(shift__day=self.shift.day)
-                    if start_changed and visits_this_day.filter(start__exact=start).exists():
+                    if start_changed and visits_this_day.filter(
+                            Q(start__lt=start, end__gt=start) |
+                            Q(start__lt=end, end__gt=end) |
+                            Q(start__gte=start, end__lte=end)
+                    ).exists():
                         raise ValidationError(f'Visit for this time already exists')
 
         if hasattr(self, 'shift') and hasattr(self.shift, 'shift_type') \
