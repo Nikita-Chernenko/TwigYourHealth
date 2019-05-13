@@ -33,7 +33,7 @@ Patients and doctors of any age.
 Install docker and docker-compose.
 Go to folder "docker".
 run `docker-compose up`.
-Go to `0.0.0.0:8000` in browser
+Go to `localhost:8000` in browser
 
 ##To save data
 Run 
