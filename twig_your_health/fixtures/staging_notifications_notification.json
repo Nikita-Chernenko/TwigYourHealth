@@ -26,5 +26,47 @@
     "sent": false,
     "timestamp": null
   }
+},
+{
+  "model": "notifications.notification",
+  "pk": 3,
+  "fields": {
+    "owner": [
+      "doctor_alex"
+    ],
+    "text": "<a href='/accounts/profile/3'>patient</a>  has added you from his contacts",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-05-13T19:41:17.834Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 4,
+  "fields": {
+    "owner": [
+      "patient"
+    ],
+    "text": "<a href='/accounts/profile/9'>doctor_alex</a>  has added you from his contacts",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-05-13T19:42:30.212Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 5,
+  "fields": {
+    "owner": [
+      "doctor_alex"
+    ],
+    "text": "<a href='/accounts/profile/3'>patient</a> has created a visit on date 2019-05-14 at time 11:00:00-11:30:00",
+    "seen": true,
+    "important": true,
+    "sent": false,
+    "timestamp": "2019-05-13T19:55:26.833Z"
+  }
 }
 ]

@@ -22,5 +22,157 @@
     "shift_type": 2,
     "day": "2018-05-03"
   }
+},
+{
+  "model": "timetables.shift",
+  "pk": 4,
+  "fields": {
+    "shift_type": 4,
+    "day": "2019-05-16"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 5,
+  "fields": {
+    "shift_type": 5,
+    "day": "2019-05-25"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 6,
+  "fields": {
+    "shift_type": 5,
+    "day": "2019-05-14"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 7,
+  "fields": {
+    "shift_type": 5,
+    "day": "2019-05-13"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 8,
+  "fields": {
+    "shift_type": 6,
+    "day": "2019-05-13"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 9,
+  "fields": {
+    "shift_type": 6,
+    "day": "2019-05-15"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 10,
+  "fields": {
+    "shift_type": 6,
+    "day": "2019-05-16"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 11,
+  "fields": {
+    "shift_type": 7,
+    "day": "2019-05-22"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 12,
+  "fields": {
+    "shift_type": 7,
+    "day": "2019-05-23"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 13,
+  "fields": {
+    "shift_type": 7,
+    "day": "2019-05-31"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 14,
+  "fields": {
+    "shift_type": 8,
+    "day": "2019-05-14"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 15,
+  "fields": {
+    "shift_type": 8,
+    "day": "2019-05-15"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 16,
+  "fields": {
+    "shift_type": 8,
+    "day": "2019-05-16"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 17,
+  "fields": {
+    "shift_type": 8,
+    "day": "2019-05-18"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 18,
+  "fields": {
+    "shift_type": 9,
+    "day": "2019-05-14"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 19,
+  "fields": {
+    "shift_type": 9,
+    "day": "2019-05-16"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 20,
+  "fields": {
+    "shift_type": 10,
+    "day": "2019-05-15"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 21,
+  "fields": {
+    "shift_type": 10,
+    "day": "2019-05-17"
+  }
+},
+{
+  "model": "timetables.shift",
+  "pk": 22,
+  "fields": {
+    "shift_type": 10,
+    "day": "2019-05-25"
+  }
 }
 ]

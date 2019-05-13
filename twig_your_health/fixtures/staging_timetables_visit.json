@@ -28,5 +28,15 @@
     "start": "12:45:00",
     "end": "13:30:00"
   }
+},
+{
+  "model": "timetables.visit",
+  "pk": 24,
+  "fields": {
+    "patient": 1,
+    "shift": 6,
+    "start": "11:00:00",
+    "end": "11:30:00"
+  }
 }
 ]
