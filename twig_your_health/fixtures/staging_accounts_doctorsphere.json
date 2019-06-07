@@ -118,5 +118,13 @@
     "doctor": 12,
     "sphere": 148
   }
+},
+{
+  "model": "accounts.doctorsphere",
+  "pk": 27,
+  "fields": {
+    "doctor": 2,
+    "sphere": 124
+  }
 }
 ]

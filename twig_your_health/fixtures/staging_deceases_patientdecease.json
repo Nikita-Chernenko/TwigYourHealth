@@ -9,7 +9,7 @@
     "end_date": null,
     "cured": true,
     "author": [
-      "private"
+      "dbobrishev"
     ]
   }
 },
@@ -23,7 +23,7 @@
     "end_date": null,
     "cured": true,
     "author": [
-      "private"
+      "dbobrishev"
     ]
   }
 },
@@ -37,7 +37,49 @@
     "end_date": null,
     "cured": false,
     "author": [
-      "private"
+      "dbobrishev"
+    ]
+  }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 4,
+  "fields": {
+    "patient": 5,
+    "decease": 941,
+    "start_date": "2019-02-05",
+    "end_date": "2019-02-13",
+    "cured": true,
+    "author": [
+      "dkupetman"
+    ]
+  }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 5,
+  "fields": {
+    "patient": 5,
+    "decease": 941,
+    "start_date": "2019-02-05",
+    "end_date": "2019-02-13",
+    "cured": false,
+    "author": [
+      "psaba"
+    ]
+  }
+},
+{
+  "model": "deceases.patientdecease",
+  "pk": 6,
+  "fields": {
+    "patient": 6,
+    "decease": 979,
+    "start_date": "2019-06-03",
+    "end_date": "2019-06-07",
+    "cured": true,
+    "author": [
+      "dkupetman"
     ]
   }
 }

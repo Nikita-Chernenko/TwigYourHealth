@@ -23,7 +23,7 @@
   "fields": {
     "doctor": 4,
     "hour_rate": "600.00",
-    "visit_price": "50.00"
+    "visit_price": "1000.00"
   }
 },
 {
@@ -31,8 +31,8 @@
   "pk": 4,
   "fields": {
     "doctor": 5,
-    "hour_rate": "30.00",
-    "visit_price": "300.00"
+    "hour_rate": "5000.00",
+    "visit_price": "50000.00"
   }
 },
 {
@@ -40,8 +40,8 @@
   "pk": 5,
   "fields": {
     "doctor": 6,
-    "hour_rate": "40.00",
-    "visit_price": "400.00"
+    "hour_rate": "1000.00",
+    "visit_price": "5000.00"
   }
 },
 {
@@ -49,8 +49,8 @@
   "pk": 6,
   "fields": {
     "doctor": 7,
-    "hour_rate": "23.00",
-    "visit_price": "230.00"
+    "hour_rate": "4000.00",
+    "visit_price": "5000.00"
   }
 },
 {
@@ -58,8 +58,8 @@
   "pk": 7,
   "fields": {
     "doctor": 8,
-    "hour_rate": "222.00",
-    "visit_price": "22.00"
+    "hour_rate": "300.00",
+    "visit_price": "500.00"
   }
 },
 {
@@ -67,8 +67,8 @@
   "pk": 8,
   "fields": {
     "doctor": 9,
-    "hour_rate": "3424.00",
-    "visit_price": "343.00"
+    "hour_rate": "3500.00",
+    "visit_price": "2500.00"
   }
 },
 {
@@ -85,8 +85,8 @@
   "pk": 10,
   "fields": {
     "doctor": 11,
-    "hour_rate": "123.00",
-    "visit_price": "12.00"
+    "hour_rate": "250.00",
+    "visit_price": "250.00"
   }
 },
 {
@@ -94,8 +94,8 @@
   "pk": 11,
   "fields": {
     "doctor": 12,
-    "hour_rate": "1234.00",
-    "visit_price": "1234.00"
+    "hour_rate": "2500.00",
+    "visit_price": "2500.00"
   }
 }
 ]

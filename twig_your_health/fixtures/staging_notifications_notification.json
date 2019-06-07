@@ -32,7 +32,7 @@
   "pk": 3,
   "fields": {
     "owner": [
-      "doctor_alex"
+      "deyes"
     ],
     "text": "<a href='/accounts/profile/3'>patient</a>  has added you from his contacts",
     "seen": true,
@@ -60,13 +60,125 @@
   "pk": 5,
   "fields": {
     "owner": [
-      "doctor_alex"
+      "deyes"
     ],
     "text": "<a href='/accounts/profile/3'>patient</a> has created a visit on date 2019-05-14 at time 11:00:00-11:30:00",
     "seen": true,
     "important": true,
     "sent": false,
     "timestamp": "2019-05-13T19:55:26.833Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 6,
+  "fields": {
+    "owner": [
+      "dkupetman"
+    ],
+    "text": "<a href='/accounts/profile/20'>psaba</a>  has added you from his contacts",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T04:57:59.163Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 7,
+  "fields": {
+    "owner": [
+      "psaba"
+    ],
+    "text": "<a href='/accounts/profile/13'>dkupetman</a> has updated a new diagnos",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:31:04.685Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 8,
+  "fields": {
+    "owner": [
+      "psaba"
+    ],
+    "text": "<a href='/accounts/profile/13'>dkupetman</a>  has added you from his contacts",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:31:31.300Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 9,
+  "fields": {
+    "owner": [
+      "dkupetman"
+    ],
+    "text": "<a href='/accounts/profile/20'>psaba</a>  has created his review",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:34:04.089Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 10,
+  "fields": {
+    "owner": [
+      "dkupetman"
+    ],
+    "text": "<a href='/accounts/profile/21'>pkot</a>  has added you from his contacts",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:39:03.875Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 11,
+  "fields": {
+    "owner": [
+      "pkot"
+    ],
+    "text": "<a href='/accounts/profile/13'>dkupetman</a>  has added you from his contacts",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:40:12.926Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 12,
+  "fields": {
+    "owner": [
+      "pkot"
+    ],
+    "text": "<a href='/accounts/profile/13'>dkupetman</a> has updated a new diagnos",
+    "seen": true,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:40:21.296Z"
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 13,
+  "fields": {
+    "owner": [
+      "dkupetman"
+    ],
+    "text": "<a href='/accounts/profile/21'>pkot</a>  has created his review",
+    "seen": false,
+    "important": false,
+    "sent": false,
+    "timestamp": "2019-06-07T05:41:42.597Z"
   }
 }
 ]

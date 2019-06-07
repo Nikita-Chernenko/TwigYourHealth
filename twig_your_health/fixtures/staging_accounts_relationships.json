@@ -28,5 +28,55 @@
     "patient_accept": true,
     "doctor_accept": true
   }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 5,
+  "fields": {
+    "patient": 1,
+    "doctor": 2,
+    "patient_accept": false,
+    "doctor_accept": false
+  }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 6,
+  "fields": {
+    "patient": 5,
+    "doctor": 5,
+    "patient_accept": false,
+    "doctor_accept": false
+  }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 7,
+  "fields": {
+    "patient": 5,
+    "doctor": 12,
+    "patient_accept": false,
+    "doctor_accept": false
+  }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 8,
+  "fields": {
+    "patient": 5,
+    "doctor": 6,
+    "patient_accept": true,
+    "doctor_accept": true
+  }
+},
+{
+  "model": "accounts.relationships",
+  "pk": 9,
+  "fields": {
+    "patient": 6,
+    "doctor": 6,
+    "patient_accept": true,
+    "doctor_accept": true
+  }
 }
 ]

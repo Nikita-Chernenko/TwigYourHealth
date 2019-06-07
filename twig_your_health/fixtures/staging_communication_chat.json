@@ -14,5 +14,13 @@
     "patient": 1,
     "doctor": 2
   }
+},
+{
+  "model": "communication.chat",
+  "pk": 3,
+  "fields": {
+    "patient": 5,
+    "doctor": 6
+  }
 }
 ]

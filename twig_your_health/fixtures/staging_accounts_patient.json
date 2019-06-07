@@ -50,5 +50,31 @@
     "gender": 1,
     "age_gap": 7
   }
+},
+{
+  "model": "accounts.patient",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "psaba"
+    ],
+    "birthday": "1989-06-14",
+    "skype": "psaba",
+    "gender": 1,
+    "age_gap": 5
+  }
+},
+{
+  "model": "accounts.patient",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "pkot"
+    ],
+    "birthday": "1971-06-23",
+    "skype": "pkot",
+    "gender": 1,
+    "age_gap": 6
+  }
 }
 ]
