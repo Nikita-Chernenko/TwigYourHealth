@@ -9,8 +9,6 @@ from payments.models import Order
 def payment(request, pk):
     order = Order.objects.get(pk=pk)
     if request.POST:
-        if sum == order.sum:
-            raise Exception('Wrong sum!')
         order.payed = True
         order.save()
         return redirect('orders', order.patient.id)
