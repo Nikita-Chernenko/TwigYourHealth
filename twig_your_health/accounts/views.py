@@ -6,7 +6,7 @@ from annoying.functions import get_object_or_None
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
-from django.contrib.auth.views import logout as _logout
+from django.contrib.auth import logout as _logout
 from django.core.serializers import serialize
 from django.db.transaction import atomic
 from django.forms import formset_factory

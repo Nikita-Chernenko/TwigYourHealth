@@ -14,4 +14,6 @@ function materialize_initiailize() {
         autoClose: true,
     });
     M.Tooltip.init($('.tooltipped'), {});
+    $('#modal').modal();
+    $('#modal').hide();
 }

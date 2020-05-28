@@ -3,7 +3,7 @@ ENV PYTHONUNBUFFERED 1
 
 ADD ./twig_your_health/requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
-
+RUN pip install Django==2.1.5
 
 ADD . /srv/TwigYourHealth/twig_your_health
 

@@ -1,4 +1,5 @@
-from django.contrib.auth.views import login, password_change
+from django.contrib.auth import login
+from django.contrib.auth.views import PasswordResetView
 from django.urls import path
 
 from accounts.forms import LoginViewForm
@@ -20,7 +21,7 @@ urlpatterns = [
     path('review/create-update/<int:doctor_sphere_id>/', review_create_update, name='review-create'),
     path('review/create-update/<int:doctor_sphere_id>/<int:pk>/', review_create_update, name='review-update'),
     path('review/delete/', review_delete, name='review-delete'),
-    path('profile/change-password/', password_change, {'template_name': 'accounts/change_password.html',
+    path('profile/change-password/', PasswordResetView.as_view(), {'template_name': 'accounts/change_password.html',
                                                        'post_change_redirect': 'success-change-password'},
          name='change-password'),
     path('user/<int:pk>/', user_retrieve, name='user-retrieve'),

@@ -8,11 +8,15 @@ services:
     expose:
     - "6379"
 
-  db:
-    image: postgres:latest
-    container_name: twig_your_health_db
-    expose:
-    - 5432
+#  db:
+#    image: postgres:latest
+#    container_name: twig_your_health_db
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_DB: postgres
+#      POSTGRES_HOST_AUTH_METHOD: trust
+#    expose:
+#    - 5432
 
   web:
     container_name: twig_your_health_django
@@ -23,7 +27,6 @@ services:
       dockerfile: docker/backend.Dockerfile
     command: bash -c "gunicorn wsgi -b 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=base_settings"
     depends_on:
-    - db
     - redis
     volumes:
     - ../twig_your_health:/srv/TwigYourHealth/twig_your_health
